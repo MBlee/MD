@@ -1,0 +1,6 @@
+Arrays.toString([])
+join('')
+push/pop()
+shift/unshift()
+forEach(x,i,a)
+map(i)

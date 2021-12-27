@@ -1,0 +1,8 @@
+目录架构：
+
+AngularJS/Angular2/4/5（路由）
+环境搭建：
+npm install -g @angular/cli
+ng new pro
+1. npm install
+2. ng serve --open

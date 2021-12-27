@@ -1,0 +1,17 @@
+python>pycharm
+
+输出
+open(path,"a+")
+close()
+print(~,file=)
+
+转义字符
+\\  \'"
+\n \r \t \b
+
+二进制与字符编码
+0，1→ASCII→Unicode→UTF-8
+
+标识符/保留字
+import keyword
+print(keyword.kwlist)

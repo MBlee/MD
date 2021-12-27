@@ -1,0 +1,13 @@
+URL：
+统一资源定位符
+通信协议http://
+服务器名称www.com
+资源路径.html
+
+请求方式：
+get/post
+
+数据通讯：
+请求→处理→响应（network→doc）
+
+XMLHttpRequest

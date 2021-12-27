@@ -1,0 +1,2 @@
+vue.config.js
+起别名：configureWebpack>resolve>alias

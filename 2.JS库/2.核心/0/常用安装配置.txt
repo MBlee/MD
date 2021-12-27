@@ -1,0 +1,2 @@
+cnpm淘宝镜像：
+npm  install  -g  cnpm  --registry=http://registry.npm.taobao.org

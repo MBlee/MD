@@ -1,0 +1,4 @@
+npm init -y
+
+-d/ --save-dev
+-s/ --save

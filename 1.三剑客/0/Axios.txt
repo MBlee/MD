@@ -1,0 +1,27 @@
+安装axios
+npm  install  axios  -save
+跨域：url?callback=json123
+------------------------------------
+axios({
+	url,
+	params,
+	method
+}).then(res =>{
+	res.....
+})
+------------------------------------
+axios.all(axios...)
+.then(results)
+.then(axios.spread((res1 , res2)))
+------------------------------------
+ axios.create(obj)
+------------------------------------
+全局配置
+axios.defaults.url
+baseURL
+method
+transformRequest:[func(data){}]
+transformResponse:[func(data){}]
+header:{'x-Requested-With':'XMLHttpRequest'}
+params
+timeout

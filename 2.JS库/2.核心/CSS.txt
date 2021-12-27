@@ -1,0 +1,47 @@
+定位：
+1.框：	padding，border，box-sizing	，margin
+   @边	border-width，border-style，border-color
+   @角	border-radius
+   @	outline，box-shadow
+2.对齐：
+   @中	text-align，line-height
+	margin: 0 auto
+	position—left&top—margin/translate(-50%)	
+   @右	float
+	position—right：0
+——————————
+Flex布局：
+display（flex/inline-flex/-webkit-flex）
+
+1.容器：	flex-flow（flex-direction，flex-wrap）
+	justify/align-content
+	align-items
+2.项目：	flex（flex-grow，flex-shrink，flex-basis）
+	order
+	align-self
+——————————
+响应式布局：
+1. 元素
+2. 尺寸/间距
+3. 布局
+——————————
+内式：
+   @列表	list-style-type
+	list-style-image
+	list-style-position
+   @背景	origin，size，position
+	repeat，attachment
+   @字体	color，font-style，font-family
+	font-size，font-weight
+   @文本	text-shadow
+	word-wrap：break-word
+	overflow
+	text-overflow：clip，ellipsis，string
+	white-space
+	-webkit-line-clamp: 2
+	
+选择器：
+1.class(.)  / id(#) / 属性([^$*|~=])
+2.后代( ) / 子临(>+)
+3.:hover / :focus
+4.:before( '' / attr(aname) / url() )

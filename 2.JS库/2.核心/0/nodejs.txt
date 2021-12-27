@@ -1,0 +1,26 @@
+Nodejs：基于V8的js运行环境（系统级API）>>npm淘宝镜像
+安装版本：
+1.淘宝镜像
+2.nvm  install  node>>nvm  use  6.11.2(.nvmrc)
+使用：
+1.node  js
+2.cnpm  install  nodemon  -g>>nodemon  js
+文件夹模块/packge.json→main
+--------------------------------------------------------------
+http模块：
+createServer((req,res)=>{
+req.url
+res.writeHead
+res.write
+res.end
+}).listen(port,url)
+
+url模块：
+url.parse(path,true)
+
+fs模块：
+fs.readfile/dir(path,callback)
+fs.mkdir/rmdir(path)
+fs.stat(path,callback{
+stat.isDirectory
+})

@@ -1,0 +1,6 @@
+$(fn);
+Dom操作：
+$(str).children/find/parent/siblings/next/prev/:eq(index)/:odd/:even
+$(str).click(fn)
+$(str).text(str)
+$(str).css(strs/obj).show/hide()

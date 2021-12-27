@@ -1,0 +1,2 @@
+非结构型数据库
+数据库→集合（collection）→文档（document）

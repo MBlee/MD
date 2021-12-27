@@ -1,0 +1,46 @@
+初始化配置：
+1. Git remote>push
+	assets/common/components/views/router/network/store
+2. base(normalize)
+	vue.config.js
+	(configureWebpack>resolve>alias)
+	/eidtorconfig
+	(root/[*]charset
+	indent_style/indent_size
+	end_of_line
+	insert_final_newline
+	trim_trailing_whitespace)
+3. router
+4. network (created(){getdata}多页)
+________________________________________________
+<link icon><%= BASE_URL %>
+ref>this.$refs.refname(scoped)
+@click.native
+封装：
+1. tabbar
+2. navbar
+3. swiper
+4. recomend
+5. tabcontrol
+6. betterScroll
+npm install better-scroll --save
+new BScroll($el,{
+	probeType : 23,
+	click : true,
+	pullUpload : true,
+	
+})
+bscroll.on('scroll', (position)=>{	
+})
+bscroll.on('pullingUp',()=>{
+	bscroll.finishPullUp()
+})
+img.onload>refresh（防抖/节流）
+事件总线
+Vue.Prototype.$bus = new Vue()
+$bus.emit/on/off
+混入
+mixins:[]
+________________________________________________
+常用工具类
+1. 日期格式化

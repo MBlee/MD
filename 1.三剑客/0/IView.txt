@@ -1,0 +1,5 @@
+npm install  less/less-loader  --save-dev
+Vue.use(iView,{
+size: "large",
+transfer: true
+})

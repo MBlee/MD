@@ -1,0 +1,116 @@
+document.getElementsByTagName("video")[0].playbackRate = 3
+组件化：
+注册：Vue.component(name，{ })
+	components:{name，{ } }
+template：<script  type = 'text/x-template'>
+	<template>
+props：{name：{type：，default：} }驼-峰
+data：function(){ return{ } }
+methods：this.$emit('name'，item)
+
+双向绑定：父data>>props>>子data>>$emit>>父method>>父data
+父用子：this.$refs.name(ref) / this.$children
+子用父：this.$parent / this.$root
+
+slot插槽：<slot>default</slot>
+具名插槽：<slot  name:''><div slot:''>
+作用域插槽：<slot  :pro:''>  
+1. <template  slot：slot-scope：>
+2. <template  v-slot: ='scope'>
+--------------------------------------------------
+生命周期：
+created，destroyed
+--------------------------------------------------
+备注：
+原始事件.native
+--------------------------------------------------
+Vue程序运行过程(Runtime+compiler/Runtime-only[vue-template-compiler])
+1.template>ast>render(func)
+2.render(func)>virtual dom>UI
+VueCli2和VueCli3区别：2基于webpack3，3基于webpack4
+————————————————
+安装VueCLI：
+1.npm  install  @vue/cli@版本号
+2.npm  install  @vue/cli-init
+
+CLI2初始化：
+vue  init  webpack  my-project
+
+配置：
+1.config/index.js
+2.package.json
+
+CLI3初始化：
+vue  create  my-project
+
+配置：(@vue/cli-service)
+1.vue  ui
+2.vue.config.js
+—————————————————————
+Hash值：location.hash
+History：history.pushState({},'','home')
+history.go(num)
+
+const  router  =  new  VueRouter({
+		routes  :  [  ]
+		mode  :  'history'
+		linkActiveClass：'active'
+		base : process.env.BASE_URL
+	})
+routes[
+{
+path : ' ' , 
+redirect : '/home' , 
+components : ct, 
+children:[] 
+}
+....
+]
+
+导航守卫
+1. beforeEach(to.matched[0])
+2. beforeEnter
+3. beforeRouteEnter
+
+全局使用
+1.<router-link>属性：to, tag/active-class	
+2.<keep-alive>：exclude
+activated，beforeRouteLeave
+
+this.$router.push()
+$route.params.id
+$route.query.id
+————————————————
+1. Vue.use(Vuex)
+2. new  Vuex.Store({
+	state:{
+		data
+	},
+	mutations:{
+		function(state){
+		}
+	}
+})export  default  store
+3. this.$store.commit('')
+
+getters：
+func(state , getters){
+	return function(arg){
+		return ...
+	}
+}
+
+mutations:
+1. func(state , payload){}
+2. this.$store.commit(func , payload)
+this.$store.commit({
+	type: func,
+	payload
+})
+
+响应式
+Vue.set(state.info, 'name' , 'value')
+Vue.delete(state.info, 'name')
+state.arrs.push(obj)
+
+

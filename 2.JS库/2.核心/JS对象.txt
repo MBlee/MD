@@ -1,0 +1,7 @@
+Constructor→Prototype→Obj(__Prototype__)
+
+对象实例化：
+new Object()
+function(args){return new Object}
+function Obj(){}
+Class Obj{constructor()...}

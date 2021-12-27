@@ -1,0 +1,22 @@
+适配方案：
+Rem/百分比+flex
+—————————————————
+媒体查询：
+@media screen and
+<style/link media>
+
+Flex:
+auto: 11 auto
+none: 00 auto
+1/0%: 11 auto
+
+Rem:
+1.clientwidth
+2.fontsize=(cw*(10/320)>40)
+—————————————————
+Retina显示屏
+物理分辨率
+—————————————————
+flexible
+cssrem
+postcss-px2rem

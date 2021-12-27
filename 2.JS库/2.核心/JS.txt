@@ -1,0 +1,34 @@
+JS类：
+class extends{
+constructor{
+	super()
+}
+static
+method
+}
+----------------------------------------------
+案例：点击显示/分时显示/显示隐藏密码/关闭二维码/循环精灵图/显示隐藏文本框内容/密码框验证/开关灯/下拉菜单
+WebAPI：（函数/方法）接口>>参数
+DOM：文档document>>元素element>>节点node
+this：事件函数的调用者
+获取元素：
+1.getElementById( '' )>>element
+2.getElementsByTagName( '' )>>elements
+3.getElementsByClassName( '' )>>elements
+4.querySelector( '' )>>选择器第一个对象
+5.querySelectorAll( '' )>>elements
+6.body>>document.body，html>>document.documentElement
+事件：事件源.事件类型=事件处理程序
+1.button/input/
+2.onclick/onfocus/onblur/
+修改内容：.innerText/innerHTML
+修改属性：.attribute(.disabled/.src/.href/.title/.alt)
+修改表单：.value/.type/.disabled
+修改样式：.style.attribute(驼峰/行内样式)/.className(覆盖)
+
+排他思想：1.排除其他人2.设置自己
+----------------------------------------------
+offsetTop
+clientTop
+scrollTop
+window.pageYOffset

@@ -1,0 +1,22 @@
+public  class  xxx{
+public  static  void  main（String[]  args）
+}
+——————————————
+运行机制：
+1. java源程序
+2. 编译字节码 (javac  .java)
+3. JVM运行 (java  .class)
+——————————————
+三大体系
+Java SE（J2SE）
+Java ME（J2ME）
+Java EE（J2EE）
+Java IDE：
+NetBeans、Eclipse、IDEA
+配置环境
+JAVA_HOME=Path
+CLASSPATH=.;%JAVA_HOME%\lib
+path=%JAVA_HOME%\bin
+JRE：Java运行环境
+JDK：Java开发工具包
+——————————————

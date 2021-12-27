@@ -1,0 +1,15 @@
+全局配置：Vue.config
+errorHandler/warnHandler
+
+全局API：
+Vue.extend(obj)
+Vue.component(xxx,obj)
+Vue.use(obj)
+Vue.mixin(obj)
+Vue.nextTick(callback)/.then
+Vue.set(obj,name,value)
+Vue.delete(obj,name)
+
+选项/数据：
+data/props/computed
+methods/watch

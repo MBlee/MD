@@ -1,0 +1,21 @@
+版本控制：本地>集中式>分布式
+配置账户：
+git  config  --global  user.name  'username'
+git  config  --global  user.email  123@git.com
+git  config  --list
+git config user.name
+git config user.email
+
+git ls-files
+git diff HEAD -- file
+git restore -- staged file
+git reset HEAD file
+初始化：git  init
+1.git  add (git status)
+2.git  commit  -am ""
+3.git  rm  file
+版本回退：git  log/reflog --pretty=oneline
+git reset --hard HEAD^/~
+git reset --hard id
+——————————————————
+

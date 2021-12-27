@@ -1,0 +1,44 @@
+Web服务器：提供Web服务，安装web服务软件
+Apache，tomcat，iis
+IP地址：唯一性/网卡
+域名：127.0.0.1/localhost
+端口：127.0.0.1：端口
+DNS：域名系统
+服务器端的HTML脚本编程语言（动态生成网页）
+静态网站：
+浏览器URL
+→DNS服务器→IP→服务器→端口→
+Apache解析
+动态网站：
+浏览器URL
+→DNS服务器→IP→服务器→端口→
+Apache解析→PHP引擎→数据库
+———————————————————————
+安装Apache:
+80端口/所有人访问
+8080端口/不允许外部访问
+Httpd.exe:
+查看模块：httpd -M
+验证配置：httpd -t
+
+配置默认站点：
+1.网站文件夹，httpd.conf文件: DocumentRoot
+2.网站别名，httpd.conf文件: ServerName
+httpd.conf: listen
+3.DNS域名解析，DNS：hosts文件
+windows/system32/drivers/etc/hosts
+127.0.0.1	localhost
+
+安装PHP
+php.exe  -f  xxx-path
+httpd.conf文件:
+1.Apache加载PHP
+LoadModule  php5_module  PHP所提供的模块链接路径（php5/php5apache.dll）
+2.Apache加载PHP配置文件
+PHPIniDir  "php5"
+php.ini-development→php.ini
+3.分配给PHP
+AddType  application/x-httpd-php  .php
+
+
+———————————————————————

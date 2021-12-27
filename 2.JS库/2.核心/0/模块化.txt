@@ -1,0 +1,7 @@
+命名空间namespace>匿名闭包IIFE
+避免命名冲突/更好的分离，按需加载/更高复用性/高可维护性
+封装>接口
+初始化：npm init/browserify
+
+CommonJS
+导入导出：module.exports=exports=require(path/name)

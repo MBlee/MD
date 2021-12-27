@@ -1,0 +1,91 @@
+模块打包器/构建工具
+树结构》模块》chunk》bundel
+模块导出：
+module.exports = obj
+模块导入：
+obj = require(path)
+——————————————————
+安装：npm i webpack webpack-cli -D
+打包：webpack  --mode development/production
+webpack  src.js  -o  build.js
+打包配置：webpack.config.js
+entry/output(filename/path_resolve)
+mode_development
+module>rules
+plugins
+——————————————————
+打包HTML：
+html-webpack-plugin
+template/filename/chunks
+minify_collapseWhitespace_removeComments
+
+打包CSS：
+style-loader/ css-loader
+test_/\.css$/
+use_["style-loader","css-loader"]
+
+打包LESS/SASS：
+LESS→less/less-loader
+test_/\.less$/
+use_["style-loader","css-loader","less-loader"]
+SASS→node-sass/sass-loader
+test_/\.scss$/
+use_["style-loader","css-loader","sass-loader"]
+
+提取CSS：
+mini-css-extract-plugin（{filename:"[name].css"}）
+test_/\.css$/
+use_[mini-css-extract-plugin.loader,"css-loader"]
+
+CSS兼容性：
+postcss_post-loader/postcss-preset-env
+1.postcss.config.js
+plugins:[require('postcss-preset-env')]
+2.use_[mini-css-extract-plugin.loader,"css-loader","postcss-loader"]
+3.browserslist_[
+"> 0.2%",
+"last 2 versions",
+"not dead"
+]
+
+压缩CSS：
+optimize-css-assets-webapack-plugin
+new optimize-css-assets-webapack-plugin()
+
+打包图片：
+url-loader/file-loader
+test_/\.(png|jpg|jpeg|gif)$/
+loader:"url-loader",
+options:{
+outputPath:"images/",
+publicPath:"./images/"
+limit: 1024*8
+name:"[name][hash:10].[ext]"
+}
+test_/\.html$/
+loader:"html-loader"
+
+打包字体图标：
+阿里巴巴图标库
+
+eslint：
+eslint-loader/eslint/eslint-config-airbnb-base/eslint-plugin-import
+test_/\.js$/
+packge.json>eslintConfig:{
+"extends":"airbnb-base"
+}
+exclude：/node_modules/
+loader:"eslint-loader"
+options:{
+fix:true
+}
+
+devServer配置：
+webpack-dev-server
+webpack.config>target:"web"
+webpack serve --mode --port
+devServer:{
+port,
+compress
+open
+}

@@ -1,0 +1,68 @@
+创建基本项目
+1. npm init -y
+	 src/dist/index
+2. npm init webpack webpack-cli -D
+	mudule.exports = {
+		mode:"development"
+	}
+document.getElementsByTagName("video")[0].playbackRate = 3
+WEBPACK
+>>JS应用静态模块^打包工具（grunt/gulp）
+模块化：AMD/CMD/CommonJS/ES6
+CommonJS：
+1.导出，module.exports = { }
+2.导入，var aaa = require('./aaa.js')
+ES6:  <type = "module">
+1.导出，export { } / export  var   default   function;
+2.导入，import { } /*  as  aaa  from 'aaa.js'
+———————————————————
+安装：
+npm  install  webpack@3.6.0  -g
+npm  install  webpack@3.6.0  --save -dev（devDependences）
+基本使用：
+webpack  ./src/main.js  ./dist/bundle.js
+npm  run  build
+初始包：
+npm  init》》package.json
+基本配置：
+webpack.config.js
+const  path = require('path')
+module.exports = {
+	entry:'',
+	output:{
+		path : path.resolve(__dirname，'dist')，
+		filename : 'bundle.js'
+		publicPath: 'dist/'>>>>>
+	}
+}
+———————————————————
+1.通过npm安装loader
+2.在webpack.config.js中module配置
+CSS打包
+module：{
+rules：[{
+test: /\.css$/,  use:['style-loader' , 'css-loader']
+}]
+}
+LESS打包
+图片打包
+url-loader/file-loader
+{
+test: /\.(png|jpg|gif|jpeg)$/,
+use:[{
+	loader:'url-loader',
+	option:{limit:  8192},
+	name:'img/[name].[hash:8].[ext]'
+}]
+}
+ES6打包
+test: /\.js$/,
+exclude:/(node_modules|bower_components)/,
+use:[{
+	loader:'babel-loader',
+	option:{
+		presets:  ['es2015']},
+	
+}]
+VUE打包
+———————————————————
