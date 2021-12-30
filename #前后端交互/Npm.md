@@ -26,3 +26,10 @@ npm config set registry http://registry.npm.taobao.org
 set-ExecutionPolicy RemoteSigned
 ~~~
 
+### 全局NPM配置
+
+~~~shell
+# NODE_PATH
+# C:\Users\XX\AppData\Roaming\npm\node_modules
+~~~
+

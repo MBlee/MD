@@ -63,7 +63,7 @@ form.parse(req,(err,fields,files)={
 
 ~~~shell
 # 服务器监听重启
-npm supervisor
+cnpm i -g supervisor
 
 # md5加密
 npm md5
@@ -82,5 +82,19 @@ sd.format(date,'YYYY-MM-DD HH:mm')
 
 
 
-# Mongoose
+# MongoDB
+
+安装配置：path: ...\server\4.0\bin
+
+连接：mongo
+
+~~~shell
+#数据库操作
+show dbs
+show collections
+db.xx.find()
+db.xx.insert()
+use xxx
+db.fropDatabase()
+~~~
 
