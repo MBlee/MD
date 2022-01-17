@@ -1,3 +1,5 @@
+# CSS布局
+
 ### 行内元素
 
 - text-align，line-height|vertical-align
@@ -29,7 +31,9 @@
 
 - @media screen and
 
-- <style/link media>
+- 
+
+  <style/link media>
 
 **Rem|百分比**
 
@@ -38,27 +42,68 @@
 
 flexible|cssrem|postcss-px2rem
 
-### CSS动画
+# CSS动画
 
-CSS属性的变化（简单流畅-减少代码量）
+### 过渡
 
-:hover, :active, :focus
+CSS属性的变化（简单流畅-减少代码量），:hover, :active, :focus
 
-**transition动画**
+**transition**
 
-property，duration，timing-function，delay
+- property | duration | timing-function | delay
 
 **transform**
 
-translate(x, y)
+- translate|scale(x, y)
+- rotate(45deg)
+- skew(-45deg,y)
+- perspective(n)
 
-scale(x,y)
+### 动画
 
-rotate(45deg)
 
-skew(-45deg,y)
 
-perspective(n)
+# CSS样式
+
+**背景**
+
+- 块背景，repeat, position
+- 行背景，padding...fontsize...absolute
+- background: color|image, position|repeat|attachment
+
+**字体**
+
+- font，size|family, style|weight|variant
+- text-decoration, blink
+- letter-spacing, word-spacing
+- text-indent
+
+**精灵图**
+
+- 水平|垂直精灵图，宽|高固定
+- 点精灵图，父宽高固定
+
+**箭头**
+
+border界限是对角线，border切分成4个三角形，保留该方向的border
+
+**超链接样式**
+
+.link, visited, hover, active
+
+**伪类|伪元素**
+
+before, content
+
+**z-index**
+
+- 必须定位元素
+- 可以为负值
+- 不同父子，根据父z-index显示
+
+
+
+# CSS案例
 
 ### 布局基础
 
@@ -101,44 +146,6 @@ perspective(n)
 1. 只设置一个margin
 2. 设置内边|BFC
 
-### CSS样式
-
-**背景**
-
-- 块背景，repeat, position
-- 行背景，padding...fontsize...absolute
-- background: color|image, position|repeat|attachment
-
-**字体**
-
-- font，size|family, style|weight|variant
-- text-decoration, blink
-- letter-spacing, word-spacing
-- text-indent
-
-**精灵图**
-
-- 水平|垂直精灵图，宽|高固定
-- 点精灵图，父宽高固定
-
-**箭头**
-
-border界限是对角线，border切分成4个三角形，保留该方向的border
-
-**超链接样式**
-
-.link, visited, hover, active
-
-**伪类|伪元素**
-
-before, content
-
-**z-index**
-
-- 必须定位元素
-- 可以为负值
-- 不同父子，根据父z-index显示
-
 ### 技巧
 
 **Emmet插件**
@@ -156,3 +163,21 @@ center:100%, left: margin(-100%), right: margin(-自身)
 **列表布局**
 
 宽度，间距，个数 =>  单宽
+
+### 常见动画
+
+~~~css
+/* 旋转动画 */
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+~~~
+

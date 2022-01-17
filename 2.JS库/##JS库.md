@@ -1,11 +1,19 @@
 # 布局
 
+### 适配
+
 **Rem|百分比**
 
 - clientwidth
 - fontsize=(cw*(10/320)>40)
 
 flexible|cssrem|postcss-px2rem
+
+**vue适配**
+
+**React适配**
+
+**Uniapp适配**
 
 ### CSS动画
 
@@ -27,7 +35,7 @@ perspective(n)
 
 ### 布局基础
 
-**清除浮动**
+**清除浮动8种**
 
 1. :after
 
@@ -65,6 +73,10 @@ perspective(n)
 
 1. 只设置一个margin
 2. 设置内边|BFC
+
+**居中盒子8种方法**
+
+**双飞翼布局|圣杯布局**
 
 ### JS定位
 
@@ -132,9 +144,13 @@ fn(...args), 只能有一个，必须最后一个
 
 getOwnPropertySymbols|getOwnPropertyNames
 
-**Class类支持**
+**Class类**
 
 **模块Import，export**
+
+**Promise**
+
+**Proxy**
 
 ### 数组新增方法
 
@@ -233,6 +249,14 @@ getOwnPropertySymbols|getOwnPropertyNames
 
 主→消息队列
 
+### 事件捕获|冒泡|委托
+
+### 事件传参
+
+### 宏任务|微任务|Eventloop
+
+### 堆和栈
+
 ### 作用域
 
 全局：1.全局声明的变量 2.未声明但赋值的变量
@@ -242,6 +266,8 @@ getOwnPropertySymbols|getOwnPropertyNames
 块级：
 
 作用域链：局部查找 => 上一级
+
+### This
 
 ### 闭包
 
@@ -271,7 +297,29 @@ getOwnPropertySymbols|getOwnPropertyNames
 
 对象，构造函数原型，自身查找该属性，逐级向上，Object，没有就是unfined
 
+### 继承
+
+### 同步异步原理
+
+### 高阶函数
+
+### 回调地狱
+
+### IIFE是什么
+
+### JS引擎内存管理
+
+### 全局执行上下文
+
+### 函数执行上下文
+
+### 执行上下文栈
+
+### OSI七层模型
+
 ### 对象
+
+### COM
 
 **字符串**
 
@@ -319,11 +367,37 @@ getOwnPropertySymbols|getOwnPropertyNames
 - &&，||
 - if, switch
 
+### BOM对象
+
+### CSS Sprites
+
 ### HTTP|TCP
 
 网络通讯分层
 
 3次握手：发送→接受→发送确认
+
+### HTTP|HTTPS
+
+### Ajax状态码
+
+### Get|Post请求
+
+### Websocket
+
+### 长连接|短链接|长接口|短接口
+
+### 浏览器前缀
+
+### 输入URL发生那些事
+
+### 跨域
+
+### 本地存储
+
+### Cookie|Token
+
+### 加密
 
 ### 前端攻击
 
@@ -344,6 +418,12 @@ CSRF
 
 SQL
 
+### 防抖节流
+
+### 回流重绘
+
+### Commit常用类型
+
 ### SEO优化
 
 **vue-meta-info**
@@ -362,14 +442,60 @@ SQL
 
 **react-snap**
 
+### JS正则表达式
+
+### WindowOnload
+
+### Defer|Async
+
+### 原生APP和混合APP判断
+
+### NPM更改源|查看源
+
 ### JS与原生交互
 
+### 前端优化
+
 ### 浏览器缓存
+
+### 浏览器内核
+
+### 重构理解
+
+### JS设计模式
+
+### Restful设计优缺点
 
 ### Vue|React优缺点
 
 ### Vue2|Vue3
 
-### 数组
+### ImportCSS和LinkCss
+
+### JS|CSS堵塞
+
+### CDN
+
+### 数组去重
+
+### 数组变异8种
 
 ### 对象
+
+### 适配
+
+# 第三方库
+
+### TS
+
+### Nuxt
+
+### Echart
+
+### Bootstrap
+
+### JQuery
+
+### Sass|Less
+
+ElementUI|AntDesign|iView
