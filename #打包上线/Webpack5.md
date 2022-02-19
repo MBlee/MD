@@ -1,6 +1,6 @@
 ## 通用打包
 
-~~~shell
+```shell
 #初始化
 npm init -y
 npm i webpack webpack-cli -D
@@ -9,9 +9,9 @@ webpack src -o build --mode development/production
 # 自带插件
 # BannerPlugin
 new webpack.BannerPlugin()
-~~~
+```
 
-~~~js
+```js
 //打包配置
 //webpack.config.js
 module.exports={
@@ -57,7 +57,7 @@ module.exports={
 //js文件加入
 //下一行eslint所有规则失效
 //eslint-disable-next-line
-~~~
+```
 
 ```js
 //打包HTML
@@ -76,7 +76,7 @@ new HTMLWebpackPlugin({
 new uglifyjsPlugin()
 ```
 
-~~~js
+```js
 //打包Css
 //npm i css-loader style-loader -D
 //npm i less less-loader node-sass sass-loader -D
@@ -93,8 +93,8 @@ new miniCssExtractPlugin()
 }
 //Css模块化
 {
-	test:/\.css$/,
-	use :['style-loader','css-loader?modulesbuildpath][name]-[local]-[hash:5]']
+    test:/\.css$/,
+    use :['style-loader','css-loader?modulesbuildpath][name]-[local]-[hash:5]']
 }
 //Css压缩
 //npm i optimize-css-assets-webpack-plugin -D
@@ -122,10 +122,9 @@ optimization:{
     'last 2 sversions',
     'not dead'
 ]
+```
 
-~~~
-
-~~~js
+```js
 //打包图片
 //npm i url-loader file-loader -D
 {
@@ -133,11 +132,11 @@ optimization:{
     use:[
         loader:'url-loader',
         option:{
-        	publicPath:'./images/',
-        	outputPath:'images/',
-        	name:'[name][hash:8].[ext]',
-        	limit:1024*8,
-        	esModule:false
+            publicPath:'./images/',
+            outputPath:'images/',
+            name:'[name][hash:8].[ext]',
+            limit:1024*8,
+            esModule:false
         }
     ],
     type:'javascript/auto'
@@ -150,9 +149,9 @@ optimization:{
         esModule:false
     }
 }
-~~~
+```
 
-~~~js
+```js
 //打包其他资源
 {
     exclude:/\.(js|json|html|css|less|scss|png|gif|jpg|jpeg)$/,
@@ -163,32 +162,32 @@ optimization:{
         name:'[name][hash:8].[ext]'
     }
 }
-~~~
+```
 
-~~~shell
+```shell
 # 开发服务器
 # npm i webpack-dev-server@2.9.1 -D
 webpack serve --port 3000
 # webpack.config.js
 target:'web'
 devServer:{
-	port:3001,
-	compress:true,
-	open:true,
-	hot:true
+    port:3001,
+    compress:true,
+    open:true,
+    hot:true
 }
 # packge.json
 'scripts':{
-	'dev':'webpack serve --port 3000'
+    'dev':'webpack serve --port 3000'
 }
-~~~
+```
 
-~~~shell
+```shell
 # 环境优化
 
 # HMR模块热替换
 devServer:{
-	hot:true
+    hot:true
 }
 1. 样式HMR功能，在开发环境使用Style-loader
 2. html，需要在entry入口引入html文件
@@ -196,7 +195,7 @@ devServer:{
 module.hot接口暴露在index.js中
 if(module.hot){
     module.hot.accept('./print.js',function(){
-    	#服务器检测到print变化中，执行这个函数
+        #服务器检测到print变化中，执行这个函数
     })
 }
 
@@ -210,31 +209,31 @@ const purgecssWebpackPlugin
 const glob = require('glob')
 const PATHS = {src:join(__dirname,'src')}
 new PurgecssPlugin({
-	paths:glob.sync(`${PATHS.src}/**/*`,{nodir:true})
+    paths:glob.sync(`${PATHS.src}/**/*`,{nodir:true})
 })
-~~~
+```
 
 ```shell
 # webpack-dev-server
 # npm i webpack-dev-server@2.9.1 -D
 scripts:{
-	dev:'webpack-dev-server --open'
+    dev:'webpack-dev-server --open'
 }
 # webpack.config.js
 target:'web'
 devServer:{
-	port:3001,
-	contentBase:'./dist',
-	inline:true,
-	historyApiFallback:true
+    port:3001,
+    contentBase:'./dist',
+    inline:true,
+    historyApiFallback:true
 }
 
 # webpack开发、生产合并
 # webpack-merge --save-dev
 modules.exports=webpackMerge(base,{})
 scripts:{
-	dev:'webpack-dev-server --open --config ...dev',
-	build:'webpack --config ...build'
+    dev:'webpack-dev-server --open --config ...dev',
+    build:'webpack --config ...build'
 }
 ```
 
@@ -246,20 +245,20 @@ scripts:{
 # vue --save
 # 别名编译
 resolve:{
-	alias:{
-		'vue$':'vue/dist/vue.esm.js'
-	},
-	extensions:['.js','.css','.vue']
+    alias:{
+        'vue$':'vue/dist/vue.esm.js'
+    },
+    extensions:['.js','.css','.vue']
 }
 # npm i vue-loader(13) vue-template-compiler --save-dev
 {
-	test:/\.vue$/,
-	use:['vue-loader']
+    test:/\.vue$/,
+    use:['vue-loader']
 }
 new VueLoaderPlugin()
 ```
 
-~~~shell
+```shell
 # 脚手架安装
 # @vue/cli -g
 # @vue/cli-init -g
@@ -267,7 +266,7 @@ cli2: vue init webpack xxx
 cli3: vue create xxx
 # vue ui
 # vue.config.js
-~~~
+```
 
 ## React打包
 
@@ -280,19 +279,19 @@ babel-preset-env babel-preset-stage-0 -d
 babel-preset-react -d
 3. 添加.babelrc配置文件
 {
-	'presets':['env','stage-0','react'],
-	'plugins':['transform-runtime']
+    'presets':['env','stage-0','react'],
+    'plugins':['transform-runtime']
 }
 {
-	test:/\.js|jsx$/,
-	use:'babel-loader',
-	exclude:/node_modules/
+    test:/\.js|jsx$/,
+    use:'babel-loader',
+    exclude:/node_modules/
 }
 resolve:{
-	extensions:['.js','.jsx','.json'],
-	alias:{
-		'@':path.join(__dirname,'./src')
-	}
+    extensions:['.js','.jsx','.json'],
+    alias:{
+        '@':path.join(__dirname,'./src')
+    }
 }
 ```
 
@@ -300,9 +299,8 @@ resolve:{
 
 - ### resolve
 
-~~~json
+```json
 // resolve.fallback: 应急目录数组
 // resolve.alias: 路径别名
 // resolve.extensions：扩展名数组
-~~~
-
+```

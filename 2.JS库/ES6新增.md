@@ -71,6 +71,7 @@ getOwnPropertySymbols|getOwnPropertyNames
 - 返回迭代器|键值对
 
 - 返回键值对|value
+
 - 返回键值对|key
 
 **flat|flatMap**
@@ -102,9 +103,10 @@ getOwnPropertySymbols|getOwnPropertyNames
 
 ### Set集合和map集合
 
-1. 无重复值有序列表（Object.is）
+1. 无重复值无序列表（Object.is）
    - set.size, has(), add(), delete(), clear(), forEach(callback, this)
-   - 转换为数组，[...arr] = set
+   - 去重，[...set]|Array.from |new Set(arr)
+   - WeakSet，对象弱引用|不能遍历
 2. 无重复值键值对（Object.is）
    - map.set(), get(), has(), add(), delete(), clear() ,size, forEach(callback, this)
 
@@ -121,4 +123,3 @@ Promise.all|race
 Promise.resolve|reject
 
 ### Proxy代理
-

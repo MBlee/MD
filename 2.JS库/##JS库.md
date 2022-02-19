@@ -38,9 +38,9 @@ perspective(n)
 **清除浮动8种**
 
 1. :after
-
+   
    content, display, clear
-
+   
    visibility
 
 2. overflow
@@ -181,6 +181,7 @@ getOwnPropertySymbols|getOwnPropertyNames
 - 返回迭代器|键值对
 
 - 返回键值对|value
+
 - 返回键值对|key
 
 **flat|flatMap**
@@ -356,6 +357,7 @@ getOwnPropertySymbols|getOwnPropertyNames
 **空对象**
 
 - undefined
+  
   - typeof(obj) == "undefined"
   - obj === undefined
 

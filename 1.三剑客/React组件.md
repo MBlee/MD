@@ -1,6 +1,6 @@
 ### 组件模板
 
-~~~js
+```js
 // 函数组件
 function CP(props){
     return <div/>
@@ -12,7 +12,7 @@ class CP extends React.Component{
         this.state|method
     }
     render(){
-       	// 样式 style|className={}
+        // 样式 style|className={}
         // 数据 this.setState
         // 事件 onClick|Change = fn.bind(this)
         // 事件参数 e.target.value|this.refs.xxx.value
@@ -32,5 +32,4 @@ class CP extends React.Component{
     - componentDidUpdate
 - 销毁
     - componentWillUnmount
-~~~
-
+```

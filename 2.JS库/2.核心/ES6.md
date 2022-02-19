@@ -33,7 +33,7 @@ Object.keys(obj).map
 
 ### ES5-数组的扩展
 
-~~~js
+```js
 //数组字符串
 arr.toString/join
 //获取值下标
@@ -46,5 +46,4 @@ arr.filter
 arr.sort
 //增删数组
 arr.push/pop/shift/unshift
-~~~
-
+```

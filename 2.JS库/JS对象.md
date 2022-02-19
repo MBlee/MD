@@ -1,7 +1,5 @@
 **Cookie|Session|Token|Storage**
 
-
-
 **MD5|Base64**
 
 **Http**
@@ -14,9 +12,43 @@ mouseover，mouseenter
 
 **Websocket**
 
-
-
 **数组**
+
+- 多数组合并
+  
+  - concat
+  
+  - push(...arr)|[...arr1, ...arr2]
+  
+  - Array.prototype.push.apply
+
+- 转字符串
+  
+  - toString()
+  
+  - join()
+
+- 转数组
+  
+  - from(类数组|对象)=> 真数组
+  
+  - Array()|Array().of()
+  
+  - flat|flatMap
+
+- 堆栈操作
+  
+  - pop|push|shift|unShift
+  
+  - splice|slice|fill|delete
+  
+  - [index|length]
+
+- 查询|判断
+  
+  - find|findIndex|includes|indexOf
+  
+  - filter|entries|values|keys
 
 **对象**
 
@@ -55,6 +87,7 @@ mouseover，mouseenter
 **空对象**
 
 - undefined
+  
   - typeof(obj) == "undefined"
   - obj === undefined
 

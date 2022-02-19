@@ -16,12 +16,12 @@
 
 ### Stylus
 
-~~~shell
+```shell
 # 安装
 npm install stylus -g
 # 用法
 stylus -w xxx.styl -o xxx.css
-~~~
+```
 
 选择器：
 

@@ -1,11 +1,11 @@
 ### 安装
 
-~~~shell
+```shell
 # mockjs产生模拟数据
 cnpm i mockjs -S
 # json5解决json无法添加注释问题
 cnpm i json5 -S
-~~~
+```
 
 ### 使用
 
@@ -21,34 +21,34 @@ cnpm i json5 -S
 
 <!-- VUE配置 -->
 
-~~~js
+```js
 // devServer
 if(process.env.MOCK == 'true')
 - require(mock/index.js)
 - before: function(app, server, compiler){
    app.get('/some/path', function(req, res){
-  	 getJsonFile('...json5')
-  	 res.json(Mock.mock(json))
+       getJsonFile('...json5')
+       res.json(Mock.mock(json))
    })
   }
 // 移除Mock
 env.development => MOCK=false
-~~~
+```
 
 ### 附录
 
 <!-- **json5 -->
 
-~~~js
+```js
 // 读取
 fs.readFileSync(path.join(__dirname,xxxPath,'utf-8'))
 // 解析
 JSON5.parse(json5)
-~~~
+```
 
 <!-- Mock语法 -->
 
-~~~js
+```js
 // 数据模板  'name|rule': value
 - string, min-max|count
 - number, min-max|min-max.dmin-dmax|+1
@@ -70,4 +70,4 @@ JSON5.parse(json5)
 + region|province|city|county|zip, true?
 + pick|shuffle, arr
 + guid|id|increment, step?
-~~~
+```

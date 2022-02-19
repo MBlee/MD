@@ -12,18 +12,36 @@
 ### Flex
 
 - display（flex|inline-flex|-webkit-flex)
-
 1. flex-flow（flex-direction，flex-wrap）
-
+   
    justify|align-content
-
+   
    align-items
 
 2. flex（flex-grow，flex-shrink，flex-basis）
-
+   
    order
-
+   
    align-self
+
+### Grid
+
+- display (grid|inline-grid)
+1. grid-template-colums|rows  (fr|auto|repeat(n,100px))
+   
+   grid-colum-gap
+   
+   grid-template-areas
+   
+   justify|align|place-items
+   
+   justify|align|place-content
+
+2. grid-row|column-start|end
+   
+   grid-area
+   
+   algin|justify-self
 
 ### 响应式布局
 
@@ -31,9 +49,7 @@
 
 - @media screen and
 
-- 
-
-  <style/link media>
+- <style/link media>
 
 **Rem|百分比**
 
@@ -60,8 +76,6 @@ CSS属性的变化（简单流畅-减少代码量），:hover, :active, :focus
 - perspective(n)
 
 ### 动画
-
-
 
 # CSS样式
 
@@ -101,8 +115,6 @@ before, content
 - 可以为负值
 - 不同父子，根据父z-index显示
 
-
-
 # CSS案例
 
 ### 布局基础
@@ -110,9 +122,9 @@ before, content
 **清除浮动**
 
 1. :after
-
+   
    content, display, clear
-
+   
    visibility
 
 2. overflow
@@ -166,7 +178,7 @@ center:100%, left: margin(-100%), right: margin(-自身)
 
 ### 常见动画
 
-~~~css
+```css
 /* 旋转动画 */
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -179,5 +191,4 @@ center:100%, left: margin(-100%), right: margin(-自身)
     transform: rotate(360deg);
   }
 }
-~~~
-
+```

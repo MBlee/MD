@@ -2,34 +2,34 @@
 
 #### 1.更新提交
 
-~~~shell
+```shell
 # git init
 git add/remove
 git commit -am
 # 一键还原
 git checkout -- xxxfile（未缓存）
 git reset HEAD xxxfile（已缓存）
-~~~
+```
 
-~~~shell
+```shell
 # 查询git库状态
 git status
 # 查询修改内容
 git diff HEAD -- xxxfile
 # 查询版本ID
 git log/reflog --pretty=oneline --graph  --all|3
-~~~
+```
 
 #### 2.版本回退
 
-~~~shell
+```shell
 git checkout id -- xxxfile|.
 git reset --hard HEAD^~/id
-~~~
+```
 
 #### #分支
 
-~~~shell
+```shell
 git pull
 git fetch
 # 创建
@@ -59,19 +59,19 @@ git checkout -b local remote
 git merge bra
 git branch -d/-m bra
 git push origin :remote
-~~~
+```
 
 #### #标签
 
-~~~shell
+```shell
 git tag -a -m
 git tag -d
 git push origin --tags
-~~~
+```
 
 #### #基本配置
 
-~~~shell
+```shell
 # 1. 配置账户
 git config --global user.name|user.email xxx
 git config --list
@@ -85,11 +85,11 @@ git clone xxx@git
 *.zip
 # 恢复初始化
 rm -rf .git
-~~~
+```
 
 ## GitHub
 
-~~~shell
+```shell
 # 主仓库做为服务器
 新建仓库：xxx.github.io
 setting 
@@ -111,4 +111,6 @@ git clone xxxUrl xxxNewname --no-checkout --bare
 git pull
 git fetch + git merge
 # 删除远端分支|仓库迁移
-~~~
+```
+
+## GitEE

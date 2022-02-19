@@ -76,22 +76,22 @@
 - constructor > this.$pond = [], 创建事件池
 
 - add(func), 追加（重复处理）
-
+  
   - this.$pond.some(return item === func)
   - this.$pond.push(func)
 
 - remove(func),  移除
-
+  
   - for > if($pond[i] === func)
   - $pond.splice(i, 1) > break, 数组塌陷
   - $pond[i] = null
 
 - fire(...args), 通知
-
+  
   - for > if(typeof item !== 'function')
-
+    
     $pond.splice(i, 1), i-- ,continue
-
+  
   - item.call(this, ...args)
 
 ### 缓存策略
@@ -100,11 +100,11 @@
 
 Promise((resolve,reject)={
 
-​	resolve()
+​    resolve()
 
 }).then{
 
-​	return ""|Promise.resolve("")
+​    return ""|Promise.resolve("")
 
 }.catch
 
@@ -117,15 +117,13 @@ Promise.all
 ### call | apply | bind
 
 - call | apply ，改变this并调用
-
+  
   call(obj , args... )
-
+  
   apply(obj, arg[] )
 
 - bind, 只改变this
-
+  
   bind(bind, args... )
   
   调用时，按形参顺序执行
-  
-  

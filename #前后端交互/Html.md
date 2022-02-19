@@ -41,4 +41,3 @@ Access-Control-Allow-Origin
 - err, { res }
   - res.status
   - window.navigator.onLine
-

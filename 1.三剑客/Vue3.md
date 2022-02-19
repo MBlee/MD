@@ -6,7 +6,7 @@ npm init vite-app xxxPro
 
 Vue.createApp({
 
-​	render: h=>h(app)
+​    render: h=>h(app)
 
 }).mount()
 
@@ -22,7 +22,7 @@ v-bind|v-on|v-model|{{表达式}}
 
 v-once|v-html
 
-v-if|v-show|v-for
+v-if|v-saahow|v-for
 
 **Script**
 
@@ -34,17 +34,15 @@ created=> mounted=> updated=> destroyed|unmounted
 
 **组合API**
 
-setup(props, content|{attrs, slot})，创建组件之前执行
+setup(props, context|{attrs, slot, emit})，创建组件之前执行
 
 return
 
 - ref，ref.value
 
-- reactive，
+- reactive，computed
 
 - toRefs，...toRefs(xxxObj)
-
-- computedk
 
 监听
 
@@ -82,6 +80,7 @@ Provide
 - beforeEach((to, from, next)=>{ next()})
 
 - beforeEnter((to, from))
+
 - beforeRouteEnter|Leave|Update
 
 **状态管理**
@@ -103,4 +102,3 @@ target: '"'
 changeOrigin: true
 
 rewrite: path => path.replace(/^\/api/, "")
-

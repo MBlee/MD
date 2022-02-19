@@ -1,0 +1,12 @@
+标准色
+------------
+Gainsboro
+
+DeepSkyBlue
+AliceBlue
+LightBlue
+
+DeepPink
+HotPink
+
+YellowGreen

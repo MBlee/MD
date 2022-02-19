@@ -29,4 +29,3 @@ offsetY, pageY, clientY, screenY
 timer, offsetTop > style
 
 **轮播图**
-

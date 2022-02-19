@@ -1,6 +1,6 @@
 ### Promise
 
-~~~js
+```js
 // 封装异步1
 Promise((resolve,reject)={resolve()})
 .then{return ""|Promise.resolve("")}
@@ -9,14 +9,14 @@ Promise((resolve,reject)={resolve()})
 Promise.resolve|reject
 // 多个异步
 Promise.all|race
-~~~
+```
 
 ### Async|Await
 
-~~~js
+```js
 - async fn
 - for await（ of ）|for
-~~~
+```
 
 ### 兼容
 

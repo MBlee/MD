@@ -8,5 +8,6 @@
 
 复制行：ctrl+shift+D
 
-折叠：ctrl+shift+[]
+插入行：ctrl+enter
+
 
