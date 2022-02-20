@@ -6,7 +6,7 @@ AngularJS/Angular2/4/5（路由）
 
 #### 项目搭建：
 
-~~~shell
+```shell
 # 安装@angular/cli
 npm i -g @angular/cli
 # 创建项目
@@ -14,18 +14,18 @@ ng new xxx
 npm i
 # 运行
 ng serve --open
-~~~
+```
 
 # Typescript
 
-~~~shell
+```shell
 # 安装
 npm i -g typescript
 # 编译
 tsc .ts
 # 任务→监视tsconfig.json
 tsc --init
-~~~
+```
 
 ### 数据类型
 
@@ -50,18 +50,18 @@ jQuery对象：**$('selector'/dom)**
 
 # Echart
 
-~~~js
+```js
 1. echarts.init(dom)
 2. echart.setOption(obj)
-~~~
+```
 
 ### 配置项
 
-~~~shell
+```shell
 # 功能组件
 // 标题组件
 title:{
-	text:''    
+    text:''    
 }
 // 图例组件
 legend:{
@@ -103,7 +103,7 @@ series:[
         type:'', // line
     }
 ]
-~~~
+```
 
 # Bootstrap
 
@@ -111,7 +111,7 @@ series:[
 
 ### 封装类
 
-~~~js
+```js
 // table
 - table-responsive
 - table-condensed/striped/bordered/hover
@@ -136,32 +136,32 @@ type
 // span
 caret
 text-hide
-~~~
+```
 
 # JQuery
 
-~~~js
+```js
 $(fn);
 // Dom操作：
 $(str).children/find/parent/siblings/next/prev/:eq(index)/:odd/:even
 $(str).click(fn)
 $(str).text(str)
 $(str).css(strs/obj).show/hide()
-~~~
+```
 
 # Less
 
 - 编译：lessc，easy less
 
-~~~js
+```js
 变量：@，@{ }
 嵌套：&
 混合：(@_)(A，@...)
-~~~
+```
 
 # Sass
 
-~~~js
+```js
 // 数据类型
 1. 字符串（引号_#{}）
 2. 数字（单位）/布尔（false_null）
@@ -176,11 +176,9 @@ vscode→Easy Sass和Sass插件
 node-sass  scss  css
 node-sass  c  -o  d
 node-sass  -w  scss  -o  css
-~~~
+```
 
 # ElementUI
-
-
 
 # AntDesign
 
@@ -194,9 +192,9 @@ Layout布局
 
 Vue.use(iView,{
 
-​	size:"large",
+​    size:"large",
 
-​	transfer:false
+​    transfer:false
 
 })
 
@@ -220,9 +218,9 @@ Vue.locale = ()=>{}
 
 msg = {
 
-​	en: Object.assign({ message:"" }, en),
+​    en: Object.assign({ message:"" }, en),
 
-​	zh: Object.assign({ message:"" }, zh),
+​    zh: Object.assign({ message:"" }, zh),
 
 }
 
@@ -230,17 +228,17 @@ msg = {
 
 new VueI18n({
 
-​	locale:"en",
+​    locale:"en",
 
-​	msg
+​    msg
 
 })
 
 new Vue({
 
-​	render: h=> h(App),
+​    render: h=> h(App),
 
-​	i18n
+​    i18n
 
 })
 
@@ -254,13 +252,13 @@ Button > i-button
 
 .babelrc{
 
-​	"plugins":[["import",{
+​    "plugins":[["import",{
 
-​		"libraryName":"iview",
+​        "libraryName":"iview",
 
-​		"libraryDirectory":"src/components"	
+​        "libraryDirectory":"src/components"    
 
-​	}]]
+​    }]]
 
 }
 
