@@ -1,10 +1,4 @@
-### Vue|React优缺点
-
-### Vue2|Vue3
-
-### HTTP|TCP
-
-### 前端攻击
+## 前端攻击
 
 **XSS**
 
@@ -23,7 +17,7 @@ CSRF
 
 SQL
 
-### SEO优化
+## SEO优化
 
 **vue-meta-info**
 
@@ -41,12 +35,59 @@ SQL
 
 **react-snap**
 
-### JS与原生交互
+## JS与原生交互
 
-### 浏览器缓存
+#### 安卓
 
-### CDN
+- 原生调用JS
 
-### TS
+  ~~~shell
+  # 4.4版本之前
+  # mWebView = new WebView(this); #当前webview对象
+  # 通过loadUrl方法进行调用，参数通过字符串方式传递
+  # 也可以在UI线程中运行
+  mWebView.loadUrl("javascript:方法名('参数1...')")
+  ~~~
 
-### Nuxt
+  ~~~shell
+  # 4.4版本之后
+  # 通过异步执行JS代码，并获取返回值
+  mWebView.evaluateJavascript("javascript:方法名('参数1...')",newValueCallback(){
+    # 执行回调
+    public void onReceiveValue(String value){}
+  })
+  # 不适合传大数据（URLScheme）
+  ~~~
+
+- JS调用原生
+
+  ~~~shell
+  # 获取webView的设置对象，方便后续修改
+  WebSettings webSettings = mWebView.getSettings();
+  # 设置Android允许JS脚本，必须要！！！
+  webSetting.setJavaScriptEnabled(true);
+  # 暴露一个叫JSBridge的对象到webView全局环境
+  mWebView.addJavascriptInterface(getJSBridge(),'JSBridge')
+  ~~~
+
+  ~~~shell
+  # JS调用
+  window.JSBridge.foo();
+  ~~~
+
+#### IOS
+
+## 浏览器缓存
+
+## CDN
+
+## Vue|React优缺点
+
+## Vue2|Vue3
+
+## HTTP|TCP
+
+## TS
+
+## Nuxt
+

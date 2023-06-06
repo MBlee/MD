@@ -7,9 +7,9 @@ ws://echo.websocket.org
 - Socket.send|close()
 
 - addEventListener
-  
-  - open|error|close
-  - message
+
+  - open|close
+  - message|error
 
 ### NodeJS-Websocket
 

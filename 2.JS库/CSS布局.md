@@ -1,62 +1,79 @@
 # CSS布局
 
-### 行内元素
+### 流布局
 
-- text-align，line-height|vertical-align
+~~~shell
+# 行元素
+- text-align
+- line-height|vertical-align
+~~~
 
-### 块元素
-
+~~~shell
+# 块元素
 - margin：auto
 - position=>left=>margin|translate(-50%)
+~~~
+
+~~~shell
+# 浮动布局
+- clear => display => hidden(height)
+~~~
 
 ### Flex
 
 - display（flex|inline-flex|-webkit-flex)
-1. flex-flow（flex-direction，flex-wrap）
-   
-   justify|align-content
-   
-   align-items
-
-2. flex（flex-grow，flex-shrink，flex-basis）
-   
-   order
-   
-   align-self
+~~~shell
+# 整体
+- flex-flow（flex-direction，flex-wrap）
+- justify|align-content
+- align-items
+# 单个
+- flex（flex-grow，flex-shrink，flex-basis）
+- align-self
+- order
+~~~
 
 ### Grid
 
 - display (grid|inline-grid)
-1. grid-template-colums|rows  (fr|auto|repeat(n,100px))
-   
-   grid-colum-gap
-   
-   grid-template-areas
-   
-   justify|align|place-items
-   
-   justify|align|place-content
+- 容器
+~~~js
+// 宽高|区域 
+- grid-template-colums|rows
+(auto|fr|repeat(n|auto-fill,100px)|minmax())
+([c|r])
+- grid-template-areas
+(x|.)(x-start|end)
+- grid-template
+- grid
+// 超出位置
+- grid-auto-columns
+// 方向
+- grid-auto-flow
+(row|row dense)
 
-2. grid-row|column-start|end
-   
-   grid-area
-   
-   algin|justify-self
+// 间距
+- grid-gap|grid-column-gap(gap|column-gap)
 
-### 响应式布局
+// 对齐
+- justify|align|place-items
+- justify|align|place-content
 
-**媒体查询**
+~~~
 
-- @media screen and
+- 元素
 
-- <style/link media>
+~~~js
+// 位置
+- grid-column-start|end
+(num,area,span 2)
+- grid-column(/)
+- grid-area
+(area,row-start/end)
+- algin|justify-self
+~~~
 
-**Rem|百分比**
 
-- clientwidth
-- fontsize=(cw*(10/320)>40)
-
-flexible|cssrem|postcss-px2rem
 
 # CSS动画
 
@@ -75,39 +92,26 @@ CSS属性的变化（简单流畅-减少代码量），:hover, :active, :focus
 - skew(-45deg,y)
 - perspective(n)
 
+~~~shell
+# 多动画tranform 顺序计算，同时执行
+~~~
+
 ### 动画
 
+~~~css
+/* animation */
+- animation-name|duration|timing-function|delay
++ animation-iteration-count
++ animation-direction
++ animation-play-state
+/* @keyframes */
+@keyframes  x_name{
+  from => to
+  0% => 100%
+}
+~~~
+
 # CSS样式
-
-**背景**
-
-- 块背景，repeat, position
-- 行背景，padding...fontsize...absolute
-- background: color|image, position|repeat|attachment
-
-**字体**
-
-- font，size|family, style|weight|variant
-- text-decoration, blink
-- letter-spacing, word-spacing
-- text-indent
-
-**精灵图**
-
-- 水平|垂直精灵图，宽|高固定
-- 点精灵图，父宽高固定
-
-**箭头**
-
-border界限是对角线，border切分成4个三角形，保留该方向的border
-
-**超链接样式**
-
-.link, visited, hover, active
-
-**伪类|伪元素**
-
-before, content
 
 **z-index**
 
@@ -116,65 +120,6 @@ before, content
 - 不同父子，根据父z-index显示
 
 # CSS案例
-
-### 布局基础
-
-**清除浮动**
-
-1. :after
-   
-   content, display, clear
-   
-   visibility
-
-2. overflow
-
-**BFC**
-
-块级格式化上下文，独立的渲染区域，内部元素渲染不影响外界
-
-形成：
-
-- 浮动元素（！none）
-- 绝对定位元素（absolute|fixed）
-- 块级元素overflow（！visible）
-- flex元素
-- inline-block元素
-
-应用：
-
-- 清除浮动
-
-**外边距塌陷**
-
-形成：
-
-- 上下margin取最大
-- 父子margin取最大（父无上内及边框）
-- 空margin合并
-
-解决：
-
-1. 只设置一个margin
-2. 设置内边|BFC
-
-### 技巧
-
-**Emmet插件**
-
-### 常见布局
-
-**双飞翼布局**
-
-center:100%, left: margin(-100%), right: margin(-自身)
-
-**圣杯布局**
-
-父padding, 子relative
-
-**列表布局**
-
-宽度，间距，个数 =>  单宽
 
 ### 常见动画
 
@@ -192,3 +137,24 @@ center:100%, left: margin(-100%), right: margin(-自身)
   }
 }
 ```
+
+### 常见布局
+
+~~~shell
+# 三栏布局
+left：fleft，right：fright，center：padding|margin
+# 双飞翼布局
+center:100%, left|right: margin(-100%)
+# 圣杯布局
+父padding，center：100%，left|right：margin+relative
+# 列表布局
+宽度，间距，个数 =>  单宽
+# 常见布局
+# 京东轮播图
+# 网易导航布局
+新闻 | 体育 | NBA
+# 新浪布局|新浪TAB栏
+# 优酷
+# 时间轴布局
+~~~
+

@@ -38,9 +38,9 @@ perspective(n)
 **清除浮动8种**
 
 1. :after
-   
+
    content, display, clear
-   
+
    visibility
 
 2. overflow
@@ -292,7 +292,7 @@ getOwnPropertySymbols|getOwnPropertyNames
 深拷贝：
 
 1. JSON
-2. 
+2. ​
 
 ### 原型链
 
@@ -357,7 +357,7 @@ getOwnPropertySymbols|getOwnPropertyNames
 **空对象**
 
 - undefined
-  
+
   - typeof(obj) == "undefined"
   - obj === undefined
 
@@ -422,7 +422,41 @@ SQL
 
 ### 防抖节流
 
+### 浏览器渲染机制
+
+1. 浏览器采用流式布局
+2. 首先浏览器会将HTML解析成DOM，把CSS解析成CSSOM，把CSSOM和DOM结合生成render tree
+3. 有render tree之后，我们知道了节点样式，然后浏览器会计算节点的位置，然后把节点绘制到页面上
+
 ### 回流重绘
+
+回流必将引起重绘，重绘不一定引起回流。回流的性能消耗比重绘大。
+
+**回流：**当render tree中的一些元素的结构或者尺寸等发生改变，浏览器重新渲染部分或者全部文档的过程叫做回流。
+
+- 页面首页渲染
+- 浏览器窗口发生变化
+- 内容变换
+- 添加或者删除节点
+- 激活CSS伪类
+- clientWidth
+
+**重绘：**当页面中元素样式的改变不影响它在文档流中的位置，浏览器会将新样式赋予给元素，这个过程叫重绘。
+
+- background
+- visibility
+
+**避免性能影响：**
+
+CSS：
+
+- 避免使用table布局
+- 避免设置多层内联样式
+
+Javascript：
+
+- 避免频繁操作DOM
+- 对于大量插入DOM的操作，建议使用文档片段，也就是documentFragment
 
 ### Commit常用类型
 
@@ -500,4 +534,4 @@ SQL
 
 ### Sass|Less
 
-ElementUI|AntDesign|iView
+ElementUI|AntDesign|iVieww

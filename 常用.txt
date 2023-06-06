@@ -1,12 +1,17 @@
 标准色
 ------------
-Gainsboro
+Gainsboro-Silver
+DimGray
+（Light-Dark）
 
 DeepSkyBlue
-AliceBlue
-LightBlue
 
-DeepPink
-HotPink
+DeepPink-HotPink
 
-YellowGreen
+ForestGreen-SeaGreen
+LightGreen-LightSeaGreen-PaleGreen
+------------
+
+APPID
+------------
+wx325d0c46f027bba0	

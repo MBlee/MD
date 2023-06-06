@@ -41,22 +41,22 @@ env.development => MOCK=false
 
 ```js
 // 读取
-fs.readFileSync(path.join(__dirname,xxxPath,'utf-8'))
+fs.readFileSync(path.join(__dirname,xxxPath),'utf-8'))
 // 解析
 JSON5.parse(json5)
 ```
 
 <!-- Mock语法 -->
 
-```js
-// 数据模板  'name|rule': value
+```shell
+# 数据模板  'name|rule': value
 - string, min-max|count
 - number, min-max|min-max.dmin-dmax|+1
 - boolean, min-max|1
 - object, min-max|count
 - array, 1|+1|min-max|count
 - function|regexp
-// 数据占位符  @占位符 Mock.Random.extend()
+# 数据占位符  @占位符 Mock.Random.extend()
 - boolean, min?|max?|current?
 - natural|integer|float, min?|max?|dmin|dmax
 - character|string, lower|upper|number|symbol,min?|max?

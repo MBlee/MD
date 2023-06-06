@@ -1,4 +1,21 @@
-### SCSS
+#### TailwindCSS
+
+集成：
+
+~~~shell
+npm i ...
+npx tailwindcss init -p
+# Vue集成
+import 'tailwind.css'
+# JIT模式
+postcss tailwind.css -o style.css
+~~~
+
+
+
+组件封装：
+
+#### SCSS
 
 编译插件：Live Sass Compiler > settings
 
@@ -7,14 +24,30 @@
 - 选择器嵌套|&父选择器|属性嵌套
 - 占位符选择器%xxx须通过@extend
 
-变量：
-
+~~~scss
+$变量
 - $xxx-_xxx
 - !global|!default
+- (color1,color2) => map-get()
+插值：#{$xx}
+@import"_"
+- css|media query
+- http://
+- url()
+@mixin xx($...)
+- nth($,1)
+@extend %xx
+@if >=3 and or not()
+@if (varible|mixin-exists)
+/* 函数 */
+-. append(x1,x2),nth($list,$n),length|index
+-. map-set(xx,x),map-has-key,map-keys|values
+-. selector-append|unify + ''
+~~~
 
-### LESS
+#### LESS
 
-### Stylus
+#### Stylus
 
 ```shell
 # 安装
