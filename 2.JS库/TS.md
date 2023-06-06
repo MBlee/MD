@@ -31,6 +31,9 @@ tsc --init
 // 类型断言
 - xx as string
 - <string>xx
+// 命名空间
+- export namespace _name{ export }
+- _name._xx
 ~~~
 
 ### 类

@@ -8,6 +8,17 @@ systeminfo
 dxdiag
 ~~~
 
+#### 时间戳
+
+~~~shell
+# PowerShell
+Get-Date -Format "yyMMddhh"
+# Git
+$(date +%F)
+# CMD
+date|time /t
+~~~
+
 ### 网站加速
 
 ~~~shell

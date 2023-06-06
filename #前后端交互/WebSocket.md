@@ -1,21 +1,23 @@
 ### H5-Websocket
 
-ws://echo.websocket.org
-
-- new WebSocket(xxxWs)
-
-- Socket.send|close()
-
-- addEventListener
-
-  - open|close
-  - message|error
+```js
+// 开启
+const ws = new WebSocket(_url,protocol)
+// 发送|关闭
+ws.send()
+ws.close()
+// 监听
+ws.addEventListener("open")
+ws.addEventListener("close")
+ws.addEventListener("message",e.data)
+ws.addEventListener("error")
+```
 
 ### NodeJS-Websocket
 
 ```shell
 # nodejs-websocket安装
-cnpm i nodejs-websocket
+npm i nodejs-websocket
 ```
 
 ```js
