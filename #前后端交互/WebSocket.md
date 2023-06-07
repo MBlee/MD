@@ -1,4 +1,4 @@
-### H5-Websocket
+## H5-Websocket
 
 ```js
 // 开启
@@ -13,7 +13,7 @@ ws.addEventListener("message",e.data)
 ws.addEventListener("error")
 ```
 
-### NodeJS-Websocket
+## NodeJS-Websocket
 
 ```shell
 # nodejs-websocket安装
@@ -36,7 +36,7 @@ ws.createServer(connect=>{"用户连接"
 server.listen(8000,()=>{"服务启动成功，监听了8000"})
 ```
 
-### Socket.IO
+## Socket.IO
 
 ```js
 // 创建服务器
@@ -55,6 +55,8 @@ io.on('connection', socket=>{
 socket = io('socketUrl')
 socket.on('send',data=>{})
 ```
+
+## 案例
 
 #### 简单聊天室
 

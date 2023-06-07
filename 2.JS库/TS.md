@@ -102,5 +102,8 @@ function|class xx<xxType extends xxclass>
     }
 ~~~
 
+#### 声明文件
 
+> lib=> .d.ts
 
+**declare**
