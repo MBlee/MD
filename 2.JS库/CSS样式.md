@@ -28,6 +28,12 @@
 	1.html:&#x16;
     2.js:\u{16}
 	3.css:\16
+// 特效字体
+- fontmin
+@font-face{
+  font-family,
+  src:url()format('truetype'),...
+}
 // 文字
 - font，size|family, style|weight|variant
 - text-decoration, blink
