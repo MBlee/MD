@@ -1,6 +1,0 @@
-查询端口程序：
-netstat -nao | findstr 3000
-终止端口程序：
-taskkill /f /pid 2212
-终止程序：
-taskkill /f /im node.exe
