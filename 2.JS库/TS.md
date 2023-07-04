@@ -9,6 +9,7 @@ npm i -s @types/node
 tsc .ts
 # 任务→监视tsconfig.json
 tsc --init
+tsc --watch
 ```
 
 ### 数据类型
