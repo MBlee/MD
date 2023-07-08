@@ -1,4 +1,35 @@
-## 路由
+## Next@13.4.9
+
+#### 路由
+
+~~~js
+pages ([id].js|404.js) => export default cmt(props) =>
+import Link from 'next/link'
+<Link href><a ...></link>
+import Head from 'next/head'
+<> <Head> </>
+
+// 静态数据
+- getStaticProps => ({props: _data})
+- getStaticPaths => ({paths: [{params},....], fallback:false})
+- getServersideProps => ({})
+
+// 内部样式
+<style jsx>{``}</style>
+// 全局样式
+_app.js => import '.css'
+export default function App({Component,pageProps}){
+  return <Component {...pageProps}/>
+}
+~~~
+
+#### API
+
+~~~js
+api => export default (req,res)=>{res.send()}
+~~~
+
+## Next
 
 #### 路由跳转
 

@@ -1,17 +1,33 @@
+#### Emotion
+
+安装配置：
+
+`npm i @emotion/core @emotion/styled`
+
+~~~js
+/** @jsx jsx */
+import {jsx} from '@emotion/core'
+~~~
+
+`npm i @emotion/babel-preset-css-prop`
+
+~~~js
+package.json => "babel":{
+  "presets":["react-app","@emotion/babel-preset-css-prop"]
+}
+~~~
+
 #### TailwindCSS
 
-集成：
+安装配置：
 
 ~~~shell
-npm i ...
 npx tailwindcss init -p
 # Vue集成
 import 'tailwind.css'
 # JIT模式
 postcss tailwind.css -o style.css
 ~~~
-
-
 
 组件封装：
 
