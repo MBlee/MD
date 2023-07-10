@@ -22,6 +22,10 @@ clientWidth(padding+content)
 
 offsetY, pageY, clientY, screenY
 
+**Window**
+
+innerHeight
+
 ### JS动画
 
 **匀速运动**
