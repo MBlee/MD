@@ -294,12 +294,6 @@ new Date(milliseconds|[ymd,h,m,s,ms]|string)
 - setMilliseconds
 ~~~
 
-#### 表单
-
-#### 事件
-
-mouseover，mouseenter
-
 #### Error
 
 > ReferenceError,TypeError,RangeError,SynTaxError

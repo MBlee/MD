@@ -21,7 +21,8 @@
 - innerHtml|innerText
 // 动态样式|属性
 - style|className|classList
-- attrs...removeAttribute
+- attrs...
+- removeAttribute
 - hasAttribute('')
 // 动态事件
 - onload(attachEvent|detachEvent)|null
@@ -36,6 +37,11 @@
 - e.targetTouches|touches|changedTouches
 - e.target(触发对象)
 - e.currentTarget(绑定对象)
+~~~
+
+~~~js
+// 触摸事件
+touchStart|end:	e => {	e.changeTouches.pageX - prePageX<5	}
 ~~~
 
 ### 定位系列

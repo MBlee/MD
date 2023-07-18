@@ -40,6 +40,15 @@ tsc --watch
 ### 类
 
 ~~~typescript
+// 抽象类
+abstract class A{
+  abstract method():void; 
+}
+// 接口
+interface xx{ xx:type;xx void(); }
+class xx implements xx
+// 泛型
+function|class xx<xxType extends xxclass>
 // 继承类
 class A extends B{
   static xx // 静态
@@ -55,15 +64,6 @@ class A extends B{
   get xx(){}
   method()...
 }
-// 抽象类
-abstract class A{
-  abstract method():void; 
-}
-// 接口
-interface xx{ xx:type;xx void(); }
-class xx implements xx
-// 泛型
-function|class xx<xxType extends xxclass>
 ~~~
 
 #### 编译
@@ -77,18 +77,18 @@ function|class xx<xxType extends xxclass>
 
 	target:es2015
 	module:commonjs
-    lib:dom
+    lib:[dom]
 
-	noEmit:true
-    noEmitOnError:true
-    
 	allowJs:true
     checkJs:true
 	removeComments:true
 
+	noEmit:true
+    noEmitOnError:true
+
+    alwaysStrict:true
 	strict:true
 	strictNullChecks:true
-    alwaysStrict:true
     noImplicitAny:true
     noImplicitThis:true	
 // 打包：webpack.config.js
@@ -105,6 +105,4 @@ function|class xx<xxType extends xxclass>
 
 #### 声明文件
 
-> lib=> .d.ts
-
-**declare**
+> lib=> .d.ts => declare

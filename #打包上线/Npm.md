@@ -20,8 +20,6 @@ npm i create-react-app@1.1.1 -g
 # ~ 前两位不变
 # * 全部最新
 
-# 切换原版镜像
-nrm use npm
 # 登录
 npm login
 # 发布包
@@ -30,7 +28,7 @@ npm publish
 npm unpublish --force
 ```
 
-#### 包配置
+#### NPM配置
 
 ```shell
 # Http-proxy >> C:/user/.npmrc
@@ -40,7 +38,7 @@ npm config set http-proxy
 npm config ls -l
 ```
 
-#### 安装镜像
+#### NPM镜像
 
 ```shell
 # 安装+配置
@@ -73,6 +71,8 @@ nrm ls|current|test
 nrm add|del
 # 切换
 nrm use
+# 切换原版镜像
+nrm use npm
 ```
 
 # Yarn
