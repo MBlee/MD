@@ -16,7 +16,7 @@ wheel
 
 preventDefaultException：/^$/
 
-scrollBar
+scrollbar	{fade,interactive}
 
 #### Methods
 

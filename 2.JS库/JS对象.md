@@ -162,17 +162,24 @@ hasOwnProperty()
 Object.keys()
 Object.values()
 Object.entries()
+// 是否相等===
+Object.is(obj1,obj2)
 ~~~
 
 ~~~js
-// 合并对象
+// 合并对象| 新建对象（原型）
 Object.assign(target,...)=>target
+Object.create(__proto_,propertiesDescriptor)
+// 定义属性
+Object.defineProperty(obj,key,{value,writable,enumerable,configurable})
+Object.defineProperties
+// 原型设置
+Object.getPrototypeOf(obj)
+Object.setPrototypeOf(obj,proto)
 ~~~
 
 ~~~js
-// 创建对象
-- new Object()||{}
-- Object.create(__proto_)
+// 遍历
 ~~~
 
 #### Set
