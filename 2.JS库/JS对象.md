@@ -114,36 +114,39 @@ Promise.all|race
 #### 数组
 
 ~~~js
-// 转字符串
-- join()|toString()
 // 生成数组
 - Array()|Array.of()=>[empty]|[...args]
 - Array.from(类数组|对象,v=>v)
 - flat(Infinity)|flatMap
+// 转字符串
+- join()|toString()|toLocaleString()
 ~~~
 
 ```js
-// 查询有没有
+// 查询值|索引
 arr.includes(item,fromIndex)
 arr.indexOf(item)
-// 查索引
-arr.findIndex(item => item===xxx)
-// 查值
 arr.find(item => item>10)
-// 查指定值
+arr.findIndex(item => item===xxx)
+// 遍历
+arr.map|forEach
+arr.reduce
 arr.filter
-arr.entries|values|keys
+arr.every|some
 ```
 
 ~~~js
 // 多数组合并
-- concat
-- push(...arr)|[...arr1, ...arr2]
-- Array.prototype.push.apply
-// 堆栈操作
-- pop|push|shift|unShift
-- splice|slice|fill|delete
-- [index|length]
+arr.concat
+arr.push(...arr)|[...arr1, ...arr2]
+Array.prototype.push.apply
+// 操作
+arr.pop|push|shift|unShift
+arr.splice|slice||delete
+arr.fill
+arr.with
+arr.copyWithin
+arr.reverse|sort
 ~~~
 
 ```js
@@ -156,12 +159,13 @@ arr.sort(()=>(Math.random()-0.5))
 #### 对象
 
 ~~~js
-// 查自身属性
+// 查自身属性|枚举属性
 hasOwnProperty()
+propertyIsEnumberable()
+// 查原型链
+isPropertyOf()
 // 查键值对
-Object.keys()
-Object.values()
-Object.entries()
+Object.keys()|values()|entries()
 // 是否相等===
 Object.is(obj1,obj2)
 ~~~
