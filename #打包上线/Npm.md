@@ -16,6 +16,7 @@ npm root -g
 ```shell
 # 安装
 npm i create-react-app@1.1.1 -g
+npm --legacy-peer-deps
 # ^ 第一位不变
 # ~ 前两位不变
 # * 全部最新

@@ -3,6 +3,8 @@
 **函数式组件：**
 
 > 高阶组件：fn(rfc) => rfc
+>
+> React.memo,React.PureComponent
 
 ~~~js
 function Cpt(props){ return <div/> }
@@ -104,6 +106,8 @@ class Cpt extends React.Component{}
 ```
 
 - createRef() = {current:undefined}
+  - React.forwardRef( cmp(props, ref) )
+  - (ref) = > this.ref = ref
 - dangerouslySetInnerHTML={__html}
 
 ## 路由
@@ -165,8 +169,8 @@ Store.subscribe(()=>{render...})
 > `npm i react-redux -S`
 
 ```js
-import {createStore}
-import {Provider,connect}
+import {createStore,combineReducers,applyMiddleware}
+import {Provider,connect,bindActionCreators}
 ```
 
 ```js
@@ -186,7 +190,9 @@ ReactDOM.render(
 )
 ```
 
-## Redux-thunk
+## Redux插件
+
+#### Redux-thunk
 
 > `npm i redux-thunk -S`
 
@@ -199,7 +205,7 @@ dispatch((dispatch,getState)=>{
 })
 ~~~
 
-## Redux-devtools
+#### Redux-devtools
 
 ~~~js
 import {createStore,applyMiddleware,compose} from 'redux'
@@ -217,16 +223,82 @@ const enhancer = composeEnhancers(
 const store = createStore(reducer, enhancer);
 ~~~
 
-## 理论
+#### Redux-devtools-extension
 
-#### 特点
+~~~js
+import {composeWithDevTools} from 'redux-devtools-extension'
+~~~
+
+~~~js
+// 使用中间件
+createStore(reducers,composeWithDevTools(applyMiddleware(THUNK...)))
+~~~
+
+#### Redux-logger
+
+> npm i redux-logger -S
+
+~~~js
+// 使用中间件
+createStore(reducers,applyMiddleware(THUNK))
+~~~
+
+## Mobx5
+
+> 安装配置
+
+~~~bash
+npm i -D react-app-rewired customize-cra @babel/plugin-proposal-decorators
+~~~
+
+`config-overrides.js`
+
+~~~js
+const {override,addDecoratorsLegacy} = require('customize-cra')
+module.exports = override(addDecoratorsLegacy())
+~~~
+
+`babelrc`
+
+~~~json
+{
+  "plugins":[
+    ["@babel/plugin-proposal-decorators",{"legacy":true}]
+  ]
+}
+~~~
+
+`package.json`
+
+```json
+{
+  "react-app-rewired start"...
+}
+```
+
+> 装饰器
+
+~~~js
+@foo
+class Person
+function foo(target) {
+  target.prototype.show = function(){}         )
+~~~
+
+
+
+## 简要
+
+#### 理论
+
+**特点**
 
 - [虚拟DOM]()
 - [声明式]()|基于[组件]()
 
 > 支持服务器渲染，快速简单易学
 
-#### 虚拟DOM
+**虚拟DOM**
 
 > JS对象模拟DOM树，Diff算法=>TreeDiff=>ComponentDiff=>ElementDiff，按需更新
 
@@ -236,7 +308,7 @@ const store = createStore(reducer, enhancer);
 >
 > 当调用render渲染页面时，React会[自动比较两次渲染的元素]()，只在真实DOM中[更新变的部分，没变的不变]()
 
-#### JSX
+**JSX**
 
 - html标签小写，React组件大写开头
 - 有且只有一个[根标签]()
@@ -354,3 +426,11 @@ React.createElement('',obj,children,...)
 # 渲染HTML
 ReactDOM.render(RD,el)
 ```
+#### 版本
+
+~~~shell
+"react"："16.13.1"
+"react-dom"："16.13.1"
+"react-scripts"："16.13.1"
+~~~
+

@@ -1,6 +1,6 @@
-# DOM
+## DOM
 
-### DOM树
+#### DOM树
 
 ~~~js
 // 查取
@@ -11,7 +11,7 @@
 - removeChild
 ~~~
 
-### DOM元素
+#### DOM元素
 
 ~~~js
 // 查取DOM
@@ -44,7 +44,7 @@
 touchStart|end:	e => {	e.changeTouches.pageX - prePageX<5	}
 ~~~
 
-### 定位系列
+#### 定位系列
 
 ~~~js
 // Offset定位
@@ -66,9 +66,19 @@ touchStart|end:	e => {	e.changeTouches.pageX - prePageX<5	}
 + scrennY //屏幕
 ~~~
 
-# BOM
+#### DOMType
 
-### Location
+**HTMLElement**
+
+ele.insertAdjacentHTML
+ele.on_keydown
+
+**KeyboardEvent**
+e.key
+
+## BOM
+
+#### Location
 
 ~~~shell
 # 属性
@@ -84,7 +94,7 @@ touchStart|end:	e => {	e.changeTouches.pageX - prePageX<5	}
 - reload(true)
 ~~~
 
-### Navigator
+#### Navigator
 
 ~~~shell
 # 属性
@@ -92,8 +102,15 @@ touchStart|end:	e => {	e.changeTouches.pageX - prePageX<5	}
 # 方法
 ~~~
 
-### History
+#### History
 
-### SetTimeout
+~~~shell
+# 属性
+length
+matched
+# 方法
+pushState|replaceState
+go|back|forward
 
-### SetInterval
+~~~
+

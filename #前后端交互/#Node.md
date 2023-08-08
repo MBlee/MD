@@ -120,21 +120,41 @@ res.write(data)
 
 ~~~jsx
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 app.listen(_port)
+// body中间件
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 ~~~
 
-> 配置路由
+> 配置路由1
 
 ~~~js
 app.get|post(_path/:id,(req,res)=>{
   req.params['id']
   req.query
+  req.body
   res.send()
 })
 ~~~
 
+> 配置路由2
 
+~~~js
+const router = express.Router()
+router.get(path,req,res=>)
+app.use(baseUrl,router)
+~~~
+
+#### 脚手架
+
+> npm i  express-generator -g
+
+~~~shell
+express --no-view <proname>
+npm i
+~~~
 
 ## MongoDB
 

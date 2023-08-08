@@ -5,8 +5,26 @@
 ```shell
 # 布局类
 - container|container-fluid
-- col-offset-push|pull-[1-12]
+- col
+- offset
+- push|pull
+# 水平|垂直
+justify-content|items-(start)
+# width|height
+- row|col
+# margin|padding
+- ml|mx-(em)
+- pl|px-(em)
 ```
+
+~~~shell
+# 背景
+- bg-(info)
+# 文字
+- text-(info)
+- text-left|right|center|justify
+- font-weight-(normal)
+~~~
 
 ### 常用样式：
 
@@ -16,9 +34,6 @@
 # 强调
 - .lead|b|strong|i|em
 - .text-muted|primary|success|info|warning|danger
-# 对齐
-- .text-left|right|center|justify
-- align='center'
 # 代码
 - code|kbd|pre
 # 列表
@@ -48,12 +63,24 @@
 
 ~~~shell
 # 导航
+- navbar|navbar-light
+- nav-item|nav-link
 - ul|ol =>
 .nav|nav-tabs|nav-pills|nav-stacked|nav-justified
-.active
-- .breadcrumb
+# 面包屑
+- breadcrumb|breadcrumb-item
 - .pagination 
 - .pager
+# 表单
+- form-group
+- form-control|is-valid
+- form-control-file
+- form-control-range
+- form-check-input|-label
+- form-text|text-muted
+- noValidate
+- is-invalid
+- invalid-feedback
 # 下拉菜单
 - div => .dropdown|btn-group
 - button => data-toggle='dropdown'
