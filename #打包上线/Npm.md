@@ -1,4 +1,4 @@
-# Npm
+## Npm
 
 #### 查看包
 
@@ -63,7 +63,15 @@ npm config set registry https://registry.npm.taobao.org
 npm config set disturl https://npm.taobao.org/dist
 ~~~
 
-# Nrm
+```shell
+# 依赖检查
+npm i -g checkdep
+# 依赖丢失|冲突
+npm i [dep]
+npm i [dep] --legacy-peer-deps
+```
+
+## Nrm
 
 ```shell
 # 查看
@@ -76,7 +84,9 @@ nrm use
 nrm use npm
 ```
 
-# Yarn
+## Nvm
+
+## Yarn
 
 ```shell
 # 安装卸载
@@ -87,7 +97,7 @@ yarn init|install|publish
 yarn run env
 ```
 
-# PNPM
+## PNPM
 
 ~~~shell
 # 节省node_modules空间（重复依赖）

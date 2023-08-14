@@ -1,4 +1,4 @@
-# 支付
+## 支付
 
 **支付流程：**
 
@@ -49,9 +49,9 @@
 1. **前端支付**
 2. **小程序支付**
 
-# 登录
+## 登录
 
-# 上传下载
+## 上传下载
 
 **下载：**
 
@@ -88,26 +88,24 @@ fileReader.onload = (e)=>{e.target.result}
 URL.createObjectURL(blob)
 ~~~
 
-# 地图
+## 地图
 
-**定位**
+#### 定位
 
 ~~~shell
 # navigator.geolocation
 - getCurrentPosition(e =>{e.coords.longtitude|latitude})
 ~~~
 
-**百度地图**
+#### 百度地图
 
 ~~~js
-// 百度地图API
-1.申请百度开发者 > 2.获取密钥ak >3.使用相关功能
 // 基本使用
-- new BMap.Map('container|id')
-- new BMap.Point(116.404,39.915)
-- map.centerAndZoom(point,3|3-19)
-- map.panTo(new BMap.Point(116.404,39.915))
-- map.enableScrollWheelZoom(true) //滚轮缩放
+new BMap.Map('container|id')
+new BMap.Point(116.404,39.915)
+mMap.centerAndZoom(point,3|3-19)
+mMap.panTo(new BMap.Point(116.404,39.915))
+mMap.enableScrollWheelZoom(true) //滚轮缩放
 
 // 地图控件
 - map.addControl(new BMap.NavigationControl())//平移缩放
@@ -127,7 +125,50 @@ marker.onclick =()=>{
 
 文件预览|二维码|在线客服|SEO|混合开发|国际化|语音|聊天
 
-# 音视频
+## 地铁
+
+#### 百度地铁
+
+> ```js
+> <script src="https://api.map.baidu.com/api?type=subway&v=1.0&ak=24D4usP5Byep6DGS8KTL7QrGkoZtGvxr"></script>
+> ```
+
+~~~js
+// 地铁城市列表
+BMapSub.SubwayCitiesList
+// 地铁图
+new BMapSub.Subway(el,city.cityCode)
+// 添加控件
+subway.addControl(control)
+// 缩放
+subway.setZoom(0.1-2)
+~~~
+
+~~~js
+// 缩放控件
+new BMapSub.ZoomControl({
+  anchor:BMAPSUB_ANCHOR_BOTTOM_RIGHT,
+  offset:new BMapSub.size(10,100)
+})
+~~~
+
+#### 高德地铁
+
+> ```js
+> <script src="https://webapi.amap.com/subway?v=1.0&key=0e2e6151b67746ef10f2da2fb4ceb818&callback=cbk"></script>
+> ```
+
+```js
+// 地铁城市列表
+mSubway.getCityList((cities=>))
+mSubway.setAdcode()
+// 地铁图
+subway(el,{easy:1})
+// 缩放
+mSubway.scale(0.3-1.3)
+```
+
+## 音视频
 
 **原生**
 
@@ -170,7 +211,7 @@ marker.onclick =()=>{
 - onratechange
 ```
 
-# 直播
+## 直播
 
 ```js
 // 获取流

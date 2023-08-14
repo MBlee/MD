@@ -174,20 +174,22 @@ import {Provider,connect,bindActionCreators}
 ```
 
 ```js
-// 将state映射props函数
-(state)=>{
-    return {state}
-}
-// 将dispatch映射props函数
-(dispatch)=>{
-    return {dispatch}
-}
-// 将state和dispatch方法映射到组件上
-connect(stateFn,dispatchFn[res=>res])(component)=>new component
 // 将store用provider关联
 ReactDOM.render(
 <Provider store={store}>...</Provider>
 )
+// 映射到组件1
+connect(stateFn|res=>res,dispatchFn(){
+  ()=>{ dispatch(action) }     
+})(component)
+// 映射到组件2
+connect(stateFn,()=>{
+  bindActionCreators(action,dispatch)
+})(component)
+// 映射到组件3
+connect(stateFn,
+	{action}
+)(component)
 ```
 
 ## Redux插件

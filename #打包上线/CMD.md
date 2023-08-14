@@ -1,4 +1,4 @@
-### 常用查看
+## 常用查看
 
 ~~~shell
 # 查看Node位置
@@ -8,7 +8,7 @@ systeminfo
 dxdiag
 ~~~
 
-#### 时间戳
+## 时间戳
 
 ~~~shell
 # PowerShell
@@ -19,7 +19,7 @@ $(date +%F)
 date|time /t
 ~~~
 
-### 网站加速
+## 网站加速
 
 ~~~shell
 # IP查询
@@ -40,7 +40,7 @@ net share
 net share xx=xx
 ~~~
 
-### 文件操作
+## 文件操作
 
 ~~~shell
 # 创建文件夹
@@ -86,7 +86,7 @@ dir /a:b /s /b
 Start-Process powershell -Verb runAs 
 ~~~
 
-### 管理
+## 管理
 
 #### 用户管理
 
@@ -115,4 +115,53 @@ tasklist
 taskkill /f /pid xxId
 taskkill /f /im xx
 ~~~
+
+## CMD配置
+
+#### 默认管理员
+
+~~~shell
+# 修改注册表
+HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers
+新增字符串值：c:\windows\system32\cmd.exe
+RUNASADMIN
+# 导入注册表
+[HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
+"c:\\windows\\system32\\cmd.exe"="RUNASADMIN"
+~~~
+
+#### 起别名
+
+```shell
+# 设置环境变量
+@echo off
+pnpm %*
+# 注册表自动执行：Command Processor
+# C:\AutoCmd\auto.bat
+@echo off
+doskey pm=pnpm  $*
+```
+
+## PowerShell配置
+
+#### 默认管理员
+
+```shell
+# 查看现在的执行策略
+get-executionpolicy
+# 重设执行策略
+set-executionpolicy remotesigned
+```
+
+#### 起别名
+
+```shell
+# 查找默认配置
+echo $profile
+# 设置别名：
+# C:\Users\my\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+set-alias -name pn -value pnpm
+```
+
+
 
