@@ -63,3 +63,40 @@ router.push('href'|{},'as')
 
 > [404.js]()，[_error.js]()
 
+## 秒建
+
+```shell
+npm init next-app <pro>
+```
+
+> Chakra-ui
+
+```shell
+npm install @chakra-ui/core@next
+npx chakra-cli init --theme
+```
+
+```jsx
+// _app.js配置
+import {ChakraPorvider,CSSReset} from "@chakra-ui/core"
+import theme from "../chakra"
+({Component,pageProps})=>
+<ChakraProvider theme={theme}>
+  <CSSReset />
+  <Component {...pageProps}>
+</ChakraProvider>
+```
+
+> Emotion
+
+```shell
+# emotion
+npm install react-icons @emotion/core @emotion/styled
+npm install @emotion/babel-preset-css-prop -S
+```
+
+```shell
+# .babelrc配置
+"presets":
+["next/babel","@emotion/babel-preset-css-prop"]
+```

@@ -1,4 +1,33 @@
-### CSS常用图形
+## CSS样式
+
+#### CSS变量
+
+```css
+/* 声明 */
+--var:x;
+/* 使用 */
+var(--var)
+```
+
+```js
+// js操作
+document.body.style.setProperty('--var','a')
+document.body.style.getPropertyValue('--var').trim()
+document.body.style.removeProperty('--var')
+```
+
+#### CSS兼容
+
+```css
+@supports not (key:value) or|and (key:value){}
+```
+
+```js
+CSS.supports(key,value)
+CSS.supports("not (key:value) or|and (key:value)")
+```
+
+#### CSS常用图形
 
 ~~~css
 /* 三角形 *//*（正：上即下|左即右）（斜：上下-左右）（梯形：设宽）*/
@@ -14,7 +43,7 @@
 /* 圆缺*/
 ~~~
 
-### CSS样式
+#### CSS样式
 
 ~~~js
 // 背景图||精灵图
@@ -53,16 +82,18 @@
 - .ele	{overflow:-moz-scrollbars-none}
 ~~~
 
-### CSS特效
+#### CSS特效
 
 ~~~js
 // 滤镜
 - filter
 opacity||blur(50%)
+hue-rotate(deg)
+- backdrop-filter
 // 渐变
 ~~~
 
-### CSS选择器
+#### CSS选择器
 
 ```shell
 # 核心选择器
@@ -86,7 +117,7 @@ opacity||blur(50%)
 - ::selection
 ```
 
-### CSS面试
+## CSS面试
 
 ~~~shell
 # 三角形原理

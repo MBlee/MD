@@ -1,6 +1,6 @@
 ## VUE2
 
-### Vue组件
+#### Vue组件
 
 ~~~shell
 # Vue属性
@@ -30,7 +30,7 @@
 3. @click = 'method($event,args)',传e传参
 ~~~
 
-### Vue-Router
+#### Vue-Router
 
 Router属性：
 
@@ -49,7 +49,7 @@ Router组件：
 - <router-link> to , tag , active-class
 - <keep-alive> exclude , activated
 
-### Vuex
+#### Vuex
 
 Store属性：
 
@@ -59,7 +59,7 @@ Store属性：
 
 API：1. $store.getters     2. $store.commit     3. $store.dispatch
 
-### Axios
+#### Axios
 
 API:
 
@@ -72,7 +72,7 @@ API:
 2. axios.interceptors.response.use
 3. return promise
 
-### 全局API
+#### 全局API
 
 全局API：
 
@@ -94,7 +94,7 @@ API:
 npm init vite-app xxxPro
 ```
 
-##### 入口函数
+#### 入口函数
 
 ```js
 import {createApp} from 'vue'
@@ -108,7 +108,7 @@ Vue.createApp({
 new Vue({ render:h=>h(app) }).$mount('#app')
 ```
 
-##### 组合API
+#### 组合API
 
 ```js
 // setup（配置函数）重名优先|不能访问vue2配置
@@ -144,7 +144,7 @@ Provide
 - provide('xxx', xxxData)
 - inject('xxx')
 
-##### 模板语法
+#### 模板语法
 
 v-bind|v-on|v-model|{{表达式}}
 
@@ -158,7 +158,7 @@ v-once|v-html
 
 v-if|v-saahow|v-for
 
-##### Script
+#### Script
 
 data=> computed=> watch
 
@@ -166,7 +166,7 @@ components
 
 created=> mounted=> updated=> destroyed|unmounted
 
-**路由**
+#### **路由**
 
 404匹配：path: "/:path(.*)"
 
@@ -188,13 +188,13 @@ created=> mounted=> updated=> destroyed|unmounted
 - beforeEnter((to, from))
 - beforeRouteEnter|Leave|Update
 
-##### 状态管理
+#### 状态管理
 
 - state: reactive({})
 - setState()....
 - provide{store}
 
-##### vite配置跨域
+#### vite配置跨域
 
 vite.config.js > module.exports
 
