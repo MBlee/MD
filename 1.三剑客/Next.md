@@ -63,16 +63,10 @@ router.push('href'|{},'as')
 
 > [404.js]()，[_error.js]()
 
-## 秒建
+## Chakra-ui
 
-```shell
-npm init next-app <pro>
-```
-
-> Chakra-ui
-
-```shell
-npm install @chakra-ui/core@next
+```css
+# @chakra-ui/core@next
 npx chakra-cli init --theme
 ```
 
@@ -87,16 +81,55 @@ import theme from "../chakra"
 </ChakraProvider>
 ```
 
-> Emotion
+```js
+// 导入
+import {Box,Container} from '@chakra-ui/core'
+```
 
-```shell
-# emotion
-npm install react-icons @emotion/core @emotion/styled
-npm install @emotion/babel-preset-css-prop -S
+```jsx
+// 公用
+- w|h|maxW|maxH|pos
+- bgColor|border
+// 组件
+<Box> <Container>
+<Image>
+<Button leftIcon={</>}>
+```
+
+## ReactIcons
+
+```css
+# react-icons
+```
+
+```jsx
+import {icon} from 'react-icons/..'
+<icon />
+```
+
+## Emotion
+
+```css
+# @emotion/core @emotion/styled
+# @emotion/babel-preset-css-prop -S
 ```
 
 ```shell
 # .babelrc配置
 "presets":
-["next/babel","@emotion/babel-preset-css-prop"]
+["next/babel","@emotion/babel-preset-css-prop"
 ```
+
+```jsx
+import {css} from '@emotion/core'
+import styled from '@emotion/styled'
+const className = css`...css` => css={classname}
+const component = styled.div`` => <component/>
+```
+
+## 秒建
+
+```shell
+npm init next-app <pro>
+```
+

@@ -37,6 +37,22 @@ tsc --watch
 - _name._xx
 ~~~
 
+> 二维数组
+
+```typescript
+interface Mrs {
+    name: string,
+    age: number
+}
+type MrsArray<T> = Array<Array<T>>
+const MrsList1: MrsArray<Mrs> = [
+    [{ name: 'Alice', age: 123 }],
+    [{ name: 'Blob', age: 456 }, { name: 'Charlie', age: 35 }]
+]
+```
+
+
+
 ### 类
 
 ~~~typescript

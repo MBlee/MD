@@ -16,13 +16,11 @@
 ~~~shell
 # Vue指令：
 - v-bind / v-on / v-model / v-if-show / v-for
+- v-html / v-once
 - v-slot: / slot: slot-scope:
-~~~
-
-~~~shell
-# Vue自定义指令：
-# v-html,v-once
-# v-on：.stop/.prevent/.capture/.self/.once/.passive
+- <slot> name,...props
+:class|:style，xxxStr|{class: true}|[str|{}]
+# v-on：.stop/.prevent/.capture/.self/.once/.passive/@keydown.enter
 # v-model：.lazy/.number/.trim
 # 事件
 1. @click = 'method',传e
@@ -94,8 +92,6 @@ API:
 npm init vite-app xxxPro
 ```
 
-#### 入口函数
-
 ```js
 import {createApp} from 'vue'
 import App from './App.vue'
@@ -108,28 +104,45 @@ Vue.createApp({
 new Vue({ render:h=>h(app) }).$mount('#app')
 ```
 
-#### 组合API
+#### Vue组件
 
 ```js
-// setup（配置函数）重名优先|不能访问vue2配置
-1.参数（props,context|{attrs,slots,emits}）
-2.返回对象|渲染函数
+// 组合式API
+setup(props,context|{attrs,emits,slots}){
+	return {}|(h)=> h(component)
+}
+// 属性|接口
+defineProps:[{type,default(),required,validator(value)}]
+defineEmits:[null,(params)=>{return true}]
+modelValue|update:modelValue =>v-model:
+modelModifiers => {default()=>({})}
+ref=>(el)=>{}|expose:[]
+// 异步组件
+defineAsyncComponent(()=>{promise.resolve({import('component')})})
+defineAsyncComponent({
+  loader()=>{},
+  loadingComponent,errorComponent,
+  delay,timeout
+})
+```
+
+```js
 // 数据|方法
 - ref|.value，reactive
 - toRefs，...toRefs(xxxObj)
 - computed
-# shallowReactive|Ref
-# readonly|shallowReadonly
-# toRaw|markRaw
-// 监听
-- watchEffect|watch(xx|[xx],fn,{immediate})
-- watch(()=>obj.key,...)deep有效
-1. 对象无法获取oldValue
-2. 强制开启deep（配置无效）
+- shallowReactive|Ref
+- readonly|shallowReadonly
+- toRaw|markRaw
+// 监听数据
+- watchEffect(fn)|watchPostEffect()
+- watch(xx|[xx],fn,{immediate})
+- watch(()=>obj.key,{deep:true})
 // 生命周期 
 - onBeforeMount|onMounted
 - onBeforeUpdate|onUpdated
 - onBeforeUnmount|onUnmounted
+- onActivated|onDeactivated
 # customRef
 return customRef((track,trigger)=>{
   return {
@@ -137,36 +150,12 @@ return customRef((track,trigger)=>{
     set(newValue){ trigger() }
   }
 })
+// provide,inject
+- provide(key,value)
+- inject(key,default|()=>{obj},true)
 ```
 
-Provide
-
-- provide('xxx', xxxData)
-- inject('xxx')
-
-#### 模板语法
-
-v-bind|v-on|v-model|{{表达式}}
-
-:class|:style，xxxStr|{class: true}|[str|{}]
-
-.once|.stop|.prevent|@keydown.enter
-
-.lazy|.number|.trim
-
-v-once|v-html
-
-v-if|v-saahow|v-for
-
-#### Script
-
-data=> computed=> watch
-
-components
-
-created=> mounted=> updated=> destroyed|unmounted
-
-#### **路由**
+#### **Vue-Router**
 
 404匹配：path: "/:path(.*)"
 
@@ -188,7 +177,7 @@ created=> mounted=> updated=> destroyed|unmounted
 - beforeEnter((to, from))
 - beforeRouteEnter|Leave|Update
 
-#### 状态管理
+#### Vuex
 
 - state: reactive({})
 - setState()....

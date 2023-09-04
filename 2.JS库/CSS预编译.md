@@ -2,7 +2,10 @@
 
 安装配置：
 
-`npm i @emotion/core @emotion/styled`
+```css
+# @emotion/core
+# @emotion/styled
+```
 
 ~~~js
 /** @jsx jsx */
@@ -32,6 +35,11 @@ postcss tailwind.css -o style.css
 组件封装：
 
 #### SCSS
+
+```css
+# node-sass
+# sass-loader
+```
 
 编译插件：Live Sass Compiler > settings
 
