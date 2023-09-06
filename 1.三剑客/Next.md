@@ -1,14 +1,18 @@
 ## Next@13.4.9
 
+#### 内置组件
+
+```jsx
+import Link from 'next/link'
+<Link href><a ...></link>
+import Head from 'next/head'
+<> <Head> <link rel href> </Head> </>
+```
+
 #### 路由
 
 ~~~js
 pages ([id].js|404.js) => export default cmt(props) =>
-import Link from 'next/link'
-<Link href><a ...></link>
-import Head from 'next/head'
-<> <Head> </>
-
 // 静态数据
 - getStaticProps => ({props: _data})
 - getStaticPaths => ({paths: [{params},....], fallback:false})
@@ -66,14 +70,13 @@ router.push('href'|{},'as')
 ## Chakra-ui
 
 ```css
-# @chakra-ui/core@next
-npx chakra-cli init --theme
+# npm i @chakra-ui/react@^1 @emotion/react@^11 @emotion/styled@^11 framer-motion@^6
+# npx chakra-cli init --theme
 ```
 
 ```jsx
 // _app.js配置
-import {ChakraPorvider,CSSReset} from "@chakra-ui/core"
-import theme from "../chakra"
+import {ChakraPorvider,CSSReset,extendTheme} from "@chakra-ui/react"
 ({Component,pageProps})=>
 <ChakraProvider theme={theme}>
   <CSSReset />
@@ -83,17 +86,42 @@ import theme from "../chakra"
 
 ```js
 // 导入
-import {Box,Container} from '@chakra-ui/core'
+import {Box,Container} from '@chakra-ui/react'
 ```
 
 ```jsx
 // 公用
 - w|h|maxW|maxH|pos
-- bgColor|border
+- spacing
+- justifyContent|alignItems
+- color|bgColor|border
 // 组件
-<Box> <Container>
-<Image>
+<Box> <Container> <HStack>
+<Image> <Text>
+<Heading as={h2} size={large}>
 <Button leftIcon={</>}>
+```
+
+## Emotion
+
+```css
+# @emotion/react@^11  @emotion/styled@^11  framer-motion@^6
+# @emotion/babel-preset-css-prop
+```
+
+```css
+# .babelrc配置
+"presets":
+["next/babel","@emotion/babel-preset-css-prop"
+# 0配置
+/** @jsxImportSource @emotion/react */
+```
+
+```jsx
+import {css} from '@emotion/react'
+import styled from '@emotion/styled'
+const className = css`...css` => css={classname}
+const component = styled.div`` => <component/>
 ```
 
 ## ReactIcons
@@ -107,24 +135,18 @@ import {icon} from 'react-icons/..'
 <icon />
 ```
 
-## Emotion
+## 小组件库
+
+> 轮播图
 
 ```css
-# @emotion/core @emotion/styled
-# @emotion/babel-preset-css-prop -S
-```
-
-```shell
-# .babelrc配置
-"presets":
-["next/babel","@emotion/babel-preset-css-prop"
+# react-responsive-carousel
 ```
 
 ```jsx
-import {css} from '@emotion/core'
-import styled from '@emotion/styled'
-const className = css`...css` => css={classname}
-const component = styled.div`` => <component/>
+import {Carousel} from "react-responsive-carousel"
+import "~/lib/styles/carousel.min.css"
+<Head> <link></link> </Head>
 ```
 
 ## 秒建

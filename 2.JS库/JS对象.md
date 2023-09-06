@@ -263,6 +263,12 @@ Object.fromEntries(map.entries)
 }
 ~~~
 
+#### 生成器
+
+> function *gen() => generator() =>iterator
+
+> iterator.next(pre) = yield <res>
+
 
 
 ## 特殊对象

@@ -71,6 +71,21 @@ $变量
 
 #### LESS
 
+```css
+# npm i less -g
+# lessc
+```
+
+```shell
+# 变量
+@var:value => @{selector|key}
+@min768:()|~"" => @media
+# 嵌套
+&:hover
+```
+
+
+
 #### Stylus
 
 ```shell
