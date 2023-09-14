@@ -15,6 +15,29 @@ shutdown -r now
 reboot
 ```
 
+> **磁盘**
+
+```shell
+# 系统磁盘
+df -h
+# 目录
+du -a
+du -S
+du -sm /*
+# 挂载磁盘
+mount <path1> <path2>
+unmount -f
+```
+
+> **进程**
+
+```shell
+ps -aux|grep [mysql]
+ps -ef|grep [mysql]
+pstree -pu
+kill -9 [pid]
+```
+
 > **目录**
 
 ```shell
@@ -70,6 +93,24 @@ ln -s <a> <b>
 touch <file>
 echo <str> >><file>
 ```
+
+```shell
+# 搜索
+find [/etc] [**] -user
+find -size +5M | grep [xx]
+# locate
+updatedb => locate
+# 过滤文本
+cat x.txt|grep [text] -in
+```
+
+```shell
+# gzip|gunzip =>.gz
+gzip [path]
+gunzip [path]
+```
+
+
 
 > **vim**
 

@@ -48,11 +48,13 @@ postcss tailwind.css -o style.css
 - 选择器嵌套|&父选择器|属性嵌套
 - 占位符选择器%xxx须通过@extend
 
-~~~scss
-$变量
+~~~shell
+# 变量
 - $xxx-_xxx
 - !global|!default
 - (color1,color2) => map-get()
+# 继承
+@extend %xx
 插值：#{$xx}
 @import"_"
 - css|media query
@@ -60,7 +62,7 @@ $变量
 - url()
 @mixin xx($...)
 - nth($,1)
-@extend %xx
+
 @if >=3 and or not()
 @if (varible|mixin-exists)
 /* 函数 */
@@ -72,27 +74,29 @@ $变量
 #### LESS
 
 ```css
-# npm i less -g
+# less
 # lessc
 ```
 
 ```shell
 # 变量
 @var:value => @{selector|key}
-@min768:()|~"" => @media
+@min768:()
 # 嵌套
 &:hover
+# 混合
+.class(A,@params:default...)
+# 继承
+&:extend(class all)
+# 避免编译
+~"calc" => @media
 ```
-
-
 
 #### Stylus
 
-```shell
-# 安装
-npm install stylus -g
-# 用法
-stylus -w xxx.styl -o xxx.css
+```css
+# stylus
+# stylus -w xxx.styl -o xxx.css
 ```
 
 选择器：
