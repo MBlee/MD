@@ -224,3 +224,16 @@ video.onloadedmetadata = ()=>{
 }
 ```
 
+> 腾讯云
+
+```css
+# trtc.js
+# lib-generate-test-usersig.min.js
+```
+
+```js
+// 生成用户签名
+const generator = new LibGenerateTestUserSig(SDKAPPID,SECRET,EXPIRETIME)
+const userSig = generator.genTestUserSig(userId)
+```
+
