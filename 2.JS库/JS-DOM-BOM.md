@@ -20,7 +20,8 @@
 // 动态数据
 - innerHtml|innerText
 // 动态样式|属性
-- style|className|classList
+- style|className
+- classList.add()|remove()|contains()
 - attrs...
 - removeAttribute
 - hasAttribute('')
@@ -35,7 +36,7 @@
 - mouseenter|over|move|leave
 # 事件对象
 - e.targetTouches|touches|changedTouches
-- e.target(触发对象)
+- e.target(触发对象) => tagName === 'EM'
 - e.currentTarget(绑定对象)
 ~~~
 

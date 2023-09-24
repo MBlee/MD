@@ -73,6 +73,26 @@ function download(url){
 
 **上传：**
 
+```js
+// 获取文件
+<input accept='.png,.jpg...'/> => input.click()
+change()=> {
+    const file = input.files[0] => name|type|size
+    if(!file) return
+    !/(PNG|JPG|JPEG)/i.test(file.type)
+    file.size > 2*1024*1024
+    return
+}
+// 上传文件
+let formData = new FormData()
+formData.append('file',_file)
+formData.append('filename',_file.name)
+http.post('url_path',formData).then(data=>{
+    if (+data.code === 0) return
+    return Promise.reject(data.codeText)
+}).catch(err=>console.log(err))
+```
+
 ~~~js
 // Blob二进制数据
 new Blob([str],{type:'text/plain'})

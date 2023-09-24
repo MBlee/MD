@@ -1,6 +1,20 @@
-### 基本使用
+## START
 
-#### 完美封装：
+#### 封装：
+
+```js
+const http = axios.create()
+http.defaults.baseURL = 'http://...'
+http.defaults.headers['Content-Type'] = 'multipart/form-data';
+http.defaults.transformRequest = (data,headers)=>{
+    if (headers['Content-Type'] === 'application/x-www-form-urlencoded')
+        return Qs.stringify(data)
+    return data
+}
+http.interceptors.response.use(res=>{
+    return res.data
+},err=> return Promise.reject(err))
+```
 
 ~~~js
 // 基本配置
@@ -63,7 +77,7 @@ axios.defaults.params
 
 axios.defaults.timeout
 
-### JSON Server
+## JSON Server
 
 安装：npm i -g  json-server
 
