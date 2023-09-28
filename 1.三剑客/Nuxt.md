@@ -1,5 +1,20 @@
 ## Nuxt
 
+```css
+yarn create nuxt-app <app>
+```
+
+> layouts=>pages=>components
+
+```jsx
+// layouts=>default.vue
+<Nuxt />
+// nuxt.config.js
+component:true
+```
+
+
+
 ## 服务端渲染
 
 ```shell
@@ -12,13 +27,31 @@ const Vue = require('vue')
 const app = new Vue({
   template:`<div/>`
 })
-// 渲染为HTML
+// 渲染HTML
 const renderer = require('vue-server-renderer').createRenderer()
 renderer.renderToString(app,(err,html)=>{
   if err throw err;
+  res.end(html)
 })
 renderer.renderToString(app).then(html=>{})
 ```
 
-
+```js
+// HTML模板=>
+{{{html}}}
+{{data}}
+<!---vue-ssr-outlet--->
+// 渲染HTML
+const renderer = require('vue-server-renderer').createRenderer({
+    template:fs.readFileSync('filepath','utf-8')
+})
+renderer.renderToString(app,{
+	data,div
+},(err,html)=>{
+  if err throw err;
+    return res.status(500).end('error')
+  res.setHeader('Content-Type','text/html;charset=utf-8')
+  res.end(html)
+})
+```
 

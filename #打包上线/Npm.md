@@ -45,6 +45,7 @@ npm config ls -l
 # 安装+配置
 npm i cnpm --registry=http://registry.npm.taobao.org -g
 npm config set registry http://registry.npm.taobao.org
+npm config set registry https://registry.npmmirror.com/
 # 检测安装成功
 npm config get registry
 # 以管理员身份运行：

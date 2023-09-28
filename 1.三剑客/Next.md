@@ -120,8 +120,17 @@ import {Box,Container} from '@chakra-ui/react'
 ```jsx
 import {css} from '@emotion/react'
 import styled from '@emotion/styled'
-const className = css`...css` => css={classname}
-const component = styled.div`` => <component/>
+// 样式类属性
+const className = css`
+	${props=>({...css})}
+	${cmp} {...css}
+`
+const className = css({...css},props=>({...props.css}))
+// 样式组件
+const component = styled.div`
+	${props=>({...css})}
+`
+const component = styled(cmp)`` => <cmp className={props.className}/>
 ```
 
 ## ReactIcons

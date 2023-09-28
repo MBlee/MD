@@ -73,6 +73,8 @@ function download(url){
 
 **上传：**
 
+> 浏览器端
+
 ```js
 // 获取文件
 <input accept='.png,.jpg...'/> => input.click()
@@ -83,7 +85,7 @@ change()=> {
     file.size > 2*1024*1024
     return
 }
-// 上传文件
+// 上传文件-FormData
 let formData = new FormData()
 formData.append('file',_file)
 formData.append('filename',_file.name)
@@ -91,6 +93,17 @@ http.post('url_path',formData).then(data=>{
     if (+data.code === 0) return
     return Promise.reject(data.codeText)
 }).catch(err=>console.log(err))
+// 上传文件-FileReader<BASE64>
+let fileReader = new FileReader(),BASE64
+fileReader.readAsDataURL(file)
+fileReader.onload = (e)=>{
+    BASE64 = e.target.result
+}
+http.post('url_path',{
+    file:encodeURIComponent(BASE64),filename
+},{headers:{
+    'Content-Type':'application/x-www-form-urlencoded'
+}})
 ```
 
 ~~~js
@@ -107,6 +120,10 @@ fileReader.onload = (e)=>{e.target.result}
 // URL
 URL.createObjectURL(blob)
 ~~~
+
+> 服务器端
+
+
 
 ## 地图
 

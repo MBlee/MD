@@ -1,4 +1,4 @@
-#### Emotion
+## Emotion
 
 安装配置：
 
@@ -20,12 +20,112 @@ package.json => "babel":{
 }
 ~~~
 
-#### TailwindCSS
+## TailwindCSS
 
-安装配置：
+#### V3.0
+
+```shell
+npm install -D tailwindcss
+npx tailwindcss init
+```
+
+```shell
+# tailwind.config.js
+module.exports = {
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+# package.json
+"scripts": {
+  "build": "tailwindcss -i ./src/main.css -o ./dist/output.css --watch"
+}
+```
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+#### V2.0
+
+```shell
+npm i -D postcss-cli
+npm i tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init
+npm i cross-env -D
+```
+
+```shell
+# postcss.config.js
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}
+# tailwind.config.js
+module.exports = {
+    purge: [
+     './src/*.html',
+    ],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+      extend: {},
+    },
+    variants: {},
+    plugins: [],
+}
+# package.json
+"scripts": {
+  "build": "postcss src/style.css -o dist/tailwind.css",
+  "watch": "postcss build src/css/tailwind.css -o dist/css/tailwind.css --watch",
+  "build:css": "cross-env NODE_ENV=production postcss src/css/tailwind.css -o dist/css/tailwind.css"
+}
+```
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+#### VUE安装
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+```shell
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+```shell
+# postcss.config.js
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}
+# tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
 
 ~~~shell
-npx tailwindcss init -p
 # Vue集成
 import 'tailwind.css'
 # JIT模式
@@ -34,7 +134,7 @@ postcss tailwind.css -o style.css
 
 组件封装：
 
-#### SCSS
+## SCSS
 
 ```css
 # node-sass
@@ -71,7 +171,7 @@ postcss tailwind.css -o style.css
 -. selector-append|unify + ''
 ~~~
 
-#### LESS
+## LESS
 
 ```css
 # less
@@ -92,7 +192,7 @@ postcss tailwind.css -o style.css
 ~"calc" => @media
 ```
 
-#### Stylus
+## Stylus
 
 ```css
 # stylus
