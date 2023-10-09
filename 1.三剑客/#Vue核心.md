@@ -49,13 +49,27 @@ Router组件：
 
 #### Vuex
 
-Store属性：
+```js
+/*  */
+getters:{ (state,getters)=>{ return arg=>{}} }
+mutations:{ (state,payload)=>{} }
+actions:{ (context,payload)=>{ context.commit('') } }
+modules:{}
+namespaced:true
+```
 
-- getters: (state, getters)=> return (arg)=>...
-- mutations:(state, payload)=>...
-- actions:(context,payload)=> return promise
-
-API：1. $store.getters     2. $store.commit     3. $store.dispatch
+```js
+/* 映射 */
+import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
+computed:{
+    ...mapState(module,['data']),
+    ...mapGetters(module,{ 'state':'data' })
+}
+methods:{...mapMutations,...mapActions}
+/* 调用 */
+$store.dispatch(module/type,payload)
+$store.commit(module/type,payload)
+```
 
 #### Axios
 
@@ -182,6 +196,34 @@ return customRef((track,trigger)=>{
 - state: reactive({})
 - setState()....
 - provide{store}
+
+#### Pinia
+
+```css
+# npm i pinia
+```
+
+```js
+/* main.js */
+import {createPinia} from 'pinia'
+createApp(App).use(createPinia()).mount('#app')
+```
+
+```js
+/* store */
+import {defineStore,storeToRefs} from 'pinia'
+export const useStore = defineStore('store',()=>{
+    const state = ref()
+    const getters = computed(()=>{})
+    const method = ()=>{}
+    return {
+        state,getters,method
+    }
+})
+const store = useStore()
+const {state,getters} = storeToRefs(store)
+const {method} = store
+```
 
 #### vite配置跨域
 

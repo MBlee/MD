@@ -245,6 +245,33 @@ createStore(reducers,composeWithDevTools(applyMiddleware(THUNK...)))
 createStore(reducers,applyMiddleware(THUNK))
 ~~~
 
+## RTK
+
+```css
+# npm i react-redux @reduxjs/toolkit
+```
+
+```js
+import {createSlice} from '@reduxjs/toolkit'
+export createSlice({
+    name:'module',
+    initialState:{},
+    reducers:{
+        (state,action)=>{ return {...state,action.payload} }
+    }
+})
+import {configureStore} from '@reduxjs/toolkit'
+configureStore({
+    reducer:{slice.reducer}
+})
+```
+
+```js
+import useSlice from 'store/..'
+const {action} = useSlice.actions
+dispatch(action(payload))
+```
+
 ## Mobx5
 
 > 安装配置
