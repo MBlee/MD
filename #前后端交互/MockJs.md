@@ -37,7 +37,7 @@ env.development => MOCK=false
 
 ### 附录
 
-<!-- **json5 -->
+<!-- json5 -->
 
 ```js
 // 读取
