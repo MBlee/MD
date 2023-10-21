@@ -110,6 +110,17 @@ class Cpt extends React.Component{}
   - (ref) = > this.ref = ref
 - dangerouslySetInnerHTML={__html}
 
+<!--TS-->
+
+```tsx
+import type {ReactNode,FC} from 'react'
+interface IProps{
+    children?:ReactNode
+}
+const RFC:FC<IProps>
+RFC.defaultProps
+```
+
 ## 路由
 
 > 安装：`npm i react-router-dom -S`
@@ -134,6 +145,24 @@ import {useHistory，useLocation,useParams，useRouteMatch
 props.match.params._x
 props.history.push(path,obj)
 props.location
+```
+
+<!--RouterV6-->
+
+```js
+import {useRoutes,Navigate} from 'react-router-dom'
+import type {RouteObject} from 'react-router-dom'
+
+const Lazy = React.lazy(()=>import('@..'))
+
+const routes:RouteObject[] = [{
+    path,
+    element: <Navigate to="/">
+}]
+
+<Suspense fallback="">
+	{useRoutes(routes)}
+</Suspense>
 ```
 
 ## Redux
@@ -166,7 +195,7 @@ Store.subscribe(()=>{render...})
 
 ## React-Redux
 
-> `npm i react-redux -S`
+> `npm i react-redux `
 
 ```js
 import {createStore,combineReducers,applyMiddleware}
