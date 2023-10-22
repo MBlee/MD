@@ -116,22 +116,33 @@ res.write(data)
 
 ## Express
 
-#### 搭建服务器
+#### 服务器
 
 ~~~jsx
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 app.listen(_port)
-// body中间件
+// 跨域
+app.use(cors())
+// 数据格式化
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+// 静态服务器
+app.use(baseUrl,express.static('path'))
+// 路由
+app.use(baseUrl,router)
 ~~~
 
-> 配置路由1
+#### 路由
 
 ~~~js
-app.get|post(_path/:id,(req,res)=>{
+// express.Router()
+const router = express.Router()
+router.use((req,res,next)=>{})
+router.all(path,(req,res)=>{})
+// express()
+app.all(path/:id,(req,res,next)=>{
   req.params['id']
   req.query
   req.body
@@ -139,13 +150,18 @@ app.get|post(_path/:id,(req,res)=>{
 })
 ~~~
 
-> 配置路由2
+```js
+// req
 
-~~~js
-const router = express.Router()
-router.get(path,req,res=>)
-app.use(baseUrl,router)
-~~~
+// res
+res.send()
+res.sendStatus()
+
+```
+
+
+
+
 
 #### 脚手架
 
