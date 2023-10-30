@@ -4,7 +4,7 @@
 
 ```jsx
 import Link from 'next/link'
-<Link href><a ...></link>
+<Link href="/[id]" as={`/$id`}><a ...></link>
 import Head from 'next/head'
 <> <Head> <link rel href> </Head> </>
 ```
@@ -14,8 +14,13 @@ import Head from 'next/head'
 ~~~js
 pages ([id].js|404.js) => export default cmt(props) =>
 // 静态数据
-- getStaticProps => ({props: _data})
-- getStaticPaths => ({paths: [{params},....], fallback:false})
+export async getStaticProps({params}) => ({
+    props: _data
+})
+export async getStaticPaths() => ({
+    paths: [{params},....], 
+    fallback:false
+})
 - getServersideProps => ({})
 
 // 内部样式
@@ -32,6 +37,14 @@ export default function App({Component,pageProps}){
 ~~~js
 api => export default (req,res)=>{res.send()}
 ~~~
+
+<!--package.json-->
+
+```shell
+# next:9.4.4
+# 导出发布
+next build && next export
+```
 
 ## Next
 
@@ -135,8 +148,8 @@ const component = styled(cmp)`` => <cmp className={props.className}/>
 
 ## ReactIcons
 
-```css
-# react-icons
+```shell
+npm i react-icons@^3.10.0
 ```
 
 ```jsx
@@ -148,8 +161,8 @@ import {icon} from 'react-icons/..'
 
 > 轮播图
 
-```css
-# react-responsive-carousel
+```shell
+npm i  react-responsive-carousel@^3.2.9
 ```
 
 ```jsx

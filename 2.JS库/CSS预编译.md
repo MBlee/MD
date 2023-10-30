@@ -173,9 +173,13 @@ postcss tailwind.css -o style.css
 
 ## LESS
 
-```css
-# less
-# lessc
+```shell
+npm i less -g 
+# cli
+lessc xx.less xx.css
+# Subl自动-less2css
+npm install -g less-plugin-clean-css
+npm install -g less-plugin-autoprefix
 ```
 
 ```shell

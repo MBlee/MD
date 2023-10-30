@@ -2,9 +2,9 @@
 
 ```shell
 # 安装
-npm i -g typescript
-npm i -g ts-node # 运行
-npm i -s @types/node 
+npm i typescript -g
+npm i ts-node -g # 运行
+npm i @types/node 
 # 编译
 tsc .ts
 # 任务→监视tsconfig.json

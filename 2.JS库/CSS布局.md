@@ -40,7 +40,7 @@
 ~~~js
 // 宽高|区域 
 - grid-template-colums|rows
-(auto|fr|repeat(n|auto-fit-fill,100px)|minmax())
+(auto|fr|repeat(n|auto-fit-fill,100px)|minmax(min-content|max-content))
 ([c|r])
 - grid-template-areas
 (x|.)(x-start|end)

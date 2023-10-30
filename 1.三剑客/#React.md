@@ -157,7 +157,7 @@ const Lazy = React.lazy(()=>import('@..'))
 
 const routes:RouteObject[] = [{
     path,
-    element: <Navigate to="/">
+    element: <Navigate to="/" />
 }]
 
 <Suspense fallback="">
@@ -276,8 +276,8 @@ createStore(reducers,applyMiddleware(THUNK))
 
 ## RTK
 
-```css
-# npm i react-redux @reduxjs/toolkit
+```shell
+npm i react-redux @reduxjs/toolkit
 ```
 
 ```js
@@ -299,6 +299,13 @@ configureStore({
 import useSlice from 'store/..'
 const {action} = useSlice.actions
 dispatch(action(payload))
+```
+
+```ts
+import {TypedUseSelectorHook} from 'react-redux'
+type GetStateFnType = typeof store.getState
+export type IRootState = ReturnType<GetStateFnType>
+export const useAppSelector:TypedUseSelectorHook<IRootState> = useSelector
 ```
 
 ## Mobx5

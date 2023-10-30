@@ -25,6 +25,7 @@
 - attrs...
 - removeAttribute
 - hasAttribute('')
+- dataset
 // 动态事件
 - onload(attachEvent|detachEvent)|null
 - addEventListener|removeEventListener
