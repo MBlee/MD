@@ -123,16 +123,35 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 app.listen(_port)
+app.use((req,res,next)=>...)
 // 跨域
 app.use(cors())
 // 数据格式化
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+app.use(express|bodyParser.json())
+app.use(express|bodyParser.urlencoded({extended:true}))
 // 静态服务器
 app.use(baseUrl,express.static('path'))
 // 路由
 app.use(baseUrl,router)
 ~~~
+
+<!--服务器请求-->
+
+```js
+const request = require('request')
+const options = {
+    headers:{'Connection':'close'},
+    url,method,
+    json:true,
+    body
+}
+const callback = (err,res,data)=>{
+    if(!err && res.statusCode == 200){
+        res.json(data)
+    }
+}
+request(options,callback)
+```
 
 #### 路由
 
@@ -142,26 +161,36 @@ const router = express.Router()
 router.use((req,res,next)=>{})
 router.all(path,(req,res)=>{})
 // express()
-app.all(path/:id,(req,res,next)=>{
-  req.params['id']
-  req.query
-  req.body
-  res.send()
-})
+app.all(path/:id,(req,res,next)=>...)
+// req
+req.params['id']
+req.query
+req.body
+// res
+res.send()|sendStatus()|status()
 ~~~
 
-```js
-// req
+#### 模板引擎
 
-// res
-res.send()
-res.sendStatus()
-
+```shell
+npm i ejs
 ```
 
+```js
+const ejs = require('ejs')
+app.engine('html',ejs.__express)
+app.set('view engine','html|ejs')
+app.set('views',__dirname+'/views')
+res.render('index',{})
+```
 
-
-
+```ejs
+<%=text%>
+<%-html%>
+<%-include('.ejs')%>
+<%if(){%>...<%}%>
+<%for(){%>...<%}%>
+```
 
 #### 脚手架
 
@@ -172,133 +201,27 @@ express --no-view <proname>
 npm i
 ~~~
 
-## MongoDB
-
-安装配置：path: ...\server\4.0\bin
-
-连接：mongo
+## Koa
 
 ```shell
-# 数据库操作
-show dbs
-use xxx
-db.dropDatabase()
-# 集合操作
-show collections
-db.xx.find().sort().limit().skip() 
--($gle|$lte|/^$/)({name:1})
--(age:1|-1)
-db.xx.insert()
-db.xx.drop()
-# 创建|使用数据库
+npm i koa @koa/router
 ```
-
-## MockJS
-
-#### 安装
-
-```shell
-# mockjs产生模拟数据
-cnpm i mockjs -S
-# json5解决json无法添加注释问题
-cnpm i json5 -S
-```
-
-#### 使用
-
-<!-- 方法 -->
-
-- **mock**
-  - rurl?|rtype?
-  - template|function(obj)
-- **random**
-  - extend({fn})
-- **setup**
-  - timeout, '10-100'
-
-<!-- VUE配置 -->
 
 ```js
-// devServer
-if(process.env.MOCK == 'true')
-- require(mock/index.js)
-- before: function(app, server, compiler){
-   app.get('/some/path', function(req, res){
-       getJsonFile('...json5')
-       res.json(Mock.mock(json))
-   })
-  }
-// 移除Mock
-env.development => MOCK=false
+const Koa = require('koa')
+const Router = require('@koa/router')
+
+const app = new Koa()
+const router = new Router()
+
+app.use(async (ctx,next)=>{
+    ctx.body = 'hello'
+})
+router.get('/',async(ctx)=>{...})
+app.use(router.routes()).use(router.allowedMethods())
+
+app.listen(9000)
 ```
-
-#### 附录
-
-<!-- **json5 -->
-
-```js
-// 读取
-fs.readFileSync(path.join(__dirname,xxxPath,'utf-8'))
-// 解析
-JSON5.parse(json5)
-```
-
-<!-- Mock语法 -->
-
-```js
-// 数据模板  'name|rule': value
-- string, min-max|count
-- number, min-max|min-max.dmin-dmax|+1
-- boolean, min-max|1
-- object, min-max|count
-- array, 1|+1|min-max|count
-- function|regexp
-// 数据占位符  @占位符 Mock.Random.extend()
-- boolean, min?|max?|current?
-- natural|integer|float, min?|max?|dmin|dmax
-- character|string, lower|upper|number|symbol,min?|max?
-- range, start|stop?|step?
-+ date|time|datetime|now, y-M-d|H-m-s-ss-SS|t|A|a
-+ image|dataImage, size?|background?|foreground?|format?|text?
-+ color|hex|rgb|rgba|hsl
-+ title|ctitle|paragraph|sentence|csentence|word|cword, pool?|min?|max?
-+ first|last|name|cfirst|clast|cname|cword
-+ url|protocol|domain|tld|email|ip, protocol?|host?
-+ region|province|city|county|zip, true?
-+ pick|shuffle, arr
-+ guid|id|increment, step?
-```
-
-## 跨域
-
-#### Proxy代理服务器
-
-**Cli3：vue.config.js > devServer > proxy**
-
-'/api'
-
-- target: xxxUrl
-- pathRewrite: {'^/api': ''}
-- changeOrigin: true
-- ws: true
-
-axios.defaults.baseURL = '/api'
-
-**Cli2：config > index.js > proxyTable**
-
-#### CORS
-
-**Access-Control-Allow-Origin**
-
-后端开启，返回响应加几个特殊的响应头
-
-#### JsonP
-
-借助script标签src属性，在引入外部资源时不受同源策略限制，只能处理get请求
-
-#### 知识点
-
-服务器之前交流不受同源策略限制
 
 ## HTTP
 

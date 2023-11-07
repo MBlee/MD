@@ -278,6 +278,7 @@ createStore(reducers,applyMiddleware(THUNK))
 
 ```shell
 npm i react-redux @reduxjs/toolkit
+create-react-app <app> --template redux-typescript
 ```
 
 ```js

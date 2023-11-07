@@ -30,6 +30,27 @@
 
 #### Vue-Router
 
+```shell
+npm i vue-router@3 || vue add router
+```
+
+```js
+Vue.use(Router) => new Vue({router})
+```
+
+```js
+// 回退
+window.history.length>1? this.$router.go(-1):this.$router.push('/')
+// 监听
+watch => $route(to,from)=>...
+beforeRouteUpdate(to,from,next)=>...
+```
+
+```js
+// 通配符路由
+path:'*/p-*' => $route.params.pathMatch
+```
+
 Router属性：
 
 - routes: { path , component , children }
@@ -171,6 +192,37 @@ return customRef((track,trigger)=>{
 
 #### **Vue-Router**
 
+```shell
+npm i vue-router@4
+```
+
+```js
+Vue.createApp().use(Router)
+Router.createRouter() => 
+history: createWebHistory('/baseURL/')|createWebHashHistory()|createMemoryHistory()
+// 路由器配置
+strict + sensitive
+```
+
+```js
+// 动态路由监听
+created => this.$watch(()=>this.$route.params,(to,pre)=>...)
+beforeRouteUpdate(to,pre)=>...
+// 可选可重复
+path:/:id(\\d+*)+*?
+// 嵌套路由
+name => children => ""
+```
+
+```js
+// 路由跳转
+<link-view> => to + replace
+router.push|replace|to =>
+name+params+query+hash
+```
+
+
+
 404匹配：path: "/:path(.*)"
 
 正则匹配：path: "/:id(\\\d+*?)"
@@ -193,6 +245,24 @@ return customRef((track,trigger)=>{
 
 #### Vuex
 
+```shell
+npm i vuex@4
+```
+
+```js
+import {createApp} from 'vue'
+createApp(App).use(store)
+```
+
+```js
+import {useStore} from 'vuex'
+Vuex.useStore()
+```
+
+
+
+
+
 - state: reactive({})
 - setState()....
 - provide{store}
@@ -206,7 +276,7 @@ return customRef((track,trigger)=>{
 ```js
 /* main.js */
 import {createPinia} from 'pinia'
-createApp(App).use(createPinia()).mount('#app')
+createApp(App).use(createPinia())
 ```
 
 ```js

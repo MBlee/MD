@@ -29,6 +29,8 @@
 // 动态事件
 - onload(attachEvent|detachEvent)|null
 - addEventListener|removeEventListener
+// 更新样式
+- getComputedStyle(el)
 ~~~
 
 ~~~shell

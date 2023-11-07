@@ -121,4 +121,28 @@ class A extends B{
 
 #### 声明文件
 
-> lib=> .d.ts => declare
+> lib=> .d.ts => package.json || types=>baseUrl-paths
+
+```shell
+# types => tsconfig.json
+compilerOptions:{
+	"module":"commonjs",
+	"baseUrl":"./",
+	"paths":{
+		"*":["types/*"]
+	}
+}
+# types => package.json
+```
+
+```ts
+declare const xx:string
+declare const xx:string => any
+declare enum xx{...,}
+declare function xx(xx:string):any
+declare class xx{ constructor(xx:string); }
+declare namespace xx.xx{...}
+interface xx{ xx?;... }
+type xx = xx
+```
+
