@@ -136,6 +136,7 @@ compilerOptions:{
 ```
 
 ```ts
+// 全局声明
 declare const xx:string
 declare const xx:string => any
 declare enum xx{...,}
@@ -144,5 +145,18 @@ declare class xx{ constructor(xx:string); }
 declare namespace xx.xx{...}
 interface xx{ xx?;... }
 type xx = xx
+declare global{}
+// npm声明
+export const|{}|default
+module.exports = xx
+exports.xx
+export = xx /* COMMONJS */
+const xx = require()
+import xx = require()
+import * as xx|{ xx }
+// UMD
+export as namespace
+export default xx
+export  = xx
 ```
 
