@@ -20,7 +20,7 @@
 - concat
 - repeat
 // 转换
-- split(), string=> [,]
+- split()<=>join(), string|reg=> [,]
 - parseInt|parseFloat, (string,redix)=>NaN|10
 ~~~
 
@@ -34,6 +34,7 @@
 // 删除空格
 - str.replace(/(^\s)|(\s$)/g,'')
 - str.replace(/\s/g,'')
+- str.replace(/[\r\s\t\f\n]/g,'')
 // 提取数字
 str.replace(/[^\d]/g,'')
 // 提取中文
@@ -42,6 +43,8 @@ str.replace(/[^\u4E00-\u9FA5]/,'')
 str.replace(/[^a-zA-Z]/g,'') 
 // 去重
 [...new Set(str)].join('')
+// 补0
+('00'+str).substr(str.length)
 ~~~
 
 

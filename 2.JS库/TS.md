@@ -132,7 +132,12 @@ compilerOptions:{
 		"*":["types/*"]
 	}
 }
-# types => package.json
+```
+
+```js
+// 设置声明文件
+- package.json => types|typings
+- index.d.ts|main.d.ts
 ```
 
 ```ts
@@ -158,5 +163,13 @@ import * as xx|{ xx }
 export as namespace
 export default xx
 export  = xx
+// 模块插件声明
+import * as xx from 'xx'
+declare module xx{ export }
+// 全局插件声明
+/// <reference types='jquery'>
+/// <reference types='node'>
+/// <reference path='xx.d.ts'>
+declare xx
 ```
 

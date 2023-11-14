@@ -19,6 +19,8 @@
 - clear => display => hidden(height)
 ~~~
 
+> padding 百分比：父width
+
 ### Flex
 
 - display（flex|inline-flex|-webkit-flex)
