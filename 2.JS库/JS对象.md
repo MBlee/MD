@@ -101,7 +101,7 @@ str.replace(/[^a-zA-Z]/g,'')
 
 ~~~js
 // 生成数组
-- Array()|Array.of()=>[empty]|[...args]
+- Array(length|ele)|Array.of()=>[empty]|[...args]
 - Array.from(类数组|对象,v=>v)
 - flat(Infinity)|flatMap
 // 转字符串

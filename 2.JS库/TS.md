@@ -138,6 +138,12 @@ compilerOptions:{
 // 设置声明文件
 - package.json => types|typings
 - index.d.ts|main.d.ts
+// 自动生成
+compilerOptions=>
+outDir:'lib'
+declaration:true,
+declarationDir:'types',
+declarationMap:true
 ```
 
 ```ts
