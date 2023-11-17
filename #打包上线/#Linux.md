@@ -8,8 +8,8 @@ sync # 同步
 shutdown -h now 
 shutdown -h 10|+10
 shutdown -h 20:30
-halt
 poweroff
+halt
 # 重启
 shutdown -r now 
 reboot
@@ -198,10 +198,10 @@ su
 /etc/passwd => /etc/shadow => /etc/group
 # 切换用户
 su -<user>
-sudo su root
+sudo =>sudoers
 # 退回原用户
 ctrl+d
-exit|loginout
+exit|logout
 # 添加用户|修改
 useradd|usermod <user>
 - g|G <group>
