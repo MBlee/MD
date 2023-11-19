@@ -106,11 +106,12 @@ cat x.txt|grep [text] -in
 
 ```shell
 # gzip|gunzip =>.gz
-gzip [path]
-gunzip [path]
+gzip <file>
+gunzip <file.gz>
+# zip|unzip =>.zip
+zip <new.zip> <path...>
+unzip <new.zip> -d <path>
 ```
-
-
 
 > **vim**
 

@@ -350,3 +350,16 @@ class Person
 function foo(target) {
   target.prototype.show = function(){}         )
 ~~~
+
+> 核心
+
+```js
+import { observable,autorun } from 'mobx'
+const obs = observable.box(xx)
+const obs = observable.map(obj)|observable(obj)
+autorun(()=>{	obs...	})
+obs.set()
+obs.get()
+obs.key
+```
+

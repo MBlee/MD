@@ -155,8 +155,10 @@ postcss tailwind.css -o style.css
 - (color1,color2) => map-get()
 # 继承
 @extend %xx
-插值：#{$xx}
-@import"_"
+# 插值
+- #{$xx}
+# 导入
+@import "_"
 - css|media query
 - http://
 - url()
