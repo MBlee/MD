@@ -29,6 +29,23 @@ mount <path1> <path2>
 unmount -f
 ```
 
+> **网络**
+
+```sh
+# IP配置
+ifconfig ens33
+ping -c
+vi /etc/sysconfig/net-scripts/ifcfg-ens33
+BOOTPROTO=static
+ONBOOT=yes
+IPADDR=1
+GATEWAY=1
+DNS=1
+# HostName
+vi /etc/hostname => /etc/hosts
+hostnamectl set-hostname => systemctl restart network
+```
+
 > **进程**
 
 ```shell
@@ -36,6 +53,16 @@ ps -aux|grep [mysql]
 ps -ef|grep [mysql]
 pstree -pu
 kill -9 [pid]
+```
+
+> **服务**
+
+```sh
+systemctl status firewalld
+systemctl start
+systemctl stop
+systemctl enable
+systemctl disable
 ```
 
 > **目录**
@@ -111,6 +138,10 @@ gunzip <file.gz>
 # zip|unzip =>.zip
 zip <new.zip> <path...>
 unzip <new.zip> -d <path>
+# tar => .tar.gz
+tar -zcvf <.tar.gz> ...
+tar -ztvf <.tar.gz>
+tar -zxvf <.tar.gz> -C <dir>
 ```
 
 > **vim**

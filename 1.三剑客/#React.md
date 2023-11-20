@@ -360,6 +360,6 @@ const obs = observable.map(obj)|observable(obj)
 autorun(()=>{	obs...	})
 obs.set()
 obs.get()
-obs.key
+obs.[key]
 ```
 
