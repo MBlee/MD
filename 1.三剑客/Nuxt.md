@@ -28,8 +28,6 @@ yarn create nuxt-app <app>
 component:true
 ```
 
-
-
 ## 服务端渲染
 
 ```shell

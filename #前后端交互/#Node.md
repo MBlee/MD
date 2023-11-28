@@ -121,6 +121,7 @@ res.write(data)
 ~~~jsx
 const express = require('express')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const app = express()
 app.listen(_port)
 app.use((req,res,next)=>...)
@@ -129,6 +130,11 @@ app.use(cors())
 // 数据格式化
 app.use(express|bodyParser.json())
 app.use(express|bodyParser.urlencoded({extended:true}))
+// cookie
+app.use(cookieParser('signed'))
+res.cookie(key,value,{maxAge,signed,domain,path})
+res.cookies.key
+res.signedCookies.key
 // 静态服务器
 app.use(baseUrl,express.static('path'))
 // 路由
