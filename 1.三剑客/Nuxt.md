@@ -1,9 +1,36 @@
-## Nuxt2.14.5
+## Nuxt2
 
 ```shell
 npx create-nuxt-app <app>
+# or
 npm i nuxt@2
 nuxt
+```
+
+#### 路由
+
+```jsx
+// 布局文件
+default.vue=> <Nuxt />
+// 页面文件
+error.vue=> layout:"custom"
+<nuxt-link to="/">  // 页面跳转
+```
+
+```jsx
+// 动态路由
+pages/_id/_params
+// 参数校验
+validate({params,query}){
+    return /\/.test(params.id)
+}
+```
+
+#### 配置
+
+```js
+// nuxt.config.js
+component:true
 ```
 
 ## Nuxt3
@@ -13,19 +40,33 @@ npx nuxi@latest init <app>
 npm run dev -o
 ```
 
-## Nuxt
-
-```css
-yarn create nuxt-app <app>
-```
-
-> layouts=>pages=>components
+#### 路由
 
 ```jsx
-// layouts=>default.vue
-<Nuxt />
-// nuxt.config.js
-component:true
+// 根页面
+app.vue =>
+<NuxtPage />
+// 布局
+<slot />
+// 跳转
+<NuxtLink to="/"/>
+```
+
+```jsx
+// 动态路由
+pages/[id].vue => useRoute().params.id
+// 路由校验
+definePageMeta({
+    validate:aysnc(route)=>{
+        return /\.test(route.params.id)
+    }
+})
+```
+
+#### 配置
+
+```jsx
+
 ```
 
 ## 服务端渲染

@@ -1,6 +1,6 @@
-#### Linux命令
+## Linux命令
 
-> **开关机**
+#### **开关机**
 
 ```shell
 sync # 同步
@@ -15,7 +15,7 @@ shutdown -r now
 reboot
 ```
 
-> **磁盘**
+#### **磁盘**
 
 ```shell
 # 系统磁盘
@@ -29,33 +29,41 @@ mount <path1> <path2>
 unmount -f
 ```
 
-> **网络**
+#### **网络**
 
 ```sh
+# DNS配置
+vim /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 114.114.114.114
 # IP配置
-ifconfig ens33
-ping -c
 vi /etc/sysconfig/net-scripts/ifcfg-ens33
 BOOTPROTO=static
 ONBOOT=yes
 IPADDR=1
+NETMASK=1
 GATEWAY=1
-DNS=1
+DNS1=8.8.8.8
 # HostName
 vi /etc/hostname => /etc/hosts
 hostnamectl set-hostname => systemctl restart network
+# 查看IP
+ifconfig
+ping -c
+# 下载
+wget -O <filename> <url>
 ```
 
-> **进程**
+#### **进程**
 
 ```shell
 ps -aux|grep [mysql]
 ps -ef|grep [mysql]
 pstree -pu
-kill -9 [pid]
+kill -9|-15 [pid]
 ```
 
-> **服务**
+#### **服务**
 
 ```sh
 systemctl status firewalld
@@ -65,7 +73,7 @@ systemctl enable
 systemctl disable
 ```
 
-> **目录**
+#### **目录**
 
 ```shell
 # 查看目录
@@ -92,7 +100,7 @@ mv -f
 mv -u
 ```
 
-> **文件**
+#### **文件**
 
 ```shell
 # 查看文件属性
@@ -100,12 +108,12 @@ l=>链接文件
 d=>目录
 -=>文件
 rwx=>421=>7|6|5|4
-# 修改文件属性
-chmod -R 744 <file>
 # 修改组
 chgrp -R <grp> <file>
 # 修改主
-chown -R <grp:own> <file>
+chown -R <own:group> <file>
+# 修改文件属性
+chmod -R 744 <file>
 # 查看内容
 cat|tac|nl
 head|tail -n <number>
@@ -119,6 +127,9 @@ ln -s <a> <b>
 # 创建文件
 touch <file>
 echo <str> >><file>
+# <<和>>
+cat >>
+<< EOF
 ```
 
 ```shell
@@ -129,6 +140,9 @@ find -size +5M | grep [xx]
 updatedb => locate
 # 过滤文本
 cat x.txt|grep [text] -in
+# grep|egrep|fgrep
+grep -ni <files>
+-v
 ```
 
 ```shell
@@ -144,7 +158,7 @@ tar -ztvf <.tar.gz>
 tar -zxvf <.tar.gz> -C <dir>
 ```
 
-> **vim**
+#### **vim**
 
 ```shell
 # 输入模式
@@ -214,7 +228,7 @@ ctrl + r
 :set nu|set nonu
 ```
 
-> **管理员**
+#### **管理员**
 
 ```shell
 # 当前用户
@@ -223,7 +237,7 @@ whoami
 su
 ```
 
-> **用户管理**
+#### **用户管理**
 
 ```shell
 # 查看
@@ -253,14 +267,26 @@ groupadd|groupmod -g <ID> <group>
 groupdel <GID>
 ```
 
-#### Linux常用命令
+## Linux常用
+
+> mysql配置
 
 ~~~shell
-# 查看IP
-ifconfig
+# 初始化 
+./mysqld
+	-initialize 
+	-user=mysql
+	-datadir=/opt/mysql/data
+	-basedir=/opt/mysql
+# 数据加密
+./mysql_ssl_rsa_setup
+	-datadir=/opt/mysql/data
+# 目录权限
+chown -R mysql:mysql /opt/mysql/
+chmod -R 777 /opt/mysql/
 ~~~
 
-#### Linux简介
+## Linux简介
 
 **版本：**Ubuntu、RedHat、CentOS
 
