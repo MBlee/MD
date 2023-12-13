@@ -14,12 +14,19 @@ nuxt
 default.vue=> <Nuxt />
 // 页面文件
 error.vue=> layout:"custom"
-<nuxt-link to="/">  // 页面跳转
+// 页面跳转
+<nuxt-link to="/">
+- nuxt-link-active
+- nuxt-link-exact-active
 ```
 
 ```jsx
+// 嵌套路由
+<nuxt-child/>
 // 动态路由
-pages/_id/_params
+pages/_id/_params	=>$route.params.id|params
+pages?id=xx&params=xx	=>$route.query.id|params
+pages/_.vue
 // 参数校验
 validate({params,query}){
     return /\/.test(params.id)
@@ -54,7 +61,8 @@ app.vue =>
 
 ```jsx
 // 动态路由
-pages/[id].vue => useRoute().params.id
+pages/[id].vue	=> useRoute().params.id
+pages?id=xx&params=xx	=> useRoute().query.id|params
 // 路由校验
 definePageMeta({
     validate:aysnc(route)=>{

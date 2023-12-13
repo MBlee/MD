@@ -26,6 +26,13 @@ offsetY, pageY, clientY, screenY
 
 innerHeight
 
+```js
+// 获取视口位置|大小
+getBoundingClientRect()		=>x,y|width,height
+// 交界监听器
+intersectionObserver((entries)=>{},{root,rootMargin,threshold})
+```
+
 ### JS动画
 
 **匀速运动**
