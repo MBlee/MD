@@ -30,26 +30,47 @@
 
 #### Vue-Router
 
+> 安装
+
 ```shell
 npm i vue-router@3 || vue add router
 ```
 
 ```js
+// 导入
 Vue.use(Router) => new Vue({router})
+```
+
+> API
+
+```js
+// <router-view name>
+route:{
+    path,name,redirect,
+    component|s,props,
+    meta:{} =>$route.matched[]
+}
+// 动态路由
+path:"/page/:id?*+(\reg)"	=>$route.params.id
+props:boolean|route=>props
+// 动态路由监听
+watch: $route(to,from)=>...
+beforeRouteUpdate(to,from,next)=>...
+// 嵌套路由
+children:[path:'']
+// 404路由
+path:'*'|'/user-*'	=>$route.params.pathMatch
 ```
 
 ```js
 // 回退
 window.history.length>1? this.$router.go(-1):this.$router.push('/')
-// 监听
-watch => $route(to,from)=>...
-beforeRouteUpdate(to,from,next)=>...
+// 跳转
+$router.push(location,onComplete?,onAbort?)
+$router.replace|go(n)
 ```
 
-```js
-// 通配符路由
-path:'*/p-*' => $route.params.pathMatch
-```
+
 
 Router属性：
 
