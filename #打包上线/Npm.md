@@ -1,5 +1,14 @@
 ## Npm
 
+#### 脚本
+
+```shell
+# 多脚本并发
+server > null | start
+```
+
+
+
 #### 查看包
 
 ~~~shell

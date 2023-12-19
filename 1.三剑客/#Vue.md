@@ -19,9 +19,12 @@
 - v-html / v-once
 - v-slot: / slot: slot-scope:
 - <slot> name,...props
-:class|:style，xxxStr|{class: true}|[str|{}]
 # v-on：.stop/.prevent/.capture/.self/.once/.passive/@keydown.enter
 # v-model：.lazy/.number/.trim
+# 样式
+- :class|:style = xxxStr|{class: true}|[str|{}]
+- /deep/	>>>
+- ::v-deep
 # 事件
 1. @click = 'method',传e
 2. @click = 'method()',传参
@@ -183,6 +186,10 @@ defineAsyncComponent({
 ```
 
 ```js
+// 样式
+:deep() :global() :slotted()
+$style => useCssModule
+v-bind(color)
 // 数据|方法
 - ref|.value，reactive
 - toRefs，...toRefs(xxxObj)
