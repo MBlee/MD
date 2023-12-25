@@ -95,7 +95,7 @@ Router组件：
 #### Vuex
 
 ```js
-/*  */
+/* store */
 getters:{ (state,getters)=>{ return arg=>{}} }
 mutations:{ (state,payload)=>{} }
 actions:{ (context,payload)=>{ context.commit('') } }

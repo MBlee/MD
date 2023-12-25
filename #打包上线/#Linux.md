@@ -96,8 +96,9 @@ rm -i
 cp -r
 cp -a
 # 移动文件或目录,重命名
-mv -f
-mv -u
+mv -v
+mv -f || -u
+mv -i || -n
 ```
 
 #### **文件**

@@ -7,6 +7,16 @@
 server > null | start
 ```
 
+```js
+// bin脚本
+#!/usr/bin/env node
+...
+// 链接脚本
+npm prefix -g
+npm link
+npm unlink
+```
+
 
 
 #### 查看包

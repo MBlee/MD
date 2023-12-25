@@ -122,6 +122,8 @@ res.write(data)
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
 const app = express()
 app.listen(_port)
 app.use((req,res,next)=>...)
@@ -135,6 +137,23 @@ app.use(cookieParser('signed'))
 res.cookie(key,value,{maxAge,signed,domain,path})
 res.cookies.key
 res.signedCookies.key
+// session
+app.use(session({
+    secret:'secStr',
+    name:'cookieName',
+    resave:false,
+    saveUninitialized:true,
+    cookie:{maxAge,secure},
+    rolling:true,
+    store: new MongoStore({
+        url:'',
+        mongoOptions
+    })
+}))
+req.session.username = 'str'
+req.session.username = ''
+req.session.cookie.maxAge=0
+req.session.destroy(err=>...)
 // 静态服务器
 app.use(baseUrl,express.static('path'))
 // 路由

@@ -1,3 +1,14 @@
+## 高级命令
+
+#### 编程命令
+
+```shell
+# 循环
+for %a in (,) do cmd
+```
+
+
+
 ## 常用查看
 
 ~~~shell
@@ -61,13 +72,23 @@ copy xx xx
 xcopy xx xx /s /h
 # 移动文件
 move xx xx
+for %a in(,) do move
 # 文件保存退出
 esc :wq
 ~~~
 
+```shell
+# 合并文件
+copy /b a+b... c
+```
+
 ~~~shell
+# 查看文件夹名称
+dir /b
 # 查看文件夹大小
 dir _files /a /s
+# 查找
+find /c /i
 ~~~
 
 ~~~shell

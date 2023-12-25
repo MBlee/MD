@@ -1,0 +1,9 @@
+```js
+/** @constructor */
+jsdoc *.js
+```
+
+
+
+
+
