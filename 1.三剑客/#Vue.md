@@ -33,64 +33,58 @@
 
 #### Vue-Router
 
-> 安装
-
-```shell
-npm i vue-router@3 || vue add router
-```
+> 安装：npm i vue-router@3 || vue add router
 
 ```js
-// 导入
 Vue.use(Router) => new Vue({router})
 ```
 
 > API
 
+```html
+<keep-alive exclude> =>activated
+<router-link to  tag  active-class> 
+<router-view name>
+```
+
 ```js
-// <router-view name>
-route:{
-    path,name,redirect,
-    component|s,props,
-    meta:{} =>$route.matched[]
-}
+// 路由设置
+- path,name,redirect
+- component|s:{default}
+- meta
+- props
 // 动态路由
-path:"/page/:id?*+(\reg)"	=>$route.params.id
-props:boolean|route=>props
+- path:"/page/:id?*+(\reg)"
+- props:boolean|route=>props	(route.params)
 // 动态路由监听
-watch: $route(to,from)=>...
-beforeRouteUpdate(to,from,next)=>...
-// 嵌套路由
-children:[path:'']
+- watch: $route(to,from)=>...
+- beforeRouteUpdate(to,from,next)=>...
 // 404路由
-path:'*'|'/user-*'	=>$route.params.pathMatch
+- path:'*'|'/user-*'
+// 嵌套路由
+- children:[path:'']
 ```
 
 ```js
-// 回退
-window.history.length>1? this.$router.go(-1):this.$router.push('/')
-// 跳转
-$router.push(location,onComplete?,onAbort?)
-$router.replace|go(n)
+// 获取路由
+- $route.matched[]
+- $route.path|fullPath
+- $route.params.id
+- $route.params.pathMatch
+- $route.query.id
+- $route.hash
+// 切换
+- $router.push|replace(location,onComplete?,onAbort?)
+- $router.go(n)
+- window.history.length > 1?
+  $router.go(-1):
+  $router.push('/')
 ```
-
-
-
-Router属性：
-
-- routes: { path , component , children }
-- mode , linkActiveClass
 
 Router周期：
 
 - beforeEach( to.matched )
 - beforeEnter , beforeRouterEnter
-
-API:  1. $router.push     2.$routes.query
-
-Router组件：
-
-- <router-link> to , tag , active-class
-- <keep-alive> exclude , activated
 
 #### Vuex
 
