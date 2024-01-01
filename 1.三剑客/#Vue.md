@@ -53,6 +53,11 @@ Vue.use(Router) => new Vue({router})
 - component|s:{default}
 - meta
 - props
+// 懒加载
+- ()=>({loading,error,component:import,delay,timeout})
+- ()=>import(/*webpackChunkName:xx*/'xx')
+- (resolve)=>require(['xx'],resolve)
+- (res)=>require.ensure()
 // 动态路由
 - path:"/page/:id?*+(\reg)"
 - props:boolean|route=>props	(route.params)
