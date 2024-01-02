@@ -49,15 +49,15 @@ Vue.use(Router) => new Vue({router})
 
 ```js
 // 路由设置
-- path,name,redirect
+- path,name,redirect,alias
 - component|s:{default}
 - meta
 - props
 // 懒加载
 - ()=>({loading,error,component:import,delay,timeout})
 - ()=>import(/*webpackChunkName:xx*/'xx')
-- (resolve)=>require(['xx'],resolve)
-- (res)=>require.ensure()
+- (res)=>require(['xx'],res)
+- (res)=>require.ensure([],()=>res(require('xx')),'chunkName')
 // 动态路由
 - path:"/page/:id?*+(\reg)"
 - props:boolean|route=>props	(route.params)
@@ -68,6 +68,9 @@ Vue.use(Router) => new Vue({router})
 - path:'*'|'/user-*'
 // 嵌套路由
 - children:[path:'']
+// 重定向|别名
+- redirect:route=>newroute|{name}
+- alias:[]
 ```
 
 ```js
@@ -84,12 +87,20 @@ Vue.use(Router) => new Vue({router})
 - window.history.length > 1?
   $router.go(-1):
   $router.push('/')
+// 更新数据
+- created=>this.$watch({immediate})
+- beforeRouteEnter(next(vm=>..)) => beforeRouteUpdate
 ```
 
-Router周期：
-
-- beforeEach( to.matched )
-- beforeEnter , beforeRouterEnter
+```js
+// 路由周期
+- beforeEach|afterEach( to.matched )
+- beforeEnter 
+- beforeRouterEnter|Update|Leave
+- beforeResolve
+next(false|Error|route)
+next(vm=>..)
+```
 
 #### Vuex
 
@@ -219,56 +230,49 @@ return customRef((track,trigger)=>{
 
 #### **Vue-Router**
 
-```shell
-npm i vue-router@4
-```
+> 安装：npm i vue-router@4
 
 ```js
-Vue.createApp().use(Router)
-Router.createRouter() => 
-history: createWebHistory('/baseURL/')|createWebHashHistory()|createMemoryHistory()
-// 路由器配置
-strict + sensitive
+Vue.createApp().use(router)
+```
+
+> API
+
+```js
+// 路由器设置
+- Router.createRouter() 
+- history
+createWebHistory('/baseURL/')
+createWebHashHistory()
+createMemoryHistory()
+- strict
+- sensitive
 ```
 
 ```js
 // 动态路由监听
 created => this.$watch(()=>this.$route.params,(to,pre)=>...)
 beforeRouteUpdate(to,pre)=>...
-// 可选可重复
-path:/:id(\\d+*)+*?
-// 嵌套路由
-name => children => ""
+// 404
+path:/:pathMatch(.*)*
+path:/:user-:pathMatch(.*)*
 ```
 
 ```js
-// 路由跳转
-<link-view> => to + replace
-router.push|replace|to =>
-name+params+query+hash
+// 路由周期
+- beforeEach|afterEach(to,from,faliure)
+- beforeEnter([])
+- onBeforeRouterEnter|Update|Leave
+- beforeResolve
+return false | throw Error
 ```
 
-
-
-404匹配：path: "/:path(.*)"
-
-正则匹配：path: "/:id(\\\d+*?)"
-
-跳转：push|replace|go
-
-- ("")|{path|name, params, query}
-
-多组件：components{default...} > router-view.name
-
-重定向：redirect: (to)=>{return {path:}}
-
-别名：alias: ""|[]
-
-导航守卫：
-
-- beforeEach((to, from, next)=>{ next()})
-- beforeEnter((to, from))
-- beforeRouteEnter|Leave|Update
+```js
+// 获取
+- useRoute
+// 切换
+- useRouter
+```
 
 #### Vuex
 
@@ -285,10 +289,6 @@ createApp(App).use(store)
 import {useStore} from 'vuex'
 Vuex.useStore()
 ```
-
-
-
-
 
 - state: reactive({})
 - setState()....
