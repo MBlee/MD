@@ -3,26 +3,20 @@
 ```shell
 npx create-nuxt-app <app>
 # or
-npm i nuxt@2
-nuxt
+npm i nuxt@2 => nuxt
 ```
 
 #### 路由
 
 ```jsx
 // 布局文件
-default.vue=> <Nuxt />
-// 页面文件
-error.vue=> layout:"custom"
-// 页面跳转
+default.vue=> layout:"custom"
+<nuxt/> 
+<nuxt-child/>
 <nuxt-link to="/">
-- nuxt-link-active
-- nuxt-link-exact-active
 ```
 
 ```jsx
-// 嵌套路由
-<nuxt-child/>
 // 动态路由
 pages/_id/_params	=>$route.params.id|params
 pages?id=xx&params=xx	=>$route.query.id|params
@@ -30,6 +24,14 @@ pages/_.vue
 // 参数校验
 validate({params,query}){
     return /\/.test(params.id)
+}
+```
+
+```js
+// 异步数据
+- (process.server) 跳转：服务端，刷新：客户端
+asyncData({params,query,route}){
+    return {}
 }
 ```
 
@@ -50,12 +52,8 @@ npm run dev -o
 #### 路由
 
 ```jsx
-// 根页面
-app.vue =>
-<NuxtPage />
-// 布局
-<slot />
-// 跳转
+app.vue => <NuxtPage />
+layout.vue => <slot />
 <NuxtLink to="/"/>
 ```
 
