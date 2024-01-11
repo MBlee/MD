@@ -7,8 +7,6 @@
 for %a in (,) do cmd
 ```
 
-
-
 ## 常用查看
 
 ~~~shell
@@ -17,6 +15,8 @@ where node
 # 查看系统配置
 systeminfo
 dxdiag
+# 查看服务
+services.msc
 ~~~
 
 ## 时间戳
@@ -50,6 +50,22 @@ net share
 # 创建共享
 net share xx=xx
 ~~~
+
+## 注册表
+
+> regedit
+
+#### 添加右键
+
+```markdown
+# 文件：HKEY_CLASSES_ROOT\*\shell
+1. 新建项：sublime => 默认
+2. 新建字符串：Icon => sublPath
+3. 新建子项：command:subPath %1
+# 目录：HKEY_CLASSES_ROOT\Direactory\Background\shell
+1. 新建项：cmd
+2. 新建子项：command:cmd.exe /k cd /d "%V"
+```
 
 ## 文件操作
 

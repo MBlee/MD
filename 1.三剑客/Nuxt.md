@@ -11,7 +11,7 @@ npm i nuxt@2 => nuxt
 ```jsx
 // 布局文件
 default.vue=> layout:"custom"
-<nuxt/> 
+<Nuxt/> 
 <nuxt-child/>
 <nuxt-link to="/">
 ```
@@ -35,11 +35,33 @@ asyncData({params,query,route}){
 }
 ```
 
+#### 组件
+
+```markdown
+# 图片资源
+1. class|img => ~assets...
+2. style => require(~/assets|static...)
+```
+
 #### 配置
 
+> nuxt.config.js
+
 ```js
-// nuxt.config.js
 component:true
+```
+
+> npm i less less-loader node-sass sass-loader@^10 fibers
+>
+> npm i @nuxtjs/style-resources
+
+```js
+css:['~/.less','~/.scss']
+styleResources:{
+    less:['~/xx.less'],
+    scss:['~/xx.scss']
+}
+buildModules:['@nuxtjs/style-resources']
 ```
 
 ## Nuxt3
@@ -61,13 +83,54 @@ layout.vue => <slot />
 // 动态路由
 pages/[id].vue	=> useRoute().params.id
 pages?id=xx&params=xx	=> useRoute().query.id|params
+```
+
+```js
 // 路由校验
 definePageMeta({
     validate:aysnc(route)=>{
         return /\.test(route.params.id)
     }
 })
+// 路由中间件
+- vue=> definePageMeta{middleware:[]}
+- middleware/.global.js
+- addRouteMiddleware('xx',()=>..,{global:true})
+export default defineNuxtRouteMiddleware(to,from){
+    if(to.params.id) return abortNavigation()
+    if(to.path !== '/') return navigateTo('/')
+}
+- abortNavigation(err)
+- navigateTo('/',{redirectCode})
+// 数据获取
+- useFetch(url,{})
+baseURL|method|query|params|body|headers
+onRequest|onRequestError
+=>data|pending|status
 ```
+
+> SEO和Meta
+
+```ts
+// 默认值
+- defineNuxtConfig({opt})=>
+app.head.charset:'utf-8'
+app.head.viewport:'width=device-width,initial-scale=1'
+// useHead({})
+- title
+- meta.name|content
+- bodyAttrs.class
+- script:[{innerHTML}]
+// useSeoMeta({})
+- title
+- ogTitle
+- description
+- ogDescription
+- ogImage
+- twitterCard
+```
+
+
 
 #### 配置
 

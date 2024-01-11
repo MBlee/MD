@@ -38,7 +38,7 @@ cn({
 > 数据
 
 ~~~js
-// 静态数据
+// 静态生成
 export async getStaticProps({params}) => ({
     props: _data
 })
@@ -46,7 +46,10 @@ export async getStaticPaths() => ({
     paths: [{params},....], 
     fallback:false
 })
-- getServersideProps => ({})
+// 服务端渲染
+export async getServersideProps(context) => ({
+    
+})
 ~~~
 
 #### API

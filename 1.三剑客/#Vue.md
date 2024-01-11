@@ -1,16 +1,70 @@
+[TOC]
+
 ## VUE2
+
+#### 过渡&动画
+
+```vue
+<!-- CSS单过渡 -->
+<transition
+	name="prefix"
+    enter|leave-active-class
+	enter|leave-class
+	enter|leave-to-class
+	:duration={enter,leave}|millions
+/>
+<!-- JS单过渡 -->
+<transition
+	@before-enter=(el)
+    @enter=(el,done)
+    @after-enter=(el)
+	@enter-cancelled=(el)
+	:css=false
+/>
+<!-- 初渲染过渡 -->
+<transition
+    appear
+    appear-active-class
+	appear-class
+	appear-to-class
+	@before-appear=(el)
+    @appear=(el,done)
+    @after-appear=(el)
+	@appear-cancelled=(el)
+	:css=false
+/>
+<!-- 多元素|组件过渡 -->
+<transition
+    mode="out-in|in-out"
+/>
+<component :is='cname'/>
+<!-- 列表过渡 -->
+<transition-group
+	name=v-move
+	tag=p
+/>
+<!-- 过渡类 -->
+.v-enter|leave-to
+.v-enter|leave-active
+```
+
+```js
+<!-- 状态过渡 -->
+```
 
 #### Vue组件
 
 ~~~shell
 # Vue属性
-- props / data
-- computed / watch / method
+- props | data
+- computed | watch | method
+- provide(()=>{...props}) => inject:['props']
 # Vue周期
-- created / mouted / update
+- created | mouted | update
 # API
-1. this.emit
-2. this.refs/$children
+1. this.$emit
+2. this.$refs
+3. this.$parent|$root|$children
 ~~~
 
 ~~~shell
@@ -62,7 +116,7 @@ Vue.use(Router) => new Vue({router})
 - path:"/page/:id?*+(\reg)"
 - props:boolean|route=>props	(route.params)
 // 动态路由监听
-- watch: $route(to,from)=>...
+- watch|this.$watch: $route(to,from)=>...
 - beforeRouteUpdate(to,from,next)=>...
 // 404路由
 - path:'*'|'/user-*'
@@ -95,9 +149,9 @@ Vue.use(Router) => new Vue({router})
 ```js
 // 路由周期
 - beforeEach|afterEach( to.matched )
+- beforeResolve
 - beforeEnter 
 - beforeRouterEnter|Update|Leave
-- beforeResolve
 next(false|Error|route)
 next(vm=>..)
 ```
@@ -158,7 +212,8 @@ API:
 
 ```shell
 # vite安装（冷启动、热重载、按需编译）
-npm init vite-app xxxPro
+npm init vite-app <app>
+npm create vue@latest <app>
 ```
 
 ```js
@@ -173,6 +228,8 @@ Vue.createApp({
 new Vue({ render:h=>h(app) }).$mount('#app')
 ```
 
+#### 过渡&动画
+
 #### Vue组件
 
 ```js
@@ -181,11 +238,15 @@ setup(props,context|{attrs,emits,slots}){
 	return {}|(h)=> h(component)
 }
 // 属性|接口
-defineProps:[{type,default(),required,validator(value)}]
-defineEmits:[null,(params)=>{return true}]
+- defineProps:[{type,default(),required,validator(value)}]
+- withDefaults(defineProps<Props>(),{data,method:()=>[]})
+- defineEmits:[null,(params)=>{return true}]
+- defineEmits<{(e:'change',id:number)}>()
+- defineEmits<{change:[id:number]}>()
 modelValue|update:modelValue =>v-model:
 modelModifiers => {default()=>({})}
-ref=>(el)=>{}|expose:[]
+ref(null|[])=>:ref=>(el)=>{}
+expose:['data','method']|defineExpose({a,b})
 // 异步组件
 defineAsyncComponent(()=>{promise.resolve({import('component')})})
 defineAsyncComponent({
@@ -228,6 +289,14 @@ return customRef((track,trigger)=>{
 - inject(key,default|()=>{obj},true)
 ```
 
+```ts
+// 组件引用类型
+ref<(InstanceType<typeof CMP>|null)>
+ref<ComponentPublicInstance>
+```
+
+
+
 #### **Vue-Router**
 
 > 安装：npm i vue-router@4
@@ -251,8 +320,8 @@ createMemoryHistory()
 
 ```js
 // 动态路由监听
-created => this.$watch(()=>this.$route.params,(to,pre)=>...)
-beforeRouteUpdate(to,pre)=>...
+watch(()=>this.$route.params,(to,pre)=>...)
+onBeforeRouteUpdate(to,pre)=>...
 // 404
 path:/:pathMatch(.*)*
 path:/:user-:pathMatch(.*)*
@@ -261,10 +330,13 @@ path:/:user-:pathMatch(.*)*
 ```js
 // 路由周期
 - beforeEach|afterEach(to,from,faliure)
+- beforeResolve
 - beforeEnter([])
 - onBeforeRouterEnter|Update|Leave
-- beforeResolve
 return false | throw Error
+// 更新数据
+- watch(route=>route.params,fetch,{immediate:true})
+- beforeRouteEnter(to,from,next)=> fetch({next(vm=>vm.setData)})
 ```
 
 ```js
@@ -272,7 +344,19 @@ return false | throw Error
 - useRoute
 // 切换
 - useRouter
+// useLink
+- props:{...RouterLink.props}
+- useLink(props) => route,href,isActive,navigate
 ```
+
+```vue
+<router-view v-slot="{Component}">
+<transition><keep-alive>
+	<component :is="Component" prop ref/>
+</router-view>
+```
+
+
 
 #### Vuex
 

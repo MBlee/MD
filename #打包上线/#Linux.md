@@ -1,3 +1,5 @@
+[TOC]
+
 ## Linux命令
 
 #### **开关机**
@@ -13,6 +15,40 @@ halt
 # 重启
 shutdown -r now 
 reboot
+```
+
+#### **用户管理**
+
+```shell
+# 当前用户
+whoami
+# 查看
+/etc/passwd => /etc/shadow => /etc/group
+# 切换用户
+su -<user>
+sudo =>sudoers
+# 退回原用户
+ctrl+d
+exit|logout
+# 添加用户|修改
+useradd|usermod <user>
+- g|G <group,...>
+- m|d <home/dir>
+- s <bash>
+- l <new> <old> (login)
+# 删除用户
+userdel -r <user> (remove)
+-f (force)
+-g (group)
+# 设置密码
+passwd <user>
+-l
+-d
+# 添加组
+groupadd|groupmod -g <ID> <group>
+-n <new> <old>
+# 删除组
+groupdel <GID>
 ```
 
 #### **磁盘**
@@ -73,6 +109,23 @@ systemctl enable
 systemctl disable
 ```
 
+>防火墙：firewall-cmd | firewall-config
+>
+>/etc/firewalld/ => /usr/lib/firewalld/
+
+```shell
+# 查看防火墙状态
+firewall-cmd --state
+# 重启防火墙
+firewall-cmd --reload
+# 查看开放端口
+firewall-cmd --zone=public --list-ports
+# 查看所有被占用端口
+netstat -nlp
+# 开放22端口
+firewall-cmd --zone=public --add-port=22/tcp --permanent
+```
+
 #### **目录**
 
 ```shell
@@ -93,7 +146,7 @@ rm -f
 rm -r
 rm -i
 # 复制文件或目录
-cp -r
+cp -r -p
 cp -a
 # 移动文件或目录,重命名
 mv -v
@@ -227,45 +280,6 @@ ctrl + r
 :/keyword => n
 # 显示行号
 :set nu|set nonu
-```
-
-#### **管理员**
-
-```shell
-# 当前用户
-whoami
-# 切换管理员
-su
-```
-
-#### **用户管理**
-
-```shell
-# 查看
-/etc/passwd => /etc/shadow => /etc/group
-# 切换用户
-su -<user>
-sudo =>sudoers
-# 退回原用户
-ctrl+d
-exit|logout
-# 添加用户|修改
-useradd|usermod <user>
-- g|G <group>
-- m|d <home/dir>
-- s <bash>
-- l <new> <old>
-# 删除用户
-userdel -r <user>
-# 设置密码
-passwd <user>
--l
--d
-# 添加组
-groupadd|groupmod -g <ID> <group>
--n <new> <old>
-# 删除组
-groupdel <GID>
 ```
 
 ## Linux常用

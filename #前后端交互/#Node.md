@@ -1,4 +1,11 @@
+[TOC]
+
 ## Node模块
+
+```js
+// 当前路径
+process.cwd()
+```
 
 #### Http模块
 
@@ -28,6 +35,9 @@ http.createServer((req,res)=>{
 #### Fs模块
 
 ```js
+// Promisify
+import {promisify} from 'util'
+const read = promisify(fs.readFile)
 // 检测文件|目录
 fs.stat(path,(err,data)=>{
     .isDirectory|.isFile
@@ -88,6 +98,8 @@ md5(xxx)
 # 日期格式化
 npm silly-datetime
 sd.format(date,'YYYY-MM-DD HH:mm')
+
+
 ```
 
 #### 搭建服务器
