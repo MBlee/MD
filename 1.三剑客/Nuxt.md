@@ -25,14 +25,17 @@ pages/_.vue
 validate({params,query}){
     return /\/.test(params.id)
 }
+// 中间件
+- /middleware
+global.js|md.client|server.js	=>default(context:{route,req.headers})=>...
+- /nuxt.config.js
+router.middleware:[{ src,mode }]
+- /page.vue
+middleware
 ```
 
 ```js
-// 异步数据
-- (process.server) 跳转：服务端，刷新：客户端
-asyncData({params,query,route}){
-    return {}
-}
+
 ```
 
 #### 组件
@@ -41,6 +44,38 @@ asyncData({params,query,route}){
 # 图片资源
 1. class|img => ~assets...
 2. style => require(~/assets|static...)
+```
+
+```js
+// 异步数据
+- (process.server) 跳转：服务端，刷新：客户端
+asyncData({app,params,query,route}){
+    return {}
+}
+```
+
+> 插件
+
+```js
+- /plugins
+xx.client|server.js
+- /nuxt.config.js
+plugins:[{	src,mode	}]
+```
+
+```js
+// v-tooltip插件
+Vue.use(tooltip)
+```
+
+```js
+// axios插件
+export default(context:{store,router},inject)=>{
+    inject('api',{
+        methods...
+    })
+}
+asyncData:	app=>app.$api.methods()|this.$api
 ```
 
 #### 配置
@@ -64,6 +99,18 @@ styleResources:{
 buildModules:['@nuxtjs/style-resources']
 ```
 
+#### ETC
+
+> 动画过渡
+
+```js
+- default.vue=>
+.page-enter|.page-leave-to
+.page-enter-active
+- page.vue=>
+transition:xxx
+```
+
 ## Nuxt3
 
 ```shell
@@ -74,9 +121,19 @@ npm run dev -o
 #### 路由
 
 ```jsx
-app.vue => <NuxtPage />
-layout.vue => <slot />
-<NuxtLink to="/"/>
+>>> <NuxtPage/>
+pageKey=static|route=>route.fullPath
+definePageMeta({key})
+ref => ref.value.pageRef
+>>> <NuxtLayout/>
+name='layout'
+xx=>useAttrs().xx
+ref => ref.value.layoutRef
+>>> <NuxtLink/>
+to="/"
+target="__blank"
+rel|noRel=""
+>>> <slot/>
 ```
 
 ```jsx
@@ -102,11 +159,7 @@ export default defineNuxtRouteMiddleware(to,from){
 }
 - abortNavigation(err)
 - navigateTo('/',{redirectCode})
-// 数据获取
-- useFetch(url,{})
-baseURL|method|query|params|body|headers
-onRequest|onRequestError
-=>data|pending|status
+
 ```
 
 > SEO和Meta
@@ -130,12 +183,65 @@ app.head.viewport:'width=device-width,initial-scale=1'
 - twitterCard
 ```
 
+#### 组件
 
+```js
+// 数据获取
+- useFetch(url,{})
+baseURL|method|query|params|body|headers
+onRequest|onRequestError
+=>data|pending|status
+```
 
 #### 配置
 
 ```jsx
 
+```
+
+#### ETC
+
+> 动画过渡
+
+```js
+<NuxtPage :transition="{name,mode}">
+```
+
+```js
+// 页面过渡
+>>> nuxt.config.ts
+export default defineNuxtConfig({
+  app:{
+      pageTransition:{name,mode:'out-in'}|false
+  }  
+})
+>>> page.vue
+definePageMeta({
+    pageTransition:{name}|false,
+    onBeforeEnter:el=>,
+    onEnter:(el,done)=>,
+    onAfterEnter:el=>
+})
+
+// 布局过渡
+>>> nuxt.config.js
+export default defineNuxtConfig({
+	app:{
+        layoutTransition:{name,mode}|false
+    }    
+})
+>>> page.vue
+definePageMeta({
+    layout,
+    layoutTransition:{name}|false
+})
+// 动态过渡
+>>> page.vue
+definePageMeta({
+    middleware(to,from){
+        to.meta.pageTransition.name
+    }
+})
 ```
 
 ## 服务端渲染
