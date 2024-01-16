@@ -1,5 +1,3 @@
-[TOC]
-
 ## Node模块
 
 ```js
@@ -131,45 +129,47 @@ res.write(data)
 #### 服务器
 
 ~~~jsx
+// HTTP服务器
 const express = require('express')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
 const app = express()
 app.listen(_port)
 app.use((req,res,next)=>...)
 // 跨域
+const cors = require('cors')
 app.use(cors())
 // 数据格式化
-app.use(express|bodyParser.json())
-app.use(express|bodyParser.urlencoded({extended:true}))
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
+req.body
 // cookie
+const cookieParser = require('cookie-parser')
 app.use(cookieParser('signed'))
 res.cookie(key,value,{maxAge,signed,domain,path})
-res.cookies.key
-res.signedCookies.key
+req.cookies|signedCookies.key
 // session
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
 app.use(session({
     secret:'secStr',
     name:'cookieName',
-    resave:false,
-    saveUninitialized:true,
     cookie:{maxAge,secure},
     rolling:true,
+    resave:false,
+    saveUninitialized:true,
     store: new MongoStore({
         url:'',
         mongoOptions
     })
 }))
-req.session.username = 'str'
-req.session.username = ''
-req.session.cookie.maxAge=0
-req.session.destroy(err=>...)
+req.session.username = 'str' // 设置
+req.session.username = '' // 清除
+req.session.cookie.maxAge=0 // 销毁
+req.session.destroy(err=>...) // 销毁
 // 静态服务器
-app.use(baseUrl,express.static('path'))
+app.use(baseURL,express.static('path'))
 // 路由
-app.use(baseUrl,router)
+app.use(baseURL,routes)
 ~~~
 
 <!--服务器请求-->
