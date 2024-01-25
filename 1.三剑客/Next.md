@@ -52,10 +52,10 @@ export async getServersideProps(context) => ({
 })
 ~~~
 
-#### API
+#### APIRoutes
 
 ~~~js
-api => export default (req,res)=>{res.send()}
+pages/api => export default (req,res)=>{res.send()}
 ~~~
 
 #### 配置
