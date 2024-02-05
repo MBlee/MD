@@ -1,7 +1,11 @@
 ## Next@13.4.9
 
 ```shell
+# create-next-app
 npm init next-app <app>
+yarn create next-app --typescript <app>
+# 手动安装
+yarn add next react react-dom
 ```
 
 #### 路由
@@ -48,7 +52,7 @@ export async getStaticPaths() => ({
 })
 // 服务端渲染
 export async getServersideProps(context) => ({
-    
+    props: _data
 })
 ~~~
 
@@ -108,17 +112,18 @@ router.push('href'|{},'as')
 
 ```shell
 # 安装库
-npm i @chakra-ui/react@^1 
+npm i @chakra-ui/react@^18
+@chakra-ui/next-js@^14
 @emotion/react@^11 
 @emotion/styled@^11 
-framer-motion@^6
+framer-motion@^11
 # 安装主题
 npx chakra-cli init --theme
 ```
 
 ```jsx
-// 全局配置
-// _app.js
+// pages配置
+- _app.js>>
 import {ChakraPorvider,CSSReset,extendTheme} from "@chakra-ui/react"
 import {Box,Container} from '@chakra-ui/react'  
 ({Component,pageProps})=>
@@ -126,6 +131,26 @@ import {Box,Container} from '@chakra-ui/react'
       <CSSReset />
       <Component {...pageProps}>
     </ChakraProvider>  
+```
+
+```js
+// app配置
+- app/providers.tsx>>
+    
+'use client'
+import { ChakraProvider } from '@chakra-ui/react'
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <ChakraProvider>{children}</ChakraProvider>
+}
+
+- app/page.tsx>>
+    
+import { Providers } from './providers'
+export default function RootLayout() {
+  return (
+        <Providers>{children}</Providers>
+  )
+}
 ```
 
 > 常用属性

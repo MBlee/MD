@@ -35,8 +35,18 @@ middleware
 ```
 
 ```js
+// SEO
 
 ```
+
+```js
+// 权限校验中间件
+export default ({store,redirect})=>{
+    
+}
+```
+
+
 
 #### 组件
 
@@ -52,6 +62,9 @@ middleware
 asyncData({app,params,query,route}){
     return {}
 }
+// Loading
+- nuxt.config.js=>loading:'path'
+- this.$nuxt.$loading.start|close()
 ```
 
 > 插件
@@ -76,6 +89,42 @@ export default(context:{store,router},inject)=>{
     })
 }
 asyncData:	app=>app.$api.methods()|this.$api
+```
+
+> 数据
+
+```js
+// 页面特有
+asyncData:(context:{app})=>{}
+// 公有
+fetch()
+// 生命周期
+middleware=>beforeCreated|created=>mounted=>nuxtServerInt
+```
+
+#### Axios
+
+```js
+// @nuxt/axios
+nuxt.config.js>>  mudules:['@nuxt/axios']
+page.vue>>  asyncData({$axios})
+```
+
+```js
+// axios
+plugins>>  export default(context:{store,router},inject)=>{
+    inject('api',{
+        methods...
+    })
+}
+pages>>  asyncData:	app=>app.$api.methods()|this.$api
+```
+
+#### Vuex
+
+```js
+store\*.js|state.js>>
+export const state|mutations|actions = ()=>{}
 ```
 
 #### 配置
@@ -110,6 +159,19 @@ buildModules:['@nuxtjs/style-resources']
 - page.vue=>
 transition:xxx
 ```
+
+> 部署
+
+```markdown
+# 静态部署
+
+```
+
+```mark
+# 动态部署
+```
+
+
 
 ## Nuxt3
 
