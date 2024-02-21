@@ -293,7 +293,59 @@ ref<(InstanceType<typeof CMP>|null)>
 ref<ComponentPublicInstance>
 ```
 
+> 渲染函数&JSX
 
+```shell
+# 类型推断 /* @jsxImportSource vue */
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
+  }
+}
+```
+
+```tsx
+// 函数式组件
+- xx.vue>>
+render(){
+	return h('div',this.data)|'div'|[...]    
+}
+setup(props,{ slots }){
+	return h('div',this.data)|'div'|[...]    
+}
+- xx.js>>
+function CPT(){
+	return h('div',this.data)|'div'|[...] 
+}
+// vnodes
+const vnode = h(MyComponent|'div',
+  props:{}|null,
+  children:[
+      slots.default({})
+  ]
+)
+const vnode = <my-component {...props}></my-component>
+// 插槽
+slots.default({text})
+{
+  default: ({ text }) => 'default slot',
+  foo: ({ text }) => <div>foo</div>,
+}
+// v-if
+isData?div1:div2
+// v-for
+arr.map(()=>div)
+// v-on
+onClickCapture={withModifiers(()=>{},['self'])}
+// v-model
+props: ['modelValue'],
+emits: ['update:modelValue']
+h(CPT,{
+    modelValue:props.modelValue,
+    'onUpdate:modelValue':(value)=>emit('update:modelValue',vaule)
+})
+```
 
 #### **Vue-Router**
 
