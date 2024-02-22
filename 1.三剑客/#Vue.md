@@ -232,7 +232,7 @@ new Vue({ render:h=>h(app) }).$mount('#app')
 
 ```js
 // 组合式API
-setup(props,context|{attrs,emits,slots}){
+setup(props,context|{emit,attrs,slots}){
 	return {}|(h)=> h(component)
 }
 // 属性|接口
@@ -245,6 +245,11 @@ modelValue|update:modelValue =>v-model:
 modelModifiers => {default()=>({})}
 ref(null|[])=>:ref=>(el)=>{}
 expose:['data','method']|defineExpose({a,b})
+// 插槽
+<template #|v-slot:name='p'> 
+  {{p[scopeData]}} 
+<template>
+<slot name scopeData/>
 // 异步组件
 defineAsyncComponent(()=>{promise.resolve({import('component')})})
 defineAsyncComponent({
@@ -296,6 +301,24 @@ ref<ComponentPublicInstance>
 > 渲染函数&JSX
 
 ```shell
+# Vite配置
+- npm i @vitejs/plugin-vue-jsx
+vite.config.js>>
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from "@vitejs/plugin-vue-jsx";
+export default defineConfig({
+  plugins: [
+  	vue(),
+  	vueJsx()  //添加 jsx
+  ]
+})
+# Webpack配置
+- npm install @vue/babel-plugin-jsx -D
+babel.config.js>>
+module.exports = {
+  plugins: ["@vue/babel-plugin-jsx"]   // 省略其他配置
+}
 # 类型推断 /* @jsxImportSource vue */
 {
   "compilerOptions": {
