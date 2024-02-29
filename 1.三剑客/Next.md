@@ -72,6 +72,12 @@ pages/api => export default (req,res)=>{res.send()}
 next build && next export
 ```
 
+#### TS
+
+```shell
+
+```
+
 ## Next
 
 #### 路由跳转
@@ -193,6 +199,9 @@ npm i @emotion/babel-preset-css-prop
 "presets":["next/babel","@emotion/babel-preset-css-prop"]
 # 0配置
 /** @jsxImportSource @emotion/react */
+- tsconfig.json
+jsxImportSource:@emotion/react
+"types":["@emotion/react/types/css-prop"]
 ```
 
 > 组件

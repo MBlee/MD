@@ -36,17 +36,25 @@ middleware
 
 ```js
 // SEO
-
+全局nuxt.config.js>>
+- head.title:''
+- head.meta:[{name,content,hid}]
+- head.link:[rel,href,type]
+- head.htmlAttrs.lang
+局部*.vue>>
+- head(){
+    return{
+        title,meta
+    }
+}
 ```
 
 ```js
 // 权限校验中间件
 export default ({store,redirect})=>{
-    
+    if(!store.state.auth) redirect('/')
 }
 ```
-
-
 
 #### 组件
 
@@ -63,7 +71,9 @@ asyncData({app,params,query,route}){
     return {}
 }
 // Loading
-- nuxt.config.js=>loading:'path'
+nuxt.config.js>>
+- loading:'~/components/loadingbar'
+this.$nextTick>>
 - this.$nuxt.$loading.start|close()
 ```
 
@@ -81,6 +91,8 @@ plugins:[{	src,mode	}]
 Vue.use(tooltip)
 ```
 
+
+
 ```js
 // axios插件
 export default(context:{store,router},inject)=>{
@@ -97,7 +109,7 @@ asyncData:	app=>app.$api.methods()|this.$api
 // 页面特有
 asyncData:(context:{app})=>{}
 // 公有
-fetch()
+fetch(context|this)
 // 生命周期
 middleware=>beforeCreated|created=>mounted=>nuxtServerInt
 ```
@@ -107,7 +119,7 @@ middleware=>beforeCreated|created=>mounted=>nuxtServerInt
 ```js
 // @nuxt/axios
 nuxt.config.js>>  mudules:['@nuxt/axios']
-page.vue>>  asyncData({$axios})
+page.vue>>  asyncData({$axios})|this.$axios
 ```
 
 ```js
@@ -125,6 +137,13 @@ pages>>  asyncData:	app=>app.$api.methods()|this.$api
 ```js
 store\*.js|state.js>>
 export const state|mutations|actions = ()=>{}
+
+actions.nuxtServerInit(context,{req}){
+    context.commit
+    cookie.set()|remove()
+    cookieparser.parse(req.headers.cookie)
+}
+// js-cookie && cookieparser
 ```
 
 #### 配置
@@ -148,6 +167,20 @@ styleResources:{
 buildModules:['@nuxtjs/style-resources']
 ```
 
+> TS类组件
+
+```shell
+npm i vue-property-decorator vue-class-component
+```
+
+```js
+import {Vue,Component} from 'vue-property-decorator'
+@Component
+export default class C extend Vue{
+    msg:string = ''
+}
+```
+
 #### ETC
 
 > 动画过渡
@@ -162,16 +195,18 @@ transition:xxx
 
 > 部署
 
-```markdown
-# 静态部署
-
+```shell
+# 静态部署(动态路径)
+- yarn generate
+- dist>>nginx.config
 ```
 
-```mark
+```shell
 # 动态部署
+- yarn build
+- .nuxt&static&nuxt.config.js&package.json
+- yarn install && yarn start
 ```
-
-
 
 ## Nuxt3
 
