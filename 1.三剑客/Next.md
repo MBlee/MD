@@ -121,7 +121,8 @@ router.push('href'|{},'as')
 npm i @chakra-ui/react@^18
 @chakra-ui/next-js@^14
 @emotion/react@^11 
-@emotion/styled@^11 
+@emotion/styled@^11
+@emotion/babel-plugin^11
 framer-motion@^11
 # 安装主题
 npx chakra-cli init --theme
@@ -189,19 +190,20 @@ export default function RootLayout() {
 
 ```shell
 # Emotion核心库
-npm i @emotion/react@^11  @emotion/styled@^11  framer-motion@^6
+npm i @emotion/react@^11  @emotion/styled@^11  @emotion/babel-plugin^11 framer-motion@^11
 # Emotion属性
 npm i @emotion/babel-preset-css-prop
 ```
 
 ```shell
-# .babelrc配置
+# 属性配置.babelrc
 "presets":["next/babel","@emotion/babel-preset-css-prop"]
 # 0配置
-/** @jsxImportSource @emotion/react */
+- /// <reference types="@emotion/react/types/css-prop" />
+- /** @jsxImportSource @emotion/react */
 - tsconfig.json
-jsxImportSource:@emotion/react
-"types":["@emotion/react/types/css-prop"]
+	jsxImportSource:@emotion/react
+	types:["@emotion/react/types/css-prop"]
 ```
 
 > 组件
