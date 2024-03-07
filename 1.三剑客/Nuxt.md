@@ -2,6 +2,7 @@
 
 ```shell
 npx create-nuxt-app <app>
+yarn create nuxt-app <app>
 # or
 npm i nuxt@2 => nuxt
 ```
