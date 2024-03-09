@@ -1,5 +1,3 @@
-[TOC]
-
 ## Linux命令
 
 #### **开关机**
@@ -199,6 +197,8 @@ grep -ni <files>
 -v
 ```
 
+> 压缩|解压缩
+
 ```shell
 # gzip|gunzip =>.gz
 gzip <file>
@@ -210,6 +210,24 @@ unzip <new.zip> -d <path>
 tar -zcvf <.tar.gz> ...
 tar -ztvf <.tar.gz>
 tar -zxvf <.tar.gz> -C <dir>
+```
+
+> 安装
+
+```shell
+# rpm
+rpm -qa
+rpm -ivh
+rpm -e
+```
+
+```shell
+# yum源:centos+epel
+- developer.aliyun.com/mirror(阿里云镜像)
+# 
+yum list installed
+yum install
+yum remove
 ```
 
 #### **vim**
