@@ -161,21 +161,20 @@ next(vm=>..)
 getters:{ (state,getters)=>{ return arg=>{}} }
 mutations:{ (state,payload)=>{} }
 actions:{ (context,payload)=>{ context.commit('') } }
-modules:{}
-namespaced:true
+modules:{ namespaced:true }
 ```
 
 ```js
 /* 映射 */
 import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
 computed:{
-    ...mapState(module,['data']),
-    ...mapGetters(module,{ 'state':'data' })
+    ...mapState('module',['data']),
+    ...mapGetters('module',{ 'state':'data'|state()=>... })
 }
 methods:{...mapMutations,...mapActions}
 /* 调用 */
-$store.dispatch(module/type,payload)
-$store.commit(module/type,payload)
+$store.dispatch('module/type',payload)
+$store.commit('module/type',payload)
 ```
 
 #### Axios
