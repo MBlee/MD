@@ -139,8 +139,10 @@ net user /delete xx
 #### 服务管理
 
 ~~~shell
+services.msc
+# 开启|关闭
 net start
-net stop xx
+net stop
 ~~~
 
 #### 进程管理
@@ -152,6 +154,8 @@ tasklist
 taskkill /f /pid xxId
 taskkill /f /im xx
 ~~~
+
+## ...
 
 ## CMD配置
 

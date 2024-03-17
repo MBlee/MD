@@ -70,22 +70,30 @@ unmount -f
 vim /etc/resolv.conf
 nameserver 8.8.8.8
 nameserver 114.114.114.114
-# IP配置
-vi /etc/sysconfig/net-scripts/ifcfg-ens33
-BOOTPROTO=static
-ONBOOT=yes
-IPADDR=1
-NETMASK=1
-GATEWAY=1
-DNS1=8.8.8.8
 # HostName
 vi /etc/hostname => /etc/hosts
 hostnamectl set-hostname => systemctl restart network
 # 查看IP
 ifconfig
-ping -c
+ping innet
+ping 8.8.8.8
+ping baidu.com
 # 下载
 wget -O <filename> <url>
+```
+
+```shell
+# 虚拟机配置
+虚拟机：虚拟网络编辑器> NAT设置，子网
+Window：VMnet8>IPv4> ip地址，子网
+# IP配置
+vi /etc/sysconfig/network-scripts/ifcfg-ens33
+BOOTPROTO=static
+ONBOOT=yes
+IPADDR=1
+NETMASK=1
+GATEWAY=1
+DNS1=8.8.8.8|114.114.114.114
 ```
 
 #### **进程**
@@ -152,7 +160,7 @@ mv -f || -u
 mv -i || -n
 ```
 
-#### **文件**
+#### **文件|软件**
 
 ```shell
 # 查看文件属性
@@ -230,7 +238,24 @@ yum install
 yum remove
 ```
 
-#### **vim**
+```shell
+# 环境变量
+/etc/profile
+/etc/bashrc
+/etc/environment
+/home/user/.bashrc
+~/.profile
+~/.bashrc
+# 更新
+source|. /etc/profile
+# 添加
+export PATH=$PATH:/bin
+- vim ~/.bashrc
+- vim /etc/bashrc|profile
+  export PATH=$PATH:/bin
+```
+
+#### **vim*
 
 ```shell
 # 输入模式
