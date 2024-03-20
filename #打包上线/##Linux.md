@@ -255,7 +255,7 @@ export PATH=$PATH:/bin
   export PATH=$PATH:/bin
 ```
 
-#### **vim*
+#### *vim*
 
 ```shell
 # 输入模式
