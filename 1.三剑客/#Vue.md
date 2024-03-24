@@ -179,16 +179,43 @@ $store.commit('module/type',payload)
 
 #### Axios
 
-API:
+```js
+const http = axios.create({
+    baseURL:'',
+    timeout:60*1000
+})
 
-- axios(obj).then(res=>)
-- axios.all(axios...).then
+http.interceptors.request.use(req=>{
+    req.headers.authorizaiton = 'token'
+    // loading...
+    return req
+})
+http.interceptors.response.use(res=>{
+  	if (!res.code)
+    // finish...
+    return res.data
+},err=>{
+    if(err.status==401) return 
+    Promise.reject(err)
+})
+```
 
-封装：
+#### Socket
 
-1. axios.create(obj)
-2. axios.interceptors.response.use
-3. return promise
+```js
+// SocketIO
+const socket = socketIO('ws:socket')
+socket.on('server',data=>{})
+socket.emit('send',data)
+```
+
+```js
+// Websocket
+const socket = new WebSocket('ws:socket',protocol)
+ws.send()|close()
+ws.addEventListener('open|close|error')
+ws.addEventListener('message',e.data)
+```
 
 #### 全局API
 
@@ -204,6 +231,26 @@ API:
 - app.mixin(xxx)
 - app.set/delete
 - app.nextTick(callback).then
+
+#### ...
+
+#### ElementUI
+
+```js
+// 安装引用 npm i element-ui -S
+import ElementUI
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
+// 按需引入 npm i babel-plugin-component -D
+// babel.config.js
+// presets:[['@babel/preset-env',{'modules':false}]]
+// 'plugins':[
+  ['component',{'libraryName':'element-ui',
+    'styleLibraryName':['theme-chalk']}]
+]
+import {Button,Select}
+Vue.component(Button.name,Button)
+```
 
 ## VUE3
 
@@ -235,15 +282,15 @@ setup(props,context|{emit,attrs,slots}){
 	return {}|(h)=> h(component)
 }
 // 属性|接口
-- defineProps:[{type,default(),required,validator(value)}]
+- defineProps:[{type,default(),required,validator(value)}] => props
 - withDefaults(defineProps<Props>(),{data,method:()=>[]})
-- defineEmits:[null,(params)=>{return true}]
+- defineEmits:[null,(params)=>{return true}] => emits
 - defineEmits<{(e:'change',id:number)}>()
 - defineEmits<{change:[id:number]}>()
-modelValue|update:modelValue =>v-model:
-modelModifiers => {default()=>({})}
-ref(null|[])=>:ref=>(el)=>{}
-expose:['data','method']|defineExpose({a,b})
+- expose:['data','method'] | defineExpose({a,b})
++ modelValue|update:modelValue => v-model:modelValue
++ modelModifiers => {default()=>({})}
++ ref(null|[]) | :ref=>(el)=>{}
 // 插槽
 <template #|v-slot:name='p'> 
   {{p[scopeData]}} 
@@ -383,7 +430,7 @@ Vue.createApp().use(router)
 // 路由器设置
 - Router.createRouter() 
 - history
-createWebHistory('/baseURL/')
+createWebHistory(import.meta.env.BASE_URL)
 createWebHashHistory()
 createMemoryHistory()
 - strict
@@ -428,8 +475,6 @@ return false | throw Error
 </router-view>
 ```
 
-
-
 #### Vuex
 
 ```shell
@@ -453,24 +498,30 @@ Vuex.useStore()
 #### Pinia
 
 ```css
-# npm i pinia
+# npm i pinia pinia-plugin-persistedstate
 ```
 
 ```js
 /* main.js */
 import {createPinia} from 'pinia'
-createApp(App).use(createPinia())
+import {persist} from 'persistedstate'
+createApp(App).use(createPinia().use(persist))
 ```
 
 ```js
 /* store */
 import {defineStore,storeToRefs} from 'pinia'
-export const useStore = defineStore('store',()=>{
+export const useStore = defineStore('store.$id',()=>{
     const state = ref()
     const getters = computed(()=>{})
     const method = ()=>{}
     return {
         state,getters,method
+    }
+},{
+    persist:{
+        paths:['state']|null,
+        afterRestore|beforeRestore(ctx)=>ctx.store
     }
 })
 const store = useStore()
@@ -490,23 +541,27 @@ changeOrigin: true
 
 rewrite: path => path.replace(/^\/api/, "")
 
-## UI框架
+#### ...
 
-#### ElementUI
+#### Element Plus
 
 ```js
-// 安装引用 npm i element-ui -S
-import ElementUI
-import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI)
-// 按需引入 npm i babel-plugin-component -D
-// babel.config.js
-// presets:[['@babel/preset-env',{'modules':false}]]
-// 'plugins':[
-  ['component',{'libraryName':'element-ui',
-    'styleLibraryName':['theme-chalk']}]
-]
-import {Button,Select}
-Vue.component(Button.name,Button)
-```
+// 自动导入
+# npm install -D unplugin-vue-components unplugin-auto-import
+// vite.config.ts
+import { defineConfig } from 'vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
+export default defineConfig({
+  plugins: [
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ],
+})
+```
