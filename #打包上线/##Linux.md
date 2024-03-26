@@ -226,16 +226,16 @@ tar -zxvf <.tar.gz> -C <dir>
 # rpm
 rpm -qa
 rpm -ivh
-rpm -e
+rpm -e --nodeps --force
 ```
 
 ```shell
 # yum源:centos+epel
 - developer.aliyun.com/mirror(阿里云镜像)
-# 
+# 安装卸载
 yum list installed
 yum install
-yum remove
+yum remove -y
 ```
 
 ```shell
