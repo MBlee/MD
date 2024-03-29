@@ -194,8 +194,9 @@ cat >>
 
 ```shell
 # 搜索
-find [/etc] [**] -user
+find [path] [**] 
 find -size +5M | grep [xx]
+find -user
 # locate
 updatedb => locate
 # 过滤文本
