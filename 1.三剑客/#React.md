@@ -257,7 +257,7 @@ const store = createStore(reducer, enhancer);
 #### Redux-devtools-extension
 
 ~~~js
-import {composeWithDevTools} from 'redux-devtools-extension'
+import {composeWithDevTools} from '@redux-devtools/extension'
 ~~~
 
 ~~~js

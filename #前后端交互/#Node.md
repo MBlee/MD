@@ -119,19 +119,78 @@ npm i koa @koa/router
 ```
 
 ```js
-const Koa = require('koa')
-const Router = require('@koa/router')
-
-const app = new Koa()
-const router = new Router()
-
+// ctx
 app.use(async (ctx,next)=>{
+    ctx.redirect('')
+    ctx.query|params|request.body
+    ctx.status|statusCode
     ctx.body = 'hello'
 })
-router.get('/',async(ctx)=>{...})
-app.use(router.routes()).use(router.allowedMethods())
+// npm: koa-logger koa-onerror
+app.use(logger())
+onError(app)
 
-app.listen(9000)
+// npm: @koa/router
+const router = new Router()
+router.prefix('/')
+router.use|get|post('/',(ctx,next)=>...)
+app.use(router.routes).use(router.allowedMethods)
+// npm: koa-static koa-mount
+app.use(mount('prefix',static(path)))
+// npm: koa2-cors
+app.use(Cors())
+// npm: @koa/multer
+const upload = multer({dest}|{
+    storage:multer.diskStorage({
+        destination:(req,file,cb)=>{
+            cb(null,'upload')
+        },
+        filename:(req,file,cb)=>{
+            cb(null,file.fieldname + Date.now())
+        }
+    })
+})
+app.use('/',
+	multer({
+    		
+		})
+        .single('avatar')
+        .array('photos',maxCount)
+        .fields([{name,maxCount}])
+    ctx=>{
+		ctx.files|file
+    }
+)
+// npm: koa-bodyparser
+app.use(BodyParser())
+ctx
+	.request.body
+// npm: koa-bouncer
+app.use(Bouncer.middleware())
+ctx
+    .validateBody|Query|Params('filed')
+    .check|checkNot(boolean,'msg')
+    .required('msg')
+    .isString()
+    .trim()
+    .isLength(min,max,'msg')
+    .eq(ctx.vals.password,'')
+	.match(/^$/i,'msg')
+// cookies
+ctx
+	.cookies.set('key','value',{maxAge})
+	.cookies.get('key')
+// npm: koa-session
+app.keys = ['secret'...]
+app.use(session({
+    key:'sid',
+    maxAge:60000*60*24,
+    httpOnly:true,
+    signed:true
+},app))
+ctx.session.xx?
+// npm: trek-captcha
+captcha({size}) => {token,buffer}
 ```
 
 ## 爬虫
@@ -228,6 +287,46 @@ ws.end()
 ws.on('finish')
 // 导流
 readStream.pipe(writeStream)
+```
+
+```js
+// 文件复制
+// npm: ncp
+const ncp = require('ncp').ncp
+ncp(source,destination,err=>...)
+// 文件流
+const fs = require('fs');
+const path = require('path');
+function copyFiles(sourceDir, destDir) {
+  fs.readdir(sourceDir, (err, files) => {
+    if (err) throw err;
+    
+    files.forEach(file => {
+      const sourceFilePath = path.join(sourceDir, file);
+      const destFilePath = path.join(destDir, file);      
+      const readStream = fs.createReadStream(sourceFilePath);
+      const writeStream = fs.createWriteStream(destFilePath);
+  
+      readStream.pipe(writeStream);
+    });
+  });
+}
+// fs.copyFile
+const fs = require('fs');
+const path = require('path');
+function copyFiles(sourceDir, destDir) {
+  fs.readdir(sourceDir, (err, files) => {
+    if (err) throw err;
+    files.forEach(file => {
+      const sourceFilePath = path.join(sourceDir, file);
+      const destFilePath = path.join(destDir, file);
+      fs.copyFile(sourceFilePath, destFilePath, err => {
+        if (err) throw err;
+        console.log(`${file} copied successfully.`);
+      });
+    });
+  });
+}s
 ```
 
 #### Buffer
