@@ -115,7 +115,10 @@ cd ~ /
 # 文件列表
 ls|dir|gci
 # 显示隐藏文件
-dir /a:b /s /b
+dir /a /h /s /b
+# 彻底隐藏
+Attrib +a +h +s +r <file>
+Attrib -a -h -s -r <file>
 ~~~
 
 ~~~shell

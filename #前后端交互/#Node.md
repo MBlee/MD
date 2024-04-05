@@ -230,6 +230,46 @@ ws.on('finish')
 readStream.pipe(writeStream)
 ```
 
+```js
+// 文件复制
+// npm: ncp
+const ncp = require('ncp').ncp
+ncp(source,destination,err=>...)
+// 文件流
+const fs = require('fs');
+const path = require('path');
+function copyFiles(sourceDir, destDir) {
+  fs.readdir(sourceDir, (err, files) => {
+    if (err) throw err;
+    
+    files.forEach(file => {
+      const sourceFilePath = path.join(sourceDir, file);
+      const destFilePath = path.join(destDir, file);      
+      const readStream = fs.createReadStream(sourceFilePath);
+      const writeStream = fs.createWriteStream(destFilePath);
+  
+      readStream.pipe(writeStream);
+    });
+  });
+}
+// fs.copyFile
+const fs = require('fs');
+const path = require('path');
+function copyFiles(sourceDir, destDir) {
+  fs.readdir(sourceDir, (err, files) => {
+    if (err) throw err;
+    files.forEach(file => {
+      const sourceFilePath = path.join(sourceDir, file);
+      const destFilePath = path.join(destDir, file);
+      fs.copyFile(sourceFilePath, destFilePath, err => {
+        if (err) throw err;
+        console.log(`${file} copied successfully.`);
+      });
+    });
+  });
+}s
+```
+
 #### Buffer
 
 ```js

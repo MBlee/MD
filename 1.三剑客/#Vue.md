@@ -252,6 +252,39 @@ import {Button,Select}
 Vue.component(Button.name,Button)
 ```
 
+#### Vant
+
+#### 配置
+
+```js
+// 基础路径
+publicPath|baseUrl
+
+```
+
+```js
+// CONFIGUREWEBPACK
+// 路径别名
+resolve.alias|extensions
+```
+
+```js
+// CHAINWEBPACK
+```
+
+```js
+// DEVSERVER
+proxy:{
+    '/api':{
+		changeOrigin:true,
+        target:'url',
+		pathRewrite:{'^/api':''}|'',
+        cookieDomain|PathRewrite:{}
+		ws:true,secure:true
+    }
+}
+```
+
 ## VUE3
 
 ```shell
@@ -282,11 +315,24 @@ setup(props,context|{emit,attrs,slots}){
 	return {}|(h)=> h(component)
 }
 // 属性|接口
-- defineProps:[{type,default(),required,validator(value)}] => props
+- defineProps([]|{
+    type,default(),required,
+    validator(value)
+})
 - withDefaults(defineProps<Props>(),{data,method:()=>[]})
-- defineEmits:[null,(params)=>{return true}] => emits
-- defineEmits<{(e:'change',id:number)}>()
-- defineEmits<{change:[id:number]}>()
+
+- defineEmits<{
+    (e:'change',id:number):void
+}>()
+- defineEmits<{
+    change:[id:number]
+}>()
+- defineEmits(['a','b'])
+- defineEmits({
+	click:null,
+    submit:({a,b}) => true|false
+})
+- emits:['a','b'] => setup(props,ctx:[emits])
 - expose:['data','method'] | defineExpose({a,b})
 + modelValue|update:modelValue => v-model:modelValue
 + modelModifiers => {default()=>({})}
@@ -313,14 +359,14 @@ v-bind(color)
 // 数据|方法
 - ref|.value，reactive
 - toRefs，...toRefs(xxxObj)
-- computed
+- computed(()=>...|{get,set})
 - shallowReactive|Ref
 - readonly|shallowReadonly
 - toRaw|markRaw
 // 监听数据
-- watchEffect(fn)|watchPostEffect()
-- watch(xx|[xx],fn,{immediate})
 - watch(()=>obj.key,{deep:true})
+- watch(xx|[xx],fn,{immediate})
+- watchEffect(fn)|watchPostEffect()
 // 生命周期 
 - onBeforeMount|onMounted
 - onBeforeUpdate|onUpdated
@@ -543,7 +589,7 @@ rewrite: path => path.replace(/^\/api/, "")
 
 #### ...
 
-#### Element Plus
+#### ElementPlus
 
 ```js
 // 自动导入
@@ -565,3 +611,16 @@ export default defineConfig({
   ],
 })
 ```
+
+#### 配置
+
+```js
+proxy:{
+    "/api",{
+    	target: '"'
+        changeOrigin: true
+        rewrite: path => path.replace(/^\/api/,'')        
+    }
+}
+```
+
