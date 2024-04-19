@@ -14,6 +14,14 @@
 
 全选单词：alt+F3
 
+#### Snippets
+
+```shell
+# 变量
+$TM_FILENAME => ${1:}
+${name/reg/replace/i}
+```
+
 ## 常用插件安装
 
 **代码提示**

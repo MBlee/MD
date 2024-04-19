@@ -146,17 +146,14 @@ const upload = multer({dest}|{
             cb(null,'upload')
         },
         filename:(req,file,cb)=>{
-            cb(null,file.fieldname + Date.now())
+            cb(null,file.fieldname|originalname + Date.now())
         }
     })
 })
-app.use('/',
-	multer({
-    		
-		})
-        .single('avatar')
+app.use('/',   
+  	upload.single('avatar')
         .array('photos',maxCount)
-        .fields([{name,maxCount}])
+        .fields([{name,maxCount}]),
     ctx=>{
 		ctx.files|file
     }

@@ -363,3 +363,62 @@ obs.get()
 obs.[key]
 ```
 
+## ...
+
+## 配置
+
+#### Editorconfig
+
+#### Prettier
+
+```json
+// npm: prettier => prettier --write .
+// .prettierrc
+sublime=>jsprettier:  {format_on_save":true}
+prettier:
+{
+	"useTabs": false,
+	"tabWidth": 2,
+	"printWidth": 80,
+	"singleQuote": true,
+	"trailingComma": "none",
+    "semi": false
+}
+```
+
+```shell
+# .prettierignore
+/build/*
+.local
+.output.js
+/node_modules/**
+**/*.svg
+**/*.sh
+/public/*
+```
+
+#### ESLint
+
+> npm: eslint  eslint-plugin-prettier eslint-config-prettier
+
+> eslint --init
+
+```json
+// .eslintrc.js
+extends:[
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/typescript/recommended",
+    "@vue/prettier",
+    "@vue/prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+]
+```
+
+```json
+// vscode
+// sublime
+```
+
+
+
