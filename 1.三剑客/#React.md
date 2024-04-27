@@ -7,6 +7,7 @@
 > React.memo,React.PureComponent
 
 ~~~js
+Cpt.defautProps = {} // props默认值
 function Cpt(props){ return <div/> }
 - props.children //插槽
 - props.jsx||()=>jsx //插槽
