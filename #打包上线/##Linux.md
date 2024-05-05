@@ -1,18 +1,45 @@
 ## Linux命令
 
-#### **开关机**
+#### **网络**
+
+```sh
+# DNS配置
+vim /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 114.114.114.114
+# HostName
+vi /etc/hostname => /etc/hosts
+hostnamectl set-hostname => systemctl restart network
+```
 
 ```shell
-sync # 同步
-# 关机
-shutdown -h now 
-shutdown -h 10|+10
-shutdown -h 20:30
-poweroff
-halt
-# 重启
-shutdown -r now 
-reboot
+# 查看IP
+ifconfig
+ping innet
+ping 8.8.8.8
+ping baidu.com
+# 添加IP
+ip addr show eth0
+ip addr add 10.0.0.8/24 dev eth0
+```
+
+```shell
+# 虚拟机配置
+虚拟机：虚拟网络编辑器> NAT设置，子网
+Window：VMnet8>IPv4> ip地址，子网
+# IP配置
+vi /etc/sysconfig/network-scripts/ifcfg-ens33
+BOOTPROTO=static
+ONBOOT=yes
+IPADDR=1
+NETMASK=1
+GATEWAY=1
+DNS1=8.8.8.8|114.114.114.114
+```
+
+```shell
+# 下载
+wget -O <filename> <url>
 ```
 
 #### **用户管理**
@@ -61,39 +88,6 @@ du -sm /*
 # 挂载磁盘
 mount <path1> <path2>
 unmount -f
-```
-
-#### **网络**
-
-```sh
-# DNS配置
-vim /etc/resolv.conf
-nameserver 8.8.8.8
-nameserver 114.114.114.114
-# HostName
-vi /etc/hostname => /etc/hosts
-hostnamectl set-hostname => systemctl restart network
-# 查看IP
-ifconfig
-ping innet
-ping 8.8.8.8
-ping baidu.com
-# 下载
-wget -O <filename> <url>
-```
-
-```shell
-# 虚拟机配置
-虚拟机：虚拟网络编辑器> NAT设置，子网
-Window：VMnet8>IPv4> ip地址，子网
-# IP配置
-vi /etc/sysconfig/network-scripts/ifcfg-ens33
-BOOTPROTO=static
-ONBOOT=yes
-IPADDR=1
-NETMASK=1
-GATEWAY=1
-DNS1=8.8.8.8|114.114.114.114
 ```
 
 #### **进程**
@@ -185,11 +179,15 @@ q # 退出
 # 创建链接
 ln -s <a> <b>
 # 创建文件
-touch <file>
-echo <str> >><file>
+touch ?file
+echo ?str >> ?file
 # <<和>>
 cat >>
 << EOF
+# 创建文件
+cat > ?filePath <<EOF
+EOF
+echo ?str > ?file
 ```
 
 ```shell
@@ -201,6 +199,7 @@ find -user
 updatedb => locate
 # 过滤文本
 cat x.txt|grep [text] -in
+grep -Ev '#|^$' default.conf
 # grep|egrep|fgrep
 grep -ni <files>
 -v
@@ -226,6 +225,7 @@ tar -zxvf <.tar.gz> -C <dir>
 ```shell
 # rpm
 rpm -qa
+rpm -ql <nginx>
 rpm -ivh
 rpm -e --nodeps --force
 ```
@@ -326,6 +326,23 @@ ctrl + r
 :set nu|set nonu
 ```
 
+#### **开关机**
+
+```shell
+sync # 同步
+# 关机
+shutdown -h now 
+shutdown -h 10|+10
+shutdown -h 20:30
+poweroff
+halt
+# 重启
+shutdown -r now 
+reboot
+```
+
+#### 
+
 ## Linux常用
 
 > mysql配置
@@ -374,3 +391,40 @@ chmod -R 777 /opt/mysql/
   [var]()：经常被修改的目录
 
   [www]()：存放服务器网站相关
+
+## ......
+
+## 软件安装
+
+#### 源码编译
+
+#### YUM
+
+```shell
+# 1.YUM源
+- 阿里云
+- 官网
+# 2.配置源
+# 3.安装源
+```
+
+```shell
+# 查看源
+```
+
+
+
+#### RPM
+
+## 常见错误
+
+###### 无效PID
+
+```shell
+# invalid PID number "" in "var/run/nginx.pid"
+ps -ef|grep nginx
+echo <pid> >  var/run/nginx.pid
+```
+
+
+

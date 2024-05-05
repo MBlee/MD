@@ -7,36 +7,11 @@
 for %a in (,) do cmd
 ```
 
-## 常用查看
-
-~~~shell
-# 查看Node位置
-where node
-# 查看系统配置
-systeminfo
-dxdiag
-# 查看服务
-services.msc
-~~~
-
-## 时间戳
-
-~~~shell
-# PowerShell
-Get-Date -Format "yyMMddhh"
-# Git
-$(date +%F)
-# CMD
-date|time /t
-~~~
-
 ## 网站加速
 
 ~~~shell
 # IP查询
 https://ipaddress.com/website/github.com
-# hosts文件
-C:\Windows\System32\drivers\etc
 # 清理缓存
 ipconfig/flushdns
 # 查询网站网速
@@ -50,6 +25,12 @@ net share
 # 创建共享
 net share xx=xx
 ~~~
+
+```shell
+# hosts文件
+C:\Windows\System32\drivers\etc\hosts
+10.0.0.8	a.xx.cn xx.cn
+```
 
 ## 注册表
 
@@ -126,9 +107,7 @@ Attrib -a -h -s -r <file>
 Start-Process powershell -Verb runAs 
 ~~~
 
-## 管理
-
-#### 用户管理
+## 用户管理
 
 ~~~shell
 # 查询用户
@@ -139,7 +118,7 @@ net user /add xx
 net user /delete xx
 ~~~
 
-#### 服务管理
+## 服务管理
 
 ~~~shell
 services.msc
@@ -148,7 +127,7 @@ net start
 net stop
 ~~~
 
-#### 进程管理
+## 进程管理
 
 ~~~shell
 # 查看进程
@@ -158,11 +137,34 @@ taskkill /f /pid xxId
 taskkill /f /im xx
 ~~~
 
-## ...
+## ......
 
-## CMD配置
+## 常用
 
-#### 默认管理员
+~~~shell
+#!查看
+# 查看Node位置
+where node
+# 查看系统配置
+systeminfo
+dxdiag
+# 查看服务
+services.msc
+~~~
+
+~~~shell
+#!时间戳
+# PowerShell
+Get-Date -Format "yyMMddhh"
+# Git
+$(date +%F)
+# CMD
+date|time /t
+~~~
+
+## 配置
+
+#### CMD默认管理员
 
 ~~~shell
 # 修改注册表
@@ -174,7 +176,7 @@ RUNASADMIN
 "c:\\windows\\system32\\cmd.exe"="RUNASADMIN"
 ~~~
 
-#### 起别名
+#### CMD起别名
 
 ```shell
 # 设置环境变量
@@ -186,9 +188,7 @@ pnpm %*
 doskey pm=pnpm  $*
 ```
 
-## PowerShell配置
-
-#### 默认管理员
+#### PowerShell默认管理员
 
 ```shell
 # 查看现在的执行策略
@@ -197,7 +197,7 @@ get-executionpolicy
 set-executionpolicy remotesigned
 ```
 
-#### 起别名
+#### PowerShell起别名
 
 ```shell
 # 查找默认配置
@@ -206,6 +206,4 @@ echo $profile
 # C:\Users\my\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 set-alias -name pn -value pnpm
 ```
-
-
 
