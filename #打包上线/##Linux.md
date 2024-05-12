@@ -136,17 +136,16 @@ ls -al
 # 当前目录
 pwd
 # 创建目录
-mkdir
 mkdir -p
 # 删除目录
-rmdir 
 rmdir -p 
 # 移除文件或目录
 rm -f
 rm -r
 rm -i
 # 复制文件或目录
-cp -r -p
+cp -r 
+cp -p
 cp -a
 # 移动文件或目录,重命名
 mv -v

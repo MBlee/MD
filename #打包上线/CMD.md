@@ -61,12 +61,12 @@ fsutil file createnew #文件名  #文件大小
 # 删除文件夹
 rd /s /q xxxDir #PS: rd -recurse
 rm -rf xxx/xxxDir
-# 删除文件
-del /S /F /Q xxxDir
-# 复制文件
-copy xx xx
-# 复制文件夹
-xcopy xx xx /s /h
+# 删除文件|文件夹
+rd /s/q  <_dir>
+del /s/q/f   <_file>
+# 复制文件|文件夹
+copy xx xx /s/h
+xcopy xx xx /s/h
 # 移动文件
 move xx xx
 for %a in(,) do move
