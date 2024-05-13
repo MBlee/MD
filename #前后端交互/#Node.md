@@ -8,6 +8,10 @@ const express = require('express')
 const app = express()
 app.listen(_port)
 app.use((req,res,next)=>...)
+// 错误调试
+const debug = require('debug')('symbol')
+SET DEBUG=*
+app.use(require('morgan')())
 // 跨域
 const cors = require('cors')
 app.use(cors())
@@ -49,7 +53,6 @@ app.use(baseURL,routes)
 <!--服务器请求-->
 
 ```js
-const request = require('request')
 const options = {
     headers:{'Connection':'close'},
     url,method,
@@ -61,7 +64,7 @@ const callback = (err,res,data)=>{
         res.json(data)
     }
 }
-request(options,callback)
+http.request(options,callback)
 ```
 
 #### 路由
@@ -129,7 +132,6 @@ app.use(async (ctx,next)=>{
 // npm: koa-logger koa-onerror
 app.use(logger())
 onError(app)
-
 // npm: @koa/router
 const router = new Router()
 router.prefix('/')
@@ -162,6 +164,7 @@ app.use('/',
 app.use(BodyParser())
 ctx
 	.request.body
+// npm: koa-params
 // npm: koa-bouncer
 app.use(Bouncer.middleware())
 ctx

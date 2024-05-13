@@ -5,22 +5,26 @@ npm create vite -- --template vue-ts <app>
 
 #### 全局配置
 
-```markdown
+```shell
 # 路径配置
 - base  =>  import.meta.env.BASE_URL
 - resolve.alias|extensions  => baseUrl & paths
-# 环境变量
-- envDir  =>  import.meta.env.VITE
+# 环境变量(dotenv)
+- envDir
+- envPrefix
+- import.meta.env.VITE
+- loadEnv(mode,envDir,prefix)
 ```
 
-```markdown
+```shell
 # 合并配置
 ```
 
 #### 本地服务器
 
-```markdown
+```shell
 - server
+- preview
 # 拦截器
 # HTTPS服务器
 1. npm i mkcert -g
@@ -38,19 +42,43 @@ npm create vite -- --template vue-ts <app>
 
 #### 模块
 
-```markdown
+```shell
 - rollupOptions
 # 模块依赖
-- css.preprocessorOptions.scss.additionalData:
-  '@import "@/global.scss"'
+- css.modules
+- css.devSourcemap
+- css.preprocessorOptions.[scss|less].additionalData:'@import'
+- ...less.math:'always'
+- ...less.globalVars
+- css.postcss.plugins: [postcssPresetEnv()]
 # 外部依赖
 # 资源模块
+- import 'xx?raw|inline'
+# 插件
+- @vitejs/plugin-legacy + terser
+  legacy({
+  	targets:['defaults','not IE 11']
+  })
+- vite-plugin-html
+  createHtmlPlugin({
+  	minify:true,
+  	entry:'src/main.ts',
+  	template:'index.html',
+  	inject:{
+  		data,
+  		tags
+  	}
+  })
 ```
 
-```markdown
+```shell
 # 输入输出
+- build.target:'modules|es2016|chrom58'
+- build.outDir
+- build.assetsDir
+- build.assetsInlineLimite
+- build.minify:'terser|esbuild'
 # 打包优化
-# 插件
 ```
 
 ```shell
@@ -63,3 +91,16 @@ npm create vite -- --template vue-ts <app>
 #### vue
 
 #### react
+
+#### ......
+
+#### postcss
+
+> npm: postcss  postcss-cli  postcss-preset-env
+
+```shell
+# postcss.config.js
+plugins:[presetEnv()]
+```
+
+#### babel

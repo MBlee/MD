@@ -366,6 +366,43 @@ obs.[key]
 
 ## ...
 
+```shell
+# React-query
+# React-error-boundary
+# SuspenseList
+# UseTransition
+# UseDeferredValue
+```
+
+#### 自定义Hook
+
+```js
+// 获取Promise状态
+function checkPromiseStatus(promiseIn){
+	let status,result
+	const promise = promiseIn.then(res=>{
+		status='fulfilled'
+		result=res
+    }).catch(err=>{
+		status='rejected'
+		result=err
+    })
+	return ()=>{
+        promise,status,result
+    }
+}
+// 获取窗口大小
+function useWindowSize(){
+    let getSize = ()=>{width:window.innerWidth}
+    const [size,setSize] = useState(getSize())
+    useEffect(()=>{
+       window.addEventListener('resize',()=>setSize(getSize()))
+       return ()=>window.removeEventListener('resize')
+    },[])
+    return size   
+}
+```
+
 ## 配置
 
 #### Editorconfig
