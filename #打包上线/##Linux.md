@@ -168,6 +168,7 @@ chown -R <own:group> <file>
 # 修改文件属性
 chmod -R 744 <file>
 # 查看内容
+nano
 cat|tac|nl
 head|tail -n <number>
 more|less=>
@@ -176,7 +177,7 @@ q # 退出
 # 查找内容
 / ? n N
 # 创建链接
-ln -s <a> <b>
+ln -s <source> <dest>
 # 创建文件
 touch ?file
 echo ?str >> ?file
@@ -340,13 +341,19 @@ shutdown -r now
 reboot
 ```
 
-#### 
+- 
 
-## Linux常用
+## ......
 
-> mysql配置
+## 常用软件安装
 
-~~~shell
+windTerm
+
+registry.npmmirror.com/binary.html?path=node/
+
+#### Mysql
+
+```shell
 # 初始化 
 ./mysqld
 	-initialize 
@@ -359,7 +366,88 @@ reboot
 # 目录权限
 chown -R mysql:mysql /opt/mysql/
 chmod -R 777 /opt/mysql/
-~~~
+```
+
+#### Mongodb
+
+#### Node
+
+> node包: https://registry.npmmirror.com/binary.html?path=node/
+
+```shell
+#!Linux: tar.gz
+# 1.移动解压:/usr/local/soft
+mv tar.gz /usr/local/soft
+tar -zvxf tar.gz
+# 2.链接文件:/usr/bin/
+ln -s ./bin/node  /usr/bin/node
+ln -s ./bin/node  /usr/bin/npm
+ln -s ./bin/node  /usr/bin/npx
+# Cnpm
+npm i cnpm -g --registry=https://registry.npm.taobao.org
+ln -s ./lib/node_modules/cnpm/bin/cnpm  /usr/bin/cnpm
+# 检测
+npm|node|cnpm -v
+```
+
+```shell
+#!Linux: w-get
+# 1.下载解压
+w-get .tar.xz
+xz -d .tar.xz
+tar -zvxf .tar.gz
+# 2.配置环境变量
+nano ~/.bashrc
+eport PATH=$PATH:/node/bin
+```
+
+#### ......
+
+#### Nginx
+
+#### Tomcat
+
+#### Apache
+
+#### ......
+
+#### Docker
+
+#### CICD
+
+#### Gitlab
+
+## ......
+
+## 软件安装
+
+#### 源码编译
+
+#### YUM
+
+```shell
+# 1.YUM源
+- 阿里云
+- 官网
+# 2.配置源
+# 3.安装源
+```
+
+```shell
+# 查看源
+```
+
+#### RPM
+
+## 常见错误
+
+#### 无效PID
+
+```shell
+# invalid PID number "" in "var/run/nginx.pid"
+ps -ef|grep nginx
+echo <pid> >  var/run/nginx.pid
+```
 
 ## Linux简介
 
@@ -390,40 +478,3 @@ chmod -R 777 /opt/mysql/
   [var]()：经常被修改的目录
 
   [www]()：存放服务器网站相关
-
-## ......
-
-## 软件安装
-
-#### 源码编译
-
-#### YUM
-
-```shell
-# 1.YUM源
-- 阿里云
-- 官网
-# 2.配置源
-# 3.安装源
-```
-
-```shell
-# 查看源
-```
-
-
-
-#### RPM
-
-## 常见错误
-
-###### 无效PID
-
-```shell
-# invalid PID number "" in "var/run/nginx.pid"
-ps -ef|grep nginx
-echo <pid> >  var/run/nginx.pid
-```
-
-
-
