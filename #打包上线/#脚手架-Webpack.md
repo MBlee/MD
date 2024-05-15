@@ -32,7 +32,10 @@
 #### 模块
 
 ```markdown
-# 模块依赖
+# 样式
+- style.sass
+	.loadOptions
+
 # 外部模块
 # 资源模块
 # TreeShaking
@@ -83,6 +86,16 @@
 ```shell
 # Plugins
 - webpack.plugins.add:[new Plugin(),'append']
+```
+
+```shell
+#! 样式
+# 全局sass
+- craco-sass-resources-loader
+- plugins:[{
+	plugin:sassResourcesLoader,
+	options.resources:  ['.scss']
+}]
 ```
 
 

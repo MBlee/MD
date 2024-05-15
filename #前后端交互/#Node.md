@@ -106,9 +106,11 @@ res.render('index',{})
 <%for(){%>...<%}%>
 ```
 
+#### ......
+
 #### 脚手架
 
-> npm i  express-generator -g
+> npm: express-generator
 
 ~~~shell
 express --no-view <proname>
@@ -197,11 +199,11 @@ captcha({size}) => {token,buffer}
 
 #### 网络请求
 
-###### http.request
+> http.request
 
 ```js
 const req = http.request({
-    hostname,path
+    hostname,path,headers
 },res=>{
     res.on('data',buffer=>...)
     res.on('end',_=>Buffer.concat(buffers))
@@ -209,11 +211,13 @@ const req = http.request({
 req.end()
 ```
 
-###### request-promise-native
+> **npm: request-promise-native**
 
 ```js
 rn({url}).then()
 ```
+
+> **npm:  download**
 
 #### HTML解析
 
