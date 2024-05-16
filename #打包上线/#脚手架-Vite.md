@@ -43,17 +43,35 @@ npm create vite -- --template vue-ts <app>
 #### 模块
 
 ```shell
-- rollupOptions
 # 模块依赖
 - css.modules
 - css.devSourcemap
 - css.preprocessorOptions.[scss|less].additionalData:'@import'
 - ...less.math:'always'
 - ...less.globalVars
-- css.postcss.plugins: [postcssPresetEnv()]
+- css.postcss.plugins: [postcssPresetEnv({
+	importFrom: '.css'
+  })]
+- postcss-global-data
 # 外部依赖
 # 资源模块
 - import 'xx?raw|inline'
+```
+
+```shell
+# 输入输出
+- build.target:'modules|es2016|chrom58'
+- build.outDir
+- build.assetsDir
+- build.assetsInlineLimite
+- build.minify:'terser|esbuild'
+- build.emptyDir
+# 打包优化
+- build.rollupOptions
+  - output.assetsFileNames
+```
+
+```shell
 # 插件
 - @vitejs/plugin-legacy + terser
   legacy({
@@ -69,24 +87,15 @@ npm create vite -- --template vue-ts <app>
   		tags
   	}
   })
+- vite-aliases
 ```
 
-```shell
-# 输入输出
-- build.target:'modules|es2016|chrom58'
-- build.outDir
-- build.assetsDir
-- build.assetsInlineLimite
-- build.minify:'terser|esbuild'
-# 打包优化
-```
+......
 
 ```shell
 # 预构建 =>	1.转换ESModule	2.统一导出
 - .vite/deps  =>  optimizeDeps.excludes
 ```
-
-#### ......
 
 #### vue
 

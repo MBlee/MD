@@ -1,6 +1,6 @@
 #### 全局配置
 
-```markdown
+```shell
 # SourceMap
 - devtool:'source-map'|false
 - eval-source-map
@@ -14,7 +14,7 @@
 
 #### 本地服务器
 
-```markdown
+```shell
 # 拦截器
 - proxy:{
   '^/api':{
@@ -31,18 +31,17 @@
 
 #### 模块
 
-```markdown
+```shell
 # 样式
 - style.sass
 	.loadOptions
-
 # 外部模块
 # 资源模块
 # TreeShaking
 # 库
 ```
 
-```markdown
+```shell
 # 输入输出
 # Module
 # Plugin
