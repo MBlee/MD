@@ -42,6 +42,18 @@ DNS1=8.8.8.8|114.114.114.114
 wget -O <filename> <url>
 ```
 
+#### 防火墙
+
+```shell
+#! firewalld
+# 端口管理
+firewall-cmd --list-all
+firewall-cmd --list-ports
+firewall-cmd --permanent --zone=public  
+firewall-cmd --add-port=443/tcp 
+firewall-cmd --reload
+```
+
 #### **用户管理**
 
 ```shell
@@ -354,6 +366,10 @@ registry.npmmirror.com/binary.html?path=node/
 #### Mysql
 
 ```shell
+#! Linux安装
+# 目录权限
+chown -R mysql:mysql /opt/mysql/
+chmod -R 777 /opt/mysql/
 # 初始化 
 ./mysqld
 	-initialize 
@@ -363,19 +379,40 @@ registry.npmmirror.com/binary.html?path=node/
 # 数据加密
 ./mysql_ssl_rsa_setup
 	-datadir=/opt/mysql/data
-# 目录权限
-chown -R mysql:mysql /opt/mysql/
-chmod -R 777 /opt/mysql/
+# 开启
+mysqld_safe &
+# 关闭
+kill -9 <pid>
+mysqladmin -uroot -p --shutdown
+
+# 卸载Mariadb
+yum list installed | grep mariadb
+yum -y remove mariadb	
 ```
 
 #### Mongodb
+
+~~~shell
+#! Linux安装
+tar -zxvf <mongodb.tgz>
+mv <mongodb.tgz> /usr/local/mongodb
+mkdir -p /mongodb/data/db
+mkdir -p /mongodb/log
+vi /mongodb/mongod.conf
+# 启动
+mongod|mongo -f
+# 关闭
+mongod --shutdown -f
+use admin => db.shutdownServer()
+kill -2 pid
+~~~
 
 #### Node
 
 > node包: https://registry.npmmirror.com/binary.html?path=node/
 
 ```shell
-#!Linux: tar.gz
+#! Linux安装1: tar.gz
 # 1.移动解压:/usr/local/soft
 mv tar.gz /usr/local/soft
 tar -zvxf tar.gz
@@ -391,7 +428,7 @@ npm|node|cnpm -v
 ```
 
 ```shell
-#!Linux: w-get
+#!Linux安装2: w-get
 # 1.下载解压
 w-get .tar.xz
 xz -d .tar.xz
