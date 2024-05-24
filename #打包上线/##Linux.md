@@ -385,6 +385,15 @@ mysqld_safe &
 kill -9 <pid>
 mysqladmin -uroot -p --shutdown
 
+# 忽略密码
+whereis my.cnf
+vi /etc/my.cnf
+skip-grant-tables
+# 修改密码
+select user,host,authentication_string from mysql.user
+update mysql.user set authentication_string=password('123') where user='root'
+flush privileges
+exit
 # 卸载Mariadb
 yum list installed | grep mariadb
 yum -y remove mariadb	
@@ -413,29 +422,32 @@ kill -2 pid
 
 ```shell
 #! Linux安装1: tar.gz
-# 1.移动解压:/usr/local/soft
-mv tar.gz /usr/local/soft
+# 1.解压:/usr/local/soft
 tar -zvxf tar.gz
 # 2.链接文件:/usr/bin/
 ln -s ./bin/node  /usr/bin/node
-ln -s ./bin/node  /usr/bin/npm
-ln -s ./bin/node  /usr/bin/npx
-# Cnpm
-npm i cnpm -g --registry=https://registry.npm.taobao.org
-ln -s ./lib/node_modules/cnpm/bin/cnpm  /usr/bin/cnpm
+# npm设置源
+npm config set registry=https://registry.npmmirror.com
 # 检测
-npm|node|cnpm -v
+npm|node -v
 ```
 
 ```shell
 #!Linux安装2: w-get
-# 1.下载解压
+# 1.解压
 w-get .tar.xz
 xz -d .tar.xz
 tar -zvxf .tar.gz
-# 2.配置环境变量
-nano ~/.bashrc
+# 2.环境变量
+vi /etc/bashrc
 eport PATH=$PATH:/node/bin
+```
+
+```shell
+#!Linux安装3：nvm
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+nvm install 16.0.0
+nvm use 16.0.0
 ```
 
 #### ......
