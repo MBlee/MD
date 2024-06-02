@@ -122,6 +122,18 @@ const RFC:FC<IProps>
 RFC.defaultProps
 ```
 
+<!--组件库-->
+
+```ts
+- module:'src/index.ts'
+- peerdependencies
+// monorepo
+- workspaces
+- npm -ws install
+// storybook
+- npx storybook@latest init
+```
+
 ## 路由
 
 > 安装：`npm i react-router-dom -S`
