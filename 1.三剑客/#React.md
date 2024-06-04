@@ -134,6 +134,13 @@ RFC.defaultProps
 - npx storybook@latest init
 ```
 
+```shell
+# 封装必备
+- prop-types || defaultProps
+- style || class
+- export {a as b}
+```
+
 ## 路由
 
 > 安装：`npm i react-router-dom -S`
