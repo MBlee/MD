@@ -18,6 +18,12 @@
 - forceState  #伪类
 - hideElement  #隐藏H
 - ctrl+\  #暂停+
+#! 边框
+- box-shadow
+- out-line
+#! 动画
+- 贝塞尔
+- Animations分页
 ```
 
 ## API
