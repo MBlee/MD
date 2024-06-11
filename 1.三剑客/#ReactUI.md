@@ -80,51 +80,52 @@ Jira Clone
 # react-infinite-scroll-component
 # react-animate-on-scroll
 # react-dnd-scrollzone
-# React Smooth Scroll
-# react-lazy-load-image-component
+# react-scrollable-anchor
+# react-scrollchor
 # react-lazyload
+# react-lazy-load-image-component
 ```
 
 ```shell
-# React Elastic Carousel
-# React Slick Carousel
-# React Fast Marquee
+# react-slick
+# react-elastic carousel
+# react-fast-marquee
 ```
 
 #### 弹框类
 
 ```shell
-# React Toastify
-# React Modal
+# react-toastify
+# react-modal
 ```
 
 #### 表单|表格
 
 ```shell
-# Formik
-# Yup
-# React Hook Form
-# React Select
-# React Final Form
-# React Dates
-# React TimeAgo
-# React Credit Cards
-# React Autosuggest
-# React Virtura Keyboard
-# React Email Autocomplete
-# React big calendar
+# formik
+# yup
+# react-hook-form
+# react-select
+# react-final-form
+# react-dates
+# react-timeago
+# react-credit-cards
+# react-autosuggest
+# react-simple-keyboard
+# @smastrom/react-email-autocomplete
+# react-big-calendar
 # react-infinite-calendar
 ```
 
 ```shell
-# React-Table
+# react-table
 ```
 
 #### 文档类
 
 ```shell
-# React PDF
-# React Quill
+# react-pdf
+# react-quill
 # React PlateJS
 # Braft editor
 # React Markdown
@@ -134,15 +135,15 @@ Jira Clone
 # React file viewer
 # React copy to clipboard
 # React contextmenu
-# WaterMark
+# watermarkjs
 ```
 
 #### 拖拽类
 
 ```shell
-# React DnD
+# react-dnd
+# react-beautiful-dnd
 # React Drag and Drop
-# React Beautiful DND
 # React Mosaic
 # Pragmatic drag and drop
 # React moveable
@@ -151,30 +152,33 @@ Jira Clone
 #### DOM类
 
 ```shell
-# React Resize Observer
+# rc-resize-observer
+# react-stickynode
 # React Visibility Sensor
 # React Chips Input
 # React Overlays
 # React Stacked Cards
-# React Stickynode
 ```
 
 #### 动画类
 
 ```shell
-# React Spring
+# react-smooth
+# react-motion
+# react-spring
 # React Parallax Tilt
-# Halogen
+# halogen
 # nprogress
 ```
 
 #### 多媒体
 
 ```shell
+# react-player
+# react-media-player
 # React Media
 # React Icons Kit
 # React Country Flag
-# React Media Player
 # React YouTube
 # React Google Maps
 # React Tabletop
