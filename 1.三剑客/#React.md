@@ -10,6 +10,8 @@
 Cpt.defautProps = {} // props默认值
 function Cpt(props){ return <div/> }
 - props.children //插槽
+  - Children.count(children)
+  - Children.forEach|map(children,fn,this)
 - props.jsx||()=>jsx //插槽
 - props.data|fn //数据
 - props.history.push(path,obj)//路由
@@ -25,21 +27,6 @@ function Cpt(props){ return <div/> }
 
   > 双向绑定：value = state
 
-- **useEffect**(fn|=>fn, [state]|[])
-
-  > (fn=>fn, [])，WillUnmount|DidMount|Update
-
-
-- **useRef**(_current) => {current:undefined}
-
-  > 重新渲染不变|<ref={ref}>
-
-- **useMemo**(fn=>data, [state]|[])
-
-  > willMount
-
-- **useCallBac**(fn,[state]|[])
-
 - **useContext**(context)
 
   > createContext()=>{Provider,Consumer}
@@ -51,6 +38,28 @@ function Cpt(props){ return <div/> }
 - **useReducer**(reduce,initState)
 
   > => [state,dispatch]
+
+- **useEffect**(fn|=>fn, [state]|[])
+
+  > (fn=>fn, [])，WillUnmount|DidMount|Update
+  
+- **useLayoutEffect**() => 重绘
+
+
+- **useRef**(_current) => {current:undefined}
+
+  > 重新渲染不变|<ref={ref}>
+
+- **useId**() => {identifierPrefix}
+
+- **useDeferredValue**(state) => deferredValue
+
+
+- **useMemo**(fn=>data, [state]|[])
+
+  > willMount
+
+- **useCallBac**(fn,[state]|[])
 
 - **useSelector**(state=>state)
 
@@ -183,6 +192,11 @@ const routes:RouteObject[] = [{
 <Suspense fallback="">
 	{useRoutes(routes)}
 </Suspense>
+```
+
+```js
+// API
+- ReactDOM.createPortal(<Comp>,document.body)
 ```
 
 ## Redux

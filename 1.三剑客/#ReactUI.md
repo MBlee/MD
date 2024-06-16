@@ -96,6 +96,11 @@ Jira Clone
 
 ```shell
 # react-toastify
+- <ToastContainer {...toastProps}/>
+- toast.success(<Comp (closeToast,toastProps)/> | fn,toastProps)
+- toastProps:
+  autoClose: 1000|false
+  position: 'top-center'
 # react-modal
 ```
 
