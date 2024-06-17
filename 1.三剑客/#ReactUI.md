@@ -92,6 +92,43 @@ Jira Clone
 # react-fast-marquee
 ```
 
+```jsx
+/*** react-virtualized ***/
+------------------------------
+/*** Masonry ***/
+const cellMeasurerCache = new CellMeasurerCache({
+	fixedWidth,defaultWidth,defaultHeight
+})
+
+const cellPositioner = createMasonryCellPostioner({
+	cellMeasurerCache,columnCount,columnWidth,spacer
+})
+cellPositioner.reset({...})
+                      
+const cellRenderer = ({parent,index,key,style})=>{
+    return (
+    	<CellMeasurer parent index key cache>
+        	<div style>content</div>
+        </CellMeasurer>
+    )
+}
+
+<Masonry 
+	cellMeasurerCache
+    cellPostioner
+    cellRenderer
+    height|width
+/>
+------------------------------
+/*** WindowScroller ***/
+------------------------------
+/*** AutoSizer ***/
+------------------------------
+/*** List ***/
+------------------------------
+/*** Infinite ***/
+```
+
 #### 弹框类
 
 ```shell
@@ -102,6 +139,18 @@ Jira Clone
   autoClose: 1000|false
   position: 'top-center'
 # react-modal
+```
+
+```js
+#! react-toastify
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+1. <ToastContainer {...toastProps}/>
+2. toast.success(<Comp ({closeToast,toastProps})>, toastProps)
+// 配置
+- toastProps:
+  autoClose: 1000|false
+  postion: 'top-center'
 ```
 
 #### 表单|表格
