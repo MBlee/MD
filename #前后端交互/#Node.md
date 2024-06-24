@@ -76,6 +76,10 @@ router.use((req,res,next)=>{})
 router.all(path,(req,res)=>{})
 // express()
 app.all(path/:id,(req,res,next)=>...)
+- 'path/:a(\\d)'
+- 'path/:a.:b'
+- 'path/:a-:b'
+- /^.$/
 // req
 req.params['id']
 req.query

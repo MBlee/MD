@@ -18,6 +18,39 @@ import {Table} from 'antd'
 import 'antd/dist/antd.css'
 ~~~
 
+```tsx
+/*** Tabs ***/
+const MTab = (
+	<Tabs
+    	activeKey
+        onChange={key=>void}
+    >
+        <Tabs.Tab key title={ReactNode}>
+        	{content}
+        </Tabs.Tab>
+    </Tabs>
+)
+```
+
+```tsx
+/*** Swiper ***/
+const MSwiper = (
+	<Swiper
+        autoplay loop direction
+        indicator={(total,current)=>ReactNode}
+        defaultAcitveIndex
+        onIndexChange={index=>void}
+    >
+    	<Swiper.Item>
+        	{content}
+        </Swiper.Item>
+    </Swiper>
+)
+ref.swiperNext()
+ref.swiperPrev()
+ref.swiperTo(index)
+```
+
 ## 组件库
 
 React ant admin
@@ -57,6 +90,34 @@ Jira Clone
 # Dvajs
 ```
 
+```tsx
+/*** @tanstack/react-query ***/
+import {
+    QueryClientProvider,QueryClient,
+    useQueryClient,
+    useQuery,
+    useMutation
+} from '@tanstack/react-query'
+const App = <QueryClientProvider client={new QueryClient()}/>
+const { isPending,error,data } = useQuery({ 
+    queryKey:['todos'],
+    queryFn:()=>Promise
+})
+const mutation = useMutation({
+    mutationFn:()=>Promise,
+    onSuccess:()=>{
+        queryClient.invalidateQueries({
+            queryKey:['todos']
+        })
+    }
+})
+mutation.mutate({id:Date.now(),title})
+/* @tanstack/react-query-devtools */
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+const Devtool =  <ReactQueryDevtools initialIsOpen={false} />
+/* @tanstack/eslint-plugin-query */
+```
+
 #### 路由类
 
 ```shell
@@ -94,7 +155,6 @@ Jira Clone
 
 ```jsx
 /*** react-virtualized ***/
-------------------------------
 /*** Masonry ***/
 const cellMeasurerCache = new CellMeasurerCache({
 	fixedWidth,defaultWidth,defaultHeight
@@ -119,13 +179,12 @@ const cellRenderer = ({parent,index,key,style})=>{
     cellRenderer
     height|width
 />
-------------------------------
 /*** WindowScroller ***/
-------------------------------
+
 /*** AutoSizer ***/
-------------------------------
+
 /*** List ***/
-------------------------------
+
 /*** Infinite ***/
 ```
 
