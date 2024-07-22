@@ -131,25 +131,6 @@ const RFC:FC<IProps>
 RFC.defaultProps
 ```
 
-<!--组件库-->
-
-```ts
-- module:'src/index.ts'
-- peerdependencies
-// monorepo
-- workspaces
-- npm -ws install
-// storybook
-- npx storybook@latest init
-```
-
-```shell
-# 封装必备
-- prop-types || defaultProps
-- style || class
-- export {a as b}
-```
-
 ## 路由
 
 > 安装：`npm i react-router-dom -S`

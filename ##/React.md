@@ -27,6 +27,26 @@
 - 递归更新子组件 mount update
 ```
 
+#### 权限控制
+
+#### React.createClass和extends Component
+
+#### React事件和Html事件
+
+#### 受控组件和非受控组件
+
+#### 函数组件和类组件
+
+#### ahooks和react-use
+
+#### useState使用数组和使用对象
+
+#### 生命周期
+
+#### 创建工程环境(js,ts), eject
+
 ## 原理
+
+#### Fiber原理
 
 ## 项目
