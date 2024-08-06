@@ -8,8 +8,12 @@ DeepSkyBlue
 
 DeepPink-HotPink
 
-ForestGreen-SeaGreen
-LightGreen-LightSeaGreen-PaleGreen
+SeaGreen-MediumSeagreen-LightSeaGreen
+ForestGreen
+Springgreen
+Lime-Limegreen
+
+LightGreen-PaleGreen
 ------------
 APPID
 wx325d0c46f027bba0

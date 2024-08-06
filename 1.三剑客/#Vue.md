@@ -336,16 +336,24 @@ setup(props,context|{emit,attrs,slots}){
 - expose:['data','method'] | defineExpose({a,b})
 + modelValue|update:modelValue => v-model:modelValue
 + modelModifiers => {default()=>({})}
++ defineModel('amodel' | {set|get}) => [model,modelModifiers]
++ defineModel('amodel',{required,default})
 + ref(null|[]) | :ref=>(el)=>{}
 // 插槽
 <template #|v-slot:name='p'> 
   {{p[scopeData]}} 
 <template>
-<slot name scopeData/>
+<slot name {...scopeData}/>
+// 透传属性
+- defineOptions({
+    inheritAttrs:false
+})
+- useAttrs()
+- v-bind=$attrs
 // 异步组件
-defineAsyncComponent(()=>{promise.resolve({import('component')})})
+defineAsyncComponent(()=>import('component'))
 defineAsyncComponent({
-  loader()=>{},
+  loader()=>import('component'),
   loadingComponent,errorComponent,
   delay,timeout
 })
@@ -353,9 +361,14 @@ defineAsyncComponent({
 
 ```js
 // 样式
-:deep() :global() :slotted()
-$style => useCssModule
-v-bind(color)
+- <style module> => $style => useCssModule
+- :deep() :slotted() :global() 
+- v-bind(color)
+
+// provide,inject
+- provide(key,value)
+- inject(key,default|()=>{obj},true)
+
 // 数据|方法
 - ref|.value，reactive
 - toRefs，...toRefs(xxxObj)
@@ -379,15 +392,16 @@ return customRef((track,trigger)=>{
     set(newValue){ trigger() }
   }
 })
-// provide,inject
-- provide(key,value)
-- inject(key,default|()=>{obj},true)
 ```
 
 ```ts
-// 组件引用类型
+// TS类型标注
+// 组件引用
 ref<(InstanceType<typeof CMP>|null)>
 ref<ComponentPublicInstance>
+// 依赖注入
+const key = Symbol() as InjectionKey<type>
+inject<type>(key)
 ```
 
 > 渲染函数&JSX
@@ -442,11 +456,11 @@ const vnode = h(MyComponent|'div',
 )
 const vnode = <my-component {...props}></my-component>
 // 插槽
-slots.default({text})
 {
   default: ({ text }) => 'default slot',
   foo: ({ text }) => <div>foo</div>,
 }
+slots.default({text})
 // v-if
 isData?div1:div2
 // v-for

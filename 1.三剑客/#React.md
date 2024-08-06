@@ -6,6 +6,12 @@
 >
 > React.memo,React.PureComponent
 
+```ts
+// Suspense: fallback
+- Suspense1 => Suspense2
+- Suspense => useDeferredValue|startTransition => state!==deferred
+```
+
 ~~~js
 Cpt.defautProps = {} // props默认值
 function Cpt(props){ return <div/> }
@@ -39,10 +45,16 @@ function Cpt(props){ return <div/> }
 
   > => [state,dispatch]
 
+- **useSyncExternalStore**(subscribe,getSnapShot,getServerSnapShot)
+
+  > subscribe(callback) = > { add(callback)  return remove(callback) }
+  >
+  > getSnapShot() => immutable
+
 - **useEffect**(fn|=>fn, [state]|[])
 
   > (fn=>fn, [])，WillUnmount|DidMount|Update
-  
+
 - **useLayoutEffect**() => 重绘
 
 
@@ -60,6 +72,10 @@ function Cpt(props){ return <div/> }
   > willMount
 
 - **useCallBac**(fn,[state]|[])
+
+- **useDebugValue**(value,format?)
+
+  > useHook => HookState
 
 - **useSelector**(state=>state)
 

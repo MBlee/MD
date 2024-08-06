@@ -327,6 +327,13 @@ import 'react-toastify/dist/ReactToastify.css'
 # React Twitter Embed
 ```
 
+#### 工具类
+
+```shell
+# @popperjs/core
+# @floating-ui/react-dom
+```
+
 #### 调试类
 
 ```shell
