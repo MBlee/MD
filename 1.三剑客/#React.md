@@ -198,8 +198,6 @@ const routes:RouteObject[] = [{
 
 ## Redux
 
-> 安装：`npm i redux -S`
-
 - Store：数据仓库
 - State：1个对象，Store所有数据都放到1个State
 - Action：1个动作，触发数据改变的方法
@@ -207,7 +205,7 @@ const routes:RouteObject[] = [{
 - Reducer：1个函数，通过获取动作，改变数据，生成1个新State，从而改变页面
 
 ```js
-import {createStore}
+import {createStore,combineReducers,applyMiddleware}
 ```
 
 ```js
@@ -224,86 +222,88 @@ Store.dispatch({type:})
 Store.subscribe(()=>{render...})
 ```
 
-## React-Redux
-
-> `npm i react-redux `
-
-```js
-import {createStore,combineReducers,applyMiddleware}
-import {Provider,connect,bindActionCreators}
-```
-
-```js
-// 将store用provider关联
-ReactDOM.render(
-<Provider store={store}>...</Provider>
-)
-// 映射到组件1
-connect(stateFn|res=>res,dispatchFn(){
-  ()=>{ dispatch(action) }     
-})(component)
-// 映射到组件2
-connect(stateFn,()=>{
-  bindActionCreators(action,dispatch)
-})(component)
-// 映射到组件3
-connect(stateFn,
-	{action}
-)(component)
+```ts
+// State类型
+interface TState{}
+type TRootState = {
+    [key in keyof TCombinedReducer]:
+    ReturnType<typeof TCombinedReducer[key]>
+}
+type TRootState = ReturnType<TCombinedReducer>
+// Action类型
+type TAction = ReturnType<typeof ActionCreator>|...|
 ```
 
 ## Redux插件
 
 #### Redux-thunk
 
-> `npm i redux-thunk -S`
-
 ~~~js
+import {thunk} from 'react-thunk'
 // 使用中间件
-createStore(reducers,applyMiddleware(THUNK))
+createStore(reducers,applyMiddleware(thunk))
 // 派发函数
 dispatch((dispatch,getState)=>{
   dispatch(action())
 })
 ~~~
 
-#### Redux-devtools
+```ts
+// Action类型
+ThunkAction<
+    Promise<void>,
+   	TState,
+    any,
+    TActionCreator
+>
+// 中间件类型
+thunk as ThunkMiddleware<TState>
+```
 
-~~~js
-import {createStore,applyMiddleware,compose} from 'redux'
-const composeEnhancers =
-  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // Specify extension’s options like name, actionsDenylist, actionsCreators, serialize...
-      })
-    : compose;
+#### Redux-logger
 
-const enhancer = composeEnhancers(
-  applyMiddleware(THUNK)
-  // other store enhancers if any
-);
-const store = createStore(reducer, enhancer);
-~~~
+```js
+import logger from 'react-thunk'
+// 使用中间件
+createStore(reducers,applyMiddleware(logger))
+```
 
 #### Redux-devtools-extension
 
 ~~~js
 import {composeWithDevTools} from '@redux-devtools/extension'
-~~~
-
-~~~js
 // 使用中间件
-createStore(reducers,composeWithDevTools(applyMiddleware(THUNK...)))
+createStore(reducers,composeWithDevTools(applyMiddleware(thunk...)))
 ~~~
 
-#### Redux-logger
+## React-Redux
 
-> npm i redux-logger -S
+```js
+import {Provider,connect,bindActionCreators} from 'react-redux'
+// 将store用provider关联
+ReactDOM.render(
+<Provider store={store}>...</Provider>
+)
+// actions对象
+connect(stateFn,actions
+)(component)
+// dispatch=>{...fns}
+connect(stateFn,dispatchFn(dispatch){
+  ()=>{ dispatch(action) }     
+})(component)
+// dispatch=>bindActionCreators
+connect(stateFn,dispatchFn(dispatch)=>{
+  bindActionCreators(action,dispatch)
+})(component)
+```
 
-~~~js
-// 使用中间件
-createStore(reducers,applyMiddleware(THUNK))
-~~~
+```ts
+// connect类型
+(state:TCombinedState)=>TState
+typeof actions
+// Props类型
+type Props = TState & typeof Actions
+```
 
 ## RTK
 
@@ -400,8 +400,6 @@ obs.[key]
 # React-query
 # React-error-boundary
 # SuspenseList
-# UseTransition
-# UseDeferredValue
 ```
 
 #### 自定义Hook
