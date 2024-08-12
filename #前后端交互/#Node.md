@@ -164,7 +164,7 @@ npm i
 npm i koa @koa/router
 ```
 
-```js
+```ts
 // ctx
 app.use(async (ctx,next)=>{
     ctx.redirect('')
@@ -175,14 +175,10 @@ app.use(async (ctx,next)=>{
 // npm: koa-logger koa-onerror
 app.use(logger())
 onError(app)
-// npm: @koa/router
-const router = new Router()
-router.prefix('/')
-router.use|get|post('/',(ctx,next)=>...)
-app.use(router.routes).use(router.allowedMethods)
-// npm: koa-static koa-mount
-app.use(mount('prefix',static(path)))
-// npm: koa2-cors
+```
+
+```js
+// npm: @koa/cors
 app.use(Cors())
 // npm: @koa/multer
 const upload = multer({dest}|{
@@ -205,8 +201,7 @@ app.use('/',
 )
 // npm: koa-bodyparser
 app.use(BodyParser())
-ctx
-	.request.body
+ctx.request.body
 // npm: koa-params
 // npm: koa-bouncer
 app.use(Bouncer.middleware())
@@ -234,6 +229,16 @@ app.use(session({
 ctx.session.xx?
 // npm: trek-captcha
 captcha({size}) => {token,buffer}
+```
+
+```ts
+// npm: @koa/router
+const router = new Router()
+router.prefix('/')
+router.use|get|post('/',(ctx,next)=>...)
+app.use(router.routes).use(router.allowedMethods)
+// npm: koa-static koa-mount
+app.use(mount('prefix',static(path)))
 ```
 
 ## 爬虫
