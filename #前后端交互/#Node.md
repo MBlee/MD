@@ -25,22 +25,22 @@ SET DEBUG=*
 app.use(require('morgan')())
 // 错误生成器（@hapi/boom）
 const Boom = require('@hapi/boom')
+Boom.isBoom(err)
 new Boom(err,{statusCode,err,message})
 Boom.boomify(err)
-Boom.isBoom(err)
 Boom.badRequest(err,data)
 ```
 
 ```ts
-// 数据校验（express-validator）
+// express-validator
 const {query,body,validationResult,matchedData} = require('express-validator')
 app.use(path,
-        query('xx')
-        .notEmpty()
-        .escape()
-        .trim()
-        .isEmail()
-       )
+    query('xx')
+    .notEmpty()
+    .escape()
+    .trim()
+    .isEmail()
+)
 app.use((req,next)=>{
     const err = validationResult(req)
     if(!err.isEmpty()) next(err.array())
@@ -48,10 +48,20 @@ app.use((req,next)=>{
     next(Boom.badRequest(msg))
 })
 // 国际化（i18n）
-// 数据格式化
+// body-parser
 const bodyParser = require('body-parser') => req.body
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
+// multer
+const multer = require('multer') => req.file|files|body
+multer({
+    dest|storage:{
+        destination:(req,file,cb)=>cb(null,'dest'),
+        filename:(req,file,cb)=>cb(null,'filename')
+    },
+    limits:{filesize},
+    fileFilter:(req,file,cb)=>cb(null,false|err)
+})
 ```
 
 ~~~jsx
