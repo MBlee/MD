@@ -1,4 +1,33 @@
-## Next@13.4.9
+## Next@15
+
+#### 路由
+
+> layout.tsx|template.tsx, page.tsx
+
+```ts
+// 动态|嵌套路由
+- app/[dynamic]/page.tsx
+```
+
+```ts
+// 导航：next/navigation
+- <Link href={''|{}} as 
+	prefetch
+    scroll
+  />
+- redirect('pathname')
+- useRouter => pathname,query,push,prefetch
+- usePathname => pathname
+```
+
+```ts
+export async getServersideProps=({params})=>({props})
+export async getStaticProps=({params})=>({props})
+// 数据缓存
+fetch('path',{cache:'force-cache'})
+```
+
+## Next@11
 
 ```shell
 # create-next-app
@@ -10,22 +39,41 @@ yarn add next react react-dom
 
 #### 路由
 
->pages/[id].js|404.js
-
-```js
-// 路由跳转
-import Link from 'next/link'
-<Link> <a>
-- href='/[id]'
-- as={`/$id`}
-// 路由头
-import Head from 'next/head'
-<> <Head> <link rel href> </Head> </>
+```ts
+// 动态|嵌套路由
+pages/[dynamic].tsx
 ```
 
-> 样式
+```ts
+- <Link href(passHref)=''|{obj} as
+	scroll
+	preload
+  >
+- useRouter().push('href'|{},'as')
+- useRouter() => {pathname,query}
+```
 
-```js
+```ts
+_document.tsx =>
+    <Html><Head><body><Main><NextScript> 
+_app.tsx =>
+	({Component,pageProps})=><Component {...pageProps}/>
+// Meta
+```
+
+```ts
+// 静态数据
+export async getStaticProps({params}) => ({
+    props: _data
+})
+export async getStaticPaths() => ({
+    paths: [{params},....], 
+    fallback:false
+})
+// 服务端渲染
+export async getServersideProps(context) => ({
+    props: _data
+})
 // 内部样式
 <style jsx>{``}</style>
 // 全局样式
@@ -39,78 +87,11 @@ cn({
 })
 ```
 
-> 数据
+#### API
 
-~~~js
-// 静态生成
-export async getStaticProps({params}) => ({
-    props: _data
-})
-export async getStaticPaths() => ({
-    paths: [{params},....], 
-    fallback:false
-})
-// 服务端渲染
-export async getServersideProps(context) => ({
-    props: _data
-})
-~~~
-
-#### APIRoutes
-
-~~~js
+```ts
 pages/api => export default (req,res)=>{res.send()}
-~~~
-
-#### 配置
-
-<!--package.json-->
-
-```shell
-# next:9.4.4
-# 导出发布
-next build && next export
 ```
-
-#### TS
-
-```shell
-
-```
-
-## Next
-
-#### 路由跳转
-
-**Link跳转**
-
-~~~html
-<link href(passHref)=''|{obj} as='' replace scroll>
-~~~
-
-**Js跳转**
-
-~~~js
-// 引入
-import Router,{useRouter,withRouter} from 'next/router'
-// 跳转
-const router = useRouter()
-router.push('href'|{},'as')
-~~~
-
-#### 路由传参|动态路由
-
-**路由传参**
-
-> - [Router.query]()
-
-**动态路由**：
-
-> - [[...id].js]() => [link+as]()
-
-#### 预加载和错误路由
-
-> [404.js]()，[_error.js]()
 
 ## 库
 
@@ -226,17 +207,6 @@ const component = styled.div`
 	${props=>({...css})}
 `
 const component = styled(cmp)`` => <cmp className={props.className}/>
-```
-
-#### ReactIcons
-
-```shell
-npm i react-icons@^3.10.0
-```
-
-```jsx
-import {icon} from 'react-icons/..'
-<icon />
 ```
 
 #### 小组件库

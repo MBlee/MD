@@ -116,6 +116,16 @@ mutation.mutate({id:Date.now(),title})
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 const Devtool =  <ReactQueryDevtools initialIsOpen={false} />
 /* @tanstack/eslint-plugin-query */
+// API
+- useQuery => {isPending,isError,status,err,data,isFetching}
+	queryOptions({})
+	queryKey:['':{}]
+    queryFn:()=>Promise
+- useQueries
+	{queries}
+- useMutation => {mutate}
+	mutationFn:()=>Promise
+	onSuccess:()=>queryClient.invalidateQuerieds({queryKey:['']})
 ```
 
 #### 路由类
