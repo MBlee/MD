@@ -431,6 +431,74 @@ function useWindowSize(){
 }
 ```
 
+## 性能优化
+
+#### 组件拆分
+
+```shell
+- 按功能
+- 按逻辑和UI
+```
+
+```shell
+# ProductList
+ProductList=>Product=>Partial
+```
+
+#### 函数功能单一
+
+```shell
+callbacks=>callbacks[key]()
+```
+
+#### 循环中的Key
+
+```ts
+- 唯一ID
+- index => 元素顺序不变|新增末尾
+```
+
+#### ShouldComponentUpdate
+
+```ts
+// 父组件渲染 => 子组件不渲染
+shouldComponentUpdate(nextProps,nextState){
+	return nextProps.value !== this.props.value
+}
+// 
+```
+
+#### PureComponent
+
+#### React.memo
+
+#### 懒加载组件
+
+```ts
+// react-loadable
+Loadable(
+	()=>import('component'),
+    loading(){
+    	return loading...
+    }
+)
+```
+
+```ts
+// React.lazy + Suspense 
+const Lazy = lazy(()=>import('component'))
+<Suspense fallback={loading}>
+```
+
+#### Gzip压缩
+
+```shell
+# Nginx
+gzip on;
+gzip_comp_level 6; #1~9
+gzip_types text/plain text/css application/json application/javascript;
+```
+
 ## 配置
 
 #### Editorconfig
@@ -486,5 +554,16 @@ extends:[
 // sublime
 ```
 
+#### SetupProxy
 
+```ts
+const {createProxyMiddleware} = require('http-proxy-middleware')
+const env = {dev:'',prod:''}
+module.exports=(app)=>{
+    app.use(createProxyMiddleware('/api',{
+        target:env.dev,
+        changeOrgin:true
+    }))
+}
+```
 

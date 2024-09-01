@@ -27,7 +27,7 @@ export async getStaticProps=({params})=>({props})
 fetch('path',{cache:'force-cache'})
 ```
 
-## Next@11
+## Next@10
 
 ```shell
 # create-next-app
@@ -37,28 +37,27 @@ yarn create next-app --typescript <app>
 yarn add next react react-dom
 ```
 
-#### 路由
+#### 组件
 
 ```ts
-// 动态|嵌套路由
-pages/[dynamic].tsx
+// SSR
+- getServerSideProps=>{props}
+// SSG|ISG
+- getStaticProps=>{props,revalidate}
+// CSR
+- useEffect
+- process.browser
+- dynamic(()=>import('comp'),{ssr:false})
 ```
 
 ```ts
-- <Link href(passHref)=''|{obj} as
-	scroll
-	preload
-  >
-- useRouter().push('href'|{},'as')
-- useRouter() => {pathname,query}
-```
-
-```ts
-_document.tsx =>
-    <Html><Head><body><Main><NextScript> 
-_app.tsx =>
-	({Component,pageProps})=><Component {...pageProps}/>
-// Meta
+// 全局样式
+_app.js => import '.css'
+.xxx :global
+// Style JSX
+<style jsx global>{``}</style>
+// Css.module
+composes: classname;
 ```
 
 ```ts
@@ -74,17 +73,45 @@ export async getStaticPaths() => ({
 export async getServersideProps(context) => ({
     props: _data
 })
-// 内部样式
-<style jsx>{``}</style>
-// 全局样式
-_app.js => import '.css'
-export default function App({Component,pageProps}){
-  return <Component {...pageProps}/>
+```
+
+#### 路由
+
+```ts
+// 动态|嵌套路由
+- pages/[dynamic].tsx
+// 获取动态参数
+- getServerSideProps({params})
+- getStaticProps({params})
+```
+
+```ts
+// 组件路由
+- useRouter().push('href'|{},'as')
+- useRouter() => {pathname,query}
+- <Link 
+	href(passHref)=''|{pathname,query} as
+	scroll
+	preload
+  >
+```
+
+```ts
+// _document.tsx
+- <Html><Head><body><Main><NextScript> 
+- myDocument.getInitialProps:async(context)=>{
+    const docProps = await Document.getInitialProps(context)
+    return {...docProps}
+}    
+// _app.tsx
+- ({Component,pageProps})=><Component {...pageProps}/>
+- myApp.getInitialProps:async(context)=>{
+    const appProps = await App.getInitialProps(context)
+    return {...appProps}
 }
-// classnames
-cn({
-    [styles.xx]:true
-})
+// Head|Meta
+- <PostMeta post/>
+- <title key>
 ```
 
 #### API
@@ -93,7 +120,83 @@ cn({
 pages/api => export default (req,res)=>{res.send()}
 ```
 
+#### Redux
+
+```ts
+// store.ts
+const initStore=(preloadedState=initialState)=>(
+	createStore(reducer,preloadedState,compose...)
+)
+const initializeStore=(preloadedState)=>{
+    let _store = store??initStore(preloadedState)
+    if(preloadedState&&store){
+        _store=initStore({
+            ...store.getState(),
+            ...preloadedState
+        })
+    }
+    if(typeof window==="undefined") return _store
+    if(!store) store=_store
+    return _store
+}
+const useStore=(initialState)=>(
+	useMemo(()=>initializeStore(initialState),[initialState])
+)
+const useGlobalState=()=>(
+	useSelector(state=>state,shallowEqual)
+)
+// _app.ts
+const store = useStore(pageProps.initialReduxState)
+<Provider store={store}/>
+```
+
+#### .....
+
+#### 静态资源
+
+###### 图像优化
+
+```ts
+// CLS(累积布局偏移)=>UX
+// Next自动优化
+- next.config.js=> images.domains:['imageDomain']
+- <Image layout objectFit/> => (Wrapper)
+// 外部服务器优化
+- next.config.js=> images:{domains,loader:'akmai'|'imgix'|'cloudinary'}
+- loader:({src,width,quality})=>`${src}?w=${width}&q=${quality||75}`
+```
+
+#### 配置
+
+```shell
+### SASS配置
+# next.config.js
+sassOptions:{
+	outputStyle:"compressed"
+}
+```
+
+```shell
+### PostCSS配置
+# post.config.json
+"plugins":[
+    "postcss-flexbugs-fixes",
+    [
+        "postcss-preset-env",
+        {
+            "autoprefixer":{ "flexbox":"no-2009" },
+            "stage":3,
+            "feature":{ "custom-properties":false }
+        }
+    ]
+]
+```
+
+
+
 ## 库
+
+#### Headless-UI
 
 #### Chakra-ui
 
@@ -208,6 +311,8 @@ const component = styled.div`
 `
 const component = styled(cmp)`` => <cmp className={props.className}/>
 ```
+
+#### TailwindCSS
 
 #### 小组件库
 
