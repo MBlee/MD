@@ -4,7 +4,7 @@ Gainsboro-Silver
 DimGray
 （Light-Dark）
 
-DeepSkyBlue
+DeepSkyBlue-Dodgerblue
 
 DeepPink-HotPink
 

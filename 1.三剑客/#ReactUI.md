@@ -241,6 +241,15 @@ import 'react-toastify/dist/ReactToastify.css'
 ```
 
 ```shell
+# react-quill
+# ckeditor5
+# TinyMCE
+# froala-editor
+# draft-js
+# trix
+```
+
+```shell
 # react-table
 ```
 
@@ -248,7 +257,6 @@ import 'react-toastify/dist/ReactToastify.css'
 
 ```shell
 # react-pdf
-# react-quill
 # React PlateJS
 # Braft editor
 # React Markdown
