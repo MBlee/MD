@@ -64,7 +64,7 @@ multer({
 })
 ```
 
-~~~jsx
+```jsx
 // cookie
 const cookieParser = require('cookie-parser')
 app.use(cookieParser('signed'))
@@ -95,7 +95,7 @@ const token = jwt.sign({exp,data},secretKey,{
     expiresIn:'1h'
 })
 const deToken = jwt.vertify(token,secretKey,(err,data)=>...)
-~~~
+```
 
 <!--服务器请求-->
 
@@ -116,7 +116,7 @@ http.request(options,callback)
 
 #### 路由
 
-~~~js
+```js
 // express.Router()
 const router = express.Router()
 router.use((req,res,next)=>{})
@@ -133,7 +133,7 @@ req.query
 req.body
 // res
 res.send()|sendStatus()|status()
-~~~
+```
 
 #### 模板引擎
 
@@ -163,15 +163,21 @@ res.render('index',{})
 
 > npm: express-generator
 
-~~~shell
+```shell
 express --no-view <proname>
 npm i
-~~~
+```
 
 ## Koa
 
 ```shell
-npm i koa @koa/router
+- @koa/cors
+- @koa/router
+- @koa/multer
+- koa-onerror | koa-logger
+- koa-static | koa-mount
+- koa-bodyparser | koa-params | koa-bouncer
+- koa-session
 ```
 
 ```ts
@@ -202,11 +208,11 @@ const upload = multer({dest}|{
     })
 })
 app.use('/',   
-  	upload.single('avatar')
+      upload.single('avatar')
         .array('photos',maxCount)
         .fields([{name,maxCount}]),
     ctx=>{
-		ctx.files|file
+        ctx.files|file
     }
 )
 // npm: koa-bodyparser
@@ -223,11 +229,11 @@ ctx
     .trim()
     .isLength(min,max,'msg')
     .eq(ctx.vals.password,'')
-	.match(/^$/i,'msg')
+    .match(/^$/i,'msg')
 // cookies
 ctx
-	.cookies.set('key','value',{maxAge})
-	.cookies.get('key')
+    .cookies.set('key','value',{maxAge})
+    .cookies.get('key')
 // npm: koa-session
 app.keys = ['secret'...]
 app.use(session({
@@ -250,6 +256,38 @@ app.use(router.routes).use(router.allowedMethods)
 // npm: koa-static koa-mount
 app.use(mount('prefix',static(path)))
 ```
+
+## Nest
+
+```shell
+npm i @nestjs/cli -g
+nest new <app>
+nest g controller <controller> 
+```
+
+```ts
+// xx.controller.ts
+import { Controller...} from '@nestjs/common'
+@Controller('route')
+@Get(':route')
+@Request|Response
+@Params|Query|Body|Session
+@Next
+// xx.service.ts
+// app.module
+import {Module} from '@nestjs/common'
+@Module({
+    import:[],
+    providers:[],
+    controllers:[controller...]
+})
+// main.ts
+import {NestFactory} from '@nestjs/core'
+const app = await NestFactory.create(AppModule)
+await app.listen(3000)
+```
+
+## ------------------
 
 ## 爬虫
 
@@ -284,6 +322,8 @@ const $ = cheerio.load('htmlStr')
 $('img').attr('src').each(index,item=>...)
 ```
 
+## ------------------
+
 ## Node
 
 ```js
@@ -297,11 +337,11 @@ process.cwd()
 // 创建服务器
 http.createServer((req,res)=>{
     req.url
-  	res.statusCode
-  	res.setHeader()
+      res.statusCode
+      res.setHeader()
     res.writeHead(200,{'Content-Type':'text/html;charset="utf-8"'})
-  	res.write("<head><meta charset='UTF-8'></head>")
-  	res.end
+      res.write("<head><meta charset='UTF-8'></head>")
+      res.end
 }).listen(port,url,callback)
 // 路由:req.method
 - url.parse(req.url).query = new URL(path,base)
@@ -360,13 +400,13 @@ const path = require('path');
 function copyFiles(sourceDir, destDir) {
   fs.readdir(sourceDir, (err, files) => {
     if (err) throw err;
-    
+
     files.forEach(file => {
       const sourceFilePath = path.join(sourceDir, file);
       const destFilePath = path.join(destDir, file);      
       const readStream = fs.createReadStream(sourceFilePath);
       const writeStream = fs.createWriteStream(destFilePath);
-  
+
       readStream.pipe(writeStream);
     });
   });
@@ -430,8 +470,6 @@ md5(xxx)
 # 日期格式化
 npm silly-datetime
 sd.format(date,'YYYY-MM-DD HH:mm')
-
-
 ```
 
 #### 搭建服务器
@@ -441,7 +479,7 @@ sd.format(date,'YYYY-MM-DD HH:mm')
 - ext => content-type
 - url => readfile
 
-~~~js
+```js
 // 获取扩展名
 const extname = path.extname(pathname)
 const mime = fs.readFileSync('mime.json')[extname]
@@ -449,7 +487,7 @@ res.writeHead(200,{'Content-Type',mime+';charset=utf-8'})
 // 读取文件
 const data = fs.readFileSync('./static'+pathname)
 res.write(data)
-~~~
+```
 
 > **HTTP请求**
 
