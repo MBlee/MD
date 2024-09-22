@@ -171,10 +171,10 @@ npm i
 ## Koa
 
 ```shell
+- koa-onerror | koa-logger
 - @koa/cors
 - @koa/router
 - @koa/multer
-- koa-onerror | koa-logger
 - koa-static | koa-mount
 - koa-bodyparser | koa-params | koa-bouncer
 - koa-session
@@ -218,7 +218,7 @@ app.use('/',
 // npm: koa-bodyparser
 app.use(BodyParser())
 ctx.request.body
-// npm: koa-params
+// npm: koa-validate
 // npm: koa-bouncer
 app.use(Bouncer.middleware())
 ctx
@@ -244,7 +244,9 @@ app.use(session({
 },app))
 ctx.session.xx?
 // npm: trek-captcha
-captcha({size}) => {token,buffer}
+captcha({size}) => {buffer,token}
+// npm: svg-captcha
+captcha.create({size}) => {data,text}
 ```
 
 ```ts
