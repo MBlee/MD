@@ -173,31 +173,9 @@ optimization:{
 ```
 
 ```shell
-# 开发服务器
-# npm: @types/node @types/webpack @types/webpack-dev-server
-# npm: webpack-dev-server@2.9.1
-webpack serve --open --hot --port --host
-# webpack.config.js
-target:'web'
-devServer:{
-    port:3001,
-    compress:true,
-    open:true,
-    hot:true
-}
-# packge.json
-'scripts':{
-    'dev':'webpack serve --port 3000'
-}
-```
-
-```shell
 # 环境优化
 
 # HMR模块热替换
-devServer:{
-    hot:true
-}
 1. 样式HMR功能，在开发环境使用Style-loader
 2. html，需要在entry入口引入html文件
 3. js，只能处理非入口文件的JS文件
@@ -224,20 +202,6 @@ new PurgecssPlugin({
 ```
 
 ```shell
-# webpack-dev-server
-# npm i webpack-dev-server@2.9.1 -D
-scripts:{
-    dev:'webpack-dev-server --open'
-}
-# webpack.config.js
-target:'web'
-devServer:{
-    port:3001,
-    contentBase:'./dist',
-    inline:true,
-    historyApiFallback:true
-}
-
 # webpack开发、生产合并
 # webpack-merge --save-dev
 modules.exports=webpackMerge(base,{})
@@ -245,6 +209,23 @@ scripts:{
     dev:'webpack-dev-server --open --config ...dev',
     build:'webpack --config ...build'
 }
+```
+
+```ts
+// npm: webpack-dev-server
+// npm: @types/node @types/webpack @types/webpack-dev-server
+import type{ Configuration } from 'webpack'
+import 'webpack-dev-server'
+target:'web',
+devServer:{
+	hot|open|host|port,
+   	compress,
+   	historyApiFallback: { rewrites:[{form,to}] },
+    static:{
+        directory|publicPath|serveIndex
+    }
+}
+export default [ClientConfig,ServerConfig]
 ```
 
 #### Vue打包
