@@ -234,8 +234,6 @@ type TRootState = ReturnType<TCombinedReducer>
 type TAction = ReturnType<typeof ActionCreator>|...|
 ```
 
-## Redux插件
-
 #### Redux-thunk
 
 ~~~js
@@ -276,7 +274,7 @@ import {composeWithDevTools} from '@redux-devtools/extension'
 createStore(reducers,composeWithDevTools(applyMiddleware(thunk...)))
 ~~~
 
-## React-Redux
+#### React-Redux
 
 ```js
 import {Provider,connect,bindActionCreators} from 'react-redux'
@@ -340,7 +338,7 @@ export type IRootState = ReturnType<GetStateFnType>
 export const useAppSelector:TypedUseSelectorHook<IRootState> = useSelector
 ```
 
-## Mobx5
+## MobX5
 
 > 安装配置
 
@@ -394,15 +392,78 @@ obs.get()
 obs.[key]
 ```
 
+## React-Query
+
+> npm:  @tanstack/react-query
+
+```ts
+import {
+    QueryClientProvider,QueryClient,
+    useQueryClient,
+    useQuery,
+    useMutation
+} from '@tanstack/react-query'
+
+const App = <QueryClientProvider client={new QueryClient()}/>
+
+const { isPending,error,data } = useQuery({ 
+    queryKey:['todos'],
+    queryFn:()=>Promise
+})
+
+const mutation = useMutation({
+    mutationFn:()=>Promise,
+    onSuccess:()=>{
+        queryClient.invalidateQueries({
+            queryKey:['todos']
+        })
+    }
+})
+
+mutation.mutate({id:Date.now(),title})
+```
+
+```ts
+// API
+- useQuery => {isPending,isError,status,err,data,isFetching}
+	queryOptions({})
+	queryKey:['major','sub',{condition:true},deps]
+    queryFn:({queryKey})=>Promise
+	enabled:!!true
+- useQueries
+	{queries:[]|[queryOptions...]}
+- useMutation => {mutate|mutateAsync}
+	mutationFn:()=>Promise
+	onSuccess:()=>queryClient.invalidateQuerieds({queryKey:['']})
+	retry:3
+	scope:{id:serial}
+```
+
+```ts
+// Plugins
+```
+
+> npm:  @tanstack/react-query-devtools
+>
+> npm:  @tanstack/eslint-plugin-query
+
+```ts
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+const Devtool =  <ReactQueryDevtools initialIsOpen={false} />
+```
+
+```ts
+// ESlint
+```
+
 ## ...
 
 ```shell
-# React-query
 # React-error-boundary
 # SuspenseList
 ```
 
-#### 自定义Hook
+## 自定义Hook
 
 ```js
 // 获取Promise状态
@@ -429,74 +490,6 @@ function useWindowSize(){
     },[])
     return size   
 }
-```
-
-## 性能优化
-
-#### 组件拆分
-
-```shell
-- 按功能
-- 按逻辑和UI
-```
-
-```shell
-# ProductList
-ProductList=>Product=>Partial
-```
-
-#### 函数功能单一
-
-```shell
-callbacks=>callbacks[key]()
-```
-
-#### 循环中的Key
-
-```ts
-- 唯一ID
-- index => 元素顺序不变|新增末尾
-```
-
-#### ShouldComponentUpdate
-
-```ts
-// 父组件渲染 => 子组件不渲染
-shouldComponentUpdate(nextProps,nextState){
-	return nextProps.value !== this.props.value
-}
-// 
-```
-
-#### PureComponent
-
-#### React.memo
-
-#### 懒加载组件
-
-```ts
-// react-loadable
-Loadable(
-	()=>import('component'),
-    loading(){
-    	return loading...
-    }
-)
-```
-
-```ts
-// React.lazy + Suspense 
-const Lazy = lazy(()=>import('component'))
-<Suspense fallback={loading}>
-```
-
-#### Gzip压缩
-
-```shell
-# Nginx
-gzip on;
-gzip_comp_level 6; #1~9
-gzip_types text/plain text/css application/json application/javascript;
 ```
 
 ## 配置

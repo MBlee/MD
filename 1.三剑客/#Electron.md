@@ -1,19 +1,4 @@
-# 开始
-
-> 快速启动：nodemon --watch main.js --exec npm run build 
-
-~~~shell
-# 克隆模板
-git clone https://github.com/electron/electron-quick-start
-# 脚手架
-create-electron-app xxx_app
-# 包
-npm i electron -g || yarn add electron
-# yarn构建
-yarn create electron-app xxApp
-yarn start
-yarn make
-~~~
+## 核心
 
 > app
 
@@ -78,9 +63,7 @@ const menu = Menu.buildFromTemplate(opts)
 Menu.setApplicationMenu(menu)
 ```
 
-
-
-# API
+## API
 
 ~~~js
 // 文件写入
@@ -91,16 +74,34 @@ ele=>('dragover')
 e.preventDefault()&&e.stopPropagation()
 ~~~
 
-## 核心
+## ...
+
+## 构建
+
+> 快速启动：nodemon --watch main.js --exec npm run build 
 
 ~~~shell
-# 原理
-主进程（原生API）<=>渲染进程（Chromium + nodejs）
+# 克隆模板
+git clone https://github.com/electron/electron-quick-start
+# 脚手架: create-electron-app
+yarn create electron-app xxx
+npx create-electron-app xxx
+# 手动
+npm i electron -g
+yarn add electron
+# yarn构建
+yarn start
+yarn make
 ~~~
 
-# ...
+```shell
+# 原理
+主进程（原生API）<=>渲染进程（Chromium + nodejs）
+```
 
-###### 自定义标题无法拖拽
+## 附录
+
+#### 自定义标题无法拖拽
 
 > -webkit-app-region: drag || no-drag;
 

@@ -84,49 +84,9 @@ Jira Clone
 #### 数据类
 
 ```shell
-# Mobx
-# React Query
 # React i18next
 # Dvajs
 # Ahooks
-```
-
-```tsx
-/*** @tanstack/react-query ***/
-import {
-    QueryClientProvider,QueryClient,
-    useQueryClient,
-    useQuery,
-    useMutation
-} from '@tanstack/react-query'
-const App = <QueryClientProvider client={new QueryClient()}/>
-const { isPending,error,data } = useQuery({ 
-    queryKey:['todos'],
-    queryFn:()=>Promise
-})
-const mutation = useMutation({
-    mutationFn:()=>Promise,
-    onSuccess:()=>{
-        queryClient.invalidateQueries({
-            queryKey:['todos']
-        })
-    }
-})
-mutation.mutate({id:Date.now(),title})
-/* @tanstack/react-query-devtools */
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-const Devtool =  <ReactQueryDevtools initialIsOpen={false} />
-/* @tanstack/eslint-plugin-query */
-// API
-- useQuery => {isPending,isError,status,err,data,isFetching}
-	queryOptions({})
-	queryKey:['':{}]
-    queryFn:()=>Promise
-- useQueries
-	{queries}
-- useMutation => {mutate}
-	mutationFn:()=>Promise
-	onSuccess:()=>queryClient.invalidateQuerieds({queryKey:['']})
 ```
 
 #### 路由类
