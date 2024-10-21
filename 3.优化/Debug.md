@@ -47,3 +47,57 @@
 - Summary|BottomUP|CallTree
 ```
 
+## !错误处理
+
+>常见错误：
+>
+>JSON.parse，第三方定制
+```ts
+// 同步捕获
+try{}
+catch(err){}
+finally{}
+// 异步捕获
+new Promise(...).catch.finally
+// 错误事件
+- error
+- unhandledrejection
+```
+
+```ts
+// 处理错误
+- 非重大错误
+  + 引导说明|重复操作
+- 重大说明
+  + 刷新页面
+// 错误分析
+- 工具：Sentry|Honeybadger
+- 错误信息
+  + 提示信息：文件名|行号|堆栈|用户|浏览器|版本信息
+  + 用户历程：网页操作流程|触发事件|API历史
+  + 错误属性：严重程度|次数|发生率
+  + 追踪错误：发生时间|处理情况
+  + SourceMap：传至服务器再映射
+  + 发送错误：工具错误
+```
+
+```ts
+// 抛出错误
+throw new Error('')
+// 自定义错误
+class TrustedError extends Error{
+    constructor(msg){
+        super(msg)
+        this.name=new.target.name
+    }
+}
+class ApiError extends TrustedError{
+    constructor(msg,status){
+        super(msg)
+        this.status=status
+    }
+}
+// 错误类型
+- err instanceof ApiError
+```
+
