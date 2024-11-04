@@ -33,3 +33,14 @@ nvm use 16.0.0
 ```
 
 ## Win10
+
+```shell
+# nvm-windows
+nvm list available
+nvm ls
+nvm current
+# 安装卸载
+nvm install|uninstall [version]
+nvm alias|unalias
+nvm use [version]
+```

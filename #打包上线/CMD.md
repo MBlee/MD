@@ -188,13 +188,13 @@ pnpm %*
 doskey pm=pnpm  $*
 ```
 
-#### PowerShell默认管理员
+#### PowerShell执行脚本
 
 ```shell
+# 重设执行策略（管理员）
+set-executionpolicy remotesigned
 # 查看现在的执行策略
 get-executionpolicy
-# 重设执行策略
-set-executionpolicy remotesigned
 ```
 
 #### PowerShell起别名

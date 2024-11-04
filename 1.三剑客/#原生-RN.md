@@ -1,7 +1,5 @@
 > npx create-expo-app@latest
 
-
-
 ## ......
 
 ## 安装

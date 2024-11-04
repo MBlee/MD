@@ -262,32 +262,43 @@ app.use(mount('prefix',static(path)))
 ## Nest
 
 ```shell
-npm i @nestjs/cli -g
+# npm i @nestjs/cli -g
 nest new <app>
 nest g controller <controller> 
 ```
 
 ```ts
-// xx.controller.ts
+// 路由：xx.controller.ts
 import { Controller...} from '@nestjs/common'
 @Controller('route')
 @Get(':route')
 @Request|Response
 @Params|Query|Body|Session
 @Next
-// xx.service.ts
-// app.module
+// 路由处理器：xx.service.ts
+// app.module.ts
 import {Module} from '@nestjs/common'
 @Module({
     import:[],
     providers:[],
     controllers:[controller...]
 })
+```
+
+```ts
 // main.ts
 import {NestFactory} from '@nestjs/core'
-const app = await NestFactory.create(AppModule)
+import {NestExpressApplication} from '@nestjs/platform-express'
+const app = await NestFactory.create<NestExpressApplication>(AppModule)
+// 静态目录
+app.useStaticAssets(join(__dirname,'..','public'),{prefix})
+// 模板引擎
+app.setBaseViewsDir(join(__dirname,'..','views'))
+app.setViewEngine('hbs') => @Render('views')
 await app.listen(3000)
 ```
+
+
 
 ## ------------------
 
