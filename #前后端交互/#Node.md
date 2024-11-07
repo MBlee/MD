@@ -69,7 +69,7 @@ multer({
 const cookieParser = require('cookie-parser')
 app.use(cookieParser('signed'))
 req.cookies|signedCookies.key
-res.cookie(key,value,{maxAge,signed,domain,path})
+res.cookie(key,value,{maxAge,signed,domain,path,httpOnly})
 // session
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
@@ -265,6 +265,7 @@ app.use(mount('prefix',static(path)))
 # npm i @nestjs/cli -g
 nest new <app>
 nest g controller <controller> 
+nest g provider|service <service>
 ```
 
 ```ts
@@ -274,8 +275,11 @@ import { Controller...} from '@nestjs/common'
 @Get(':route')
 @Request|Response
 @Params|Query|Body|Session
+@Request.signedCookies|@Response.cookie
+@Request.session
 @Next
 // 路由处理器：xx.service.ts
+@Injectable => providers:[...service] => private service:Service
 // app.module.ts
 import {Module} from '@nestjs/common'
 @Module({
