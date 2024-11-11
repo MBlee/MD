@@ -290,6 +290,27 @@ import {Module} from '@nestjs/common'
 ```
 
 ```ts
+// 路由中间件
+// 创建
+@injectable()
+class Logger implements NestMiddleware{
+  use(req:Request,res:Response,next:Function){
+    next()
+  }
+}
+// 应用
+class AppModule implements NestModule{
+  configure(consumer:MiddlewareConsumer){
+    consumer
+      .apply(Logger...)
+      .excludes(...)
+      .forRoutes({path,method:RequesMethdod.ALL},
+                'path/(.reg)',Controller...)
+  }
+}
+```
+
+```ts
 // main.ts
 import {NestFactory} from '@nestjs/core'
 import {NestExpressApplication} from '@nestjs/platform-express'
@@ -300,9 +321,21 @@ app.useStaticAssets(join(__dirname,'..','public'),{prefix})
 app.setBaseViewsDir(join(__dirname,'..','views'))
 app.setViewEngine('hbs') => @Render('views')
 await app.listen(3000)
+// 全局中间件
+app.use(Logger)
+// 文件上传
+>>>@types/multer>>>Express.Multer.File
+>>>MulterModule.register(Async)?({dest|useFactory()=>{dest}})
+@Post('upload')
+@useInterceptors(
+  FileInterceptor('file'|{name,maxCount}),{dest}
+  |AnyFilesInterceptor|NoFilesInterceptor
+)
+uploadFile(@uploadedFiles?() files?:Express.Multer.File){
+  const writeStream = createWriteStream('path')
+  writeStream.write(file.buffer)
+}
 ```
-
-
 
 ## ------------------
 
