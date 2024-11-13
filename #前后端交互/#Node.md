@@ -273,11 +273,16 @@ nest g provider|service <service>
 import { Controller...} from '@nestjs/common'
 @Controller('route')
 @Get(':route')
-@Request|Response
+@Req(uest)?|Res(ponse)?({passthrough:true})
 @Params|Query|Body|Session
 @Request.signedCookies|@Response.cookie
 @Request.session
+@Headers('name')
+@Ip|HostParam
 @Next
+@HttpCode(204)
+@Header(key,value)
+@Redirect(url,301)
 // 路由处理器：xx.service.ts
 @Injectable => providers:[...service] => private service:Service
 // app.module.ts
