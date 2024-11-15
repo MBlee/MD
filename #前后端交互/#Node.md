@@ -271,7 +271,7 @@ nest g provider|service <service>
 ```ts
 // 路由：xx.controller.ts
 import { Controller...} from '@nestjs/common'
-@Controller('route')
+@Controller('route')=> constructor(private service:Service)
 @Get(':route')
 @Req(uest)?|Res(ponse)?({passthrough:true})
 @Params|Query|Body|Session
@@ -284,12 +284,15 @@ import { Controller...} from '@nestjs/common'
 @Header(key,value)
 @Redirect(url,301)
 // 路由处理器：xx.service.ts
-@Injectable => providers:[...service] => private service:Service
+@Injectable|Inject => private service:Service
+// 管道：xx.pipe.ts
+@Injectable() => PipeTransform => @UsePipes(new XPipe())
+transform(value:any,metadata:ArgumentMetadata)=> value
 // app.module.ts
 import {Module} from '@nestjs/common'
 @Module({
-    import:[],
-    providers:[],
+    imports:['子模块'],exports:['共享模块']
+    providers:[service...],
     controllers:[controller...]
 })
 ```

@@ -1,0 +1,14 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "files": "dist",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".":{
+      "import":"./dist/index.es.js",
+      "require":"./dist/index.umd.js",
+    }
+  },
+  "type": "module"
+}

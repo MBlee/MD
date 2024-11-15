@@ -1,0 +1,7 @@
+{
+    "eslint.packageManager":"pnpm", //指定包管理器
+    "eslint.validate":["typescript","typescriptreact"], //要检查的文件
+    "eslint.options":{ //检查配置
+        "extensions":[".js",".vue",".ts"]
+    }
+}

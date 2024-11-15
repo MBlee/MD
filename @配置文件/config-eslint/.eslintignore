@@ -1,0 +1,17 @@
+# .eslintignore
+node_modules
+dist
+coverage
+/public
+/docs
+/bin
+
+*.sh
+*.md
+*.woff
+*.ttf
+.vscode
+.idea
+.husky
+.local
+Dockerfile
