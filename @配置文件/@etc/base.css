@@ -1,0 +1,59 @@
+/* 重置默认的样式 */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+ 
+/* 设置基本字体样式与颜色 */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+ 
+/* 移除列表的默认样式 */
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ 
+/* 设置链接样式 */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+ 
+a:hover {
+    text-decoration: underline;
+}
+ 
+/* 移除输入框的默认样式 */
+input, textarea {
+    border: none;
+    outline: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+ 
+/* 设置按钮样式 */
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+ 
+/* 移除图片的边框 */
+img {
+    border: none;
+}
+ 
+/* 清除浮动 */
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}

@@ -353,7 +353,7 @@ shutdown -r now
 reboot
 ```
 
-- 
+- ​
 
 ## ......
 
@@ -411,7 +411,7 @@ echo <pid> >  var/run/nginx.pid
 
 ## Linux简介
 
-**版本：**Ubuntu、RedHat、CentOS
+**版本：**Ubuntu(20.04)、RedHat、CentOS
 
 **特点：**[安全性]()、[稳定性]()、[高并发]()
 
@@ -438,3 +438,12 @@ echo <pid> >  var/run/nginx.pid
   [var]()：经常被修改的目录
 
   [www]()：存放服务器网站相关
+
+#### 下载
+
+```shell
+# 阿里开源镜像站
+# 网易开源镜像站
+# 清华大学开源镜像站
+```
+
