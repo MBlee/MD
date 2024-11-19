@@ -288,10 +288,15 @@ import { Controller...} from '@nestjs/common'
 // 管道：xx.pipe.ts
 @Injectable() => PipeTransform => @UsePipes(new XPipe())
 transform(value:any,metadata:ArgumentMetadata)=> value
+// 守卫：xx.guard.ts
+import {Observable} from 'rxjs'
+@Injectable() => CanActivate => @UseGuards(AuthGuard)
+canActivate(context:ExecutionContext):boolean|Promise<Boolean>|Observable<boolean> => context.switchToHttp().getRequest().session
+app.useGolobalGuards(new AuthGuard())
 // app.module.ts
 import {Module} from '@nestjs/common'
 @Module({
-    imports:['子模块'],exports:['共享模块']
+    imports:['子模块'],exports:['共享Service']
     providers:[service...],
     controllers:[controller...]
 })
@@ -343,6 +348,25 @@ uploadFile(@uploadedFiles?() files?:Express.Multer.File){
   const writeStream = createWriteStream('path')
   writeStream.write(file.buffer)
 }
+```
+
+```ts
+// Mongoose数据库
+// @nestjs/mongoose mongoose
+>>> app.module.ts //数据库连接
+import {MongooseModule} from '@nest/js/mongoose'
+@Module({
+  imports:[MongooseModule.forRoot('mongodb://host/nest')]
+})
+>>> schema //数据表
+import * as mongoose from 'mongoose'
+export new mongoose.Schema({...})
+>>> child.module.ts //数据库操作
+@module({
+  imports:[MongooseModule.forFeature(models?:{name,schema,collection?}[],connectionName?:string):DynamicModule]
+})
+>>> xx.service.ts
+constructor(@InjectModel('Article') private readonly articleModel) => this.articleModel.find().exec()
 ```
 
 ## ------------------
