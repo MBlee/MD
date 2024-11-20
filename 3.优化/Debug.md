@@ -11,6 +11,21 @@
 - EventListener
 ```
 
+```shell
+# 循环引用
+# 检测：
+- JSON.stringify
+- 递归=>self
+# 解决：
+- obj=null
+- WeakMap|WeakSet
+- 设计模式
+```
+
+```shell
+# 内存泄露
+```
+
 ## CSS和DOM
 
 ```shell

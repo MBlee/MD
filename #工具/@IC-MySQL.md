@@ -90,9 +90,8 @@ mysqladmin -uroot -p --shutdown
 
 ```shell
 #!Win10（MySQL8 + Workbench）
-# 配置
-- ServiceName|Port|ConfigType
-- Authentication:root
+# 软件-数据
+# 服务-环境
 ```
 
 ```shell
@@ -106,7 +105,17 @@ mysql
 -uroot -p -D
 ```
 
+## 图形化工具
+
 ```shell
-# 可视化工具：Navicat,  SQLYog
+#! 可视化工具：Navicat，SQLYog，dbeaver
+# Navicat17
+# Debug(密码错误)
+USE mysql;
+AlTER USER 'root'@'loacalhost' IDENTIFIED WITH mysql_native_password BY 'pwd' #修改密码规则和密码
+FLUSH PRIVILEGES; #刷新权限
+
+# SQLYog
+# dbeaver
 ```
 
