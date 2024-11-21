@@ -62,8 +62,7 @@ fork=true
 ## Win10
 
 ```shell
-# Window安装
-- 环境变量
+# mongodb-5.0
 # 启动
 mongod 
     --dbpath 'dbDir'
@@ -72,6 +71,14 @@ mongod
     --serviceName 'MongoDB'
     --config|f 'mongo.cfg'
 # 连接
-mongo <path:port/myDb>
+mongo <path:port/myDb> -u -p
+```
+
+```shell
+# mongodb-8.0 && mongodb-shell
+- dbpath/logpath/config
+- service/path
+# 连接
+mongosh <path:port/myDb> -u -p
 ```
 
