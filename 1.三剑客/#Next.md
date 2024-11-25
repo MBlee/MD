@@ -1,5 +1,19 @@
 ## Next@15
 
+#### 组件
+
+```ts
+// 模块通用
+import 'server-only|client-only'
+- fetch|React.cache // 共享数据
+// 客户端转换服务端组件
+'use client'
+- export default (import)
+- createContext({}) => <Provider value>{children}</Provider>
+// 客户端包含服务端组件(不能导入)
+- <Client><Server/></Client>
+```
+
 #### 路由
 
 > layout.tsx|template.tsx, page.tsx
