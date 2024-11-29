@@ -38,6 +38,13 @@ git config --global credential.helper store
 git credential-manager uninstall
 ~~~
 
+#### download-git-repo
+
+```shell
+# 下载Gitee项目报错
+- down('direct:gitee',dest,{clone:true},err=>...)
+```
+
 ## Webpack
 
 #### 本地JSON读取

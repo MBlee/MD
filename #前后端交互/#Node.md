@@ -15,6 +15,26 @@ app.use(cors())
 app.use(baseURL,express.static('path'))
 // 路由
 app.use(baseURL,routes)
+// 错误处理器
+app.use((req,res,next)=>{
+  next(httpErrors(404,'NOTFOUND')|'route')
+})
+app.use((err,req,res,next)=>{
+  // Error Logger
+  console.error(err.stack)
+  next(err)
+  // Client Error
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' })
+  } else {
+    next(err)
+  }
+  // Res Error
+  if (res.headersSent) {
+    return next(err)
+  }
+  res.status(500).send(err)
+})
 ```
 
 ```ts
@@ -22,7 +42,12 @@ app.use(baseURL,routes)
 const debug = require('debug')('symbol')
 SET DEBUG=*
 // 错误调试（morgan）
-app.use(require('morgan')())
+app.use(require('morgan')(<formate>,opts))||morgan('combined')(req,res,err=>...)
+- formate:'combined|common|dev|tiny'
+	':method :url :status'
+	':res[content-length] - :response-time ms'
+- opts.stream: 'npm:rotating-file-stream'
+- opts.skip: (req,res)=> res.statusCode<400
 // 错误生成器（@hapi/boom）
 const Boom = require('@hapi/boom')
 Boom.isBoom(err)
@@ -458,12 +483,14 @@ fs.writeFile()
 fs.appendFile()
 fs.rename()
 fs.unlink()
+```
 
+```ts
 // 读取流
 fs.createReadStream(_path)
 rs.on('data|end|error')
 // 写入流
-fs.createWriteStream(_path)
+fs.createWriteStream(_path,{flags:'a|r|w'})
 ws.write(_data)
 ws.end()
 ws.on('finish')
