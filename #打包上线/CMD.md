@@ -27,9 +27,11 @@ net share xx=xx
 ~~~
 
 ```shell
-# hosts文件
-C:\Windows\System32\drivers\etc\hosts
+# hosts文件（https://www.ipaddress.com/）
+- C:\Windows\System32\drivers\etc\hosts
 10.0.0.8	a.xx.cn xx.cn
+151.101.1.194	github.global.ssl.fastly.net
+140.82.113.3	github.com
 ```
 
 ## 注册表
@@ -41,11 +43,12 @@ C:\Windows\System32\drivers\etc\hosts
 ```markdown
 # 文件：HKEY_CLASSES_ROOT\*\shell
 1. 新建项：sublime => 默认
-2. 新建字符串：Icon => sublPath
-3. 新建子项：command:subPath %1
-# 目录：HKEY_CLASSES_ROOT\Direactory\Background\shell
+2. 新建字符串：Icon: <path/program.exe>
+3. 新建子项：command: <path/program.exe> "%1"
+# 目录：HKEY_CLASSES_ROOT\Directory\Background?\shell
 1. 新建项：cmd
-2. 新建子项：command:cmd.exe /k cd /d "%V"
+2. 新建子项：command:  <path/program.exe> "%1"
+3. 新建字符串：Icon:  <path/program.exe>
 ```
 
 ## 文件操作
