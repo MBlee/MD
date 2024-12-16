@@ -288,9 +288,33 @@ app.use(mount('prefix',static(path)))
 
 ```shell
 # npm i @nestjs/cli -g
-nest new <app>
-nest g controller <controller> 
+nest new <app> -p pnpm
+nest g controller <controller> --flat|--no-flat
 nest g provider|service <service>
+nest g resource xx
+# 打包
+nest build
+	--path <tsconfig-path>
+	--watch
+	--builder <tsc|webpack|swc>
+# 调试
+- nest start -d|--debug 8088 --watch
+=> chrom://inspect
+- vscode => Toggle Auto Attach
+- lanch.json => Program
+```
+
+```shell
+# nest-cli.json
+- $schema:"https://json.shemastore.org/nest-cli"
+- collection:"@nestjs/schematics"
+- sourceRoot:'src'
+- generateOptions:{ flat,spec }
+- compilerOptions:{
+  'webpack':false, 'deleteOutDir':true,
+  "builder":'tsc',
+  "watchAssets":false
+}
 ```
 
 ```ts
