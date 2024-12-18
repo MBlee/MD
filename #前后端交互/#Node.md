@@ -462,7 +462,7 @@ $('img').attr('src').each(index,item=>...)
 process.cwd()
 ```
 
-#### Http模块
+#### Http
 
 ```js
 // 创建服务器
@@ -487,26 +487,26 @@ http.createServer((req,res)=>{
 
 >  常用模块：url、queryString、path
 
-#### Fs模块
+#### Fs
 
 ```js
 // Promisify
 import {promisify} from 'util'
 const read = promisify(fs.readFile)
 // 检测文件|目录
-fs.stat(path,(err,data)=>{
+fs.stat(path,(err,stats)=>{
     .isDirectory|.isFile
 })
+// 文件夹操作
+fs.readdir(path,(err,files)=>void)
+fs.mkdir(path,{recursive},err=>void)
+fs.rmdir(path,{recursive},err=>void)
 // 文件操作
-fs.readdir()
-fs.mkdir()
-fs.rmdir()
-
-fs.readFile()
-fs.writeFile()
-fs.appendFile()
-fs.rename()
-fs.unlink()
+fs.readFile(path,(err,data)=>void)
+fs.writeFile(path,data,err=>void)
+fs.appendFile(path,data,err=>void)
+fs.rename(path,newName)
+fs.unlink(path,err=>void)
 ```
 
 ```ts
@@ -517,7 +517,7 @@ rs.on('data|end|error')
 fs.createWriteStream(_path,{flags:'a|r|w'})
 ws.write(_data)
 ws.end()
-ws.on('finish')
+ws.on('finish|err')
 // 导流
 readStream.pipe(writeStream)
 ```
@@ -564,10 +564,22 @@ function copyFiles(sourceDir, destDir) {
 
 #### Buffer
 
-```js
-Buffer.alloc(length,1)
-Buffer.from([...])
-Buffer.concat([...buffers]).toString('utf-8|base64')
+```ts
+Buffer.alloc(length,1)|allocUnsafe
+Buffer.from([...]|any)
+Buffer.concat([...buffers]).toString('utf-8|base64|hex')
+Buffer.isBuffer|byteLength
+```
+
+#### Events
+
+```ts
+const {EventEmitter} = require('events')
+EventEmitter.on|once(event,func)
+EventEmitter.removeListener(event,func)
+EventEmitter.removeAllListeners(event)
+EventEmitter.emit(event,...args)
+EventEmitter.setMaxListeners(n)
 ```
 
 #### Formidable
