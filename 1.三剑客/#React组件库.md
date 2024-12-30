@@ -23,5 +23,14 @@
 ## Storybook
 
 ```shell
-- npx storybook@latest init
+npx storybook@latest init
+npm run storybook
 ```
+```ts
+// .stories.ts
+export const meta = {component}
+export const story1 = {args} 
+```
+
+
+
