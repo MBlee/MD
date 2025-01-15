@@ -318,6 +318,18 @@ nest build
 ```
 
 ```ts
+// app.module.ts
+import {Module} from '@nestjs/common'
+@global()
+@Module({
+	imports:[modules...],
+    controllers:[controllers...],  
+    providers:[service...],
+  	exports:[modules|services...]
+})
+class Module{
+  constructor(private service:Service){}
+}
 // 路由：xx.controller.ts
 import { Controller...} from '@nestjs/common'
 @Controller('route')=> constructor(private service:Service)
@@ -342,13 +354,6 @@ import {Observable} from 'rxjs'
 @Injectable() => CanActivate => @UseGuards(AuthGuard)
 canActivate(context:ExecutionContext):boolean|Promise<Boolean>|Observable<boolean> => context.switchToHttp().getRequest().session
 app.useGolobalGuards(new AuthGuard())
-// app.module.ts
-import {Module} from '@nestjs/common'
-@Module({
-    imports:['子模块'],exports:['共享Service']
-    providers:[service...],
-    controllers:[controller...]
-})
 ```
 
 ```ts
@@ -370,6 +375,11 @@ class AppModule implements NestModule{
                 'path/(.reg)',Controller...)
   }
 }
+```
+
+```ts
+// 异常过滤器
+throw new HttpException('forbidden',HttpStatus.FORBIDDEN,{cause,description})
 ```
 
 ```ts
