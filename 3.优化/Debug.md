@@ -1,14 +1,11 @@
 ## TS
 
 ```shell
-- Debugger
-- 断点
-  - SourceMap
-```
-
-```shell
-#! Sources
-- EventListener
+# Essential Check
+- Debugger(SourceMap/Logpoint)
+- Table/Trace() #数组对象|调用栈
+- Monitor/getEventListener #监听事件|函数
+- DispatchEvent(new Event({cancelable,bubble})) #模拟事件
 ```
 
 ```shell
@@ -24,21 +21,6 @@
 
 ```shell
 # 内存泄露
-```
-
-## CSS和DOM
-
-```shell
-#! 元素状态
-- forceState  #伪类
-- hideElement  #隐藏H
-- ctrl+\  #暂停+
-#! 边框
-- box-shadow
-- out-line
-#! 动画
-- 贝塞尔
-- Animations分页
 ```
 
 ## API
@@ -116,3 +98,17 @@ class ApiError extends TrustedError{
 - err instanceof ApiError
 ```
 
+## CSS和DOM
+
+```shell
+#! 元素状态
+- forceState  #伪类
+- hideElement  #隐藏H
+- ctrl+\  #暂停+
+#! 边框
+- box-shadow
+- out-line
+#! 动画
+- 贝塞尔
+- Animations分页
+```

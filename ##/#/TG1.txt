@@ -1,0 +1,19 @@
+精通Node.js，npm包管理，深入理解Events/Stream/Net
+精通Nest/Express/Koa/Fastify
+精通MongoDB，MySQL设计和优化SQL语句执行效率，数据库对接
+精通Websocket  									   
+精通微服务
+精通Linux、Jenkins
+熟悉GraphQL
+熟悉AI工具和库（TensorFlow、PyTorch、Keras）
+熟悉typeorm或其他orm框架
+
+精通React-Next，Vue
+精通营销活动C端H5、小程序
+精通Websocket IM产品
+精通Git工作流，熟练使用 tortoisegit/sourcetree
+精通Apache、Nginx等常用WebServer
+熟悉视频组件开发 		
+熟悉Canvas/SVG/D3
+熟悉Nuxt，Electron、React-Native、鸿蒙
+熟悉web安全，防范安全漏洞
