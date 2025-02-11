@@ -1,3 +1,5 @@
+## HTTP协议
+
 ### HTTP-Client
 
 ~~~shell
@@ -123,3 +125,28 @@ content-type
 - 400-499，客户端错误
 - 500-599，服务端错误
 ~~~
+
+## HTTP压缩
+
+```shell
+# HTTP压缩之压缩请求体，HTTP/2使用HPACK来压缩头文件
+```
+
+``` ts
+// 内置zlib模块（只压缩请求体、压缩尺寸限制）
+const zlib = require('zlib')
+const raw = fs.createReadStream('filePath')
+cosnt acceptEncoding = req.headers['accept-encoding']||''
+res.setHeader('Content-Type','text/plain')
+if(acceptEncoding.includes('gzip')){
+  res.setHeader('Content-Encoding','gzip')
+  raw.pipe(zlib.createGzip()).pipe(res)
+}else{ raw.pipe(res) }
+// 检测Gzip
+curl -H 'Accept-Encoding:gzip' <url> | xxd // view binary representation
+curl -H 'Accept-Encoding:gzip' <url> | gunzip // decompress
+curl -H 'Accept-Encoding:gzip' <url> | wc -c // 比较大小
+```
+
+## HTTPS与TLS
+
