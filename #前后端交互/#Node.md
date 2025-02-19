@@ -651,6 +651,26 @@ res.write(data)
 - app => { _route(req,res)... }
 - try...catch => app[ _route ]
 
+#### ......
+
+#### Node+TS
+
+```ts
+
+```
+
+#### 异步工作
+
+#### 文件操作
+
+#### 命令行
+
+#### 模块
+
+#### 诊断
+
+#### 测试
+
 ## HTTP
 
 #### HTTP-Header
