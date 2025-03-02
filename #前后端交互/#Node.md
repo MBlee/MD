@@ -661,6 +661,14 @@ res.write(data)
 
 #### 异步工作
 
+> 事件循环：执行事件回调，非阻塞I/O回调（Net）。例如，正则表达式，同步API，JSON解析。
+>
+> 防阻塞：分割，移入workerPool
+
+> workerPool：执行IO/CPU密集操作，在libuv上实现。例如，DNS、FS、Crypto、Zlib。
+>
+> 防阻塞：分割
+
 #### 文件操作
 
 #### 命令行
