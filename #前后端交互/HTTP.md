@@ -148,5 +148,42 @@ curl -H 'Accept-Encoding:gzip' <url> | gunzip // decompress
 curl -H 'Accept-Encoding:gzip' <url> | wc -c // 比较大小
 ```
 
-## HTTPS与TLS
+## HTTP&Node
 
+#### HTTP-Header
+
+```js
+// Content-Type:
+1. text/plain
+2. application/json
+  - JSON.stringfy( xxxobj )
+3. application/x-www-form-urlencoded
+  - a=xxx&b=xxx
+4. multipart/form-data
+// Autorization:
+- localStorage.getItem("token")
+```
+
+#### HTTP-Response
+
+```js
+// Access-Control-Allow-Origin
+// Access-Control-Allow-Headers
+// Access-Control-Allow-Method
+```
+
+#### HTTP-配置
+
+```js
+// timeout
+// headers['Content-Type']，withCredentials
+// transformRequest：
+- qs.stringfy(data)
+// request拦截器:
+- req.headers.Autorization = token
+// response拦截器:
+- res.data
+- err, { res }
+  - res.status
+  - window.navigator.onLine
+```

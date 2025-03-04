@@ -456,9 +456,8 @@ rn({url}).then()
 
 #### HTML解析
 
-###### Cheerio
-
 ```js
+/*  Cheerio  */
 const $ = cheerio.load('htmlStr')
 $('img').attr('src').each(index,item=>...)
 ```
@@ -627,47 +626,50 @@ npm silly-datetime
 sd.format(date,'YYYY-MM-DD HH:mm')
 ```
 
-#### 搭建服务器
+#### 网络通信
 
-> **静态服务器**
-
-- ext => content-type
-- url => readfile
-
-```js
-// 获取扩展名
-const extname = path.extname(pathname)
-const mime = fs.readFileSync('mime.json')[extname]
-res.writeHead(200,{'Content-Type',mime+';charset=utf-8'})
-// 读取文件
-const data = fs.readFileSync('./static'+pathname)
-res.write(data)
+```ts
+/*  TCP  */ 
+// 服务器
+import net form 'node:net'
+const server = net.createServer((socket)=>{})
+server.listen({port,host},cb)
+// 事件/方法
+server.on("err",err=>{})
+server.on("close",cb)
+server.on("listening",cb)
+server.on("connection",cb)
 ```
 
-> **HTTP请求**
+```ts
+/*  UDP  */
+// 服务器
+import dgram from 'node:dgram'
+const server = dgram.createSocket('udp4')
+server.bind(port)
+// 事件/方法
+server.on('err',err=>{})
+server.on('close',()=>{})
+server.on('listen',()=>{})
+server.on('message',(msg,info)=>{})
+server.send(data)
+```
 
-#### 封装Express
-
-- app => { _route(req,res)... }
-- try...catch => app[ _route ]
+```ts
+/*TLS/SSL*/
+```
 
 #### ......
 
-#### Node+TS
-
-```ts
-
-```
-
 #### 异步工作
 
-> 事件循环：执行事件回调，非阻塞I/O回调（Net）。例如，正则表达式，同步API，JSON解析。
+> [事件循环]()：执行事件回调，非阻塞I/O回调（Net）。例如，正则表达式，同步API，JSON解析。
 >
-> 防阻塞：分割，移入workerPool
+> [防阻塞]()：分割，移入workerPool
 
-> workerPool：执行IO/CPU密集操作，在libuv上实现。例如，DNS、FS、Crypto、Zlib。
+> [workerPool]()：执行IO/CPU密集操作，在libuv上实现。例如，DNS、FS、Crypto、Zlib。
 >
-> 防阻塞：分割
+> [防阻塞]()：分割
 
 #### 文件操作
 
@@ -675,48 +677,33 @@ res.write(data)
 
 #### 模块
 
-#### 诊断
+## Debug
+
+#### 调试
+
+```shell
+### 实时调试
+```
+
+```shell
+### 内存分析
+# Heap Profiler
+- Allocation instrumentation timeline
+- Allocation sampling
+# Heap Snapshot
+# GC Traces
+```
+
+```shell
+### 性能分析
+```
+
+```shell
+### 火焰图
+```
 
 #### 测试
 
-## HTTP
+> 测试框架：Mocha/Jest、Nodeunit、Vors
 
-#### HTTP-Header
-
-```js
-// Content-Type:
-1. text/plain
-2. application/json
-  - JSON.stringfy( xxxobj )
-3. application/x-www-form-urlencoded
-  - a=xxx&b=xxx
-4. multipart/form-data
-// Autorization:
-- localStorage.getItem("token")
-```
-
-#### HTTP-Response
-
-```js
-// Access-Control-Allow-Origin
-// Access-Control-Allow-Headers
-// Access-Control-Allow-Method
-```
-
-#### HTTP-配置
-
-```js
-// timeout
-// headers['Content-Type']，withCredentials
-// transformRequest：
-- qs.stringfy(data)
-// request拦截器:
-- req.headers.Autorization = token
-// response拦截器:
-- res.data
-- err, { res }
-  - res.status
-  - window.navigator.onLine
-```
-
-## 
+#### 攻防
