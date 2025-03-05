@@ -1,5 +1,15 @@
 ## Next@15
 
+```shell
+# 自动安装
+npx create-next-app@latest 
+# 手动安装
+npm i next react react-dom
+- mkdir public src/app
+- echo. > (next-env.d.ts next.config.js) 
+- baseUrl:'src/',paths:{'@/*'}
+```
+
 #### 组件
 
 ```ts
@@ -14,21 +24,54 @@ import 'server-only|client-only'
 - <Client><Server/></Client>
 ```
 
-#### 路由
-
-> layout.tsx|template.tsx, page.tsx
-
 ```ts
-// 动态|嵌套路由
-- app/[dynamic]/page.tsx
+// 数据获取
+- 服务端：
+	async => fetch
+- 客户端：
+	<Suspense> => <Server Promise/> => use(Promise)
+// 数据更新
 ```
 
 ```ts
-// 导航：next/navigation
-- <Link href={''|{}} as 
+// 样式
+1. npm i sass
+	next.config.js > sassOptions.additionalData
+2. npm i tailwindcss postcss @tailwindcss/postcss
+	- post.config.mjs > /* @types {import('tailwindcss').config} */
+      plugins:{'@tailwindcss/postcss':{}}
+	- import 'tailwindcss'
+// 图片
+- 本地图片： import img from './img.jpg'
+- 网络图片： next.config.js => 
+  images:{
+    remotePatterns:[{protocol,hostname,port,pathname,search}]
+  }
+// 字体
+- Google
+	import {geist} from 'next/font/google'
+	geist({subsets:['latin']}).className
+- 本地
+	import localFont from 'next/font/local'
+	localFont({src}).className
+```
+
+#### 路由
+
+```shell
+# 路由匹配
+- (routeGroup) & _private
+- layout & template & loading
+- error & not-found & page
+- route
+```
+
+```ts
+// 切换：next/navigation
+- <Link href={''|{}} as // next/link
 	prefetch
     scroll
-  />
+  /> 
 - redirect('pathname')
 - useRouter => pathname,query,push,prefetch
 - usePathname => pathname

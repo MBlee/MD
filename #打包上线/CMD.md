@@ -4,7 +4,13 @@
 
 ```shell
 # 循环
-for %a in (,) do cmd
+for /r %a in (,); do cmd
+```
+
+```shell
+# 变量
+%~nI 文件名
+%~xI 扩展名
 ```
 
 ## 网站加速
