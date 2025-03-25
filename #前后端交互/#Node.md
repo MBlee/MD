@@ -498,19 +498,37 @@ http.createServer((req,res)=>{
 
 #### Fs
 
-```js
-// Promisify
-import {promisify} from 'util'
+```ts
+// 转Promise
+require('node:fs/promises') // v14
+require('fs').promises	// v10 ~ v14
+import {promisify} from 'util' // v8 ~ v10
 const read = promisify(fs.readFile)
+```
+
+```ts
+// 文件路径
+const path = require('node:path')
+path.dirname('path')
+path.basename('path','ext')
+path.extname('path')
+path.join('/','path1','path2')
+path.resolve('/','path1','path2')
+path.normalize('path')
+```
+
+```js
 // 检测文件|目录
-fs.stat(path,(err,stats)=>{
-    .isDirectory|.isFile
+fs.stat('path',(err,stats)=>{
+    stats.isDirectory()|.isFile()|.isSymbolicLink()
+  	stats.size
 })
 // 文件夹操作
-fs.readdir(path,(err,files)=>void)
-fs.mkdir(path,{recursive},err=>void)
-fs.rmdir(path,{recursive},err=>void)
+fs.readdir('path',(err,files)=>void)
+fs.mkdir('path',{recursive},err=>void)
+fs.rmdir('path',{recursive},err=>void)
 // 文件操作
+fs.open('path','r|w|a|a+')
 fs.readFile(path,(err,data)=>void)
 fs.writeFile(path,data,err=>void)
 fs.appendFile(path,data,err=>void)
