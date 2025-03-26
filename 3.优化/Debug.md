@@ -23,6 +23,12 @@
 # 内存泄露
 ```
 
+```shell
+# VSCode调试（launch.json）
+- program ^ outFiles ^ preLaunchTask
+- sourceMap
+```
+
 ## API
 
 ```shell
