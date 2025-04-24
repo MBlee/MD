@@ -724,4 +724,40 @@ server.send(data)
 
 > 测试框架：Mocha/Jest、Nodeunit、Vors
 
+```ts
+// node:assert
+const assert = require('node:assert').strict
+const {message,name} = new assert.AssertionError({actual,expected,operator})
+assert.strictEqual(1,2)
+assert.deepStrictEqual()
+// vows
+const suite = vows.describe('desc')
+suite.addBatch({
+  'test1':{
+	topic:()=>{}|{},
+  	'test1-1':topic=>{}
+  }
+})
+```
+
+```ts
+// nodeunit
+// nodeunit unit.js
+module.exports={
+  'test':test=>{
+   	test.expect(2)
+    test.equal|notEqual|deepEqual()
+    test.done()
+  }
+}
+```
+
+```ts
+// mocha
+// mocha test.js
+describe('',()=>{
+  it('test',fn)
+})
+```
+
 #### 攻防
