@@ -268,6 +268,9 @@ app.use(session({
     signed:true
 },app))
 ctx.session.xx?
+// npm: koa-jwt
+const jwt = require('koa-jwt')({secret})
+router.get('',jwt,async(ctx,next)=>{})
 // npm: trek-captcha
 captcha({size}) => {buffer,token}
 // npm: svg-captcha
@@ -282,6 +285,20 @@ router.use|get|post('/',(ctx,next)=>...)
 app.use(router.routes).use(router.allowedMethods)
 // npm: koa-static koa-mount
 app.use(mount('prefix',static(path)))
+// npm: koa-compose glob
+glob.sync(__dirname,'./','**/*.js')
+.filter(d=>d.indexOf('index.js')===-1)
+.forEach(r=>
+         routers.push(r.routes())
+         routers.push(r.allowedMethods())
+)
+compose(routers)
+// 文件路由
+const relative = path.relative(basePath,item)
+const extname = path.extname(item)
+const fileRoute = '/'+relative.split(extname)[0]
+const key = '_'+method+'_'+fileRouter
+routerMap[key]=handler
 ```
 
 ## Nest
@@ -676,6 +693,98 @@ server.send(data)
 ```ts
 /*TLS/SSL*/
 ```
+
+#### 用户鉴权
+
+```ts
+// JWT
+- <Header>.<Payload>.<Secret>
+const {sign} = require('jsonwebtoken')
+const secret = 'secret'
+const token = sign({user},secret,{expiresIn:'1h'})
+```
+
+#### 进程管理
+
+```ts
+// 创建多线程
+const cp = require('child_process')
+- process.pid|argv[2]
+
+const wp = cp.exec('node command.js i',(err,stdout,stderr)=>{})
+wp.on('exit',code=>{})
+
+const wp = cp.spawn('node',['command.js',i])
+wp.stdout.on('data',stdout=>{})
+wp.stderr.on('data',stderr=>{})
+wp.on('close',code=>{})
+      
+const wp = cp.fork('command.js',[i])
+wp.on('close',code=>{})
+// 进程通信(IPC)
+const n = cp.fork('child.js')
+n.on('message',msg=>{})
+n.send('msg')
+
+process.on('message',msg=>{})
+process.send('msg')
+// 进程通信(Socket)
+const {spawn} = require('child_process')
+const child = spawn('node',['child'],{
+    stdio:[null,null,null,'pipe']
+})
+child.stdio[1].on('data',data=>{})
+
+const pipe = net.Socket({fd:1})
+pipe.write('hello main process!')
+```
+
+#### 日志管理
+
+```ts
+const log4js = require('log4js')
+const logger = log4js.getLogger()
+logger.level = 'debug'
+logger.debug('msg')
+// 日志级别
+all|trace|debug
+info|warn|error
+fatal|mark|off
+// 日志分类
+log4js.configure({
+    appenders:{
+		out:{type:'stdout'}
+        app1:{type:'file',filename:'1.log'}
+    },
+    categories:{
+		default:{appenders:['out'],level:'trace'},
+        app1:{appenders:['app1'],level:'trace'}         
+	}
+})
+const app1Log = log4js.getLogger('app1')
+// 日志分类
+log4js.configure({
+    appenders:{
+        app:{
+            type:'dateFile',
+            filename:'application',
+            alwaysIncludePattern:true,
+            pattern:'yyyy-MM-dd-hh.log'
+        }
+    },
+    categories:{
+        default:{
+            appenders:['app'],level:'trace'
+        },
+        app:{
+            appenders:['app'],level:'trace'
+        }
+    }
+})
+const appLog = log4js.getLogger('app')
+```
+
+
 
 #### ......
 
