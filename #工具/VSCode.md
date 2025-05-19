@@ -17,6 +17,20 @@
 
 ## 必备插件
 
+- 自动类
+  - Auto Close Tag
+  - Auto Rename Tag
+  - Path Intellisense
+  - Npm Intellisense
+- 代码可读性
+  - Highlight Matching Tag
+  - Indent-Rainbow
+  - Import Cost
+- Open in Browser
+- Vue
+  - TypeScript Vue Plugin(Volar)
+- Git
+  - GitLens-Git supercharged
 - 代码补全：
   - node：cnpm install --save-dev @types/node
   - vue：vetur插件

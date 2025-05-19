@@ -1,6 +1,14 @@
+
+
 ```shell
 #! 安装
 npm create vite -- --template vue-ts <app>
+```
+
+#### 静态处理
+
+```shell
+
 ```
 
 #### 全局配置
@@ -113,3 +121,45 @@ plugins:[presetEnv()]
 ```
 
 #### babel
+
+## Plugins
+
+```ts
+/* vite.config.ts */
+defineConfig({
+    {plugins:[]}
+})
+/* plugin */
+{
+    plug(),
+    enforce:'pre|post',
+    apply:'build|serve'
+}
+```
+
+```ts
+// @vitejs/plugin-legacy
+legacy({ 
+    targets:['defaults', 'not IE 11'] })
+```
+
+## CLI
+
+- vite  [root]（vite dev|serve）
+- vite build [root]
+- vite preview [root]
+
+## Feature
+
+- ESM优化（预构建/解析、热替换）
+
+- TS（转译选项、客户端类型）
+
+- HTML（vite-ignore）
+
+- 框架（@vitejs/plugin-{vue|react}-{jsx|swc}）
+
+- JSX/TSX（esbuild.{ jsxFactory, jsxFragment, jsxInject}）
+
+  
+

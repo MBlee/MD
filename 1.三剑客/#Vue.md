@@ -2,6 +2,7 @@
 
 ```shell
 # vite安装（冷启动、热重载、按需编译）
+npm create vite@latest -- --template vue
 npm init vite-app <app>
 npm create vue@latest <app>
 ```
@@ -50,7 +51,8 @@ new Vue({ render:h=>h(app) }).$mount('#app')
 // 监听数据
 - watch(()=>obj.key,{deep:true})
 - watch(xx|[xx],fn,{immediate})
-- watchEffect(fn)|watchPostEffect()
+- watchEffect((onCleanup)=>{},{flush:'post|sync'})
+- watchPostEffect()
 // 生命周期 
 - onBeforeMount|onMounted
 - onBeforeUpdate|onUpdated
@@ -67,7 +69,7 @@ return customRef((track,trigger)=>{
 
 ```js
 // 组合式API
-setup(props,context|{emit,attrs,slots}){
+setup(props,context|{emit,attrs,slots,expose}){
 	return {}|(h)=> h(component)
 }
 // 属性|接口
@@ -76,7 +78,6 @@ setup(props,context|{emit,attrs,slots}){
     validator(value)
 })
 - withDefaults(defineProps<Props>(),{data,method:()=>[]})
-
 - defineEmits<{
     (e:'change',id:number):void
 }>()
@@ -114,6 +115,15 @@ defineAsyncComponent({
   delay,timeout
 })
 ```
+
+```ts
+// 事件总线
+- mitt/tiny-emitter
+- app.config.globalProperties.$bus = mitt()
+- getCurrentInstance => {proxy}
+```
+
+
 
 ```ts
 // TS类型标注
@@ -202,14 +212,28 @@ h(CPT,{
 > 安装：npm i vue-router@4
 
 ```js
-Vue.createApp().use(router)
+createApp().use(router)
 ```
 
 > API
 
-```js
+```ts
+// 静态路由
+- path
+	404:'/:pathMatch(.*)*'
+- redirect
+- component
+- children
+// 动态路由
+- addRoute()
+- removeRoute()
+```
+
+```ts
 // 路由器设置
-- Router.createRouter() 
+export default createRouter({
+    history,routes
+}) 
 - history
 createWebHistory(import.meta.env.BASE_URL)
 createWebHashHistory()
@@ -254,6 +278,7 @@ return false | throw Error
 <transition><keep-alive>
 	<component :is="Component" prop ref/>
 </router-view>
+<router-link to>
 ```
 
 #### Vuex
@@ -301,13 +326,18 @@ export const useStore = defineStore('store.$id',()=>{
     }
 },{
     persist:{
-        paths:['state']|null,
+        key,storage:window.sessionStorage
+        paths:['state.xx']|null,
         afterRestore|beforeRestore(ctx)=>ctx.store
     }
 })
 const store = useStore()
 const {state,getters} = storeToRefs(store)
 const {method} = store
+```
+
+```ts
+router.beforeEach(()=>{}) // 可使用Store
 ```
 
 #### vite配置跨域
