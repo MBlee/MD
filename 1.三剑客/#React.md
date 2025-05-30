@@ -85,9 +85,9 @@ function Cpt(props){ return <div/> }
 
   > =>dispatch
 
-- **自定义hook**
+- **useActionState**(action,state,permalink?)
 
-  > 函数组件（hook）=>最顶层
+  > =>[state,formAction]
 
 **类组件**：
 

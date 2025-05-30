@@ -1,8 +1,6 @@
 ## Next@15
 
 ```shell
-# 自动安装
-npx create-next-app@latest 
 # 手动安装
 npm i next react react-dom
 - mkdir public src/app
@@ -16,8 +14,8 @@ npm i next react react-dom
 // 模块通用
 import 'server-only|client-only'
 - fetch|React.cache // 共享数据
-// 客户端转换服务端组件
-'use client'
+// 服务端转换客户端
+- 'use client'
 - export default (import)
 - createContext({}) => <Provider value>{children}</Provider>
 // 客户端包含服务端组件(不能导入)
@@ -26,32 +24,48 @@ import 'server-only|client-only'
 
 ```ts
 // 数据获取
-- 服务端：
-	async => fetch
-- 客户端：
+- await fetch,json() => cache(fetchFn)
+- use(Promise)
 	<Suspense> => <Server Promise/> => use(Promise)
+	Promise.all()
+	checkIsAvailable()
 // 数据更新
+- 'use server' => export async fetchData
+- revalidatePath/Tag
+- redirect
+// 错误处理
+- !res.ok > msg/comp/redirect
+- notFound()
+- error.ts => Error({error,reset})
+- global-error => html,body
+// Metadata和OGImages
+- export metadata|generateMetadata(props,ResolvingMetadata)
+- favicon.ico,opengraph-image.jpg
+- export size|contentType
+- export new ImageResponse(jsx)
 ```
 
 ```ts
 // 样式
-1. npm i sass
-	next.config.js > sassOptions.additionalData
+1. next.config.js >>>
+	sassOptions.additionalData
+	sassOptions.implementation:'sass-embedded'
+	:export{var:$var} => styles.var
 2. npm i tailwindcss postcss @tailwindcss/postcss
 	- post.config.mjs > /* @types {import('tailwindcss').config} */
       plugins:{'@tailwindcss/postcss':{}}
 	- import 'tailwindcss'
 // 图片
-- 本地图片： import img from './img.jpg'
-- 网络图片： next.config.js => 
-  images:{
-    remotePatterns:[{protocol,hostname,port,pathname,search}]
-  }
+- next.config.js >>> 
+    images:{
+      remotePatterns:[{protocol,hostname,port,pathname,search}]
+    }
 // 字体
 - Google
-	import {geist} from 'next/font/google'
+	import {geist,roboto} from 'next/font/google'
 	geist({subsets:['latin']}).className
-- 本地
+	roboto({weight}).classname
+- local
 	import localFont from 'next/font/local'
 	localFont({src}).className
 ```
@@ -60,9 +74,9 @@ import 'server-only|client-only'
 
 ```shell
 # 路由匹配
-- (routeGroup) & _private
-- layout & template & loading
-- error & not-found & page
+- [[...dynamic]],(routeGroup),_private
+- layout/template
+- loading/error/not-found/page
 - route
 ```
 
@@ -82,6 +96,26 @@ export async getServersideProps=({params})=>({props})
 export async getStaticProps=({params})=>({props})
 // 数据缓存
 fetch('path',{cache:'force-cache'})
+```
+
+#### 构建&部署
+
+> 构建
+
+```shell
+pnpm i next react react-dom
+eslint --init
+ts --init
+- mkdir public src/app
+- echo. > (next-env.d.ts next.config.js) 
+- baseUrl:'src/',paths:{'@/*'}
+```
+
+> 部署
+
+```shell
+# 部署
+- next build & next start
 ```
 
 ## Next@10
