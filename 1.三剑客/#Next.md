@@ -81,14 +81,17 @@ import 'server-only|client-only'
 ```
 
 ```ts
-// 切换：next/navigation
+// 切换
+- redirect('pathname') // next/na
+vigation（仅渲染可用）
 - <Link href={''|{}} as // next/link
 	prefetch
     scroll
   /> 
-- redirect('pathname')
 - useRouter => pathname,query,push,prefetch
 - usePathname => pathname
+- useSearchParams => searchParams
+- window.history.pushState/replaceState(null,'',path)
 ```
 
 ```ts
@@ -97,6 +100,43 @@ export async getStaticProps=({params})=>({props})
 // 数据缓存
 fetch('path',{cache:'force-cache'})
 ```
+
+```ts
+// 路由API
+export async GET(req:Request)
+export const dynamic = 'force-static'
+export const revalidate = 60
+// redirect
+import { redirect } from 'next/navigation'
+redirect('https://nextjs.org/')
+
+// cookie
+import {cookie} from 'next/headers'
+const cookieStore = await cookies()
+const token = await cookiesStore.get('token')
+return new Response('hello',{status,headers:{'Set-Cookie':'token=${token.value}'}})
+import { type NextRequest } from 'next/server'
+const token = request.cookies.get('token')
+
+// headers
+import { headers } from 'next/headers'
+const headersList = await headers()
+const referer = headersList.get('referer')
+return new Response('Hello, Next.js!', {
+  status: 200,
+  headers: { referer: referer },
+})
+import { type NextRequest } from 'next/server'
+const requestHeaders = new Headers(request.headers)
+```
+
+```ts
+// middleware
+export middleware
+export config = {matcher}
+```
+
+
 
 #### 构建&部署
 
