@@ -147,6 +147,20 @@ const RFC:FC<IProps>
 RFC.defaultProps
 ```
 
+#### Hooks
+
+```ts
+// useActionState
+const [state,formAction,isPending] = useActionState((state,formdata)=>state, ini);
+isPending?'loading...':state;
+```
+
+```ts
+// useTransition
+const [isPending,startTransition] = useTransition()
+startTransition(async()=>{ await; startTransition() })
+```
+
 ## 路由
 
 > 安装：`npm i react-router-dom -S`

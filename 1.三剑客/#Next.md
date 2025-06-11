@@ -10,6 +10,8 @@ npm i next react react-dom
 
 #### 组件
 
+> **Server&Client**
+
 ```ts
 // 模块通用
 import 'server-only|client-only'
@@ -22,28 +24,7 @@ import 'server-only|client-only'
 - <Client><Server/></Client>
 ```
 
-```ts
-// 数据获取
-- await fetch,json() => cache(fetchFn)
-- use(Promise)
-	<Suspense> => <Server Promise/> => use(Promise)
-	Promise.all()
-	checkIsAvailable()
-// 数据更新
-- 'use server' => export async fetchData
-- revalidatePath/Tag
-- redirect
-// 错误处理
-- !res.ok > msg/comp/redirect
-- notFound()
-- error.ts => Error({error,reset})
-- global-error => html,body
-// Metadata和OGImages
-- export metadata|generateMetadata(props,ResolvingMetadata)
-- favicon.ico,opengraph-image.jpg
-- export size|contentType
-- export new ImageResponse(jsx)
-```
+> **Style**
 
 ```ts
 // 样式
@@ -68,6 +49,10 @@ import 'server-only|client-only'
 - local
 	import localFont from 'next/font/local'
 	localFont({src}).className
+```
+
+```ts
+// Css-in-JS
 ```
 
 #### 路由
@@ -136,11 +121,66 @@ export middleware
 export config = {matcher}
 ```
 
+#### 数据
 
+> **DataFetch**
+
+```ts
+// 数据获取
+- await fetch,json() => cache(fetchFn)
+- use(Promise)
+	<Suspense> => <Server Promise/> => use(Promise)
+	Promise.all()
+	checkIsAvailable()
+// 数据更新
+- 'use server' => export async fetchData
+- revalidatePath/Tag
+- redirect
+// 错误处理
+- !res.ok > msg/comp/redirect
+- notFound()
+- error.ts => Error({error,reset})
+- global-error => html,body
+// Metadata和OGImages
+- export metadata|generateMetadata(props,ResolvingMetadata)
+- favicon.ico,opengraph-image.jpg
+- export size|contentType
+- export new ImageResponse(jsx)
+```
+
+> **Authentication**
+
+```ts
+// Authentication
+// 1.Capture
+
+// 2.Validate
+
+// 3.Check or Create
+```
+
+```ts
+// Sessions(Stateless)
+// 1.
+
+// Sessions(Database)
+```
+
+```shell
+# libs
+- zod,yup
+- 
+```
+
+> **Cache**
+
+> **Custom Server**
+
+> **Env Variables**
 
 #### 构建&部署
 
-> 构建
+> **构建**
 
 ```shell
 pnpm i next react react-dom
@@ -151,12 +191,15 @@ ts --init
 - baseUrl:'src/',paths:{'@/*'}
 ```
 
-> 部署
+> **部署**
 
 ```shell
-# 部署
 - next build & next start
 ```
+
+#### Analysis
+
+#### Debug
 
 ## Next@10
 
