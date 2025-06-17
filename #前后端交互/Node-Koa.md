@@ -23,7 +23,7 @@ app.use(logger())
 onError(app)
 ```
 
-```js
+```typescript
 // npm: @koa/cors
 app.use(Cors())
 // npm: @koa/multer
@@ -82,6 +82,8 @@ captcha({size}) => {buffer,token}
 captcha.create({size}) => {data,text}
 ```
 
+### 路由
+
 ```ts
 // npm: @koa/router
 const router = new Router()
@@ -105,3 +107,44 @@ const fileRoute = '/'+relative.split(extname)[0]
 const key = '_'+method+'_'+fileRouter
 routerMap[key]=handler
 ```
+### 鉴权
+
+#### JWT
+
+```shell
+# jsonwebtoken
+- header(typ,alg)
+- payload(data,exp)
+- signature(h.p.s)
+```
+
+```ts
+const {sign} = require('jsonwebtoken')
+const jwtMd = require('koa-jwt')({secret})
+const token = sign(data,secret,{expiresIn})
+router.use(jwtMd,ctx=>{})
+```
+
+#### 单点登录
+
+> 跨域SSO
+
+```ts
+// CAS客户端/服务端
+1. CAS服务认证（query）
+2. CAS创建Session，通行证。响应头返回SessionID，通行证→APPClient。
+3. CAS返回XML用户信息（SessionID）→APPServer
+4. APP2重定向CAS
+5. CAS下发ST→APP2→CAS下发用户信息（token）→APP2（302，token）
+```
+
+> 授权协议OAuth2.0
+
+### 数据存储
+
+> mysql: (mysql2, sequelize, typeorm)
+
+> redis
+
+> elasticsearch
+

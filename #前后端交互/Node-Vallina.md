@@ -5,30 +5,42 @@
 process.cwd()
 ```
 
-#### Http
+### ChildProcess
 
-```js
-// 创建服务器
-http.createServer((req,res)=>{
-    req.url
-      res.statusCode
-      res.setHeader()
-    res.writeHead(200,{'Content-Type':'text/html;charset="utf-8"'})
-      res.write("<head><meta charset='UTF-8'></head>")
-      res.end
-}).listen(port,url,callback)
-// 路由:req.method
-- url.parse(req.url).query = new URL(path,base)
-- req.addListener('data',(chunk)=>{
-    data += chunk
+```ts
+// 创建多线程
+const cp = require('child_process')
+- process.pid|argv[2]
+
+const wp = cp.exec('node command.js i',(err,stdout,stderr)=>{})
+wp.on('exit',code=>{})
+
+const wp = cp.spawn('node',['command.js',i])
+wp.stdout.on('data',stdout=>{})
+wp.stderr.on('data',stderr=>{})
+wp.on('close',code=>{})
+      
+const wp = cp.fork('command.js',[i])
+wp.on('close',code=>{})
+// 进程通信(IPC)
+const n = cp.fork('child.js')
+n.on('message',msg=>{})
+n.send('msg')
+
+process.on('message',msg=>{})
+process.send('msg')
+// 进程通信(Socket)
+const {spawn} = require('child_process')
+const child = spawn('node',['child'],{
+    stdio:[null,null,null,'pipe']
 })
-- req.addListener('end',()=>{
-    queryString.parse(dataStr)
-    res.end()
-})
+child.stdio[1].on('data',data=>{})
+
+const pipe = net.Socket({fd:1})
+pipe.write('hello main process!')
 ```
 
-> 常用模块：url、queryString、path
+### Local
 
 #### Fs
 
@@ -143,40 +155,9 @@ EventEmitter.emit(event,...args)
 EventEmitter.setMaxListeners(n)
 ```
 
-#### Formidable
+#### 
 
-```js
-<form enctype='multipart/form-data'>
-new formidable.IncomingForm()
-form.uploadDir
-form.parse(req,(err,fields,files)={
-
-})
-```
-
-#### EJS模板引擎
-
-```js
-// 后端渲染
-ejs.renderFile('.ejs',{data},(err,data)=>{res.end()})
-// 模板语法
-<%=data%><%%>
-```
-
-#### 工具模块
-
-```shell
-# 服务器监听重启
-cnpm i -g supervisor
-
-# md5加密
-npm md5
-md5(xxx)
-
-# 日期格式化
-npm silly-datetime
-sd.format(date,'YYYY-MM-DD HH:mm')
-```
+### Net
 
 #### 网络通信
 
@@ -219,41 +200,6 @@ server.send(data)
 const {sign} = require('jsonwebtoken')
 const secret = 'secret'
 const token = sign({user},secret,{expiresIn:'1h'})
-```
-
-#### 进程管理
-
-```ts
-// 创建多线程
-const cp = require('child_process')
-- process.pid|argv[2]
-
-const wp = cp.exec('node command.js i',(err,stdout,stderr)=>{})
-wp.on('exit',code=>{})
-
-const wp = cp.spawn('node',['command.js',i])
-wp.stdout.on('data',stdout=>{})
-wp.stderr.on('data',stderr=>{})
-wp.on('close',code=>{})
-      
-const wp = cp.fork('command.js',[i])
-wp.on('close',code=>{})
-// 进程通信(IPC)
-const n = cp.fork('child.js')
-n.on('message',msg=>{})
-n.send('msg')
-
-process.on('message',msg=>{})
-process.send('msg')
-// 进程通信(Socket)
-const {spawn} = require('child_process')
-const child = spawn('node',['child'],{
-    stdio:[null,null,null,'pipe']
-})
-child.stdio[1].on('data',data=>{})
-
-const pipe = net.Socket({fd:1})
-pipe.write('hello main process!')
 ```
 
 #### 日志管理
@@ -301,7 +247,65 @@ log4js.configure({
 const appLog = log4js.getLogger('app')
 ```
 
+#### Http
 
+```js
+// 创建服务器
+http.createServer((req,res)=>{
+    req.url
+      res.statusCode
+      res.setHeader()
+    res.writeHead(200,{'Content-Type':'text/html;charset="utf-8"'})
+      res.write("<head><meta charset='UTF-8'></head>")
+      res.end
+}).listen(port,url,callback)
+// 路由:req.method
+- url.parse(req.url).query = new URL(path,base)
+- req.addListener('data',(chunk)=>{
+    data += chunk
+})
+- req.addListener('end',()=>{
+    queryString.parse(dataStr)
+    res.end()
+})
+```
+
+> 常用模块：url、queryString、path
+
+#### Formidable
+
+```js
+<form enctype='multipart/form-data'>
+new formidable.IncomingForm()
+form.uploadDir
+form.parse(req,(err,fields,files)={
+
+})
+```
+
+#### EJS模板引擎
+
+```js
+// 后端渲染
+ejs.renderFile('.ejs',{data},(err,data)=>{res.end()})
+// 模板语法
+<%=data%><%%>
+```
+
+#### 工具模块
+
+```shell
+# 服务器监听重启
+cnpm i -g supervisor
+
+# md5加密
+npm md5
+md5(xxx)
+
+# 日期格式化
+npm silly-datetime
+sd.format(date,'YYYY-MM-DD HH:mm')
+```
 
 #### ......
 

@@ -24,7 +24,7 @@ import 'server-only|client-only'
 - <Client><Server/></Client>
 ```
 
-> **Style**
+> **Appearance**
 
 ```ts
 // 样式
@@ -151,30 +151,293 @@ export config = {matcher}
 > **Authentication**
 
 ```ts
-// Authentication
+/* STEP1: Authentication */
 // 1.Capture
 
 // 2.Validate
 
-// 3.Check or Create
+// 3.Check || Create
 ```
 
 ```ts
-// Sessions(Stateless)
-// 1.
+/* STEP2: Sessions(Stateless) */
+// 1.SecretKey
+- openssl rand -base64 32
+- .env > SESSION_SECRET=key
+- 
+// 2.EncryptSession
+import {SignJWT,jwtVerify} from 'jose'
+import {SessionPayload} from '@/app/lib/definitions'
+const secretKey = process.env.SESSION_SECRET
+const encodedKey = new TextEncoder().encode(sercretKey)
+export async function encrypt(payload: SessionPayload) {
+  return new SignJWT(payload)
+    .setProtectedHeader({ alg: 'HS256' })
+    .setIssuedAt()
+    .setExpirationTime('7d')
+    .sign(encodedKey)
+}
+ 
+export async function decrypt(session: string | undefined = '') {
+  try {
+    const { payload } = await jwtVerify(session, encodedKey, {
+      algorithms: ['HS256'],
+    })
+    return payload
+  } catch (error) {
+    console.log('Failed to verify session')
+  }
+}
+// 3.SetCookies
+import 'server-only'
+import { cookies } from 'next/headers'
+export async function createSession(userId: string) {
+  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+  const session = await encrypt({ userId, expiresAt })
+  const cookieStore = await cookies() 
+  cookieStore.set('session', session, {
+    httpOnly: true,
+    secure: true,
+    expires: expiresAt,
+    sameSite: 'lax',
+    path: '/',
+  })
+}
+export async function updateSession() {
+  const session = (await cookies()).get('session')?.value
+  const payload = await decrypt(session)
+  if (!session || !payload) {
+    return null
+  }
+  const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+  const cookieStore = await cookies()
+  cookieStore.set('session', session, {
+    httpOnly: true,
+    secure: true,
+    expires: expires,
+    sameSite: 'lax',
+    path: '/',
+  })
+}
+export async function deleteSession() {
+  const cookieStore = await cookies()
+  cookieStore.delete('session')
+}
+// 4.Redirect
+import { createSession } from '@/app/lib/session'
+export async function signup(state: FormState, formData: FormData) {
+  await createSession(user.id)
+  redirect('/profile')
+}
 
 // Sessions(Database)
+import cookies from 'next/headers'
+import { db } from '@/app/lib/db'
+import { encrypt } from '@/app/lib/session'
+export async function createSession(id: number) {
+  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+  // 1. Create a session in the database
+  const data = await db
+    .insert(sessions)
+    .values({
+      userId: id,
+      expiresAt,
+    })
+    // Return the session ID
+    .returning({ id: sessions.id })
+  const sessionId = data[0].id 
+  // 2. Encrypt the session ID
+  const session = await encrypt({ sessionId, expiresAt })
+  // 3. Store the session in cookies for optimistic auth checks
+  const cookieStore = await cookies()
+  cookieStore.set('session', session, {
+    httpOnly: true,
+    secure: true,
+    expires: expiresAt,
+    sameSite: 'lax',
+    path: '/',
+  })
+}
+```
+
+```ts
+/* STEP3: Authorization */
+// Middleware
+import { NextRequest, NextResponse } from 'next/server'
+import { decrypt } from '@/app/lib/session'
+import { cookies } from 'next/headers'
+// 1. Specify protected and public routes
+const protectedRoutes = ['/dashboard']
+const publicRoutes = ['/login', '/signup', '/']
+export default async function middleware(req: NextRequest) {
+  // 2. Check if the current route is protected or public
+  const path = req.nextUrl.pathname
+  const isProtectedRoute = protectedRoutes.includes(path)
+  const isPublicRoute = publicRoutes.includes(path)
+  // 3. Decrypt the session from the cookie
+  const cookie = (await cookies()).get('session')?.value
+  const session = await decrypt(cookie)
+  // 4. Redirect to /login if the user is not authenticated
+  if (isProtectedRoute && !session?.userId) {
+    return NextResponse.redirect(new URL('/login', req.nextUrl))
+  }
+  // 5. Redirect to /dashboard if the user is authenticated
+  if (
+    isPublicRoute &&
+    session?.userId &&
+    !req.nextUrl.pathname.startsWith('/dashboard')
+  ) {
+    return NextResponse.redirect(new URL('/dashboard', req.nextUrl))
+  }
+  return NextResponse.next()
+}
+// Routes Middleware should not run on
+export const config = {
+  matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+}
+
+// DAL
+import 'server-only'
+import { cookies } from 'next/headers'
+import { decrypt } from '@/app/lib/session'
+export const verifySession = cache(async () => {
+  const cookie = (await cookies()).get('session')?.value
+  const session = await decrypt(cookie)
+  if (!session?.userId) {
+    redirect('/login')
+  }
+  return { isAuth: true, userId: session.userId }
+})
+export const getUser = cache(async () => {
+  const session = await verifySession()
+  if (!session) return null
+  try {
+    const data = await db.query.users.findMany({
+      where: eq(users.id, session.userId),
+      // Explicitly return the columns you need rather than the whole user object
+      columns: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    })
+    const user = data[0]
+    return user
+  } catch (error) {
+    console.log('Failed to fetch user')
+    return null
+  }
+})
+
+// DTO
+import 'server-only'
+import { getUser } from '@/app/lib/dal'
+function canSeeUsername(viewer: User) {
+  return true
+}
+function canSeePhoneNumber(viewer: User, team: string) {
+  return viewer.isAdmin || team === viewer.team
+}
+export async function getProfileDTO(slug: string) {
+  const data = await db.query.users.findMany({
+    where: eq(users.slug, slug),
+    // Return specific columns here
+  })
+  const user = data[0]
+  const currentUser = await getUser(user.id)
+  // Or return only what's specific to the query here
+  return {
+    username: canSeeUsername(currentUser) ? user.username : null,
+    phonenumber: canSeePhoneNumber(currentUser, user.team)
+      ? user.phonenumber
+      : null,
+  }
+}
+
+// Server component
+import { verifySession } from '@/app/lib/dal'
+export default function Dashboard() {
+  const session = await verifySession()
+  const userRole = session?.user?.role // Assuming 'role' is part of the session object
+  if (userRole === 'admin') {
+    return <AdminDashboard />
+  } else if (userRole === 'user') {
+    return <UserDashboard />
+  } else {
+    redirect('/login')
+  }
+}
+  
+// Layout check
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const user = await getUser();
+  return (
+    // ...
+  )
+}
+  
+// Server action
+'use server'
+import { verifySession } from '@/app/lib/dal
+export async function serverAction(formData: FormData) {
+  const session = await verifySession()
+  const userRole = session?.user?.role
+  // Return early if user is not authorized to perform the action
+  if (userRole !== 'admin') {
+    return null
+  }
+  // Proceed with the action for authorized users
+}
+  
+// APIRoute
+import { verifySession } from '@/app/lib/dal'
+export async function GET() {
+  // User authentication and role verification
+  const session = await verifySession()
+  // Check if the user is authenticated
+  if (!session) {
+    // User is not authenticated
+    return new Response(null, { status: 401 })
+  }
+  // Check if the user has the 'admin' role
+  if (session.user.role !== 'admin') {
+    // User is authenticated but does not have the right permissions
+    return new Response(null, { status: 403 })
+  }
+  // Continue for authorized users
+}
 ```
 
 ```shell
 # libs
 - zod,yup
-- 
+- jose,iron session
+- autho,nextauth.js
+```
+
+> **CSP**
+
+```ts
+// nonces
+// withoutNonces
 ```
 
 > **Cache**
 
+```ts
+// CI Caching
+- .next/cache
+```
+
 > **Custom Server**
+
+```ts
+// app.prepare().then()
+```
 
 > **Env Variables**
 
@@ -573,5 +836,21 @@ res.send(`<html/>`)
 ```js
 import ReactDOM from 'react-dom'
 ReactDOM.hydrate(<App/>,#root)
+```
+
+## Configuration
+
+> next@15
+
+```ts
+// next.config.ts
+module.exports ={
+	alloweDevOrigins:['local-origin.dev','*.lcoal-origin.dev'],
+	assetPrefix:'https://cdn.mydomain.com',
+    authInterrupts:true,
+    basePath:'/html',
+    compress:false,
+    crossOrigin:'anonymous'
+}
 ```
 
