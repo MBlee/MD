@@ -1,4 +1,4 @@
-## TS
+### TS
 
 ```shell
 # Essential Check
@@ -29,7 +29,7 @@
 - sourceMap
 ```
 
-## API
+### API
 
 ```shell
 #! Network
@@ -37,7 +37,7 @@
 # Ctrl+F
 ```
 
-## 性能
+### 性能
 
 ```shell
 #! 清洁环境
@@ -50,7 +50,7 @@
 - Summary|BottomUP|CallTree
 ```
 
-## !错误处理
+### !错误处理
 
 >常见错误：
 >
@@ -104,7 +104,7 @@ class ApiError extends TrustedError{
 - err instanceof ApiError
 ```
 
-## CSS和DOM
+### CSS和DOM
 
 ```shell
 #! 元素状态
@@ -117,4 +117,31 @@ class ApiError extends TrustedError{
 #! 动画
 - 贝塞尔
 - Animations分页
+```
+## VSCODE
+
+### TS
+
+```shell
+# tsconfig.json
+- sourceMap:true
+- module:'commonjs'
+- moduleResolution:'node'
+# launch.json
+- program(.ts)
+- url(.html)
+- outFiles(**/*.js)
+# package.json
+- main(.js)
+```
+
+## **DEBUG**
+
+### COSWARS
+
+```shell
+# Resolution
+- 排错（亿行>亿猜）
+- 错点攻破（实炼>单例）
+- 替换>BYE
 ```
