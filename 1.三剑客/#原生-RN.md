@@ -1,8 +1,22 @@
 > npx create-expo-app@latest
 
+## Components
+
+### Platform
+
+```ts
+// PlatModule
+import {Platform} from 'react-native';
+const verIOS = parseInt(Platform.Version, 10);
+- Platform.OS
+- Platform.select({ios,android,default})
+// Extensions
+- .ios/.android/.native
+```
+
 ## ......
 
-## 安装
+## SETUP
 
 > Window
 

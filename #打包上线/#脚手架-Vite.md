@@ -5,10 +5,63 @@
 npm create vite -- --template vue-ts <app>
 ```
 
-#### 静态处理
+## Assentials
 
-```shell
+### ASSETS
 
+```ts
+// ASSETS
+/// <reference types="./vite-env-override.d.ts" />
+/// <reference types="vite/client"/>
+- import.meta.env
+- import.meta.hot
+import { field } from './example.json'
+import imgURL from './img.svg'
+import workletURL from 'worklet.js?url' // 显式URL
+import imgUrl1 from './img.svg?no-inline|inline' // 显式内联
+import shaderString from './shader.glsl?raw' // 显式字符串
+const imgUrl = new URL('./img.png', import.meta.url).href
+const modules = import.meta.glob('!./dir/*.js',{ 
+  eager: true,
+  import: 'setup'
+}))
+const module = await import(`./dir/${file}.js`)
+```
+
+```jsx
+// HTML
+<script vite-ignore type="module" src="cdn/main.js"></script>
+```
+
+```ts
+- publicDir
+- assetsInclude // 静态处理
+- build.assetsInlineLimit:4096
+```
+
+### TS
+
+```ts
+/// <reference types="vite/client" />
+- isolatedModules:true
+- skipLibCheck:true
+- useDefineForClassFields:true
+```
+
+```ts
+// VUE|REACT
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import react from '@vitejs/plugin-react'
+```
+
+```jsx
+// CSS
+import otherStyles from './bar.css?inline' // 样式不会注入页面
+- css.preprocessorOptions[extension].additionalData
+- css.devSourcemap
+- build.cssTarget:['chrome61']
+- build.cssMinify:"lightningcss"|"esbuild"
 ```
 
 #### 全局配置
@@ -126,32 +179,48 @@ plugins:[presetEnv()]
 
 ```ts
 /* vite.config.ts */
-defineConfig({
-    {plugins:[]}
-})
+import {defineConfig} from 'vite'
+defineConfig({    plugins:[]	})
 /* plugin */
-{
-    plug(),
-    enforce:'pre|post',
-    apply:'build|serve'
-}
+- ...plug()
+- enforce:'pre|post'
+- apply:'build|serve'
 ```
 
 ```ts
 // @vitejs/plugin-legacy
-legacy({ 
-    targets:['defaults', 'not IE 11'] })
+- legacy({ targets:['defaults', 'not IE 11'] })
 ```
 
 ## CLI
 
-- vite  [root]（vite dev|serve）
-- vite build [root]
-- vite preview [root]
+```shell
+# 开发
+- vite --force
+- vite dev|serve
+# 构建
+- vite build
+- vite preview
+```
 
-## Feature
+## Configure
 
-- ESM优化（预构建/解析、热替换）
+```ts
+export default defineConfig({
+  optimizeDeps:{
+    include:['linked-dep']
+  },
+  build:{
+    commonjsOptions:{
+      include:[/linked-dep/,/node_modules/]
+    }
+  }
+})
+```
+
+## Appendix
+
+- ESM优化（预构建/解析、单模块、缓存、热替换）
 
 - TS（转译选项、客户端类型）
 
@@ -161,5 +230,18 @@ legacy({
 
 - JSX/TSX（esbuild.{ jsxFactory, jsxFragment, jsxInject}）
 
-  
 
+## ......
+
+## REACT
+
+```shell
+# Deps
+npm i vite @vitejs/plugin-react	react react-dom
+# File
+- vite.config.ts
+- tsconfig.json
+- index.html/main.tsx/vite-env.d.ts
+```
+
+## VUE

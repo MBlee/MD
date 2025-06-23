@@ -74,32 +74,96 @@ ele=>('dragover')
 e.preventDefault()&&e.stopPropagation()
 ~~~
 
+## Preload
+
+```ts
+// contextBridge
+const {contextBridge} = require('electron')
+contextBridge.exposeInMainWorld('glb',{node,...})
+const win = new BrowserWindow({webPreferences.preload})
+window.node()...
+// IPC
+const {ipcRenderer,ipcMain} = require('electron')
+ipcRenderer.invoke('ping')
+ipcMain.handle('ping',fn)
+```
+
 ## ...
 
-## 构建
+## Construction
 
 > 快速启动：nodemon --watch main.js --exec npm run build 
 
-~~~shell
+```shell
 # 克隆模板
 git clone https://github.com/electron/electron-quick-start
 # 脚手架: create-electron-app
 yarn create electron-app xxx
 npx create-electron-app xxx
-# 手动
-npm i electron -g
-yarn add electron
-# yarn构建
-yarn start
-yarn make
-~~~
+```
 
 ```shell
 # 原理
 主进程（原生API）<=>渲染进程（Chromium + nodejs）
 ```
 
-## 附录
+```shell
+# npm: electron
+npm i electron -D
+electron .
+# npm: @electron-forge/cli
+npm i @electron-forge/cli -g
+electron-forge import
+electron-forge start
+electron-forge package
+electron-forge make
+```
+
+### Electron Forge
+
+### Electron Fiddle
+
+## Debug
+
+### VSCode
+
+```json
+// launch.json
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Main + renderer",
+      "configurations": ["Main", "Renderer"],
+      "stopAll": true
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Renderer",
+      "port": 9222,
+      "request": "attach",
+      "type": "chrome",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Main",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+      },
+      "args": [".", "--remote-debugging-port=9222"],
+      "outputCapture": "std",
+      "console": "integratedTerminal"
+    }
+  ]
+}
+```
+
+## Appendix
 
 #### 自定义标题无法拖拽
 
