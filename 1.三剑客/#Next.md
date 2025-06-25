@@ -441,7 +441,7 @@ export async function GET() {
 
 > **Env Variables**
 
-#### 构建&部署
+#### Structure
 
 > **构建**
 
@@ -462,7 +462,31 @@ ts --init
 
 #### Analysis
 
+```ts
+// 1. instrumentation-client.ts
+- window:error => reportError(event.error)
+```
+
+```ts
+// 2. _components/Webvitals.ts
+- useReportWebVitals: metric=> report(metric)
+	metric.name|value|id
+- app => <Webvitals/>
+```
+
 #### Debug
+
+```shell
+# VSCode(launch.json)
+- sever: command
+- client: url
+- fullStack: debugWithChrome
+```
+
+```shell
+# Chrome(chrome://inspect)
+- cross-env NODE_OPTIONS='--inspect' next dev
+```
 
 ## Next@10
 
