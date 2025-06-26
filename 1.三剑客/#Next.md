@@ -150,21 +150,25 @@ export config = {matcher}
 
 > **Authentication**
 
-```ts
+```jsx
 /* STEP1: Authentication */
-// 1.Capture
-
-// 2.Validate
-
-// 3.Check || Create
+- <form action={signup}/> // 提交表单
+const schema = zod.z.object() // 表单验证
+const valiFields = schema.safeParse({name,password})
+if(!valiFields.success){
+  return {error:valiFields.error.flatten().fieldErrors}
+}
+const hashedPwd = await bcrypt.hash(pwd,10)
+const data = await db.insert() // 插入用户
+if(!data) return {message}
 ```
 
 ```ts
 /* STEP2: Sessions(Stateless) */
 // 1.SecretKey
 - openssl rand -base64 32
-- .env > SESSION_SECRET=key
-- 
+- .env => SESSION_SECRET=key
+- process.env.SESSION_SECRET
 // 2.EncryptSession
 import {SignJWT,jwtVerify} from 'jose'
 import {SessionPayload} from '@/app/lib/definitions'
@@ -419,6 +423,43 @@ export async function GET() {
 - autho,nextauth.js
 ```
 
+> **FormAction**
+
+```ts
+- Object.fromEntries(formData)
+// 表单传参
+- input.hidden
+- action.bind(null,pars)
+// 表单验证
+- required,type
+- zod => useActionState => useFormStatus
+```
+
+> **DataSecure**
+
+```ts
+// HTTP API
+const token = cookies().get('AUTH_TOKEN')?.value
+await fetch('url',{headers:{Cookie:'AUTH_TOKEN=${token}'}})
+// DAL
+const DAL = cache(async()=>{
+  const token = cookies.get('AUTH_TOKEN')
+  const decodedToken = await decryptAndValidate(token)
+  return new User(decodedToken.id)
+})
+// DTO
+const DTO = async(slug)=>{
+  const userData = await sql``
+  const user = await DAL
+  return {
+    xx:canSeeXx(user)?...
+  }
+}
+// ServerComponent
+const data = await sql``
+return { xx:data.xx }
+```
+
 > **CSP**
 
 ```ts
@@ -440,6 +481,26 @@ export async function GET() {
 ```
 
 > **Env Variables**
+
+```ts
+// 运行时ENV
+import {loadEnvConfig} from '@next/env'
+loadEnvConfig(process.cwd())
+// 浏览器ENV
+NEXT_PUBLIC_
+// ENV顺序
+process.env/.env.local/.env.${NODE_ENV}/.env
+```
+
+> **DraftMode**
+
+```ts
+const draft = await draftMode()
+draft.enable()
+const url = url?secret&slug
+if(secret=='mysecret') redirect(post.slug)
+draft.isEnabled?...fetch
+```
 
 #### Structure
 

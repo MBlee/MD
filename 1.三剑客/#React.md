@@ -153,12 +153,19 @@ RFC.defaultProps
 // useActionState
 const [state,formAction,isPending] = useActionState((state,formdata)=>state, ini);
 isPending?'loading...':state;
+// useFormStatus
+const {pending,data,method,action} = ReactDOM.useFormStatus()
 ```
 
 ```ts
 // useTransition
 const [isPending,startTransition] = useTransition()
 startTransition(async()=>{ await; startTransition() })
+```
+
+```ts
+// useOptimistic
+const [optimisticState,addOptimistic] = useOptimistic(state,fn)
 ```
 
 ## 路由
