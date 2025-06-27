@@ -8,7 +8,7 @@ npm i next react react-dom
 - baseUrl:'src/',paths:{'@/*'}
 ```
 
-#### 组件
+### 组件
 
 > **Server&Client**
 
@@ -55,7 +55,7 @@ import 'server-only|client-only'
 // Css-in-JS
 ```
 
-#### 路由
+### 路由
 
 ```shell
 # 路由匹配
@@ -121,9 +121,9 @@ export middleware
 export config = {matcher}
 ```
 
-#### 数据
+### 数据
 
-> **DataFetch**
+#### DataFetch
 
 ```ts
 // 数据获取
@@ -148,7 +148,32 @@ export config = {matcher}
 - export new ImageResponse(jsx)
 ```
 
-> **Authentication**
+#### DataSecure
+
+```ts
+// HTTP API
+const token = cookies().get('AUTH_TOKEN')?.value
+await fetch('url',{headers:{Cookie:'AUTH_TOKEN=${token}'}})
+// DAL
+const DAL = cache(async()=>{
+  const token = cookies.get('AUTH_TOKEN')
+  const decodedToken = await decryptAndValidate(token)
+  return new User(decodedToken.id)
+})
+// DTO
+const DTO = async(slug)=>{
+  const userData = await sql``
+  const user = await DAL
+  return {
+    xx:canSeeXx(user)?...
+  }
+}
+// ServerComponent
+const data = await sql``
+return { xx:data.xx }
+```
+
+#### Authentication
 
 ```jsx
 /* STEP1: Authentication */
@@ -423,7 +448,7 @@ export async function GET() {
 - autho,nextauth.js
 ```
 
-> **FormAction**
+#### FormAction
 
 ```ts
 - Object.fromEntries(formData)
@@ -435,52 +460,27 @@ export async function GET() {
 - zod => useActionState => useFormStatus
 ```
 
-> **DataSecure**
-
-```ts
-// HTTP API
-const token = cookies().get('AUTH_TOKEN')?.value
-await fetch('url',{headers:{Cookie:'AUTH_TOKEN=${token}'}})
-// DAL
-const DAL = cache(async()=>{
-  const token = cookies.get('AUTH_TOKEN')
-  const decodedToken = await decryptAndValidate(token)
-  return new User(decodedToken.id)
-})
-// DTO
-const DTO = async(slug)=>{
-  const userData = await sql``
-  const user = await DAL
-  return {
-    xx:canSeeXx(user)?...
-  }
-}
-// ServerComponent
-const data = await sql``
-return { xx:data.xx }
-```
-
-> **CSP**
+#### CSP
 
 ```ts
 // nonces
 // withoutNonces
 ```
 
-> **Cache**
+#### Cache
 
 ```ts
 // CI Caching
 - .next/cache
 ```
 
-> **Custom Server**
+#### Custom Server
 
 ```ts
 // app.prepare().then()
 ```
 
-> **Env Variables**
+#### **Env Variables**
 
 ```ts
 // 运行时ENV
@@ -492,7 +492,7 @@ NEXT_PUBLIC_
 process.env/.env.local/.env.${NODE_ENV}/.env
 ```
 
-> **DraftMode**
+#### **DraftMode**
 
 ```ts
 const draft = await draftMode()
@@ -502,7 +502,7 @@ if(secret=='mysecret') redirect(post.slug)
 draft.isEnabled?...fetch
 ```
 
-#### Structure
+### Structure
 
 > **构建**
 
@@ -521,7 +521,7 @@ ts --init
 - next build & next start
 ```
 
-#### Analysis
+### Analysis
 
 ```ts
 // 1. instrumentation-client.ts
@@ -535,7 +535,7 @@ ts --init
 - app => <Webvitals/>
 ```
 
-#### Debug
+### Debug
 
 ```shell
 # VSCode(launch.json)
