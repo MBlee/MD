@@ -147,7 +147,7 @@ const RFC:FC<IProps>
 RFC.defaultProps
 ```
 
-#### Hooks
+### Hooks
 
 ```ts
 // useActionState
@@ -166,6 +166,19 @@ startTransition(async()=>{ await; startTransition() })
 ```ts
 // useOptimistic
 const [optimisticState,addOptimistic] = useOptimistic(state,fn)
+```
+
+### APIS
+
+> 客户端
+
+> 服务端
+
+```ts
+// cache => server-only
+- cache(fn) => cacheFn
+- preload
+- share
 ```
 
 ## 路由
