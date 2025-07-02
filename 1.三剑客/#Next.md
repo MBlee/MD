@@ -63,7 +63,23 @@ import 'server-only|client-only'
 
 #### ~Scripts
 
-#### ~Videos
+#### ^Videos
+
+```ts
+// <video> // React-player/Video.js
+```
+
+```ts
+// <iframe> // <Suspense>
+```
+
+```ts
+// Self-Hosted
+import {list} from '@vercel/blob'
+const {blobs} = await list({prefix,limit})
+const {url} = blobs[0]
+const {url:trackUrl} = blobs[1]
+```
 
 #### ^API
 
@@ -413,7 +429,17 @@ ts --init
 
 #### ~CIBuildCaching
 
-#### ~ISR
+#### ISR
+
+```ts
+// RouteSegment
+- dynamicParams
+- generateStaticParams
+- revalidate
+// Function
+- revalidatePath
+- revalidateTag
+```
 
 #### ~MDX
 
