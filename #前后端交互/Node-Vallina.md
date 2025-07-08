@@ -44,6 +44,10 @@ pipe.write('hello main process!')
 
 #### Fs
 
+> ```shell
+> npm: fs-extra  graceful-fs  ncp
+> ```
+
 ```ts
 // 转Promise
 require('node:fs/promises') // v14
@@ -52,34 +56,26 @@ import {promisify} from 'util' // v8 ~ v10
 const read = promisify(fs.readFile)
 ```
 
-```ts
-// 文件路径
-const path = require('node:path')
-path.dirname('path')
-path.basename('path','ext')
-path.extname('path')
-path.join('/','path1','path2')
-path.resolve('/','path1','path2')
-path.normalize('path')
-```
-
 ```js
 // 检测文件|目录
-fs.stat('path',(err,stats)=>{
-    stats.isDirectory()|.isFile()|.isSymbolicLink()
-  	stats.size
+fs.stat('path',(err,stat)=>{
+    stat.isDirectory()|.isFile()|.isSymbolicLink()
+  	stat.size
 })
-// 文件夹操作
-fs.readdir('path',(err,files)=>void)
-fs.mkdir('path',{recursive},err=>void)
-fs.rmdir('path',{recursive},err=>void)
 // 文件操作
-fs.open('path','r|w|a|a+')
+fs.readdir(path,(err,files)=>void)
+fs.mkdir(path,{recursive},err=>void)
+fs.rm(path,{recursive,force},err=>void)
 fs.readFile(path,(err,data)=>void)
-fs.writeFile(path,data,err=>void)
+fs.writeFile(path,data,encode,err=>void)
 fs.appendFile(path,data,err=>void)
 fs.rename(path,newName)
 fs.unlink(path,err=>void)
+// 标识符操作
+fs.open(path,flags)
+fs.close(fd)
+fs.read(fd,buffer,offset,length,position,(err,bytesRead,buffer)=>void)
+fs.write(fd,buffer,offset,length,position,(err,bytesWritten,buffer)=>void)
 ```
 
 ```ts
@@ -97,9 +93,6 @@ readStream.pipe(writeStream)
 
 ```js
 // 文件复制
-// npm: ncp
-const ncp = require('ncp').ncp
-ncp(source,destination,err=>...)
 // 文件流
 const fs = require('fs');
 const path = require('path');
@@ -135,13 +128,79 @@ function copyFiles(sourceDir, destDir) {
 }s
 ```
 
-#### Buffer
+```shell
+# Path/Encode
+- string|Buffer.from(string)
+- new URL('file://localPath')
+# 文件系统标志(rwa+)
+- a+ (已存追加)
+- r+ (已存读写)
+- w+ (所有读写)
+- a (所有追加)
+# 文件标识符(数字)
+- fs.open(path,flags)
+```
 
 ```ts
-Buffer.alloc(length,1)|allocUnsafe
-Buffer.from([...]|any)
-Buffer.concat([...buffers]).toString('utf-8|base64|hex')
+// 文件路径
+const path = require('node:path')
+path.dirname(path)
+path.basename(path,suffix)
+path.extname(path)
+path.join('/','path1','path2')
+path.resolve('/','path1','path2')
+path.normalize('path')
+```
+
+#### Buffer
+
+> ```shell
+> TypedArray/Uint8Array/Buffer 
+> ```
+
+```ts
+// Establish
+Buffer.alloc(len,fill,encode)|allocUnsafe.fill
+Buffer.from(LikeArray|Buffer)
+Buffer.from(ArrayBuffer,offset,len)
+Buffer.copyBytesFrom(TypedArray,offset,len)
+// Manipulate
+Buffer.concat(Buffer[])
 Buffer.isBuffer|byteLength
+Buffer.compare(b1,b2)
+buf.slice(start,end)
+buf.readInt8(offset)
+buf.writeInt8(value,offset)
+buf.toString(encode,start,end)
+```
+
+#### Stream
+
+> ```shell
+> Readable/Writeable
+> ```
+
+```ts
+// Readable(highWaterMark,encoding,flowing,Iterator...)
+// Events
+- close/error
+- data/readable/end
+- pause
+// Methods
+- distroy
+- pause/resume/pipe/unpipe
+- read
+```
+
+```ts
+// Writable
+// Events
+- close/error
+- drain/finish
+- pipe/unpipe
+// Methods
+- distroy
+- write/end/cork/uncork
 ```
 
 #### Events
@@ -154,8 +213,6 @@ EventEmitter.removeAllListeners(event)
 EventEmitter.emit(event,...args)
 EventEmitter.setMaxListeners(n)
 ```
-
-#### 
 
 ### Net
 
@@ -295,15 +352,9 @@ ejs.renderFile('.ejs',{data},(err,data)=>{res.end()})
 #### 工具模块
 
 ```shell
-# 服务器监听重启
-cnpm i -g supervisor
-
-# md5加密
-npm md5
-md5(xxx)
-
-# 日期格式化
-npm silly-datetime
+# 服务器重启：supervisor
+# md5加密：md5
+# 日期格式化：silly-datetime
 sd.format(date,'YYYY-MM-DD HH:mm')
 ```
 
@@ -318,8 +369,6 @@ sd.format(date,'YYYY-MM-DD HH:mm')
 > [workerPool]()：执行IO/CPU密集操作，在libuv上实现。例如，DNS、FS、Crypto、Zlib。
 >
 > [防阻塞]()：分割
-
-#### 文件操作
 
 #### 命令行
 

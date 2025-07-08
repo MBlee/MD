@@ -1,4 +1,6 @@
-## 核心
+## Fundamental
+
+### 核心
 
 > app
 
@@ -63,7 +65,7 @@ const menu = Menu.buildFromTemplate(opts)
 Menu.setApplicationMenu(menu)
 ```
 
-## API
+### API
 
 ~~~js
 // 文件写入
@@ -74,7 +76,7 @@ ele=>('dragover')
 e.preventDefault()&&e.stopPropagation()
 ~~~
 
-## Preload
+### Preload
 
 ```ts
 // contextBridge
@@ -88,9 +90,9 @@ ipcRenderer.invoke('ping')
 ipcMain.handle('ping',fn)
 ```
 
-## ...
+## Essential
 
-## Construction
+### Construction
 
 > 快速启动：nodemon --watch main.js --exec npm run build 
 
@@ -119,13 +121,13 @@ electron-forge package
 electron-forge make
 ```
 
-### Electron Forge
+#### Electron Forge
 
-### Electron Fiddle
+#### Electron Fiddle
 
-## Debug
+### Debug
 
-### VSCode
+#### VSCode
 
 ```json
 // launch.json
