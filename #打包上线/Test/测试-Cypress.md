@@ -18,6 +18,11 @@ cy.its
 cy.as
 ```
 
+```ts
+// spec.cy.ts
+describe/it
+```
+
 ## Start
 
 ```shell
@@ -32,6 +37,6 @@ cypress open
 --- e2e
 - setupNodeEvents(on,config){}
 - baseUrl
-- suportFile
+- supportFile
 ```
 
