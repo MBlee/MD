@@ -468,8 +468,6 @@ ts --init
 
 #### ~CLI
 
-#### ~Configuration
-
 ### Analysis
 
 ```ts
@@ -531,5 +529,11 @@ module.exports ={
 ```ts
 - experimental.dynamicIO // use cache/cacheTag/cacheLife
 - experimental.serverActions.allowedOrigins
+```
+
+```shell
+# ts
+- experimental.typedRoutes
+- typescript.ignoreBuildErrors
 ```
 

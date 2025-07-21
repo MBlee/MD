@@ -1,34 +1,69 @@
-## Nest
+## Vitals
 
-```shell
-# npm i @nestjs/cli -g
-nest new <app> -p pnpm
-nest g controller <controller> --flat|--no-flat
-nest g provider|service <service>
-nest g resource xx
-# 打包
-nest build
-	--path <tsconfig-path>
-	--watch
-	--builder <tsc|webpack|swc>
-# 调试
-- nest start -d|--debug 8088 --watch
-=> chrom://inspect
-- vscode => Toggle Auto Attach
-- lanch.json => Program
+## Assential
+
+```ts
+// NestAPP
+- NestFactory.create<NestExpressApplication>(appModule)
+- abortOnError
+- -- -b swc
+
+// Modules
+@Global@Module({
+  controllers,providers,exports
+  imports
+})
+class DynamicModule{
+  static forRoot()=>{ module,providers,exports }
+}
+    
+// Controllers 
+@Controller('prefix')
+@All('route')
+@Res({passthrough})@Req@Next@Redirect
+@Host...
+
+// Providers
+@Injectable@Inject('HTTP_OPTIONS')
+@Optional
 ```
 
-```shell
-# nest-cli.json
-- $schema:"https://json.shemastore.org/nest-cli"
-- collection:"@nestjs/schematics"
-- sourceRoot:'src'
-- generateOptions:{ flat,spec }
-- compilerOptions:{
-  'webpack':false, 'deleteOutDir':true,
-  "builder":'tsc',
-  "watchAssets":false
-}
+```ts
+// Middleware
+@Injectable() class Mid implements NestMiddleware{ use }
+class Mod implements NestModule{ configure(consumer:MiddlewareConsumer) }
+consumer.apply(Mid).exclude({path,method}).forRoutes(controller)
+app.use(Mid)
+// Exception filters
+class Forbidden extends HttpException/BadRequestException
+throw new HttpException(Res,HttpStatus,{cause}) => {error,status}
+
+@Catch(HttpException) class Filter implements ExceptionFilter{ catch }
+catch(exception:HttpException,host:ArgumentsHost)
+const ctx = host.switchToHttp()
+const res = ctx.getResponse<Response>()
+const req = ctx.getResponse<Request>()
+const status = exception.getStatus()
+res.status(status).json({statusCode,path})
+
+@UseFilters(Filter)
+app.useGlobalFilters(Filter)
+```
+
+```ts
+// Pipes
+```
+
+```ts
+// Guards
+```
+
+```ts
+// Interceptors
+```
+
+```ts
+// Decorators
 ```
 
 ```ts
@@ -142,4 +177,36 @@ export new mongoose.Schema({...})
 constructor(@InjectModel('Article') private readonly articleModel) => this.articleModel.find().exec()
 ```
 
-#### 
+## Cli
+
+```shell
+# npm i @nestjs/cli -g
+nest new <app> -p pnpm
+nest g resource|module|controller|provider|service
+# 打包
+nest build
+	--path <tsconfig-path>
+	--watch
+	--builder <tsc|webpack|swc>
+# 调试
+- nest start -d|--debug 8088 --watch
+=> chrom://inspect
+- vscode => Toggle Auto Attach
+- lanch.json => Program
+```
+
+## Conf
+
+```shell
+# nest-cli.json
+- $schema:"https://json.shemastore.org/nest-cli"
+- collection:"@nestjs/schematics"
+- sourceRoot:'src'
+- generateOptions:{ flat,spec }
+- compilerOptions:{
+  'webpack':false, 'deleteOutDir':true,
+  "builder":'tsc',
+  "watchAssets":false
+}
+```
+

@@ -1,4 +1,4 @@
-## Linux命令
+## CLI
 
 #### **网络**
 
@@ -268,7 +268,7 @@ export PATH=$PATH:/bin
   export PATH=$PATH:/bin
 ```
 
-#### *vim*
+#### Vim
 
 ```shell
 # 输入模式
@@ -353,9 +353,40 @@ shutdown -r now
 reboot
 ```
 
-- ​
+#### 文件管理
 
-## ......
+```shell
+# 查看
+ls -la
+ll
+cat
+# 创建
+mkdir -p
+touch
+# 删除
+rmdir -p
+rm -rfv
+```
+
+#### 测试命令
+
+```shell
+# 查看
+date|cal
+df #磁盘使用情况
+free #系统空闲内存
+```
+
+```shell
+history -c && !num #历史命令
+alias alias-name='cli' #别名
+unalias alias-name
+```
+
+```shell
+<|> # (重定向|管道)
+`` # 命令置换
+```
 
 ## 常用软件安装
 
@@ -382,68 +413,3 @@ registry.npmmirror.com/binary.html?path=node/
 ```
 
 #### RPM
-
-## ......
-
-#### 命令行高亮
-
-```shell
-# 修改~/.bashrc或.bash_profile文件
-PS1=[\u@\h \W]\$  (.bashrc)
-export PS1=[\u@\h \W]\$  (.bash_profile)
-# 高亮效果
-PS1='\[\e[37;40m\]\[\e[1m\][\[\e[35;40m\]\u\[\e[33;40m\]@\h \[\e[31;40m\]\#  \[\e[37;40m\]\w]$\[\e[32;40m\]'  (绿色)
-PS1='[\[\e[32;40m\]\u@\h \w \t]$ \[\e[0m\]'  (白色)
-PS1="\[\e[37;40m\][\[\e[33;40m\]\u\[\e[37;40m\]@\h \[\e[36;40m\]\w\[\e[0m\]]\\$ "   (用户名高亮)
-```
-
-
-
-## 常见错误
-
-#### 无效PID
-
-```shell
-# invalid PID number "" in "var/run/nginx.pid"
-ps -ef|grep nginx
-echo <pid> >  var/run/nginx.pid
-```
-
-## Linux简介
-
-**版本：**Ubuntu(20.04)、RedHat、CentOS
-
-**特点：**[安全性]()、[稳定性]()、[高并发]()
-
-> 安装：虚拟机 > 创建虚拟机 > 镜像
-
-**目录结构：**[/](/)：根目录
-
-- [bin | usr/bin]()：系统可执行文件（任何目录）
-
-  [usr/local/bin](usr/local/bin)：用户可执行文件
-
-- [etc]()：系统配置文件，配置环境变量（etc/profile）
-
-  [home]()：用户根目录
-
-  [root]()：管理员根目录
-
-  [opt]()：存档额外安装的软件
-
-  [usr]()：应用程序和文件
-
-  [tmp]()：临时文件，安装包
-
-  [var]()：经常被修改的目录
-
-  [www]()：存放服务器网站相关
-
-#### 下载
-
-```shell
-# 阿里开源镜像站
-# 网易开源镜像站
-# 清华大学开源镜像站
-```
-
