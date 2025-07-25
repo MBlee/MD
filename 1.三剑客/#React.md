@@ -179,6 +179,8 @@ const [optimisticState,addOptimistic] = useOptimistic(state,fn)
 - cache(fn) => cacheFn
 - preload
 - share
+// use
+- use(context|promise) => val
 ```
 
 ## 路由

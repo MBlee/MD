@@ -55,11 +55,20 @@ import 'server-only|client-only'
 // Css-in-JS
 ```
 
-#### ~Sass
+#### Sass
+
+```shell
+- sassOptions.implemention
+- sassOptions.addtionalData
+```
 
 #### ~CSS-in-JS
 
-#### ~TailwindCSS
+#### TailwindCSS
+
+```shell
+- plugins:['@tailwindcss/postcss']
+```
 
 #### ~Scripts
 
@@ -449,15 +458,43 @@ ts --init
 
 #### ~MultiZones
 
-#### ~PackageBundling
+#### PackageBundling
+
+```ts
+// npm: @next/bundle-analyzer
+// ANALYZE=true pnpm build
+require('@next/bundle-analyzer')({
+	enabled:process.env.ANALYZE === 'true'
+})(nextConfig)
+```
+
+```ts
+// next.config.ts
+- experimental.optimizePackageImports:['lib']
+- serverExternalPackages:['lib']
+```
 
 #### ~Production
 
 #### ~PWAs
 
-#### ~SPAs
+#### SPAs
 
-#### ~StaticExports
+```ts
+// context/promise(server) => use(client)
+// useSWR/useQuery
+// dynamic(()=>import('comp'),{ssr:false})
+// output:'export'
+```
+
+#### StaticExports
+
+```ts
+// output:'export'
+
+```
+
+
 
 #### ^CICache
 
