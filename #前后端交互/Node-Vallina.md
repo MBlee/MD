@@ -1,11 +1,19 @@
 ## Node
 
 ```js
-// 当前路径
+// Processs
 process.cwd()
+process.pid|argv[2]
 ```
 
 ### ChildProcess
+
+```ts
+// Spawn
+- cp.spawn('cmd',[args...],{cwd})
+- p.stdout|stderr.on('data|err',std=>{})
+- p.on('close',closeCode=>{})
+```
 
 ```ts
 // 创建多线程
@@ -14,11 +22,6 @@ const cp = require('child_process')
 
 const wp = cp.exec('node command.js i',(err,stdout,stderr)=>{})
 wp.on('exit',code=>{})
-
-const wp = cp.spawn('node',['command.js',i])
-wp.stdout.on('data',stdout=>{})
-wp.stderr.on('data',stderr=>{})
-wp.on('close',code=>{})
       
 const wp = cp.fork('command.js',[i])
 wp.on('close',code=>{})

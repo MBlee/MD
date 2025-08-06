@@ -1,6 +1,53 @@
-## CLI
+```shell
+# vitals
+- 安装配置/环境变量
+- 用户管理
+- 网络/防火墙/集群
+- 磁盘/文件管理/vim
+- 进程/服务
+- 软件管理
+```
 
-#### **网络**
+## Shell
+
+#### ^网络
+
+```shell
+# 查看网络 (^route)
+ifconfig <ens33> <ip> netmask <netmask>
+ifconfig <ens33> down|up
+hostname -i
+hostnamectl
+netstat -a  #所有连接信息
+netstat -i  #网卡信息
+netstat -r  #路由信息
+netstat -ap |grep sogou  #某个服务对应连接
+netstat -nu  #UDP连接
+netstat -apu  #UDP连接端口信息
+# 测试网络
+ping -c
+traceroute
+```
+
+```shell
+# 修改网络
+```
+
+#### ^防火墙
+
+#### ^集群
+
+#### ^用户管理
+
+#### ^磁盘/文件管理
+
+#### ^进程/服务
+
+#### ^软件
+
+#### ^安装配置
+
+#### 网络
 
 ```sh
 # DNS配置
@@ -388,7 +435,7 @@ unalias alias-name
 `` # 命令置换
 ```
 
-## 常用软件安装
+## 常用软件
 
 windTerm
 

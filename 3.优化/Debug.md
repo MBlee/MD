@@ -135,7 +135,19 @@ class ApiError extends TrustedError{
 - main(.js)
 ```
 
-## **DEBUG**
+### Extensions
+
+```shell
+# Console插件
+- Turbo Console Log
+  (ctrl+alt+L) #生成
+  (shift+alt+C/U) #注释 
+  (shift+alt+D) #删除
+- Console Ninja
+- console.(log|warn|error|info|debug)([^)]*);?\s* #正则全删
+```
+
+## DEBUG
 
 ### COSWARS
 

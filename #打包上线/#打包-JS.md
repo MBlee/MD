@@ -92,4 +92,35 @@ const compat = new FlatCompat({baseDirectory})
 export default [...compat.extends('...')]
 ```
 
+```ts
+// npm: @eslint/js
+// npm: globals
+- js.configs.recommended
+- globals.browser
+// npm: typescript-eslint
+- tslint.config()
+```
+
+```ts
+// npm: eslint-plugin-react-hooks
+// npm: eslint-plugin-react-refresh
+- ...reactHooks.configs.recommended.rules
+- 'react-refresh/only-export-components': [
+  'warn',
+  { allowConstantExport: true },
+]
+- plugins.reactHooks
+- plugins.reactRefresh
+```
+
+#### Rules
+
+```shell
+# EmptyObject
+- @typescript-eslint/no-empty-object-type: "off"
+- no-empty-pattern: "off"
+# Prettier
+- prettier/prettier: [ "error",{"endOfLine": "auto"}] #EOL
+```
+
 ## Prettier

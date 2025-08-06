@@ -25,6 +25,7 @@ npx create-react-app --tempalte typescript
 
 > 1. craco.config.js
 > 2. tsconfig.paths.json
+> 3. emotion, postcss
 
 ```ts
 // craco.config.js
@@ -33,7 +34,7 @@ npx create-react-app --tempalte typescript
 - configure.resolve.extensions
 ```
 
-```ts
+```typescript
 // tsconfig.paths.json
 - compilerOptions.baseUrl
 - compilerOptions.paths
