@@ -160,10 +160,6 @@ res.send()|sendStatus()|status()
 
 #### 模板引擎
 
-```shell
-npm i ejs
-```
-
 ```js
 const ejs = require('ejs')
 app.engine('html',ejs.__express)
