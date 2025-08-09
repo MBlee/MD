@@ -210,3 +210,13 @@ nest build
 }
 ```
 
+## ~~~~~~
+
+## Appendix
+
+#### StandaloneApps
+
+```ts
+const app = NestFactory.createApplicationContext(appModule)
+```
+
