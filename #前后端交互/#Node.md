@@ -51,7 +51,15 @@ app.useGlobalFilters(Filter)
 ```
 
 ```ts
-// Pipes
+// Pipes (@injectable)(PipeTransform)
+// Built-in pipes
+- ParseIntPipe(Float/Bool/UUID/Array/Enum/File/Date)
+- ValidationPipe
+// Custom pipes
+- transform(val,meta)
+- meta:{type,data}
+// Binding pipes
+- @Param('id',Pipe) // (Query/Body/Custom) 
 ```
 
 ```ts

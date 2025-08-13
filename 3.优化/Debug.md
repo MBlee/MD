@@ -120,6 +120,17 @@ class ApiError extends TrustedError{
 ```
 ## VSCODE
 
+```ts
+// Debug快捷键
+F5（继续/暂停）F10（单个方法命令）F11（下一个方法）
+Shift+F5（终止）
+Ctrl+Shift+F5（重新运行）
+// BreakPoint  (conditional/log/hit/trigger)
+// DebugConsole
+// Variables
+// CallStack
+```
+
 ### TS
 
 ```shell
@@ -127,13 +138,37 @@ class ApiError extends TrustedError{
 - sourceMap:true
 - module:'commonjs'
 - moduleResolution:'node'
-# launch.json
-- program(.ts)
-- url(.html)
-- outFiles(**/*.js)
 # package.json
 - main(.js)
 ```
+
+```shell
+# launch.json (launch/attach)(node/chrome)
+- program(.ts)
+- url(.html)
+- file
+- outFiles(**/*.js)
+- preLaunchTask
+- runtimeExecutable
+- runtimeArgs
+- address
+- port
+- localRoot
+- remoteRoot
+- processId
+- skipFiles
+```
+
+```shell
+# nodemon
+nodemon --inspect
+# launch.json
+"runtimeExecutable": "npm"
+"runtimeArgs": ["start"]
+"outputCapture": "std"
+```
+
+### Task
 
 ### Extensions
 

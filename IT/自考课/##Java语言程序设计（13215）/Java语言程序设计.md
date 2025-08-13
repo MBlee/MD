@@ -23,11 +23,7 @@
 
 #### Java示例
 
-#### 核心API文档
-
-```shell
-# 
-```
+#### 核心API文档 
 
 ## 第二章 数据和表达式
 
@@ -85,7 +81,102 @@ while(boolean){}
 do while(boolean)
 ```
 
-```java
-// 异常处理
+```ts
+// 输入输出
+new Scanner(System.in)
+scan.next|nextInt|nextFloat
+scan.nextLine
+// 数值类
+NumberFormat.getInstance()
+format.format(num)
+format.setMaximumFractionDigits(int)
+format.setMaximumIntegerDigits(int)
+new Decimal('0.##')
 ```
 
+```java
+// 异常处理
+Throwable => Exception|Error(Unchecked Exception)
+Exception => Checked Exception|Runtime Exception
+- ArithmeticException
+- NullPointerException
+- NegativeArraySizeException
+- ArrayIndexOutofBoundsException
+try{}catch(IOException e){}finally{}
+public void method() throws Exception,...
+```
+
+## 第四章 面向对象程序设计
+
+```java
+public class CLS extends PCLS{}
+public CLS(){}
+(static) private int a
+(static) public void toXX(){}
+Integer.parseInt()...
+```
+
+## 第五章 数组和字符串
+
+```java
+String strArr[] = String[] strArr
+String arr[][] = String[][] arr
+strArr = {...}
+strArr = new String[n]
+System.arrayCopy(a1,start,a2,start,count)
+package java.util.Arrays
+equals()
+sort()
+fill()
+binarySearch()
+```
+
+```java
+package java.util
+Vector<String> vec = new Vector<String>(capacity,increment)
+addElement(E obj)
+add(int idx,E obj)
+insertElementAt(E obj,int idx)
+```
+
+```java
+String str = new String(char[])
+StringBuffer str = new StringBuffer(str)
+// String/StringBuffer
+length()
+charAt(int idx)
+subString(int beginIdx)
+// String
+replace(char oldChar,char newChar)
+toLowerCase()
+toUpperCase()
+concat(String str)
+startsWith(String prefix)
+trim()
+valueOf(type val)
+// StringBuffer
+append(String str)
+replace(int start,int end,String str)
+capacity()
+equal|==
+```
+
+## 第六章 继承与多态
+
+#### 子类
+
+#### 方法覆盖与多态
+
+#### 终极类与抽象类
+
+#### 接口
+
+## 第七章 输入和输出流
+
+#### 数据流
+
+#### 基本字节数据流类
+
+#### 基本字符流
+
+#### 文件处理

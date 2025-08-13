@@ -15,6 +15,7 @@
 - 如何优化一个长列表的渲染性能？（虚拟列表）
 - 谈谈代码分割在 React 中的实现方式
 - 用户如何根据不同的权限，查看不同的页面
+- 如果不使⽤脚⼿架， 如果⽤ webpack 构建⼀个⾃⼰的 react 应⽤
 
 ## 原理题
 
@@ -30,10 +31,12 @@
 - React-Router 工作原理
 - Fiber 更新机制
 - React 渲染流程
+- 如何实现专场动画？
 
 
 ## API
 
+- react-router 和 原⽣路由区别
 - React Hooks
 - 数据如何在 React 组件中流动
 - Fragments
@@ -103,3 +106,5 @@
 - useState要使用数组而非对象？
 - React refs
 - 为什么要使用Hooks
+- 如何避免不必要的渲染?
+- 从 React 层⾯上， 能做的性能优化有哪些？
