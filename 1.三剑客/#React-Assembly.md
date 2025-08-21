@@ -1,6 +1,33 @@
 ## 数据
 
-### ~ReduxToolKit
+### ReduxToolKit
+
+```ts
+// ConfigStore
+const store = configureStore({
+  reducer: rootReducer,
+  name,initialState
+})
+// CreateSlice
+// CreateAsyncThunk
+// CreateEntityAdapter
+// CreateReducer
+// CreateAction
+```
+
+```ts
+// ReduxPersist
+```
+
+```ts
+// ReactReduxFirebase
+```
+
+```ts
+// Noramlized
+```
+
+### RTKQuery
 
 ### ~ReactQuery
 

@@ -18,8 +18,6 @@ function(callback){
 }
 ```
 
-
-
 ## SEO
 
 #### TKD+OG

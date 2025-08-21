@@ -1,0 +1,32 @@
+## 兼容
+
+#### HTML
+
+```jsx
+/* 禁用跳转 */
+<a href='javascript:void(0)'></a>
+<a href='javascript:;'></a>
+<a href='#!'></a>
+```
+
+#### JS
+
+```shell
+# requestAnimationFrame
+function(callback){
+	return window.setTimeout(callback,1000/60)
+}
+```
+
+## SEO
+
+#### TKD+OG
+
+```html
+<title>title-28</title>
+<meta name='keywords' content='key,...'/>
+<meta name='description' content='80'/>
+<meta property='og:type' content=''/>
+<meta property='og:title' content=''/>
+```
+
