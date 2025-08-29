@@ -170,6 +170,13 @@ nodemon --inspect
 
 ### Task
 
+```shell
+# ctrl+shift+B >> Run build task
+- label
+- type/group
+- presentation.reveal
+```
+
 ### Extensions
 
 ```shell
