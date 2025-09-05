@@ -3,10 +3,19 @@
 #### Validate
 
 ```ts
-// Type
+// Empty-Type
+```
+
+```ts
+// Trim
+// Escape
 ```
 
 #### Transform
+
+```ts
+
+```
 
 ```ts
 // Normalizing (normalizr)
@@ -14,7 +23,7 @@
 ```
 
 ```ts
-// Tree
+// InfinityTree
 ```
 
 #### Encrypt

@@ -17,3 +17,11 @@
 
 ## Req
 
+```shell
+# X-Powered-By
+- ETag
+- Date
+- Connection
+- Keep-Alive
+```
+

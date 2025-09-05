@@ -79,15 +79,13 @@ Boom.badRequest(err,data)
 // Body-Parser(URLEncoded)
 - extended
 // Express-Validator
-const {query,body,validationResult,matchedData} = require('express-validator')
-app.use(path,
-    query('xx')
-    .notEmpty()
-    .escape()
-    .trim()
-    .isEmail()
-)
-app.use((req,next)=>{
+const {query,body,matchedData,validationResult} = require('express-validator')
+- query('**.name').notEmpty().escape().trim().isEmail()
+- body().custom((val,{req}=>boolean))
+- body().customSanitizer((val,{req})=>val)
+- matchedData(req)
+- validationResult(req)
+app.use((req,res,next)=>{
     const err = validationResult(req)
     if(!err.isEmpty()) next(err.array())
     const [{msg}] = err.errors
