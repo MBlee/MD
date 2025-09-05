@@ -231,6 +231,18 @@ e.key
 
 ## BOM
 
+#### URLSearchParams
+
+```ts
+new URLSearchParams(Obj)
+- has()
+- get/getAll()
+- delete()
+- set()
+- append()
+- toString()
+```
+
 #### Location
 
 ~~~shell

@@ -25,6 +25,7 @@
 ```ts
 // 断言
 - xx as Function|string
+- xx as unknown as string
 - <string|Function>xx
 - xx!['key']
 ```

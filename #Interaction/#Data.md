@@ -1,12 +1,21 @@
-## 网络API
+## Axios
 
-#### Axios
+```shell
+# Interceptors
+# Req(JWT)
+# Req(Rate)
+# Req(Cancel)
+# Res(Loading/Error)
+# Res(Data)
+# Res(Retry)
+# Res(Cache)
+```
 
 ```ts
 // axios-mock-adapter
 ```
 
-> **封装**
+> **Encapsulation**
 
 ```js
 const http = axios.create()
@@ -141,62 +150,9 @@ axios.defaults.params
 
 axios.defaults.timeout
 
-#### Fetch
+## InBrief
 
-~~~js
-// 基于promise
-fetch(url,{
-  method:"post",
-  body:"user=lee&...",
-  headers:{
-    "Content-Type":"application/x-www...."
-  },
-  mode:"cors",
-  credentials:"include"
-}).then{(res)=>{
-  if(res.ok) 
-  res.json()
-  res.text()
-  res.formData()
-  res.blob()
-  res.arrayBuffer()
-  else throw res.status
-}}.then(data=>).catch(err=>)
-~~~
+`Req: Headers-Body`
 
-~~~js
-// 封装
-async function http(obj){
-  let {method,url,params,data}=obj,res
-  if(params){
-    let str = new URLSearchParams(params).toString()
-    url += '?'+str
-  }
-  if(data){
-    res = await fetch(url,{method,headers:{"Content-Type":'application/json'},body:JSON.stringify(data)})
-  }else{
-    res = await fetch(url)
-  }
-  return res.json()
-}
-~~~
+`Res: Headers-Data(Cache/Revalidate)-Error`
 
-#### JSON Server
-
-安装：npm i -g  json-server
-
-创建JSON：db.json
-
-开启服务：json-server --watch db.json --deley 2000
-
-##### 特点：
-
-基于promise的异步ajax请求库
-
-支持请求、响应拦截器
-
-支持请求取消
-
-请求、响应数据转换
-
-批量发送请求

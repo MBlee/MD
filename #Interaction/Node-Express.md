@@ -1,4 +1,4 @@
-#### 服务器
+#### Server
 
 ```ts
 // HTTP服务器
@@ -6,9 +6,6 @@ const express = require('express')
 const app = express()
 app.listen(_port)
 app.use((req,res,next)=>...)
-// 跨域
-const cors = require('cors')
-app.use(cors())
 // 静态服务器
 app.use(baseURL,express.static('path'))
 // 路由
@@ -55,7 +52,33 @@ Boom.badRequest(err,data)
 ```
 
 ```ts
-// express-validator
+// Static
+- setHeaders:(res,path,stat)=>void
+- etag:boolean
+- maxAge:'1d'
+- lastModified:string
+- redirect:boolean
+- index:boolean
+- extensions:['htm','html']
+```
+
+```ts
+// Cors
+- origin:string|regexp[]|(origin,cb:(null,boolean)=>void)=>void
+- methods:string[]
+- allowedHeaders:string[]
+- exposedHeaders:string[]
+- credentials:boolean
+- maxAge:boolean
+```
+
+```ts
+// Body-Parser(JSON)
+- limit:string
+- verify:(req,res,buf)=>throw
+// Body-Parser(URLEncoded)
+- extended
+// Express-Validator
 const {query,body,validationResult,matchedData} = require('express-validator')
 app.use(path,
     query('xx')
@@ -137,7 +160,7 @@ const callback = (err,res,data)=>{
 http.request(options,callback)
 ```
 
-#### 路由
+#### Router
 
 ```js
 // express.Router()
@@ -158,7 +181,7 @@ req.body
 res.send()|sendStatus()|status()
 ```
 
-#### 模板引擎
+#### Boilerplate
 
 ```js
 const ejs = require('ejs')
@@ -178,7 +201,7 @@ res.render('index',{})
 
 #### ......
 
-#### 脚手架
+#### Cli
 
 > npm: express-generator
 
@@ -187,4 +210,10 @@ express --no-view <proname>
 npm i
 ```
 
-## 
+#### InBrief
+
+`RouterPre: Static&Cors-Body(validate-i18n-body-parser)-Cookie(Session-Jwt)`
+
+`Router: Path-Req,Res,Next-Fetch-Ejs`
+
+`Middleware: Error(Debug-Log)-Auth(User-Role-Secret)-Rate(Host-Ip-User)-Attack`

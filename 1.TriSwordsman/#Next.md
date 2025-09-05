@@ -111,7 +111,15 @@ const {url:trackUrl} = blobs[1]
 - cookies.get|getAll|set|delete|clear
 ```
 
-### 路由
+> Client
+
+```ts
+// usePathname
+// useSearchParams
+// useRouter
+```
+
+### Router
 
 ```shell
 # 路由匹配
@@ -122,17 +130,25 @@ const {url:trackUrl} = blobs[1]
 ```
 
 ```ts
-// 切换
-- redirect('pathname') // next/na
-vigation（仅渲染可用）
+// Toggle(Client)
+- redirect('pathname') // next/navigation（仅渲染可用）
 - <Link href={''|{}} as // next/link
 	prefetch
     scroll
   /> 
-- useRouter => pathname,query,push,prefetch
+- useRouter => push,prefetch('url',{scroll})
+- window.history.pushState/replaceState(null,'',path)
+```
+
+```ts
+// Access(Server)
+- params/searchParams
+- PageProps<'/path/[par]'>
+// Access(Server=>Client)
+- use(params/searchParams)
+// Access(Client)
 - usePathname => pathname
 - useSearchParams => searchParams
-- window.history.pushState/replaceState(null,'',path)
 ```
 
 ```ts
@@ -143,10 +159,6 @@ fetch('path',{cache:'force-cache'})
 ```
 
 ```ts
-// 路由API
-export async GET(req:Request)
-export const dynamic = 'force-static'
-export const revalidate = 60
 // redirect
 import { redirect } from 'next/navigation'
 redirect('https://nextjs.org/')
@@ -547,7 +559,7 @@ require('@next/bundle-analyzer')({
 
 #### ~Vitest
 
-## Configuration
+### Configuration
 
 > next@15
 
@@ -572,5 +584,43 @@ module.exports ={
 # ts
 - experimental.typedRoutes
 - typescript.ignoreBuildErrors
+```
+
+## SSR
+
+### Server
+
+```ts
+// Dynamic Render
+- export const dynamic='force-dynamic'
+- await connection()
+```
+
+```ts
+// Static Render
+- export const dynamic = 'force-static'
+- export async function generateStaticParams(){}
+- export const revalidate = 60
+```
+
+### Client
+
+```shell
+# Preload (Link/Loading)
+- static/dynamic
+# onMouseEnter (prefetch)
+# useLinkStatus
+```
+
+```ts
+// History
+const searchParams = useSearchParams()
+const pathname = usePathname()
+const params = new URLSearchParams(searchParams.toString())
+params.set('sort', sortOrder)
+const newPath = `/${locale}${pathname}`
+
+history.pushState(null, '', `?${params.toString()}`)
+history.replaceState(null, '', newPath)
 ```
 
