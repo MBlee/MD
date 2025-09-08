@@ -121,32 +121,25 @@ const {url:trackUrl} = blobs[1]
 
 ### Router
 
-```shell
-# 路由匹配
+```ts
+// Mapping
 - [[...dynamic]],(routeGroup),_private
 - layout/template
 - loading/error/not-found/page
 - route
-```
-
-```ts
-// Toggle(Client)
-- redirect('pathname') // next/navigation（仅渲染可用）
-- <Link href={''|{}} as // next/link
-	prefetch
-    scroll
-  /> 
+// Switching
+- <Link href={''|{}}  prefetch scroll as/> // next/link
 - useRouter => push,prefetch('url',{scroll})
 - window.history.pushState/replaceState(null,'',path)
+- redirect('pathname') // next/navigation（仅渲染可用）
 ```
 
 ```ts
 // Access(Server)
 - params/searchParams
 - PageProps<'/path/[par]'>
-// Access(Server=>Client)
-- use(params/searchParams)
 // Access(Client)
+- use(params/searchParams)
 - usePathname => pathname
 - useSearchParams => searchParams
 ```

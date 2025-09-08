@@ -14,10 +14,6 @@
 #### Transform
 
 ```ts
-
-```
-
-```ts
 // Normalizing (normalizr)
 () => entities:{byId,ids}
 ```
