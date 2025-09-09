@@ -418,8 +418,6 @@ draft.isEnabled?...fetch
 
 #### ~Prefetching
 
-#### ~SelfHosting
-
 ### Structure
 
 > **构建**
@@ -491,15 +489,6 @@ require('@next/bundle-analyzer')({
 // dynamic(()=>import('comp'),{ssr:false})
 // output:'export'
 ```
-
-#### StaticExports
-
-```ts
-// output:'export'
-
-```
-
-
 
 #### ^CICache
 
