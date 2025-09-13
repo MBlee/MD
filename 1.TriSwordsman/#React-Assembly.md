@@ -3,28 +3,13 @@
 ### ReduxToolKit
 
 ```ts
-// ConfigStore
-const store = configureStore({
-  reducer: rootReducer,
-  name,initialState
-})
-// CreateSlice
-// CreateAsyncThunk
-// CreateEntityAdapter
-// CreateReducer
-// CreateAction
-```
-
-```ts
-// ReduxPersist
-```
-
-```ts
-// ReactReduxFirebase
-```
-
-```ts
-// Noramlized
+// Vitals
+- Store-Slice-AsyncThunk(Reducer/Action)
+- EntityAdapter
+// Plugins
+- ReduxPersist
+- ReactReduxFirebase
+- Normalized
 ```
 
 ### RTKQuery

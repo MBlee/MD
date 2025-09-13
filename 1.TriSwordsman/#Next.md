@@ -13,15 +13,11 @@ npm i next react react-dom
 > **Server&Client**
 
 ```ts
-// 模块通用
+// Server/Client
 import 'server-only|client-only'
 - fetch|React.cache // 共享数据
-// 服务端转换客户端
+// Client
 - 'use client'
-- export default (import)
-- createContext({}) => <Provider value>{children}</Provider>
-// 客户端包含服务端组件(不能导入)
-- <Client><Server/></Client>
 ```
 
 > **Appearance**
@@ -53,6 +49,26 @@ import 'server-only|client-only'
 
 ```ts
 // Css-in-JS
+```
+
+#### SPAs
+
+```ts
+// StrictSPA
+- window.history.pushState
+- window.history.replaceState
+// Client-Only (Server-Action)
+import dynamic from 'next/dynamic'
+const ClientOnlyComponent = dynamic(() => import('./component'), {
+  ssr: false,
+})
+```
+
+```ts
+// Context (use client)
+- createContext(promise) //server
+- use(promise) //client
+// UseSWR/UseQuery
 ```
 
 #### Sass
@@ -480,15 +496,6 @@ require('@next/bundle-analyzer')({
 #### ~Production
 
 #### ~PWAs
-
-#### SPAs
-
-```ts
-// context/promise(server) => use(client)
-// useSWR/useQuery
-// dynamic(()=>import('comp'),{ssr:false})
-// output:'export'
-```
 
 #### ^CICache
 

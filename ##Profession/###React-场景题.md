@@ -66,7 +66,26 @@
 
     ```shell
     # SingleHTTP
-    Generate => Parallel
+    Generate => Parallel 
+    ```
+
+17. Next SPAs
+
+    ```shell
+    # SPAs
+    - CSR (HeavyJS > Single HTML)
+    - SingleHTML (No Refresh)
+    # Next SPAs
+    - CSR (MultiJS > Multi HTML)
+    - MultiHTML (Prefetch)
+    ```
+
+18. Next ClientCpt
+
+    ```shell
+    # ClientCpt
+    - Html (server)
+    - JS (client)
     ```
 
 ## API

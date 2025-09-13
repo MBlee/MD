@@ -180,7 +180,8 @@ const [optimisticState,addOptimistic] = useOptimistic(state,fn)
 - preload
 - share
 // use
-- use(context|promise) => val
+- use(context) => (if/for)
+- use(fetchPromise) => (Suspense/ErrorBoundary)
 ```
 
 ## 路由
@@ -337,41 +338,6 @@ connect(stateFn,dispatchFn(dispatch)=>{
 typeof actions
 // Props类型
 type Props = TState & typeof Actions
-```
-
-## RTK
-
-```shell
-npm i react-redux @reduxjs/toolkit
-create-react-app <app> --template redux-typescript
-```
-
-```js
-import {createSlice} from '@reduxjs/toolkit'
-export createSlice({
-    name:'module',
-    initialState:{},
-    reducers:{
-        (state,action)=>{ return {...state,action.payload} }
-    }
-})
-import {configureStore} from '@reduxjs/toolkit'
-configureStore({
-    reducer:{slice.reducer}
-})
-```
-
-```js
-import useSlice from 'store/..'
-const {action} = useSlice.actions
-dispatch(action(payload))
-```
-
-```ts
-import {TypedUseSelectorHook} from 'react-redux'
-type GetStateFnType = typeof store.getState
-export type IRootState = ReturnType<GetStateFnType>
-export const useAppSelector:TypedUseSelectorHook<IRootState> = useSelector
 ```
 
 ## MobX5
