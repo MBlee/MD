@@ -1,5 +1,10 @@
 ## Emotion
 
+> npm: @emotion/react  @emotion/styled
+
+> 1. .babelrc =>  "presets": ["@emotion/babel-preset-css-prop"]
+> 2. tsconfig.json =>  "jsxImportSource":"@emotion/react"
+
 #### Vitals
 
 ```shell

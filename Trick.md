@@ -23,6 +23,14 @@
 
 1. 事件委托（父节点类型判断-ParentNode/ParentElement）
 
+#### Axios
+
+1. 接口挂了（User/Info）
+2. 保存（重复提交）
+3. 竞态
+4. 接口多
+5. 缓存-强弱（Logo）
+
 #### 运行
 
 VueCLI4___node-sass不兼容
