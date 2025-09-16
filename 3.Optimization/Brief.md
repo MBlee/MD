@@ -97,5 +97,15 @@ _x.constructor === Array
 ~~~js
 // 取整表达式
 - number|0  (向0取整)
+// Math.floor
+- ~~4.9 (正整数)
+// String to Number
+- +"number"
+- parseInt("number")
 ~~~
+
+```ts
+// Null Undefined
+- ?? (||)
+```
 
