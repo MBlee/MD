@@ -27,7 +27,11 @@
 // Adapters
 ```
 
-## Structure
+## Fundamental
+
+#### Structure(Build)
+
+#### Structure(Dev)
 
 > 1. package.json, turbopack
 > 2. tsconfig.json, next-env.d.ts, next.config.ts
@@ -74,7 +78,7 @@
 - plugins:['@tailwindcss/postcss']
 ```
 
-## Cli
+#### Cli
 
 ```shell
 next dev

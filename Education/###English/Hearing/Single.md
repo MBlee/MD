@@ -1,14 +1,9 @@
-- **Will**
-- Have/Has
-- Of
-- And
-- Remain
-- Lived
-- Tossed
-- Gain
-- Lost
-- Though
-- Dice
+- **Remain**
+
+
+- **Gain**
+- **Lost**
+- **Dice**
 - Limpe
 - Painfully
 - Bank
