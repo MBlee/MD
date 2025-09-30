@@ -198,6 +198,12 @@ export middleware
 export config = {matcher}
 ```
 
+```ts
+// Meta
+export const metadata:Metadata
+export const generateMetadata = async({params,searchParams})=>{}
+```
+
 #### ~Redirecting
 
 ### 数据
