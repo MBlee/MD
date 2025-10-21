@@ -214,9 +214,30 @@ equal|==
 
 ## 第六章 继承与多态
 
-#### 子类
+```java
+// 子类
+1. 单重继承
+2. 对象转型
+```
 
-#### 方法覆盖与多态
+```java
+// 方法覆盖与多态
+1. super.method()
+2. super()
+3. 动态绑定
+```
+
+```java
+// 接口
+1. implements inter1,...
+2. interface(final,static,public)
+```
+
+```java
+// 终极类与抽象类
+1. final 类/变量/方法
+2. abstract 类/方法
+```
 
 #### 终极类与抽象类
 
