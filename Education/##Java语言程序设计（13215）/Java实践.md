@@ -1,10 +1,14 @@
 ```java
 // import java.lang
 import java.util.Scanner;
+import java.util.Arrays;
 import java.text.NumberFormat;
 import java.text.DecimalFormat;
 import java.io.IOException;
-import java.util.Arrays;
+import java.io.Serializable;
+import java.io.File;
+import java.awt.*;
+import javax.swing.*;
 ```
 
 ## 第一章 Java概述
@@ -143,10 +147,138 @@ abstract method()
 
 ## 第七章 输入和输出流
 
-#### 数据流
+```java
+// IOException/FileNotFoundException
+// Reader/Writer
+abstract InputStream/OutputStream
+in.available().read().close()
+out.write().close().flush()
+```
 
-#### 基本字节数据流类
+```java
+// FileInputStream
+FileInputStream in = new FileInputStream('file.dat')
+while(in.available()>0) in.read()
+in.close()
+FileOutputStream out = new FileOutputStream('file.dat')
+out.write(''|n)
+out.close()
+// BufferedInputStream
+new BufferedInputStream(in,1024)
+buf.write().flush()
+// DataInputStream
+new DataInputStream(in)
+data.readInt()
+// ObjectInputStream(Serializable)
+new ObjectInputStream(in)
+obj.readObject()
+obj.writeObject()
+// transient
+public transient a
+```
 
-#### 基本字符流
+```java
+// InputStreamReader/OutputStreamReader
+input =new InputStreamReader(InputStream)
+// FileReader/FileWriter
+input =new FileReader('file')
+// BufferedReader/BufferedWriter
+buffered =new BufferedReader(input)
+buffered.readLine().newLine()
+while(buffered.readLine()!=null){...}
+// PrintWriter/PrintReader
+print =new PrintWriter(input)
+print.println().close()
+```
 
-#### 文件处理
+```java
+// File
+new File(File|'','file')
+file.getName().getPath().getParent().renameTo(File)
+file.exists().isFile()
+file.lastModified().length().delete()
+mkdir/mkdirs()
+list()
+// RandomAccessFile
+new RandomAccessFile('file','rw')
+file.getFilePointer()
+file.length()
+file.seek(pos)
+```
+
+## 第八章 图形界面设计
+
+```java
+// 容器
+JFrame(String)
+void setTitle()
+void setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+void setBounds(int x,int y,int width,int height)
+void setSize(int width,int height)
+void setBackground(Color bg)
+void setVisible(boolean)
+void pack()
+void setLayout(LayoutManager manager)
+Container getContentPane()
+void setContentPane()
+// JPane,JScrollPane,Scrollbar
+JPane(LayoutManager layout)
+pane.add(button,BorderLayout.CENTER)
+JScrollPane(Component view)
+sPane.setHorizontalScrollbarPolicy
+sPane.setVerticalScrollbarPolicy
+// 标签及按钮
+JLabel(String|Icon,int=JLabel.LEFT)
+label.setHorizontalAlignment(JLabel.TOP)
+label.setVerticalAlignment()
+JButton(String|Icon=new ImageIcon('img'),int)
+button.addActionListener(ActionListener)
+button.setEnabled().setText()
+class JButtonExp extends WindowAdapter implements ActionListener{
+	public void actionPerformed(ActionEvent e)
+    public void windowClosing(WindowEvent e)
+}
+JToggleButton(String|Icon,boolean selected)
+JCheckButton/JRadioButton
+che.isSelected()
+// 布局管理器
+// 事件处理
+// 绘图基础
+```
+
+```java
+// 组合框与列表
+// 文本组件
+// 菜单组件
+// 对话框组件
+```
+
+## 第十章 多线程
+
+```java
+Thread(ThreadGroup group,Runable target,String name)
+Thread.currentThread.getName()
+Thread.currentThread.isAlive()
+new Thread(Runable,name)
+// 创建
+class T extends Thread{	public void run(){} }
+class I implements Runable{	public void run(){} }
+// 启动-结束
+thr.start()
+thr.interrupt()
+// 调度
+thr.setPriority()
+thr.getPriority()
+Thread.sleep()
+Thread.yield()
+// 挂起
+thr.sleep()
+thr.wait(),notify(),notifyAll()
+thr.join()
+```
+
+```java
+// 多线程概念（结构-状态）
+// 线程（创建-启动-调度-结束-挂起）
+// 互斥（同步）
+```
