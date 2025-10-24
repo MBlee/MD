@@ -1,15 +1,22 @@
-## 第一章 Java概述
-
-#### Java示例
-
-```java
-// javac .java => java .class => JVM解释执行 (Eclipse/Netbeans)
-public class FileClass{
-    public static void main (String args[]){
-        System.out.println('hello world')
-    }
-}
+```shell
+# 2024-10
+1. 请写出if-else 语句的语法格式，并且解释其语义。
+2. Java标准包java.lang封装了String类和StringBufer类，简述他们的含义及区别。
+3. 什么是构造方法?什么是构造方法的重载?
+4. 在输入输出处理时，什么是对象的序列化?对象序列化的主要任务是什么?
+5. 线程一共有哪几种状态?
 ```
+
+```shell
+# 2025-4
+1. Java语言中声明变量的两个位置分别是哪里?声明的变量分别称为什么?
+2.下列数组初始化语句是否正确?如果不正确说明理由。①char vowel[]= {"a", "'e", "i", "o", "u"};②boolean tired= {true, false, false, true};③double[4]heights ={4.5,23.6,84.12,78.2,61.5};④String[] names = {"Simon", "July", "Tony", "Aann"};
+3.如何使一个方法成为终极方法?写出终极方法的使用特点。
+4.写出在输出数据流中，flush()和close()两个方法的功能。
+5.写出线程死亡的两个原因。
+```
+
+## 第一章 Java概述
 
 #### Java语言简介
 
@@ -56,10 +63,9 @@ Path：%JAVA_HOME%\bin; %JAVA_HOME%\jre\bin;
 
 ## 第二章 数据和表达式
 
-#### 语法
-
 ```shell
-# 注释 - 关键字 - 标识符（风格）- 数据类型 - 常变量 - 表达式（运算符/操作数/提升和转换/优先级）
+# 自动变量（成员变量）
+# 转换（赋值兼容/强制类型转换）
 ```
 
 #### 数据类型
@@ -98,42 +104,11 @@ Path：%JAVA_HOME%\bin; %JAVA_HOME%\jre\bin;
 
 ## 第三章 流程控制语句
 
-```java
-package pkg[.pkg1]
-import pkg.*
-// 流程控制
-if(boolean)else{}
-switch(){case:case:default:}
-for(;boolean;){}
-for(int x:xs){}
-while(boolean){}
-do while(boolean)
+```shell
+
 ```
 
-```ts
-// 输入输出
-new Scanner(System.in)
-scan.next|nextInt|nextFloat
-scan.nextLine
-// 数值类
-NumberFormat.getInstance()
-format.format(num)
-format.setMaximumFractionDigits(int)
-format.setMaximumIntegerDigits(int)
-new Decimal('0.##')
-```
 
-```java
-// 异常处理
-Throwable => Exception|Error(Unchecked Exception)
-Exception => Checked Exception|Runtime Exception
-- ArithmeticException
-- NullPointerException
-- NegativeArraySizeException
-- ArrayIndexOutofBoundsException
-try{}catch(IOException e){}finally{}
-public void method() throws Exception,...
-```
 
 ## 第四章 面向对象程序设计
 
