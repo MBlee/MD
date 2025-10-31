@@ -24,6 +24,29 @@ str.c_str
 str.substr
 ```
 
+```c++
+#include<string>
+str.c_str() => const char*
+str.size()|length()|empty()
+str.find(char|char*,index) => -1
+str.substr(int pos=0,int n-npos)
+str.insert(int p,string& s)
+str.append(char* s)
+str.npos
+#include<sstream>
+stringstream ss;
+ss<<number;
+ss.str();
+#include<cstring>
+strcpy(str,c_str)
+```
+
+```c++
+// bool
+cout<<boolalpha
+cout<<noboolalpha
+```
+
 ## 第二/三章 类和对象
 
 ```c++
@@ -120,7 +143,16 @@ ifs.close()
 ## 第九章 类函数模板
 
 ```c++
-template <int a,...>
-void temFunc(int a){}
+template <class|typename T>
+template <int n>
+T temFunc(T a){ i=n }
+temFunc<int>(1)
 ```
 
+```c++
+template <class|typename T>
+template <int n>
+class C: public B<T>{}
+T C<T>::func(T t){}
+C<int> c()
+```
