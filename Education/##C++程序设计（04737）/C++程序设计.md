@@ -47,6 +47,18 @@ cout<<boolalpha
 cout<<noboolalpha
 ```
 
+```c++
+#include<numeric>
+int gcd(int a,int b){
+  while(b!=0){
+    int temp = b;
+    b=a%b;
+    a=temp;
+  }
+  return a;
+}
+```
+
 ## 第二/三章 类和对象
 
 ```c++
