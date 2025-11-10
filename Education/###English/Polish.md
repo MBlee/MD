@@ -1,5 +1,0 @@
-## Listen
-
-## Speak
-
-## Read|Write
