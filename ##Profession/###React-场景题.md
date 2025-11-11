@@ -21,31 +21,37 @@
 
 1. 从0到1实现 React Fiber
 
+   ```shell
+   # requestAnimationFrame + requestIdleCallback + linkedList
+
+   ```
+
 2. 手写Render
 
 3. 为什么需要Fiber
 
-4. Fiber的可中断数据结构
 
-5. React HOC详解
+1. Fiber的可中断数据结构
 
-6. HOC实现方式——属性代理
+2. React HOC详解
 
-7. HOC实现方式——反向继承
+3. HOC实现方式——属性代理
 
-8. 属性代理和反向继承对比
+4. HOC实现方式——反向继承
 
-9. Redux 工作原理
+5. 属性代理和反向继承对比
 
-10. React-Router 工作原理
+6. Redux 工作原理
 
-11. Fiber 更新机制
+7. React-Router 工作原理
 
-12. React 渲染流程
+8. Fiber 更新机制
 
-13. 如何实现专场动画？
+9. React 渲染流程
 
-14. Next Rendering
+10. 如何实现专场动画？
+
+11. Next Rendering
 
     ```shell
     # Static Render
@@ -56,20 +62,20 @@
     - Static + Streaming
     ```
 
-15. Next Partial Rendering
+12. Next Partial Rendering
 
     ```shell
     HTML+StreamingHTML
     ```
 
-16. Next Streaming
+13. Next Streaming
 
     ```shell
     # SingleHTTP
     Generate => Parallel 
     ```
 
-17. Next SPAs
+14. Next SPAs
 
     ```shell
     # SPAs
@@ -80,7 +86,7 @@
     - MultiHTML (Prefetch)
     ```
 
-18. Next ClientCpt
+15. Next ClientCpt
 
     ```shell
     # ClientCpt

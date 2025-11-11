@@ -1,5 +1,9 @@
 ## UI-API
 
+#### requestAnimationFrame
+
+#### requestIdleCallback
+
 ```ts
 // 获取视口位置|大小
 getBoundingClientRect()		=>x,y|width,height
@@ -34,10 +38,6 @@ observer.disconnect()
 ```
 
 #### intersectionObserver
-
-#### requestAnimationFrame
-
-#### requestIdleCallback
 
 #### webworker
 
