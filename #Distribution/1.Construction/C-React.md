@@ -1,41 +1,47 @@
 ## Webpack
 
+## Vite
+
 ## Scaffold
 
+```shell
 ### Vite
-
-```shell
-# npm: @vitejs/plugin-react @vitejs/plugin-react-swc
-# (ts/eslint)
-npm create vite@latest my-app -- --template react-ts
+npx create-react-router@latest <app> --template 
+--template remix-run/react-router-templates/minimal
+--template remix-run/react-router-templates/node-custom-server
+--------------------
+--------------------
 ```
 
+```shell
 ### Next
+npm: next react react-dom
+--------------------
+--------------------
 
-```shell
-# npm: next react react-dom
 ```
 
-### Cra
-
 ```shell
+### CRA
 # npm: create-react-app @craco/craco @craco/types
 npx create-react-app --tempalte typescript
-```
+1. craco.config.js
+2. tsconfig.paths.json
+3. emotion, postcss
 
-> 1. craco.config.js
-> 2. tsconfig.paths.json
-> 3. emotion, postcss
-
-```ts
-// craco.config.js
-// webpack...
+# craco.config.js
+# webpack...
 - alias
 - configure.resolve.extensions
-```
 
-```typescript
-// tsconfig.paths.json
+# tsconfig.paths.json
 - compilerOptions.baseUrl
 - compilerOptions.paths
 ```
+
+## Addition
+
+```shell
+## Parcel/Rsbuild
+```
+

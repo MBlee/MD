@@ -1,7 +1,7 @@
 ## Verb
 
-1. Is/Was/Are/Were/Been
-2. Have/Has/Had
+1. **Is/Was/Are/Were/Been**
+2. **Have/Has/Had**
 3. Do
 4. To
 5. Could
@@ -14,8 +14,8 @@
 
 ## Noun
 
-1. The/
-2. This/That
+1. **The**
+2. **This/That**
 3. All
 4. Who
 5. What
