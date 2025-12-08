@@ -35,3 +35,13 @@
 9. With
 
 10. All
+
+11. What
+
+12. Why
+
+13. How
+
+14. When
+
+15. While

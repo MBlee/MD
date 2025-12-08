@@ -18,7 +18,9 @@
 
 #### JS
 
-树形组件渲染性能（虚拟滚动），数据加载大缓慢（懒加载/展开加载）
+1. 树形组件渲染性能（虚拟滚动），数据加载大缓慢（懒加载/展开加载）
+2. e.target.setPointerCapture(e.pointerId)
+3. e.clientX
 
 #### TS
 

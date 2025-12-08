@@ -173,6 +173,15 @@ RFC.defaultProps
 ### Hooks
 
 ```ts
+// useSyncExternalStore
+Snapshot:useSyncExternalStore
+( subscribe(cb), getSnapshot, serverSnapshot )
+1. WindowAPI(online)
+2. ExternalStore
+3. SeverSnap
+```
+
+```ts
 // useActionState
 const [state,formAction,isPending] = useActionState((state,formdata)=>state, ini);
 isPending?'loading...':state;
@@ -583,5 +592,14 @@ module.exports=(app)=>{
         changeOrgin:true
     }))
 }
+```
+
+## $Theory
+
+```shell
+### Component
+# Step 1: Tree Mockup
+# Step 2: Static UI + Data flow
+# Step 3: 
 ```
 
