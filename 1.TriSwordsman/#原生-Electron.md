@@ -1,8 +1,6 @@
 ## Fundamental
 
-### 核心
-
-> app
+### app
 
 ~~~js
 app.whenReady().then()
@@ -15,7 +13,7 @@ app.on('before-quit')('will-quit')('quit')
 window.onbeforeunload=_=>{ BWindow.destroy() return false }
 ~~~
 
-> BrowserWindow
+### BrowserWindow
 
 ```js
 // BrowserWindow(remote.BrowserWindow||remote.getCurrentWindow())
@@ -41,7 +39,7 @@ Bwindow.webContents.on('dom-ready')
 Bwindow.webContents.on('did-finish-load')
 ```
 
-> Menu
+#### Menu
 
 ```js
 const opts = [
@@ -63,6 +61,12 @@ const opts = [
 ]
 const menu = Menu.buildFromTemplate(opts)
 Menu.setApplicationMenu(menu)
+```
+
+#### webview
+
+```ts
+:src:style //webviewTag
 ```
 
 ### API
@@ -163,6 +167,84 @@ electron-forge make
     }
   ]
 }
+```
+
+## Theory
+
+#### sandbox
+
+```ts
+new BrowserWindow({
+    webPreferences: {
+      sandbox: false,
+      nodeIntegration: true
+    }
+})
+```
+
+#### contextBridge
+
+```ts
+// preload.ts
+contextBridge.exposeInMainWorld('electronAPI', {
+  loadPreferences: () => ipcRenderer.invoke('load-prefs')
+})
+```
+
+```ts
+// interface.d.ts
+export interface IElectronAPI {
+  loadPreferences: () => Promise<void>,
+}
+declare global {
+  interface Window {
+    electronAPI: IElectronAPI
+  }
+}
+```
+
+#### IPC
+
+```ts
+// Renderer > Main (oneway)
+ipcMain.on('MSG',(e:{sender},arg)=>{})
+ipcRenderer.send('MSG',args)
+- ipcMain.on('MSG',(e:{reply},arg)=>{})
+- ipcRenderer.on('MSG',fn)
+// Renderer > Main (bothway)
+ipcMain.handle('MSG',fn)
+ipcRenderer.invoke('MSG')
+```
+
+```ts
+// Main > Renderer
+bWindow.webContents.send('MSG',arg)
+ipcRenderer.on('MSG',(e,arg)=>{})
+```
+
+```ts
+// Renderer > Renderer > MessagePort
+```
+
+#### MessagePort
+
+```ts
+// Renderer
+const channel = new MessageChannel()
+const port1 = channel.port1
+const port2 = channel.port2
+port2.postMessage({ answer: 42 })
+port.addEventListener('close', ...)
+ipcRenderer.postMessage('port', null, [port1])
+// Mainner
+ipcMain.on('port', (event) => {
+  const port = event.ports[0]
+  port.on('message', (event) => {
+    const data = event.data
+  })
+  port.on('close', ...)
+  port.start()
+})
 ```
 
 ## Appendix
