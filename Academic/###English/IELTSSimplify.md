@@ -14,7 +14,13 @@
    2. Do/Does/Did sub v?
    ```
 
-3. So
+3. **So**
+
+   ```shell
+   1. So ... so
+   2. so...
+   3. so adj that
+   ```
 
 4. Too
 
