@@ -1,0 +1,22 @@
+### Jan.19
+
+1. alternative
+2. installation
+3. **philosophy**
+4. quality
+5. relaxation
+6. invoice
+7. decide
+8. prerequisite
+9. hoist
+10. compound
+11. **indie**
+12. tour
+13. hunt
+14. trisection
+15. reconciliation
+16. **reconnaissance**
+17. **conduct**
+18. consideration
+19. purpose
+20. villa
