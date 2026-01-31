@@ -1,3 +1,63 @@
+## FileIO
+
+#### Copy
+
+```ts
+////// EXEC(child_process)
+import { exec } from 'child_process';
+import { platform } from 'os';
+import path from 'path';
+const source = path.resolve(__dirname, '../cb-app/next');
+const destination = path.resolve(__dirname, './copied-next');
+
+const command = platform() === 'win32'
+  ? `xcopy "${source}" "${destination}" /E /I /Y`
+  : `cp -r "${source}" "${destination}"`;
+
+exec(command, (error, stdout) => {
+  if (error) console.error('复制失败:', error);
+  else console.log('复制完成');
+});
+```
+
+```ts
+////// FS-EXTRA
+import fs from 'fs-extra';
+import path from 'path';
+const source = path.resolve(__dirname, '../cb-app/next');
+const destination = path.resolve(__dirname, './copied-next');
+fs.copy(source, destination)
+  .then(() => console.log('复制完成'))
+  .catch(err => console.error(err));
+```
+
+```ts
+////// FS(recursion)
+import fs from 'fs';
+import path from 'path';
+async function copyDir(src: string, dest: string): Promise<void> {
+  // 确保目标目录存在
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(dest, { recursive: true });
+  }
+  const files = fs.readdirSync(src);
+  for (const file of files) {
+    const srcPath = path.join(src, file);
+    const destPath = path.join(dest, file);
+    if (fs.statSync(srcPath).isDirectory()) {
+      await copyDir(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
+}
+// 使用
+const rootDir = path.dirname(path.dirname(path.dirname(import.meta.url)));
+const source = path.join(rootDir, '../cb-app/next');
+const destination = path.join(rootDir, './copied-next');
+copyDir(source, destination).catch(err => console.error(err));
+```
+
 ## Node
 
 ```js
