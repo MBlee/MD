@@ -244,7 +244,51 @@ Position find(LinkList *head,Ele x){
 }
 ```
 
-
+```c
+// Static linked list
+typedef int Ele;
+typedef struct node{
+    Ele data;
+    int next;
+}ArrayListNode;
+typedef struct{
+    ArrayListNode element[maxSize];
+    int available;
+    int unused;
+}ArrayList;
+typedef int position;
+// 查单链表倒数第k个节点
+LinkNode *findKth(LinkList *head,int k){
+    LinkNode *front,*rear;
+    int i,flag=1;
+    if(k<=0) return NULL;
+	if(*head==NULL) return NULL;
+	front=*head;
+	rear=*head;
+	for(i=0,i<ki++){
+		if(front!=NULL) front=front->next;
+        else{
+			flag=0;
+			break;
+        }
+    }
+    if(!flag) return NULL;
+	while(front!=NULL){
+        front=front->next;
+        rear=rear->next;
+    }
+	return rear;
+}
+// 查单链表中间节点
+- front/near
+- 一个两步,一个一步
+- 到表尾near
+// 单链表逆置
+- left/middle/right
+- middle.next=left
+- 3个指针一次后移一个位置
+- 都转向后,head链接表头
+```
 
 ## 栈和队列
 
