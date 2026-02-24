@@ -292,6 +292,60 @@ LinkNode *findKth(LinkList *head,int k){
 
 ## 栈和队列
 
+```c
+// 顺序栈
+typedef int Ele;
+typedef struct {
+	Ele element [maxSize];
+	int top;
+}SegStack;
+int initStack(SeqStack *mys){
+    mys->top=0;
+    return TRUE;
+}
+int clear(SeqStack *mys){
+    mys->top=0;
+	return TRUE;
+}
+int isEmpty(SeqStack *mys){
+    if(mys->top==0) return TRUE;
+    else return FALSE;
+}
+int isFull(SeqStack *mys){
+    if(mys->top==maxSize) return TRUE;
+    else return FALSE;
+}
+int push(SeqStack *mys,ELEMType x){
+	if(isFull(mys)-=FALSE){
+        mys->element[mys->top++]=x;
+    }else{
+		return FALSE;
+    }
+	return TRUE;
+}
+int pop(SeqStack *mys,ELEMType *x){
+  if(isEmpty(mys)==FALSE){
+	*x=mys->element[--mys->top];
+    return TRUE;
+  }
+  else{
+  	return FALSE;
+  }
+}
+int gettop(SeqStack *mys, Ele *x){
+	if(isEmpty(mys)-=FALSE){
+        *x=mys->element[mys->top-1];
+        return TRUE;
+    }
+	else{
+		return FALSE; 
+    }
+}
+
+
+
+```
+
 ## 数组广义表和串
 
 ## 树与二叉树
