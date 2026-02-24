@@ -341,10 +341,39 @@ int gettop(SeqStack *mys, Ele *x){
 		return FALSE; 
     }
 }
+```
 
+```c
+// 链式栈
+typedef int ELEMType;
+typedef struct node{
+	ELEMType data;
+	struct node *next;
+}LinkStackNode;
+typedef LinkStackNode *LinkStack;
 
+int initStack(LinkStack *mys){
+	*mys=NULL
+    return TRUE;
+}
+int push(LinkStack *mys,ELEMType x){
+    LinkStackNode *p;
+    p=(LinkStackNode*)
+        malloc(sizeof(LinkStackNode));
+    if(p!=NULL){
+		p->data=x;
+		p->next=(*mys);
+        (*mys)p;  
+    }
+    else{
+        return FALSE;
+    }
+	return TRUE;
+}
 
 ```
+
+
 
 ## 数组广义表和串
 
