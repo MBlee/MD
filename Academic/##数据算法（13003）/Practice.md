@@ -370,7 +370,187 @@ int push(LinkStack *mys,ELEMType x){
     }
 	return TRUE;
 }
+```
 
+```c
+// 循环队列
+typedef int ELEMType;
+typedef struct{
+	ELEMType element [maxSize];
+    int front,rear;
+}SeqQueue;
+```
+
+```c
+int clear(SeqQueue *myq){
+    myq->front=myq->rear;
+    return TRUE;
+}
+int isEmpty(SeqQueue *myq){
+    if(myq->front==myq->rear) return TRUE;
+    else return FALSE;
+}
+int isFull(SeqQueue *myq){
+	if((myq->rear+1)%maxSize==myq->front) return TRUE;
+    else return FALSE:   
+}
+int length(SeqQueue *myq){
+	return (myq->rear-myq->front+maxSize)%maxSize;
+}
+
+int enqueue(SeqQueue *myq, ELEMType x){
+    if(isFull(myq)==TRUE) return FALSE;
+    myq->element[(myq->rear++)%maxSize]=x;
+    return TRUE;
+}
+int dequeue(SeqQueue *myq,ELEMType *x){
+	if(isEmpty(myq)==TRUE) return FALSE;
+    *x=myq->element[(myq->front++)%maxSize];
+    return TRUE;   
+}
+```
+
+```c
+// 链式队列
+typedef int ELEMType;
+typedef struct node{
+	ELEMType data;
+	struct node *next;
+}LinkQueueNode;
+typedef struct{
+	LinkQueueNode *front, *rear;    
+}LinkQueue;
+int isEmpty(LinkQueue *myq){
+	if((*myq).front=NULL &&(*myq).rear==NULL)
+        return TRUE;
+    else return FALSE;
+}
+int enqueue(LinkQueue *myq, ELEMType x){
+    LinkQueueNode *temp;
+    temp=(LinkQueueNode *)malloc(sizeof(LinkQueueNode));
+    if(temp=-NULL) return FALSE;
+    temp->data-x;
+    temp->next=NULL;
+    if((*myq).front-=NULL){
+        (*myq).front=temp;
+        (*myq).rear=temp;
+    }
+    else{
+    	(*myq).rear->next=temp;
+    	(*myq).rear=temp;
+    }
+    return TRUE;  
+}
+
+int dequeue(LinkQueue*myq,ELEMType* x){
+	LinkQueueNode *temp;
+    if(isEmpty(myq)==TRUE)	return FALSE;
+	*x=(*myq).front->data;
+    temp=(*myq).front;
+    (*myq).front-temp->next;
+    if((*myq).front==NULL)	(*myq).rear=NULL;
+	free(temp);
+    return TRUE;    
+}
+```
+
+```c
+// 使用栈来模拟队列
+typedef struct{
+	SegStack S, T;
+}simuQueue;
+typedef int ELEMType;
+
+int initsimuQ(simuQueue *simuq){
+    initStack(&simuq->S);
+    initStack(&simuq->T);
+    return TRUE;
+}
+
+int dequeuesimuQ(simuQueue *simuq, ELEMType *x){
+	ELEMType temp;
+    if(isEmply(&simuq->T)==FALSE){
+        pop(&simuq->T,x);retumn TRUE;
+    }
+	if(isEmpty(&simuq->S)==TRUE)	retumn FALSE;
+	while(isEmpty(&simuq->S)==FALSE && isFull(&simuq->T)==FALSE{
+    	pop(&simuq->S,&temp);
+	    push(&simuq->T,temp);
+    }	
+	pop(&simuq->T,x);return TRUE;
+}
+int isEmptysimuQ(simuQueue *simuq){
+	if(isEmpty(&simuq->S) && isEmpty(&simuq->T)) return TRUE;
+    else return FALSE;
+}
+int isFullsimuQ(simuQueue *simuq){
+	if(isFull(&simuq->S) && lisEmpty(&simuq->T)) return TRUE;
+    else return FALSE;	
+}
+
+
+```
+
+```c
+// 使用队列模拟的栈类型
+typedef struct{
+	SeqQueue P, Q;
+}simuStack;
+typedef int ELEMType;
+
+int initsimuS(simuStack *simus){
+    initQueue(&simus->P);
+    initQueue(&simus->Q);
+    return TRUE;
+}
+
+int clearsimuS(simuStack *simus){
+    clear(&simus->P);
+    clear(&simus->Q);
+    return TRUE;
+}
+int isEmptysimuS(simuStack *simus){
+	if(isEmpty(&simus->P)==TRUE 
+       && isEmpty(&simus->Q)==TRUE) 
+        return TRUE;
+    else return FALSE;
+}
+int isFullsimuS(simuStack *simus){
+    if(isFull(&simus->P)==TRUE) return TRUE;
+    else return FALSE;
+}
+int lengthsimuS(simuStack *simus){
+	int lengthl;
+    lengthl=(simus->P.rear-simus->P.front+maxSize)%maxSize;
+    return lengthl;
+}
+int pushsimuS(simuStack *simus, ELEMType x){
+	if(isFull(&simus->P)==FALSE)
+        enqueue(&simus->P,x);
+        return TRUE;
+	return FALSE;	
+}
+```
+
+```c
+// 表达式的计算
+// 获取运算符优先级
+int oper[]={'+'};
+int innerpri[]=(3,3,5,5,5,1,-1,0);
+int outpri= {2,2,4,4,4,8,1,-1);
+int innerpriv(char c){
+	int i;
+    for (i=0;i<8;i+)
+        if(c==oper[i) 
+        return innerpri[i];
+	return -2;
+}
+int outpriv(char c){
+	int i;
+    for (i=0;i<8;i++)
+		if(c-oper[i) return outpri[i]:
+	return -2;   
+}
 ```
 
 
