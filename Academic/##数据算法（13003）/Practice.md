@@ -553,9 +553,24 @@ int outpriv(char c){
 }
 ```
 
-
-
 ## 数组广义表和串
+
+```c
+Create();
+Store(index,value);
+Retrieve(index);
+// 多维数组
+int DkArray[u1][u2]...[uk];
+n=u1*u2...*uk;
+sizeof(DkArray)=n*sizeof(int);
+start+sizeof(DkArray)-1;
+
+map(i1,i2)=i1*u2+i2;
+map(i1,i2)=i2*u1+i1;
+map(i1,i2,i3)=i1*u2*u3+i2*u3+i3;
+```
+
+
 
 ## 树与二叉树
 
