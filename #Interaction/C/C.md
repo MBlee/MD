@@ -3,7 +3,9 @@
 ```c
 #include <stdio.h>
 int main(){
-  printf("%d%zu%lf%c%")
+  printf("%d%zu %lf%c% %p");
+  scanf("%d %s",number,str);
+  fgets(str,sizeof(str),stdin);
   return 0;
 }
 ```
@@ -24,8 +26,27 @@ int main(){
 ```
 
 ```c
+// Pointer
+int* p = &p;
+p=0x000;
+*p=10;
+arr=&arr[0];
+*arr=arr[0];
+*(arr+1)=arr[1];
+**pstr=&*p;
+// Basic
 const int A=10;
 int i = (int)1.1; 
-char c[]="chars";
+int i[2][3][4]={{},...};
+char c[10]="chars";
+```
+
+```c
+#include <string.h>
+int len = sizeof(str)/sizeof(str[0]);
+strlen(str);
+strcpy(strTo,strFrom);
+strcat(strTo,strFrom);
+strcmp(str1,str2);
 ```
 
