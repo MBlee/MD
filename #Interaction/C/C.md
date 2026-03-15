@@ -50,3 +50,27 @@ strcat(strTo,strFrom);
 strcmp(str1,str2);
 ```
 
+```c
+struct St{};
+typedef struct{}St;
+struct St s={};
+St s={};
+struct St* s=(struct St*)malloc(sizeof(struct St)*n);
+St* s=(St*)malloc(sizeof(St)*n);
+```
+
+#### 内存分配
+
+```c
+// Allocate
+int* i=malloc(sizeof(i)*n);
+char* c=calloc(n,sizeof(c));
+char* c1=realloc(c,sizeof(c)*n);
+c1==NULL && free(c);
+c1!=NULL && c=c1;
+// DeAllocate
+free(p);
+p=NULL;
+// Operator
+*i=i[0]=10;
+```
