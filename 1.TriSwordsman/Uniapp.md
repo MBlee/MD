@@ -1,0 +1,245 @@
+## Uniapp
+
+```shell
+# 快捷键
+F1
+alt+/
+```
+
+#### 组件
+
+```vue
+<swiper	
+  :indicator-dots
+  :autoplay
+  :interval
+  :duration	>
+<swiper-item
+  v-for="(item，i) in swiperList" 
+  :key="i"	>  
+<scroll-view
+  :scroll-y
+  :scroll-top >  
+<navigator
+  :url="">  
+<uni-icons
+  type 
+  size=17 >
+  
+<!-- richText -->  
+# View组件
+- hover-class
+- hover-stop-propagation
+- hover-start-time
+- hover-stay-time
+# Text组件
+- selectable
+- space__ensp/emsp/nbsp
+- decode
+# RichText组件
+- nodes
+- image-menu-prevent
+- preview
+- @itemclick
+# Icon组件
+- size
+- type
+- color
+# Image组件
+- mode__scaleToFill/aspectFit/aspectFill
+- lazy-load
+- fade-show
+- @error@load
+# Button组件
+- size__mini
+- type
+- plain
+- loading
+- disabled
+```
+
+```js
+<!-- showMsg -->
+uni.$showMsg = function(title="数据加载失败"，duration = 1500){
+  uni.showToast({
+    title,
+    duration,
+    icon: "none"
+  })
+}
+```
+
+#### API
+
+```shell
+# 导航跳转
+- uni.navigateTo/redirectTo/switchTab({url})
+- navigator__button
+  url?/open-type__switchTab
+# 网络请求
+- uni.request()
+  url/data
+  success
+# 数据缓存
+- uni.set/get/remove/clearStorage()
+  key/data
+  success/fail
+- uni.setStorageSync()
+- uni.getStorageInfo()
+  sucess=>keys|currentSize|limitSize
+# 图片上传
+- uni.chooseImage()
+  sourceType/sizeType/count
+  success/fail/complete => tempFilePaths
+- uni.previewImage()
+  urls/current
+  indicator/loop/longPressActions
+  success/fail/complete
+# 条件编译
+  #ifndef__#endif（H5__MP-WEIXIN__APP-PLUS）
+# 系统信息
+uni.getSystemInfoSync()
+.windowHeight()
+```
+
+#### 生命周期
+
+```shell
+# app
+- onLaunch
+- onShow_onHide_onError
+# page
+- onLoad
+- onShow_onReady_onHide_onUnload
+- onPullDownRefresh_enablePullDownRefresh
+  _uni.stopPullDownRefresh
+- onReachBottom__onReachBottomDistance
+- onTabItemTap
+```
+
+#### ......
+
+#### 兼容
+
+```shell
+# APP_PLUS
+- 夜神模拟器
+# MP
+- 小程序服务|代理
+# HTML5
+- H5.proxy
+#ifdef APP_PLUS|MP|H5
+#ifndef
+#enif
+```
+
+#### 第三方模块
+
+> 网络请求
+
+```css
+# npm install @escook/request-miniprogram
+```
+
+```js
+// 按需导入 $http对象
+import {$http} from "@escook/request-miniprogram"
+wx.$http = $http	uni.$http = $http
+
+$http.baseUrl = "https://www.uinav.com"
+$http.beforeRequest = function(options) {
+  uni.showLoading({title:"数据加载中..."})
+}
+$http.afterRequest = function(){
+  uni.hideLoading()
+}
+```
+
+```js
+async getSwiperList() {
+  const { data: res )= await uni.$http.get('/api/public/v1/home/swiperdata')
+  // 请求失败
+  if (res.meta.status!== 200){
+    return uni.showToast({
+       title:"数据请求失败!",
+       duration: 1500,
+       icon: "none"
+    })
+  }
+  this.swiperList = res .message
+}
+```
+
+#### 配置
+
+> project.config.json
+
+```json
+"setting":{
+  "urlCheck": true,"checkSiteMap": false
+}
+```
+
+> unpackage => .gitkeep
+
+> pages.json
+
+```json
+<!--页面-->
+"pages":[
+    {
+        "path":"",
+        "style":{}
+    }
+]
+<!--分包-->
+"subpackges":[
+    {
+        "root":"subpkg",
+        "pages":[]
+    }
+]
+<!--全局-->
+"globalStyle":{
+    "navigationBarTitleText":"",
+    "navigationBarTextStyle":"",
+    "navigationBarBackgroundColor":"",
+    "textStyle":"",
+    "backgroundColor":"",
+    "enablePullDownRefresh":"",
+    "onReachBottomDistance":""
+}
+
+<!--Tabbar-->
+"tabBar":{
+    "color":"",
+    "selectedColor":"",
+    "backgroundColor":"",
+    "borderStyle":"",
+    "position":"",
+    "list":[
+       "text":"",   
+       "pagePath":"",   
+       "iconPath":"",   
+       "selectedIconPath":"" 
+    ],
+}
+<!--Condition-->
+"contditon":{
+    "current":"",
+    "list":[
+        {
+            "name":"",
+            "path":"",
+            "query":""
+        }
+    ]
+}
+```
+
+#### 样式
+
+- @import url()
+- iconfont（~@）
+- scss（lang=“scss”）
+- 750rpx

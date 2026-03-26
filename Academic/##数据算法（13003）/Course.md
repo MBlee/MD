@@ -70,7 +70,45 @@
 ```
 
 ```shell
-###### 链表
+###### 链表(单/双/循环)
+# 定义
+- 节点(数据域/指针)>不要求相邻
+- 插入/删除(位置前移/前后节点)(O(n)O(1))
+- 带环(1,2)
+# 基本操作
+- int initList(LinkList *head)
+	(*head)=malloc(sizeof(LinkNode))
+	(*head)->next=NULL
+	(*head)->data=0
+- int clear(LinkList *head)
+	while(p=(*head)->next)
+	(*head)->next=p->next
+	free(p)
+	(*head)->data=0
+- LinkNode *setCurr(LinkList *head,Position pos)
+	while(temp!=NULL&&pos>0)
+	temp=temp->next
+	pos--
+- int insertList(*head,pos,x)
+	curr=setCurr(head,pos)
+	temp=malloc(sizeof(LinkNode))
+	temp->data=x
+	temp->next=curr->next
+	curr->next=temp
+	(*head)->data++
+- int removeList(*head,pos,*x)
+	curr=setCurr(head,pos)
+	*x=curr->next->data
+	temp=curr->next
+	curr->next=curr->next->next
+	free(temp)
+	(*head)->data--
+- int setValue(*head,pos,x)
+	curr=setCurr(head,pos)
+	curr->next->data=x
+- int getValue(*head,pos,*x)
+	curr=setCurr(head,pos)
+	*x=curr-next->data
 ```
 
 ```shell
@@ -78,10 +116,24 @@
 ```
 
 ```shell
+###### 比较
+- 空间
+- 复杂度
 ###### 应用
 ```
 
+#### 栈和队列
+
+#### 数组\广义表\串
+
 ## 非线性表
+
+#### 树和二叉树
+
+#### 图结构
 
 ## 算法
 
+#### 内部排序
+
+#### 查找
