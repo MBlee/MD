@@ -39,9 +39,7 @@ const int A=10;
 int i = (int)1.1; 
 int i[2][3][4]={{},...};
 char c[10]="chars";
-```
-
-```c
+// String
 #include <string.h>
 int len = sizeof(str)/sizeof(str[0]);
 strlen(str);
@@ -51,12 +49,20 @@ strcmp(str1,str2);
 ```
 
 ```c
+// Struct
 struct St{};
 typedef struct{}St;
 struct St s={};
 St s={};
 struct St* s=(struct St*)malloc(sizeof(struct St)*n);
 St* s=(St*)malloc(sizeof(St)*n);
+```
+
+```c
+// Fn
+#include <math.h>
+inline void fn(int i,char c,void (*cb)(...));
+void (*fns[])(...);
 ```
 
 #### 内存分配
