@@ -149,7 +149,10 @@
 - 队尾/对头/队列长度
 - 出队/入队
 # 顺序队列
-- 
+- 出栈:front=(front++)%n
+- 入栈:rear=(rear++)%n
+- 满-1:(rear+1)%n==front
+- 满:flag/len>rear==front
 # 链式队列
 ```
 
