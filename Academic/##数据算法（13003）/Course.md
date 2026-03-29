@@ -154,6 +154,11 @@
 - 满-1:(rear+1)%n==front
 - 满:flag/len>rear==front
 # 链式队列
+- 空:front=rear=NULL
+- 出队:front=front->next/rear=NULL
+- 入队:rear=front=temp/rear=rear->next=temp
+- 带空闲单元链表:
+
 ```
 
 #### 数组\广义表\串
