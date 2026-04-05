@@ -18,4 +18,6 @@
 # 不定式
 - ...to + 目的/意图(为了...)
 - 形容词 + to + 目的/原因
+	want/hope/wish/expect/decide/plan
+- It is ... to...
 ```

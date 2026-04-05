@@ -1,4 +1,84 @@
-## Uniapp
+## Router
+
+#### 生命周期
+
+```shell
+# app
+- onLaunch_onError
+- onShow_onHide
+# page
+- onLoad_onUnload_onReady
+- onShow_onHide
+- onPullDownRefresh_enablePullDownRefresh
+  _uni.stopPullDownRefresh
+- onReachBottom__onReachBottomDistance
+- onTabItemTap
+# cmp
+- created/destroyed
+- mounted/updated
+```
+
+#### Pages.json
+
+```shell
+- pages/subPackages/easycom
+- globalStyle/tabBar
+```
+
+#### Mainfest.json
+
+```shell
+- AppID/App_Icon
+- Index.html/DevServer
+```
+
+## Cmp
+
+#### 导航条
+
+#### TabBar
+
+交互反馈
+
+下拉刷新
+
+录音管理
+
+视频组件
+
+动画
+
+## Data
+
+#### Request
+
+#### UploadFile
+
+#### Storage
+
+#### 授权
+
+#### 微信支付
+
+## API
+
+#### 网络状态
+
+#### 位置
+
+#### 拨打电话
+
+#### 扫码
+
+#### 系统信息
+
+#### 剪贴板
+
+## Compat
+
+#### 环境/平台判断
+
+## Appendix
 
 ```shell
 # 快捷键
@@ -100,21 +180,6 @@ uni.$showMsg = function(title="数据加载失败"，duration = 1500){
 # 系统信息
 uni.getSystemInfoSync()
 .windowHeight()
-```
-
-#### 生命周期
-
-```shell
-# app
-- onLaunch
-- onShow_onHide_onError
-# page
-- onLoad
-- onShow_onReady_onHide_onUnload
-- onPullDownRefresh_enablePullDownRefresh
-  _uni.stopPullDownRefresh
-- onReachBottom__onReachBottomDistance
-- onTabItemTap
 ```
 
 #### ......
