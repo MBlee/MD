@@ -3,8 +3,8 @@
 ```c
 #include <stdio.h>
 int main(){
-  printf("%d%zu %lf%c% %p");
-  scanf("%d %s",number,str);
+  printf("%d%zu %.1lf%c% %p");
+  scanf("%d %s",&number,str);
   fgets(str,sizeof(str),stdin);
   return 0;
 }
@@ -38,7 +38,10 @@ arr=&arr[0];
 const int A=10;
 int i = (int)1.1; 
 int i[2][3][4]={{},...};
-char c[10]="chars";
+char c[]="chars";
+char c[]={'\0'}
+#include <stdbool.h>
+bool b=true;
 // String
 #include <string.h>
 int len = sizeof(str)/sizeof(str[0]);
@@ -49,7 +52,7 @@ strcmp(str1,str2);
 ```
 
 ```c
-// Struct
+// Struct(union)
 struct St{};
 typedef struct{}St;
 struct St s={};
@@ -80,3 +83,14 @@ p=NULL;
 // Operator
 *i=i[0]=10;
 ```
+
+#### Error
+
+```c
+// NULL
+#inlcude <errno.h>
+strerror(errno);
+perror("err");
+exit(1);
+```
+
