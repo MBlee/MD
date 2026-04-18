@@ -18,8 +18,32 @@
 
 #### 图
 
-## 算法
+## 排序算法
 
-#### 排序
+#### 直接插入
 
-#### 查找
+```c
+// 直接插入排序
+1.Fronts++/Near++
+2.Swap(near,front)/front+=front
+int insertSort(myRcd *myarr){
+	int i,j,temp;
+    for(i=1;i<myarr->length;i++){
+    	j=i;
+        if(myarr->data[j]<myarr->data[j-1]){
+        	temp=myarr->data[j];
+        	while(myarr->data[j]<myarr->data[j-1]&&j>0){
+        		myarr->data[j]=myarr->data[--j];
+        	}
+        	myarr->data[++j]=temp;
+        }
+    }
+    return TRUE;
+}
+```
+
+```shell
+# 希尔排序
+```
+
+## 查找算法

@@ -152,17 +152,11 @@ mkdir -p
 # 删除目录
 rmdir -p 
 # 移除文件或目录
-rm -f
-rm -r
-rm -i
+rm -rf
 # 复制文件或目录
 cp -r 
-cp -p
-cp -a
 # 移动文件或目录,重命名
-mv -v
-mv -f || -u
-mv -i || -n
+mv 
 ```
 
 #### **文件|软件**
@@ -279,6 +273,24 @@ set nu
 set nonu
 ```
 
+```shell
+# 移动
+<n>gg
+# 删除
+<n>dd
+# 复制/粘贴
+yy
+p
+```
+
+```shell
+# 搜索/替换
+/?key 
+n
+```
+
+
+
 > **vim快捷键**
 
 ```shell
@@ -352,6 +364,20 @@ halt
 shutdown -r now 
 reboot
 ```
+
+#### 日历日期
+
+```shell
+# 日期/时间
+date +%T
+```
+
+```shell
+# 日历
+cal
+```
+
+
 
 ## ......
 
