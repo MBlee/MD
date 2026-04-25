@@ -1,6 +1,12 @@
-## Vitals
+## 🚀Vitals
 
-## Assential
+#### Websocket
+
+#### Microservices
+
+#### Graphql
+
+## 🚀Assential
 
 ```ts
 // NestAPP
@@ -185,25 +191,7 @@ export new mongoose.Schema({...})
 constructor(@InjectModel('Article') private readonly articleModel) => this.articleModel.find().exec()
 ```
 
-## Cli
-
-```shell
-# npm i @nestjs/cli -g
-nest new <app> -p pnpm
-nest g resource|module|controller|provider|service
-# 打包
-nest build
-	--path <tsconfig-path>
-	--watch
-	--builder <tsc|webpack|swc>
-# 调试
-- nest start -d|--debug 8088 --watch
-=> chrom://inspect
-- vscode => Toggle Auto Attach
-- lanch.json => Program
-```
-
-## Conf
+## 📚Conf
 
 ```shell
 # nest-cli.json
@@ -218,11 +206,9 @@ nest build
 }
 ```
 
-## ~~~~~~
+## 📚Appendix
 
-## Appendix
-
-#### StandaloneApps
+#### Standalone
 
 ```ts
 const app = NestFactory.createApplicationContext(appModule)
