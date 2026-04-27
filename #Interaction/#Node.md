@@ -2,58 +2,133 @@
 
 #### Websocket
 
+🚗npm: @nestjs/websockets @nestjs/platform-socket.io
+
+```ts
+//🚗🚗
+```
+
 #### Microservices
+
+🚗npm: @nestjs/microservices
+
+```ts
+//🚗🚗
+import { Transport, MicroserviceOptions } from '@nestjs/microservices';
+const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+  AppModule,{
+    transport: Transport.TCP,
+  },
+);
+await app.listen();
+```
 
 #### Graphql
 
+🚗npm: @nestjs/graphql @nestjs/apollo @apollo/server @as-integrations/express5 graphql
+
+```ts
+//🚗🚗CODE
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+@Module({
+  imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      playground: false,
+    }),
+  ],
+})
+```
+
+```ts
+//🚗🚗SCHEMA
+```
+
 ## 🚀Assential
+
+```ts
+//🚗Controller
+@Controller(<Prefix>/{host})
+@Method(<Path>)
+@Req@Res({passthrough})@Next
+@Body@Param@Query
+@Headers@Session@Ip@HostParam
+@HttpCode(<Code>)@Header(<key>,<Val>)
+@Redirect(<Path>,<Code>)
+            
+//🚗Service
+@Injectable() 
+=> constructor(private prov)
+=> constructor(@Optional @Inject(<Val>) private prov)
+=> @Inject(<Val>) private readonly prov
+           
+//🚗Module
+@Global@Moudule({
+	imports,exports,
+	controllers,providers
+})
+static forRoot(entities):DynamicModule{
+	return {
+		global,module,
+        exports,providers
+	}
+}
+```
+
+```ts
+//🚗Middleware
+export class mw implements NestMiddleware{
+  use(req:Request,res:Response,next:NextFunction){}
+}
+app.use(mw)
+✅class MD implements NestModule
+=> configure(consumer:MiddlewareConsumer)
+=> consumer.apply(mw...).forRoutes({path,method},...).exclude()
+
+//🚗HttpException
+throw new HttpException(res,HttpStatus.FORBIDDEN,{cause})
+new BadRequestException(res,{cause,description})
+class Cust Extends HttpException
+✅@Catch(HttpException)=>implements ExceptionFilter
+=> catch(HttpException,ArgumentsHost)
+=> host.switchToHttp().getResponse/getRequest
+=> exception.getStatus()
+✅@UseFilters(XFilter)
+app.useGlobalFilters(XFilter())
+
+//🚗Pipe
+class pipe implements PipeTransform
+=> transform(Val,ArgumentMetadata):Val
+=> throw new BadRequestException
+✅ValidationPipe=>class-transformer/validator
+class Dto{@IsString() name:string}
+=> @Body()dto:Dto]
+@Param('id',ParseIntPipe,CusPipe)
+@Query('page',new DefaultValuePipe(1))
+@usePipes(ValidationPipe)
+app.useGlobalPipes(new ValidationPipe());
+
+//🚗Guard
+class guard implements CanActivate
+=> canActivate(ExecutionContext):boolean|Observable
+=> ctx.switchToHttp.getRequest => validateToken(req)
+✅@useGuards(AuthGd)
+@useGlobalGuards(new AuthGd)
+
+//🚗Interceptor
+
+```
+
+```ts
+//🚗Decorator
+```
 
 ```ts
 // NestAPP
 - NestFactory.create<NestExpressApplication>(appModule)
 - abortOnError
 - -- -b swc
-
-// Modules
-@Global@Module({
-  controllers,providers,exports
-  imports
-})
-class DynamicModule{
-  static forRoot()=>{ module,providers,exports }
-}
-    
-// Controllers 
-@Controller('prefix')
-@All('route')
-@Res({passthrough})@Req@Next@Redirect
-@Host...
-
-// Providers
-@Injectable@Inject('HTTP_OPTIONS')
-@Optional
-```
-
-```ts
-// Middleware
-@Injectable() class Mid implements NestMiddleware{ use }
-class Mod implements NestModule{ configure(consumer:MiddlewareConsumer) }
-consumer.apply(Mid).exclude({path,method}).forRoutes(controller)
-app.use(Mid)
-// Exception filters
-class Forbidden extends HttpException/BadRequestException
-throw new HttpException(Res,HttpStatus,{cause}) => {error,status}
-
-@Catch(HttpException) class Filter implements ExceptionFilter{ catch }
-catch(exception:HttpException,host:ArgumentsHost)
-const ctx = host.switchToHttp()
-const res = ctx.getResponse<Response>()
-const req = ctx.getResponse<Request>()
-const status = exception.getStatus()
-res.status(status).json({statusCode,path})
-
-@UseFilters(Filter)
-app.useGlobalFilters(Filter)
 ```
 
 ```ts
@@ -81,34 +156,6 @@ app.useGlobalFilters(Filter)
 ```
 
 ```ts
-// app.module.ts
-import {Module} from '@nestjs/common'
-@global()
-@Module({
-	imports:[modules...],
-    controllers:[controllers...],  
-    providers:[service...],
-  	exports:[modules|services...]
-})
-class Module{
-  constructor(private service:Service){}
-}
-// 路由：xx.controller.ts
-import { Controller...} from '@nestjs/common'
-@Controller('route')=> constructor(private service:Service)
-@Get(':route')
-@Req(uest)?|Res(ponse)?({passthrough:true})
-@Params|Query|Body|Session
-@Request.signedCookies|@Response.cookie
-@Request.session
-@Headers('name')
-@Ip|HostParam
-@Next
-@HttpCode(204)
-@Header(key,value)
-@Redirect(url,301)
-// 路由处理器：xx.service.ts
-@Injectable|Inject => private service:Service
 // 管道：xx.pipe.ts
 @Injectable() => PipeTransform => @UsePipes(new XPipe())
 transform(value:any,metadata:ArgumentMetadata)=> value
@@ -117,32 +164,6 @@ import {Observable} from 'rxjs'
 @Injectable() => CanActivate => @UseGuards(AuthGuard)
 canActivate(context:ExecutionContext):boolean|Promise<Boolean>|Observable<boolean> => context.switchToHttp().getRequest().session
 app.useGolobalGuards(new AuthGuard())
-```
-
-```ts
-// 路由中间件
-// 创建
-@injectable()
-class Logger implements NestMiddleware{
-  use(req:Request,res:Response,next:Function){
-    next()
-  }
-}
-// 应用
-class AppModule implements NestModule{
-  configure(consumer:MiddlewareConsumer){
-    consumer
-      .apply(Logger...)
-      .excludes(...)
-      .forRoutes({path,method:RequesMethdod.ALL},
-                'path/(.reg)',Controller...)
-  }
-}
-```
-
-```ts
-// 异常过滤器
-throw new HttpException('forbidden',HttpStatus.FORBIDDEN,{cause,description})
 ```
 
 ```ts
@@ -191,6 +212,24 @@ export new mongoose.Schema({...})
 constructor(@InjectModel('Article') private readonly articleModel) => this.articleModel.find().exec()
 ```
 
+## 🚀Model
+
+#### SECURE
+
+#### ORM
+
+```ts
+//🚗MYSQL
+```
+
+```ts
+//🚗MONGO
+```
+
+```ts
+//🚗REDIS
+```
+
 ## 📚Conf
 
 ```shell
@@ -212,5 +251,7 @@ constructor(@InjectModel('Article') private readonly articleModel) => this.artic
 
 ```ts
 const app = NestFactory.createApplicationContext(appModule)
+const tasksService = app.select(TasksModule).get(TasksService, { strict: true });
+export const dynamicConfigModule = ConfigModule.register({ folder: './config' });
 ```
 
