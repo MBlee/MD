@@ -47,6 +47,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 ## 🚀Assential
 
+#### MVC
+
 ```ts
 //🚗Controller
 @Controller(<Prefix>/{host})
@@ -58,10 +60,11 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 @Redirect(<Path>,<Code>)
             
 //🚗Service
-@Injectable() 
+@Injectable({scope:Scope.REQUEST/TRANSIENT}) 
 => constructor(private prov)
 => constructor(@Optional @Inject(<Val>) private prov)
 => @Inject(<Val>) private readonly prov
+=> @Inject(REQUEST) req:Request
            
 //🚗Module
 @Global@Moudule({
@@ -75,6 +78,8 @@ static forRoot(entities):DynamicModule{
 	}
 }
 ```
+
+#### AOP
 
 ```ts
 //🚗Middleware
@@ -97,8 +102,8 @@ class Cust Extends HttpException
 ✅@UseFilters(XFilter)
 app.useGlobalFilters(XFilter())
 
-//🚗Pipe
-class pipe implements PipeTransform
+//🚗Pipe (Validation/Transform)
+class Pipe implements PipeTransform
 => transform(Val,ArgumentMetadata):Val
 => throw new BadRequestException
 ✅ValidationPipe=>class-transformer/validator
@@ -109,61 +114,26 @@ class Dto{@IsString() name:string}
 @usePipes(ValidationPipe)
 app.useGlobalPipes(new ValidationPipe());
 
-//🚗Guard
-class guard implements CanActivate
+//🚗Guard (Jwt/Role/Resource)
+class Guard implements CanActivate
 => canActivate(ExecutionContext):boolean|Observable
 => ctx.switchToHttp.getRequest => validateToken(req)
-✅@useGuards(AuthGd)
+@useGuards(AuthGd)
 @useGlobalGuards(new AuthGd)
 
-//🚗Interceptor
-
+//🚗Interceptor (Monitor/Log/Cache/FormatRes/Error)
+class Interc implements NestInterceptor
+=> intercept(ExecutionContext,CallHandler)
+=> next.handle()
+@useInterceptors(Interc)
+@useGlobalInterceptors(Interc)
 ```
 
 ```ts
-//🚗Decorator
-```
-
-```ts
-// NestAPP
-- NestFactory.create<NestExpressApplication>(appModule)
-- abortOnError
-- -- -b swc
-```
-
-```ts
-// Pipes (@injectable)(PipeTransform)
-// Built-in pipes
-- ParseIntPipe(Float/Bool/UUID/Array/Enum/File/Date)
-- ValidationPipe
-// Custom pipes
-- transform(val,meta)
-- meta:{type,data}
-// Binding pipes
-- @Param('id',Pipe) // (Query/Body/Custom) 
-```
-
-```ts
-// Guards
-```
-
-```ts
-// Interceptors
-```
-
-```ts
-// Decorators
-```
-
-```ts
-// 管道：xx.pipe.ts
-@Injectable() => PipeTransform => @UsePipes(new XPipe())
-transform(value:any,metadata:ArgumentMetadata)=> value
-// 守卫：xx.guard.ts
-import {Observable} from 'rxjs'
-@Injectable() => CanActivate => @UseGuards(AuthGuard)
-canActivate(context:ExecutionContext):boolean|Promise<Boolean>|Observable<boolean> => context.switchToHttp().getRequest().session
-app.useGolobalGuards(new AuthGuard())
+//🚗Decorator (Param/Metadata/Combine)
+createParamDecorator((data,ExecutionContext)=>)
+applyDecorators(SetMeta(),UseGuards())
+@CustDec(ValidationPipe(validateCustormDecorators))
 ```
 
 ```ts
@@ -210,6 +180,33 @@ export new mongoose.Schema({...})
 })
 >>> xx.service.ts
 constructor(@InjectModel('Article') private readonly articleModel) => this.articleModel.find().exec()
+```
+
+#### Variant
+
+```ts
+//🚗Upload
+MulterModule.registAsync({
+  storage:diskStorage({
+    destination,filename(req,file,cb)
+  }),
+  useFactory:()=>{
+	{dest,name}
+  }
+})
+@useInterceptors(
+  FilesInterceptor
+  |FileFieldsInterceptor
+  |AnyFilesInterceptor	
+)
+@uploadedFile(
+  ParseFilePipe({
+    validators:[
+      MaxFileSizeValidator({maxSize}),
+      FileTypeValidator({fileType})
+    ]
+  })
+) file:Express.Multer.File
 ```
 
 ## 🚀Model
