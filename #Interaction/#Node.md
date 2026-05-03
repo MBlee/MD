@@ -60,11 +60,13 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 @Redirect(<Path>,<Code>)
             
 //🚗Service
-@Injectable({scope:Scope.REQUEST/TRANSIENT}) 
+@Injectable({scope:Scope.REQUEST/TRANSIENT})
 => constructor(private prov)
 => constructor(@Optional @Inject(<Val>) private prov)
 => @Inject(<Val>) private readonly prov
 => @Inject(REQUEST) req:Request
+=> @Inject(ModuleRef) => mRef.get(P)
+=> @Inject(forwardRef(()=>Provider/Module))
            
 //🚗Module
 @Global@Moudule({
@@ -77,6 +79,44 @@ static forRoot(entities):DynamicModule{
         exports,providers
 	}
 }
+//🚗LazyModule
+constructor(private LazyModuleLoader)
+await import('lazy.module/service')
+const moduleRef = loader.load(()=>lazyModule)
+moduleRef.get(LazyService)
+```
+
+```ts
+//🚗ExecutionContext(ArgumentsHost)
+ctx.getType|getArgs
+reflector.get(Roles,ctx.getHandler())
+ctx.switchToHttp.getRequest
+ctx.switchToRpc/Ws.getData
+ctx.getClass/getHandler
+//🚗Situation
+catch(exception,ArgumentsHost)
+createParamDecorator((data,ExecutionContext)=>{})
+canActivate(ExecutionContext)
+intercept(ExecutionContext,next)
+//🚗Real
+const req = context.switchToHttp().getRequest();
+const user = req.user;
+const roles = this.reflector.get(Roles, context.getHandler());
+reflector.get(Roles, context.getClass())
+reflector.getAllAndOverride(Roles, [
+  context.getHandler(),
+  context.getClass(),
+]);
+```
+
+```ts
+//🚗LifeCycle(listen/close)
+- OnModuleInit => initDB
+- OnApplicationBootstrap => loadCache => scheduler
+- OnModuleDestroy 
+- BeforeApplicationShutdown
+- OnApplicationShutdown => shotdown(signal)
+app.enableShutdownHooks()
 ```
 
 #### AOP

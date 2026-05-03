@@ -1,0 +1,20 @@
+精通Redis
+精通Ejs
+精通RESTful API设计和实现
+精通Docker，Kubernetes，阿里云
+精通分布式爬虫系统
+精通支付宝、微信支付
+熟悉AWS/GCP（RDS、DyanmoDB、Lambda、S3、SQS）
+熟悉Lambda/Serverless服务 
+熟悉SaaS平台
+
+精通数据可视化
+精通Apache、Nginx等常用WebServer
+精通响应式兼容、首屏性能、前后端规范
+精通各浏览器差异性
+精通移动适配H5
+熟悉Gulp	
+熟悉Hybrid开发
+熟悉调试抓包、移动设备调优
+熟悉OA/ERP/CRM/HR相关WEB前端开发经验或熟悉管理软件行业者优先
+熟悉Jenkins、Maven/Git

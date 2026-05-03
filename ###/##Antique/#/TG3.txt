@@ -1,0 +1,17 @@
+精通微信的用户认证，了解微信JSSDK
+精通Git|Git Flow、代码审查、持续集成
+精通Tomcat、Nginx、Apatch
+精通自动化部署、维护、测试
+精通分布式系统设计和实现
+精通集群部署
+熟悉Egg
+熟悉serverless和常用中间件使用
+熟悉PostgreSQL、RabbitMQ、Kafka
+
+精通SEO优化、国际化
+精通cssinjs、styled-component
+精通Webpack、Babel、ESLint、Vite
+精通自动化部署、调试、维护、升级、线上及时修复
+熟悉Taro
+熟悉PWA
+熟悉低代码平台
