@@ -1,5 +1,37 @@
 ## Essential
 
+#### SQL
+
+```sql
+🚗--DDL
+createdb|dropdb <db>
+psql -s <db>
+CREATE TABLE <tb> (
+	col	
+  	varchar(80)|int|date|real|point
+  	,...
+);
+DROP TABLE <tb>;
+```
+
+```sql
+🚗--DML
+SELECT <col> AS <alias>,... FROM <tb> 
+	WHERE <col=val> AND OR NOT <col>val>
+	ORDER BY <col>
+INSERT INTO <tb>(col,...) VALUES (val,...)
+COPY <tb> FROM '/PATH'
+
+```
+
+```sql
+🚗--DAL
+```
+
+```sql
+
+```
+
 #### 登录
 
 ```shell
@@ -32,6 +64,14 @@ CREATE SCHEMA <schema>
 #### 用户操作
 
 #### 控制台命令
+
+#### Psql
+
+```plsql
+\h --help
+\q --quit
+\i <*.sql>
+```
 
 ## CentOS安装
 
