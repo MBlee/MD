@@ -4,8 +4,6 @@
 
 ```sql
 🚗--DDL
-createdb|dropdb <db>
-psql -s <db>
 CREATE TABLE <tb> (
 	col	
   	varchar(80)|int|date|real|point
@@ -71,6 +69,11 @@ CREATE SCHEMA <schema>
 \h --help
 \q --quit
 \i <*.sql>
+```
+
+```bash
+createdb|dropdb <db> -U
+psql -s <db>
 ```
 
 ## CentOS安装

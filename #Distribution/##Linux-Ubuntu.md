@@ -37,15 +37,100 @@ traceroute
 
 #### ^集群
 
-#### ^用户管理
+#### ^用户/权限
+
+```bash
+#🚗USER
+
+```
+
+```bash
+#🚗PERMISSION
+su -| sudo 
+chmod 755 <path>
+chown <own> <path>
+chgrp <grp> <path>
+```
 
 #### ^磁盘/文件管理
 
-#### ^进程/服务
+```bash
+#🚗DISK
+du -h -s
+```
+
+```bash
+#🚗FILE
+tree -L <level>
+ls -lah
+locate -l <count> => updatedb
+find <path> -name <filename>
+file <file>
+less <file>
+cp -R <path>... <dest>
+mv <path>... <dest>
+rm -rf
+```
+
+```bash
+#🚗I/O
+cmd >> file
+cmd << file (sort/uniq/grep/head/tail)
+cmd1 | cmd2
+printenv
+echo $USER
+echo $(cmd)
+echo $((numerial))
+echo */~
+echo [:alnum:]
+echo {,..}
+echo "\$" ''
+export ENV=ENV:..
+unset ENV
+```
 
 #### ^软件
 
+```bash
+#🚗(dpkg/apt-get/apt)
+#🚗apt
+apt search figlet
+apt install figlet
+apt remove figlet
+apt-get purge figlet
+```
+
+```bash
+#🚗(rpm/yum/dnf)
+#🚗yum
+yum search speaking cow
+yum install cowsay
+yum remove cowsay
+```
+
 #### ^安装配置
+
+#### ^进程/服务
+
+```bash
+#🚗Process
+ps -aux|grep
+ps -9 <pid>
+```
+
+```bash
+#🚗Service
+```
+
+#### ^Global
+
+```bash
+#(/usr/share/doc)
+which <cmd>
+type <cmd>
+help <cmd>
+man/info <cmd>
+```
 
 #### 网络
 
@@ -460,3 +545,15 @@ registry.npmmirror.com/binary.html?path=node/
 ```
 
 #### RPM
+
+
+
+## FILESYS
+
+- **/etc**
+  - /etc/passwd
+  - /etc/hosts
+  - /etc/init.d
+- **/bin, /usr/bin**
+- **/usr**
+  - /usr/local

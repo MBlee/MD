@@ -1,13 +1,39 @@
-## ENV
+## Essential
 
 ```bash
-# ~/.bashrc
+#!/bin/bash
+```
+
+## Profile
+
+```bash
+#No-login
+~/.bashrc
+/etc/bash.bashrc
+```
+
+```bash
+#Login
+~/.bash_profile
+~/.bash_login
+~/.profile
+/etc/profile
+```
+
+## ENV/Alias
+
+```bash
+# ~/.bashrc		~/bin
 # /etc/profile(/etc/environment)
 env
-echo $VAR
-export VAR="VAR"
+export VAR=$VAR:...
 unset VAR
 ```
 
-
+```bash
+alias l='ls -la'
+func(){
+  	echo ...
+}
+```
 
