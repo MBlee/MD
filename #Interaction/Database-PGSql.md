@@ -10,20 +10,29 @@ CREATE TABLE <tb> (
   	,...
 );
 DROP TABLE <tb>;
+CREATE VIEW <v>  AS SELECT;
 ```
 
 ```sql
 🚗--DML
-SELECT <col> AS <alias>,... FROM <tb> 
-	WHERE <col=val> AND OR NOT <col>val>
-	ORDER BY <col>
-INSERT INTO <tb>(col,...) VALUES (val,...)
-COPY <tb> FROM '/PATH'
-
+SELECT 
+	DISTINCT <col> AS <alias>,... 
+	COUNT(*) FILTER(WHERE)
+	FROM <tb1> JOIN <tb2> ON c1=c2
+	WHERE <col=val> AND OR NOT <col>val> LIKE
+	WHERE col = (SELECT)
+	ORDER BY <col,>
+	GROUP BY <col,>
+	HAVING col<n
+INSERT INTO <tb>(col,...) VALUES (val,...);
+COPY <tb> FROM '/PATH';
+UPDATE <tb> SET col=x,... WHERE;
+DELETE FROM <tb> WHERE;
 ```
 
 ```sql
 🚗--DAL
+
 ```
 
 ```sql
@@ -107,5 +116,13 @@ host all all 0.0.0.0/0 md5
 ```shell
 # data/pg_hba
 IPV4 >> host all all 0.0.0.0/0 md5
+```
+
+## TYPE
+
+```sql
+varchar,char
+int,real
+date
 ```
 

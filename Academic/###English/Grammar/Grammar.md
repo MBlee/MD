@@ -19,3 +19,26 @@
 - 状语从句
 ```
 
+## 动词
+
+```shell
+#🚗🚗🚗Situation
+- <will> <have/has/had> <v-s/v-ed/(be/been v-ing)>
+#🚗Common
+- eats
+- ate
+- will eat
+#🚗GoOn
+- be eating
+- was/were eating
+- will eating
+#🚗Have
+- have/has eaten
+- had eaten
+- will have eaten
+#🚗HaveGoOn
+- have been eating
+- had been eating
+- will have been eating
+```
+

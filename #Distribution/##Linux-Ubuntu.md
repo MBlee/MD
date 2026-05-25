@@ -14,6 +14,7 @@
 
 ```shell
 # 查看网络 (^route)
+ip addr
 ifconfig <ens33> <ip> netmask <netmask>
 ifconfig <ens33> down|up
 hostname -i
@@ -33,7 +34,20 @@ traceroute
 # 修改网络
 ```
 
+```bash
+# SSH
+sudo apt install openssh-server -y
+systemctl status ssh
+systemctl enable ssh
+ssh user@ip
+```
+
 #### ^防火墙
+
+```bash
+sudo ufw status
+sudo ufw allow 22
+```
 
 #### ^集群
 
@@ -47,9 +61,9 @@ traceroute
 ```bash
 #🚗PERMISSION
 su -| sudo 
-chmod 755 <path>
-chown <own> <path>
-chgrp <grp> <path>
+chmod -R 755... <path...>
+chown -R <own> <path>
+chgrp -R <grp> <path>
 ```
 
 #### ^磁盘/文件管理
@@ -70,12 +84,24 @@ less <file>
 cp -R <path>... <dest>
 mv <path>... <dest>
 rm -rf
+#🚗ARCHIVE
+gzip|gunzip -<n> <.gz>
+zcat|zless|zgrep
+tar tf <.tar>
+tar uf <.tar>
+tar czvf <.tar> -P --wildcards
+tar xzvf <.tar> -C <dest>
+zip -r <.zip>
+unzip -l <.zip>
 ```
 
 ```bash
 #🚗I/O
-cmd >> file
-cmd << file (sort/uniq/grep/head/tail)
+cmd 2>> file
+cmd &>> file
+cmd < file (cat/sort/uniq/grep/head/tail)
+cat <<- __EOF__
+__EOF__
 cmd1 | cmd2
 printenv
 echo $USER
@@ -120,6 +146,10 @@ ps -9 <pid>
 
 ```bash
 #🚗Service
+systemctl status ssh
+systemctl enable ssh
+systemctl start ssh
+systemctl stop ssh
 ```
 
 #### ^Global
