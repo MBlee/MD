@@ -162,6 +162,45 @@ help <cmd>
 man/info <cmd>
 ```
 
+```bash
+#🚗Retyping
+sudo !!
+!!:sg/old/new/:p
+!$:*
+^old^new
+ctrl+r => esc
+```
+
+```bash
+#🚗History(.bashrc)
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=
+```
+
+#### ^Vim
+
+```bash
+#🚗Search
+/kw
+?kw
+n => N
+:%s/old/new/gc
+```
+
+```bash
+#🚗Cursor
+0^$
+gg => ngg => G
+```
+
+```bash
+#🚗Edit
+u => U
+nyy => p => yw
+ndd => :s,ed => dw
+```
+
 #### 网络
 
 ```sh
@@ -458,10 +497,11 @@ $
 H
 M
 L
-# 移动至首尾
-gg
-nG
-G
+# 行内
+^ => $
+# 行首尾
+gg => G
+nG/ngg
 ```
 
 ```shell
