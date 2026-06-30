@@ -164,10 +164,11 @@ man/info <cmd>
 
 ```bash
 #🚗Retyping
+fc
 sudo !!
 !!:sg/old/new/:p
-!$:*
-^old^new
+!$*:p
+^old^new^:p
 ctrl+r => esc
 ```
 
