@@ -57,9 +57,24 @@ had + 过去分词 => would have + 过去分词
 ```
 
 ```shell
-#Link-V
+#🚗Passivity
+- was eaten by
+```
+
+```shell
+#🚗Link-V
 smell/remained
 grew/keep/stay/seem/appear/feel/become/turn/prove
+```
+
+## 不定式
+
+```shell
+#🚗To V
+```
+
+```shell
+#🚗V-ing
 ```
 
 ## 限定词
