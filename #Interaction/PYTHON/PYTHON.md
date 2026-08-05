@@ -29,15 +29,12 @@ del xx.xx
 ```
 
 ```python
-# str
+#🚗str
 - for in
 - in/not in
 - len()
 - [s:e]
-- upper/lower
-- strip
-- replace(a,b)
-- split(,)
+- replace(a,b)/split(,)/upper/lower/strip
 - f"{a:.2f}{a:,}"
 - str.format(0,1) => "{0}"
 - str.format(a=...) => "{a}"
@@ -45,71 +42,71 @@ del xx.xx
 ```
 
 ```python
-# list
-- insert(i,val)
-- append(val)
+#🚗list
+- insert(i,val)/append(val)
 - extend(list/tuple)
-- remove(val)
-- pop(i)
-- clear
-- del list[i]/list
-- [xExp if else for in if in]
-- reverse()
+- remove(val)/pop(i)/del list[i]/list/clear
 - sort(reverse=True)
-- sort(key=fn)
+- sort(key=fn/str.lower)
+- reverse()
 - ls[:]/copy()/list(ls)
-# tuple
-- tuple(list(tuple))
+#🚗tuple
+- del tup
 - (x,*y,z)=tuple
-- +*
-# set
-- add/remove/discard/pop/clear
+#🚗set
+- add/remove/discard/pop/clear/del
 - update(set)
-- del
-- union|
+- union(list,tuple)|
 - intersection&/intersection_update
 - difference-/difference_update
-- symmetirc_difference^/symmetric_difference_update
+- symmetric_difference^/symmetric_difference_update
 - frozenset
-# dict
+#🚗dict
 - dict(a=*,...)
 - keys/values/get/items
 - update(dict)
 - pop/popitem/del/clear
 - copy/dict
-# range
-- list(range(start,stop,step)[s,e])
+#🚗range
+- list(range(start,stop,step)[s:e])
+#🚗iterator
+- iter(it)
+- next(it)
+- raise StopIteration
 ```
 
 ```python
+# Condition(pass)
 if elif else:
 A if else B
 not and or
+is not
+not in
 match: case a|b _ if:
+# Iterable(else)
 while: break continue
 for in range(len()):
-else:
-```
-
-```python
+[print(i) for i in list] 
+[i for in if in]
 # func
-def fn(*,a=default,/,*args,**kwargs)
+def fn(/,*,a=default,*args,**kwargs)
 global nonlocal
-@decor()=>def(fn)=>fn
-__name__ __doc__
+# decorator
+@decor()=>def fn()=> fn(*a,**ka)
 @functools.wraps(func)
+__name__ __doc__
+# lambda
 lambda *args:exps
 list(map(lambda,ls))
 list(filter(lambda,ls))
 sorted(ls,key=lambda)
 sys.getrecursionlimit
 # gen
-yield=>next(gen)
+gen=(x*x for x in range(6))
+arg = yield ret
+next(gen)
 gen.send(data)
 gen.close()
-# iter
-__next__ __iter__
-raise StopIteration
 # modules
 from md import platform as
 dir(md)
@@ -153,5 +150,16 @@ raise: Exception("") TypeError("")
 python -m venv xxx
 xxx\Scripts\activate
 deactivate
+```
+
+```python
+#🚗🚗🚗Type
+- int/float/complex
+- str/bool/None
+- list/tuple/range
+type(x)
+isinstance(x,int)
+int()
+id()
 ```
 

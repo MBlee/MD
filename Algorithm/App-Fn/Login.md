@@ -8,7 +8,7 @@
 5.Token验证>AccessAPI(B)
 ```
 
-```ts
+```typescript
 //🚗🚗🚗Express(jsonwebtoken/bcryptjs/cors)
 bcrypt.hashSync => bcrypt.compareSync
 jwt.sign(user,SECRET,{expiresIn})

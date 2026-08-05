@@ -99,43 +99,44 @@ alt+/
   :key="i"	>  
 <scroll-view
   :scroll-y
-  :scroll-top >  
+  :scroll-top >
+```
+
+```vue
+<view
+	hover-class
+	hover-stop-propagation
+	hover-start-time
+	hover-stay-time >
+<text
+	selectable
+	space__ensp/emsp/nbsp
+	decode >
+<richtext
+	nodes
+	image-menu-prevent
+	preview
+	@itemclick >
+<image
+	mode__scaleToFill/aspectFit/aspectFill
+	lazy-load
+	fade-show
+	@error@load >
+<icon
+	size
+	type
+	color >
+<button
+	size__mini
+	type
+	plain
+	loading
+	disabled >
 <navigator
   :url="">  
 <uni-icons
   type 
-  size=17 >
-  
-<!-- richText -->  
-# View组件
-- hover-class
-- hover-stop-propagation
-- hover-start-time
-- hover-stay-time
-# Text组件
-- selectable
-- space__ensp/emsp/nbsp
-- decode
-# RichText组件
-- nodes
-- image-menu-prevent
-- preview
-- @itemclick
-# Icon组件
-- size
-- type
-- color
-# Image组件
-- mode__scaleToFill/aspectFit/aspectFill
-- lazy-load
-- fade-show
-- @error@load
-# Button组件
-- size__mini
-- type
-- plain
-- loading
-- disabled
+  size=17 > 
 ```
 
 ```js
