@@ -79,9 +79,9 @@ del xx.xx
 # Condition(pass)
 if elif else:
 A if else B
-not and or
 is not
 not in
+not and or
 match: case a|b _ if:
 # Iterable(else)
 while: break continue
@@ -114,42 +114,30 @@ dir(md)
 
 ```python
 # datetime
-import datetime
 datetime.now
 datetime(y,m,d)
-d.year
-d.strftime("%A")
+d.strftime("%A%B%d")
 # math
-import math
 math.sqrt
 math.ceil/floor/pi
 # json
-import json
 json.loads('jstr')
 json.dumps(x,indent=4,sort_keys=True)
 # re
-import re
-re.search("reg",target)
-re.findall("reg",target)
-re.split("\s",target,1)
-re.sub("reg","replace",target,2)
+re.search(r"reg",str)
+re.findall(r"reg",str)
+re.split(r"\s",s,count)
+re.sub(r"reg","replace",s,count)
 r.span()
 r.group()
-r.string
 ```
 
 ```python
 # try
-try: except NameError:
+try: 
+except NameError:
 else: finally:
 raise: Exception("") TypeError("")
-```
-
-```python
-# venv
-python -m venv xxx
-xxx\Scripts\activate
-deactivate
 ```
 
 ```python
@@ -163,3 +151,16 @@ int()
 id()
 ```
 
+#### Pip
+
+```shell
+pip install/uninstall
+pip list
+```
+
+```shell
+# venv
+python -m venv xxx
+xxx\Scripts\activate
+deactivate
+```
