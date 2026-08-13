@@ -23,18 +23,6 @@ echo "✅ 当前分支: ${CURRENT_BRANCH}"
 echo -e "\n🔍 执行 'git status'..."
 git status
 
-# 询问用户是否继续（检查是否有未暂存的更改）
-if git status --porcelain | grep -q '^[ MADRCU? ]'; then
-    read -r -p "💡 发现更改。是否继续执行 'git add .', 'git commit' 和 'git push'? (y/n): " CONFIRM
-else
-    echo -e "\n👍 没有发现更改，无需提交。"
-    exit 0
-fi
-
-if [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]]; then
-    echo "👋 脚本已取消。"
-    exit 0
-fi
 
 # 3. 暂存所有更改 (包括新文件和已修改/删除的文件)
 echo -e "\n➕ 执行 'git add .'..."

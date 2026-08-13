@@ -20,12 +20,12 @@ os.rmdir(path)
 
 ```python
 # class
-class cls(parent): super()
+class Cls(parent): super()
 class Inner(self,cls)
 def __init__(self,...)
 def __str__(self)
 def method(self)
-del xx.xx
+del Cls.xx
 ```
 
 ```python
