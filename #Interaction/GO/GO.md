@@ -1,36 +1,38 @@
-
-
-## Reference
+## Essential
 
 ```go
-package pkg
-import "pkg"
-func main(){}
-fmt.Println()
-fmt.Printf("%v%T",v,t)
-//🚗Sin
-const A
-a:=0
-var a,... int
-var (
-	a int uint float32
-	b string
-  	c bool
+package main
+import "fmt"
+func main(){
+  fmt.Printf("%T%v%d%.2f%s")
+}
+var a,b,c int...
+var const
+(
+  a int float32
+  b string = ""
+  c bool = false
 )
+```
+
+#### DataType
+
+```go
 //🚗Mul
 arr:=[len|...]int{1:10,2:20}
+len(arr)
 slice:=[]int{}
-slice:=arr[start:end]
 slice:=make([]int,len,cap)
+slice:=arr[sta:end]
+append(slice,el,...)
+append(slice,slice1...)
+copy(dest,src)
 mapp:=map[kType]vType{key:val,...}
 mapp:=make(map[kType]vType)
 delete(mapp,key)
 _,isExist=mapp[key]
 len(slice)
 cap(slice)
-append(slice,el,...)
-append(slice,slice1...)
-copy(dest,src)
 type stru struct{ name string }
 //🚗Flow
 if a>b {}else{}
