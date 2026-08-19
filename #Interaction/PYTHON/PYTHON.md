@@ -1,4 +1,4 @@
-## Essential
+## ATR
 
 #### FILE
 
@@ -9,6 +9,7 @@ f.close()
 with open as f:
 f.read(5)
 f.readline()
+for s in f
 f.write(content)
 import os
 os.path.exists(path)
@@ -16,7 +17,7 @@ os.remove(path)
 os.rmdir(path)
 ```
 
-#### DataType
+#### DT
 
 ```python
 # class
@@ -151,7 +152,7 @@ int()
 id()
 ```
 
-#### Pip
+#### PIP
 
 ```shell
 pip install/uninstall

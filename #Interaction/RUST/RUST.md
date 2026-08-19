@@ -2,7 +2,7 @@
 
 
 
-## Essential
+## Artery
 
 ```rust
 fn main(){
@@ -21,6 +21,8 @@ let str=String::from("")
 let str="".to_string()
 format!("{}",str)
 str.push_str("")
+let str1=str.clone()
+let str1=&mut str
 ```
 
 ```rust
