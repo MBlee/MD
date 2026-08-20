@@ -9,7 +9,7 @@ func main(){
 var a,b,c int...
 var const
 (
-  a int float32
+  a int/uint float32/64
   b string = ""
   c bool = false
 )
@@ -38,7 +38,7 @@ type stru struct{ name string }
 if a>b {}else{}
 switch con {case x,y: default:}
 for s1;s2;s3{}
-for _,v:=range arr/slice/map{}
+for _,v := range arr/slice/map{}
 func fn(p int,...)(res1 int,res2 int){}
 ```
 

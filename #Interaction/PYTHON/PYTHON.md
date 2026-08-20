@@ -6,9 +6,9 @@
 # FILE
 open(path,mode[rwax/tb])
 f.close()
-with open as f:
 f.read(5)
 f.readline()
+with open as f:
 for s in f
 f.write(content)
 import os
