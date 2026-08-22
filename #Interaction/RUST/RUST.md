@@ -7,7 +7,7 @@
 ```rust
 fn main(){
   println!("{}",x);
-  print!();
+  print!("{:?}",arr);
 }
 ```
 
@@ -26,12 +26,22 @@ let str1=&mut str
 ```
 
 ```rust
+let mut arr = ["",...]
+let mut v = vec!["",...]
+let tup = (...) => tup.0 => (,)
+arr.len() => arr[]=x
+v.push/pop/remove(i)
+v.insert(i,"")
+fn f()=>(String,i32){ ("",0) }
+```
+
+```rust
 if{""}else{""}
 match{1|2|3=>"",_=>""}
+for i in 1..=9{}
 loop{break "";}
 while{continue;}
-for i in 1..=9{}
-fn f(a:i32,b:f64)->f64{}
+fn f(a:i32,b:f64)->(i32,f64){}
 ```
 
 

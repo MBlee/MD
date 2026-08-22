@@ -31,8 +31,6 @@ del Cls.xx
 
 ```python
 #🚗str
-- for in
-- in/not in
 - len()
 - [s:e]
 - replace(a,b)/split(,)/upper/lower/strip
@@ -92,16 +90,16 @@ for in range(len()):
 # func
 def fn(/,*,a=default,*args,**kwargs)
 global nonlocal
-# decorator
-@decor()=>def fn()=> fn(*a,**ka)
-@functools.wraps(func)
-__name__ __doc__
 # lambda
 lambda *args:exps
 list(map(lambda,ls))
 list(filter(lambda,ls))
 sorted(ls,key=lambda)
 sys.getrecursionlimit
+# decorator
+@decor()=>def fn()=> fn(*a,**ka)
+@functools.wraps(func)
+__name__ __doc__
 # gen
 gen=(x*x for x in range(6))
 arg = yield ret

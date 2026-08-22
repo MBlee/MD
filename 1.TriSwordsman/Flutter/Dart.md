@@ -1,10 +1,10 @@
 ## Core/Effective
 
-## Language
+## ARTERY
 
 ```dart
-late String des;
-var Object? o='obj';
-final/const int i=0;
+//🚗Variable
+late String des,_;
+var/final/const Object? o='obj';
 ```
 

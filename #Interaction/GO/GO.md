@@ -12,6 +12,7 @@ var const
   a int/uint float32/64
   b string = ""
   c bool = false
+  nil
 )
 ```
 
@@ -19,26 +20,39 @@ var const
 
 ```go
 //🚗Mul
+p:=new(11)
+p *int => &p
 arr:=[len|...]int{1:10,2:20}
-len(arr)
 slice:=[]int{}
 slice:=make([]int,len,cap)
-slice:=arr[sta:end]
+slice:=arr[st:end]
 append(slice,el,...)
 append(slice,slice1...)
 copy(dest,src)
-mapp:=map[kType]vType{key:val,...}
-mapp:=make(map[kType]vType)
-delete(mapp,key)
+m:=map[kType]vType{key:val,...}
+m:=make(map[kType]vType)
+delete(m,key)
+clear(m)
 _,isExist=mapp[key]
-len(slice)
+len(slice/arr)
 cap(slice)
 type stru struct{ name string }
+&stru{,}|stru{name:,}
 //🚗Flow
-if a>b {}else{}
-switch con {case x,y: default:}
-for s1;s2;s3{}
-for _,v := range arr/slice/map{}
-func fn(p int,...)(res1 int,res2 int){}
+if{}else{}
+switch {case x,y<0: default:}
+for ;;{}
+for _,v := range arr/slice/map/num{}
+func fn(p ...int)(res1 int,res2 int){} => fn(sli...)
+func fn() func()int{}
+//🚗Type
+x.(type)
+```
+
+```go
+//🚗Slices
+slices.equal(s1,s2)
+//🚗Maps
+maps.equal(m1,m2)
 ```
 
