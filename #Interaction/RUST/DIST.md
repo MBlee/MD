@@ -1,14 +1,17 @@
 ## Cargo
 
 ```shell
-cargo new <app>
+cargo new <app> => cargo init
 cargo run
+cargo build --release
+cargo check
 ```
 
 ## Rustup
 
 ```shell
-# SetEnv
+###🚗rustup/rustc/rustfmt
+# setEnv
 RUSTUP_DIST_SERVER=
 https://mirrors.tuna.tsinghua.edu.cn/rustup
 RUSTUP_UPDATE_ROOT=

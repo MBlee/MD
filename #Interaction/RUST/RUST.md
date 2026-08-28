@@ -29,10 +29,16 @@ let str1=&mut str
 let mut arr = ["",...]
 let mut v = vec!["",...]
 let tup = (...) => tup.0 => (,)
+let mut hMap = HashMap::new()
 arr.len() => arr[]=x
 v.push/pop/remove(i)
 v.insert(i,"")
-fn f()=>(String,i32){ ("",0) }
+hMap.insert(k,v)
+hMap.remove(k)
+hMap.get(k)
+struct P{,} => P{,} => p.x
+enum E{,} => E::X
+enum EV{V1(),V2()} => EV::V1() => V1(msg)=>msg
 ```
 
 ```rust
@@ -41,7 +47,7 @@ match{1|2|3=>"",_=>""}
 for i in 1..=9{}
 loop{break "";}
 while{continue;}
-fn f(a:i32,b:f64)->(i32,f64){}
+fn f(a:i32,b:f64)->(i32,f64){(,)}
 ```
 
 
