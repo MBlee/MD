@@ -1,17 +1,18 @@
 
 
-
-
-## Artery
+## AT
 
 ```rust
+use std::io
 fn main(){
   println!("{}",x);
   print!("{:?}",arr);
 }
 ```
 
-#### DataType
+#### File
+
+#### DT
 
 ```rust
 let mut x=0
@@ -26,9 +27,9 @@ let str1=&mut str
 ```
 
 ```rust
-let mut arr = ["",...]
+let mut arr:[int;len] = [val;rep]
 let mut v = vec!["",...]
-let tup = (...) => tup.0 => (,)
+let tup:(i32,f64) = (...) => tup.0 => (,)
 let mut hMap = HashMap::new()
 arr.len() => arr[]=x
 v.push/pop/remove(i)
@@ -44,11 +45,14 @@ enum EV{V1(),V2()} => EV::V1() => V1(msg)=>msg
 ```rust
 if{""}else{""}
 match{1|2|3=>"",_=>""}
-for i in 1..=9{}
+for i in (1..=9).rev(){}
 loop{break "";}
 while{continue;}
 fn f(a:i32,b:f64)->(i32,f64){(,)}
 ```
 
-
+```rust
+use std::io
+io::stdin().read_line(&mut str).expect();
+```
 
