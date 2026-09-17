@@ -1,4 +1,4 @@
-#### MySQL
+## MySQL
 
 ```mysql
 # 启动
@@ -249,5 +249,105 @@ const User = db.define('tbl',{
 User.create({user,nick}).then(res=>{})
 ```
 
-#### Redis
+#### *RoadMap
+
+## Redis
+
+```shell
+SET key:id val EX 3600
+GET key:id
+DEL key:id
+KEYS *
+SCAN
+```
+
+```python
+#🚗Python(pip install reids)
+import redis,os
+r = redis.Redis(
+	host=os.environ["REDIS_HOST"],
+    prot=int(os.environ["REDIS_PORT"]),
+    decode_responses=int(os.environ["REDIS_PORT"])
+)
+r.set('key:id','val')
+print(r.get('key:id'))
+```
+
+```go
+//🚗Go(pip install reids)
+// go get github.com/redis/go-redis/v9
+import ("context" "github.com/redis/go-redis/v9")
+func main() {
+    ctx := context.Background()
+    client := redis.NewClient(&redis.Options{
+        Addr: "localhost:6379",
+    })
+    if err := client.Set(
+        ctx,
+        "bike:1",
+        "Process 134",
+        0,
+    ).Err(); err != nil {
+        panic(err)
+    }
+    val, err := client.Get(
+        ctx,
+        "bike:1",
+    ).Result()
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(val)
+}
+```
+
+#### *RoadMap
+
+```shell
+① Redis 是什么
+        ↓
+② Docker 启动 Redis
+        ↓
+③ redis-cli
+        ↓
+④ SET / GET / DEL
+        ↓
+⑤ String
+        ↓
+⑥ Hash
+        ↓
+⑦ List
+        ↓
+⑧ Set
+        ↓
+⑨ Sorted Set
+        ↓
+⑩ TTL / EXPIRE
+        ↓
+⑪ Redis 数据持久化
+        ↓
+⑫ RDB / AOF
+        ↓
+⑬ Redis 发布订阅
+        ↓
+⑭ Redis Stream
+        ↓
+⑮ Redis Transaction
+        ↓
+⑯ Lua / Functions
+        ↓
+⑰ Redis 缓存设计
+        ↓
+⑱ Redis 分布式锁
+        ↓
+⑲ Redis Cluster
+        ↓
+⑳ Go + Redis 实战
+```
+
+
+
+
+
+
 

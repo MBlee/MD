@@ -2,9 +2,12 @@
 
 ```go
 package main
-import "fmt"
+import (
+	f "fmt"
+)
 func main(){
   fmt.Printf("%T%v%d%.2f%s")
+  fmt.Sprintf()
 }
 var a,b,c int...
 var const
@@ -54,5 +57,38 @@ x.(type)
 slices.equal(s1,s2)
 //🚗Maps
 maps.equal(m1,m2)
+//🚗Math/rand
+rand.Intn(n)
+//🚗Regexp
+regexp.MustCompile(``)
+re.MatchString(str)
 ```
+
+```go
+//🚗Errors
+errors.New(str)
+//🚗Log
+log.SetPrefix(str)
+log.SetFlag(0)
+log.Fatal(err)
+//🚗Testing(_test.go)
+func Test(t *testing.T)
+t.Errorf(``)
+```
+
+#### Module
+
+```go
+//🚗Dev/Pub
+```
+
+```go
+//🚗Version
+```
+
+```go
+//🚗Manage
+```
+
+
 

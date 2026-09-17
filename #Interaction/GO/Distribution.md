@@ -1,10 +1,20 @@
 ## Build
 
+```shell
+go list -f '{{.Target}}'
+go env -w GOBIN=xxx
+(GOROOT/GOPATH/GOBIN/GOCACHE)
+```
+
 ```bash
-go mod init example/<pkg>
+go mod init exp/<pkg>
+go mod edit -replace xx=xx
 go mod tidy
-go run .
-go build .
+go test -v
+go run
+go build -o xxx
+go install xxx@xxx
+go clean -cache
 ```
 
 ## Publish

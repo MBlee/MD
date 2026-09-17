@@ -1,6 +1,6 @@
+## Chief
 
-
-## AT
+## Artery
 
 ```rust
 use std::io
@@ -12,7 +12,7 @@ fn main(){
 
 #### File
 
-#### DT
+#### DataType
 
 ```rust
 let mut x=0
@@ -24,6 +24,11 @@ format!("{}",str)
 str.push_str("")
 let str1=str.clone()
 let str1=&mut str
+let str1=&str
+let str1=&str
+let str1=&str[..]
+{str=>drop}
+str.clear()
 ```
 
 ```rust
@@ -37,7 +42,8 @@ v.insert(i,"")
 hMap.insert(k,v)
 hMap.remove(k)
 hMap.get(k)
-struct P{,} => P{,} => p.x
+struct P{,} => P{..P1,..P2} => p.x
+struct T(,) => T(,) => t.0
 enum E{,} => E::X
 enum EV{V1(),V2()} => EV::V1() => V1(msg)=>msg
 ```
@@ -56,3 +62,12 @@ use std::io
 io::stdin().read_line(&mut str).expect();
 ```
 
+#### Concept
+
+```shell
+#🚗Ownership
+Copy:i32/f64/bool/&str
+Move:String,Struct,Tuple...{init=>Drop}
+#🚗Reference
+fn f(&mut m) => f(&mut m)
+```
