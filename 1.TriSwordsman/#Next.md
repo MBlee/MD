@@ -10,9 +10,9 @@ npm i next react react-dom
 
 ### AI
 
-#### AI Coding Agents
+#### ~AI Coding Agents
 
-#### Next.js MCP Server
+#### ~Next.js MCP Server
 
 ### COMP
 
@@ -88,15 +88,11 @@ const ClientOnlyComponent = dynamic(() => import('./component'), {
 - sassOptions.addtionalData
 ```
 
-#### ~CSS-in-JS
-
 #### TailwindCSS
 
 ```shell
 - plugins:['@tailwindcss/postcss']
 ```
-
-#### ~Scripts
 
 #### ^Videos
 
@@ -145,27 +141,27 @@ const {url:trackUrl} = blobs[1]
 // useRouter
 ```
 
-#### Rendering Philosophy
+#### ~CSS-in-JS
 
-#### Server and Client Boundary
+#### ~Adopting Partial Prefetching
 
-#### Streaming
+#### ~Rendering Philosophy
 
-#### Third Party Libraries
+#### ~Streaming
 
-#### View transitions
+#### ~Server and Client Boundary
 
-#### Adopting Partial Prefetching
+#### ~View transitions
 
-#### Development Environment
+#### ~Third Party Libraries
 
-#### Videos
+#### ~Static Exports
 
-#### Static Exports
+#### ~Scripts
 
-#### Scripts
+#### ~Videos
 
-#### MDX
+#### ~MDX
 
 ### ROUTER
 
@@ -238,21 +234,21 @@ export const generateMetadata = async({params,searchParams})=>{}
 
 #### ~Redirecting
 
-#### Instant navigation
+#### ~Instant navigation
 
-#### Public pages
+#### ~Public pages
 
-#### Preserving UI state
+#### ~Preserving UI state
 
-#### Preventing Flash
+#### ~Preventing Flash
 
-#### Caching (Previous Model)
+#### ~Caching (Previous Model)
 
-#### ISR
+#### ~ISR
 
-#### ISR with Cache Components
+#### ~ISR with Cache Components
 
-#### Interactive apps
+#### ~Interactive apps
 
 ### DATA
 
@@ -492,9 +488,9 @@ if(secret=='mysecret') redirect(post.slug)
 draft.isEnabled?...fetch
 ```
 
-#### ^Backend
+#### ~Backend
 
-#### ^Backend for Frontend
+#### ~Backend for Frontend
 
 #### ~Internationalization
 
@@ -504,57 +500,55 @@ draft.isEnabled?...fetch
 
 #### ~Prefetching
 
-#### Internationalization
+#### ~Offline support
 
-#### JSON-LD
+#### ~Multi-tenant
 
-#### Offline support
+#### ~Multi-zones
 
-#### Multi-tenant
+#### ~OpenTelemetry
 
-#### Multi-zones
-
-OpenTelemetry
-
-#### Optimizing prefetching
-
-
+#### ~Optimizing prefetching
 
 ## INFRASTR
 
 ### DEV
 
-#### PPR Platform Guide
+#### ~Development Environment
 
-#### How Revalidation Works
+#### ~PPR Platform Guide
+
+#### ~How Revalidation Works
 
 ### PROD
 
-#### Building
+#### ~Building
 
-#### CDN Caching
+#### ~CDN Caching
 
-#### CI Build Caching
+#### ~CI Build Caching
 
-#### Deploying to Platforms
+#### ~Deploying to Platforms
 
-#### Package Bundling
+#### ~Package Bundling
 
-#### Production
+#### ~Production
 
-#### PWAs
+#### ~PWAs
 
-#### Self-Hosting
+#### ~Self-Hosting
 
 ### TESTING
 
-#### Debugging
+#### ~Debugging
 
-#### Testing
+#### ~Testing
 
-#### Analytics
+#### ~Analytics
 
-#### Instrumentation
+#### ~Instrumentation
+
+## NEXT_CITE
 
 ## SSR
 
