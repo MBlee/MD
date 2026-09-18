@@ -1,4 +1,4 @@
-## Next@15
+## NEXT
 
 ```shell
 # 手动安装
@@ -8,7 +8,13 @@ npm i next react react-dom
 - baseUrl:'src/',paths:{'@/*'}
 ```
 
-### 组件
+### AI
+
+#### AI Coding Agents
+
+#### Next.js MCP Server
+
+### COMP
 
 > **Server&Client**
 
@@ -50,6 +56,10 @@ import 'server-only|client-only'
 ```ts
 // Css-in-JS
 ```
+
+#### Forms
+
+#### Lazy Loading
 
 #### SPAs
 
@@ -135,7 +145,29 @@ const {url:trackUrl} = blobs[1]
 // useRouter
 ```
 
-### Router
+#### Rendering Philosophy
+
+#### Server and Client Boundary
+
+#### Streaming
+
+#### Third Party Libraries
+
+#### View transitions
+
+#### Adopting Partial Prefetching
+
+#### Development Environment
+
+#### Videos
+
+#### Static Exports
+
+#### Scripts
+
+#### MDX
+
+### ROUTER
 
 ```ts
 // Mapping
@@ -206,9 +238,33 @@ export const generateMetadata = async({params,searchParams})=>{}
 
 #### ~Redirecting
 
-### 数据
+#### Instant navigation
+
+#### Public pages
+
+#### Preserving UI state
+
+#### Preventing Flash
+
+#### Caching (Previous Model)
+
+#### ISR
+
+#### ISR with Cache Components
+
+#### Interactive apps
+
+### DATA
 
 #### DataFetch
+
+#### Client-side data fetching
+
+#### Content Security Policy
+
+#### Custom Server
+
+#### Data Security
 
 > 服务端
 
@@ -364,6 +420,12 @@ await verifySession()
 - autho,nextauth.js
 ```
 
+#### Authentication with Cache Components
+
+#### Server Actions
+
+#### Memory Usage
+
 #### ^FormAction
 
 ```ts
@@ -432,6 +494,8 @@ draft.isEnabled?...fetch
 
 #### ^Backend
 
+#### ^Backend for Frontend
+
 #### ~Internationalization
 
 #### ~JSON-LD
@@ -440,9 +504,61 @@ draft.isEnabled?...fetch
 
 #### ~Prefetching
 
+#### Internationalization
+
+#### JSON-LD
+
+#### Offline support
+
+#### Multi-tenant
+
+#### Multi-zones
+
+OpenTelemetry
+
+#### Optimizing prefetching
+
+
+
+## INFRASTR
+
+### DEV
+
+#### PPR Platform Guide
+
+#### How Revalidation Works
+
+### PROD
+
+#### Building
+
+#### CDN Caching
+
+#### CI Build Caching
+
+#### Deploying to Platforms
+
+#### Package Bundling
+
+#### Production
+
+#### PWAs
+
+#### Self-Hosting
+
+### TESTING
+
+#### Debugging
+
+#### Testing
+
+#### Analytics
+
+#### Instrumentation
+
 ## SSR
 
-### Server
+### SERVER
 
 ```ts
 // Dynamic Render
@@ -457,7 +573,7 @@ draft.isEnabled?...fetch
 - export const revalidate = 60
 ```
 
-### Client
+### CLIENT
 
 ```shell
 # Preload (Link/Loading)
