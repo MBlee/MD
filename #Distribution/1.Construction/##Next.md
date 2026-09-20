@@ -218,8 +218,6 @@ next start
 - .next/cache
 ```
 
-#### ~CLI
-
 #### *MDX
 
 #### *PWAs

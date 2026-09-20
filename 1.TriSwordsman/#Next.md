@@ -514,6 +514,29 @@ draft.isEnabled?...fetch
 
 ### DEV
 
+```shell
+#🚗NPMs
+# Essentials
+- next react react-dom
+- typescript @types/node @types/react @types/react-dom
+# Additions
+- emotion motion tailwindcss @tailwindcss/postcss
+- chakra-ui headless-ui bootstrap 
+- lodash zod mobx @reduxjs/toolkit @tanstack/react-query
+#🚗CLIs
+next dev
+next build
+next start
+```
+
+```shell
+#🚗CONFs
+# Essentials
+- tsconfig.json, next-env.d.ts, next.config.ts
+- eslint.config.mjs
+- tailwindcss
+```
+
 #### ~Development Environment
 
 #### ~PPR Platform Guide
