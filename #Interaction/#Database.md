@@ -254,11 +254,18 @@ User.create({user,nick}).then(res=>{})
 ## Redis
 
 ```shell
-SET key:id val EX 3600
-GET key:id
-DEL key:id
+#🚗Redis CLI
+# Connect
+redis-cli -h host? -p port?
+# Store/Retrieve
+SET key:id? val? EX 3600
+GET key:id?
+DEL key:id?
+HSET maps? k1? v1?...
+HGET maps? k1?
+HGETALL maps?
 KEYS *
-SCAN
+SCAN 0 MATCH 'k:*' COUNT c?
 ```
 
 ```python
