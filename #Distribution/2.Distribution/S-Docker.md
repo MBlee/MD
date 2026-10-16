@@ -4,6 +4,18 @@
 >
 > **Doker Desktop + Docker Engine**
 
+```shell
+# %UserProfile% > .wslconfig
+[wsl2]
+memory=4GB          # 限制 WSL 2 最多只能使用 4GB 内存（你可以根据你的总内存自行调整，比如 4G/8G）
+processors=4        # 限制分配的 CPU 核心数
+swap=2GB            # 限制交换分区大小
+# Restart
+wsl --shutdown
+```
+
+
+
 #### Docker Desktop
 
 ```shell

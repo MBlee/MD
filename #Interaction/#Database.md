@@ -308,6 +308,40 @@ func main() {
 }
 ```
 
+#### Modeling
+
+```shell
+
+```
+
+
+
+#### Indexing
+
+```shell
+# Key
+# ValType
+- TEXT
+- TAG
+- NUMERIC
+- VECTOR
+Schema
+```
+
+```shell
+FT.CREATE
+```
+
+```shell
+FT.INFO
+```
+
+#### Searching
+
+#### Aggregating
+
+#### Vector hybrid Searching
+
 #### *RoadMap
 
 ```shell
