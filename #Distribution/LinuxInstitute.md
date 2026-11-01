@@ -49,6 +49,21 @@ echo xx>xxx
 
 ```shell
 #🚗Archiving
+# Archive(tar)
+tar -czvf xx.tar files
+tar -rzvf xx.tar files
+tar -tzvf xx.tar
+tar -xzvf xx.tar
+# Compression(gzip/bzip2/xz)
+gzip -k -169 xx => xx.gz
+gzip -d xx.gz => xx
+gunzip xx.gz => xx
+zcat xx.gz
+# Zip/Unzip
+zip -r -169 xx.zip files
+unzip xx.zip
+unzip xx.zip -d dest
+unzip -l xx.zip
 ```
 
 #### Net
@@ -75,7 +90,24 @@ PATH=$PATH:xxx
 echo "$VAR" => xxx
 echo '$VAR' => $VAR
 echo \$VAR => $VAR
+#🚗Redirection
 ```
+
+```shell
+#🚗Stdout
+sort xx >> out
+uniq xx >> out
+# Stderr
+find 2> err
+ls > out 2> err
+# Stdin
+cat < text
+# Pipe
+sort | uniq |less
+# Grep
+```
+
+
 
 ```shell
 #🚗/usr/share/doc
